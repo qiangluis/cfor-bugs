@@ -111,8 +111,20 @@
 
 ## 协作结论
 
+## Bug 13：CRM 私海客户 - 新增按钮被遮挡
+
+- 状态：已发布（2026-10-10 16:47）
+- 根因：CRM 客户列表搜索栏的操作按钮共用一个未约束的行内表单项，按钮在窄布局下发生挤压，导致“新增”按钮被“重置”区域遮挡。
+- 修复说明：为客户列表操作组增加可换行的 flex 布局并清除按钮默认左间距，保证搜索、重置、新增、导入、导出和 AI 分析按钮不重叠。
+- 产品仓库：`cfor/cfor-admin-vue3`
+- 关键文件：`src/views/crm/customer/index.vue`
+- 代码 commit：`ddad160fe155b6db025ebe2151f7b59cdb88ca0b`
+- 发布版本/时间：前端标准版，2026-10-10 16:47（`/www/wwwroot/jixu-ai-prod`）
+- 构建/部署命令与结果：`NODE_OPTIONS='--max-old-space-size=12288' pnpm exec vite build --mode prod` 成功；按《即序 AI 标准版生产部署手册》打包并发布前端，排除 `config.json`，保留 `/www/server/jixu-ai/frontend-config.json` 和 Nginx `/config.json` alias；生产 `https://jixu-ai.com/` 与 `/config.json` 均返回成功。
+- 验证结论：由 Muse 负责复测，Codex 不登记“已验证”。
+
 - Codex 已拉取 Muse 的 `BUG-LIST.md`，并登记全部修复及复测结果。
 - Muse 已验证：Bug 1、2、4、7。
 - Codex 生产实测待 Muse 确认：Bug 3、5、6。
 - Bug 8 的编号规则已修复，保存无响应已转为 Bug 9，等待下一轮定位。
-- `BUG-LIST.md` 未被 Codex 修改。
+- 本轮仅将 Bug 13 状态登记为“已发布”；Bug 10、11、12 仍待修复。
