@@ -202,3 +202,46 @@
 - Bug 17：`/pms/pm/project` 与旧 `/pms/project` 两套项目模型及归属未明确，暂不擅自修改。
 - Bug 13、18：本轮未修改，继续保留待处理状态。
 - Bug 21：Muse 于本轮收尾同步时新增，留待后续定位。
+
+## 2026-10-10 23:55 本轮处理（未发布）
+
+- 协作基线：`a5ff274a6e5e930c3736059b2e70b35ca1435df1`，本轮两次 `git pull --rebase` 均成功且无新增变更。
+- 数量统计：状态为“待修复/打回”的条目共 13 个（Bug 10–22），未达到 20 个生产发布阈值；本轮只完成 Bug 18 的产品修复。
+- 来源门禁：后端、Web 均成功执行 `git fetch origin dev/develop_5.0.1`；修改前本地与远端分别一致于后端 `5e45f924c3f7fab01c0c54b6876cdfbf2b1d11b7`、Web `ca999a7461c7459cee4f99946e1e8bd32886f371`。
+- 上轮 Bug 16 的 `2468182cea7c6df2a9750642018ef2541d804258` 修复仍保留在 Web 主线，继续待批量发布；不因生产页面仍显示旧表单而重复提交或登记为已发布。
+- 未执行生产构建、部署、数据库写入、配置修改、小程序上传或生产健康检查；`BUG-LIST.md` 及既有复测内容保持不变。
+
+### Bug 18：BPM 待办列表 - 页面 404
+
+- 状态：修复完成，待批量发布/未发布
+- 根因：首页待办“更多”、企业 AI 首页及全局 AI 引导硬编码 `/oa/bpm/task/todo`；现有菜单中待办、已办、抄送和我的流程直接归属 `/oa`，实际路径为 `/oa/todo`、`/oa/done`、`/oa/copy`、`/oa/my`。
+- 调用链与证据：`Home/index.vue` 加载 `PersonalWorkbench.vue`，`openTodoList` 使用当前标签的路径；`routerHelper.generateRoute` 按父子菜单路径生成路由。基线 Flyway 中菜单 1207/1208/2713/1201 的父级均为 40738，一级路径为 `/oa`；`V202610031600__rebuild_system_menu_navigation_tree.sql` 调整 OA 归属时保留绝对 `/oa`，未给这些页面增加 `bpm/task` 层级。待办页继续使用既有 `TaskApi.getTaskTodoPage`，不改变后端接口或权限。
+- 修复说明：将个人工作台与旧首页四个流程标签统一到现有绝对路径，同步企业 AI 首页快捷入口、风险项、查看全部及全局 AI 待办入口；补充导航路径回归检查。不修改共享路由、菜单、权限或历史 Flyway，新旧租户均继续沿用已有菜单授权。
+- 产品仓库：`/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3`
+- 关键文件：`src/views/Home/components/PersonalWorkbench.vue`、`src/views/Home/Index_copy.vue`、`src/views/workbench/EnterpriseAiHome.vue`、`src/views/workbench/enterpriseAiHomeData.ts`、`src/layout/components/globalAiProactiveSources.ts`、对应测试及 `tests/bpmWorkbenchNavigation.test.mjs`。
+- 代码 commit：`4fba2c23f3e308d18e826c6b518d8774c191e48e`，已 push 至 `origin/dev/develop_5.0.1`；提交仅包含本项 8 个文件，其他会话的路由、售后、委外、项目页面和构建配置改动未纳入。
+- 检查命令与结果：`node --experimental-strip-types --test tests/bpmWorkbenchNavigation.test.mjs src/layout/components/globalAiProactiveSources.test.ts src/views/workbench/enterpriseAiHomeData.test.ts`，11 项通过，退出 0；目标 7 个 Vue/TS 文件及新增测试的定向 `pnpm exec eslint` 均退出 0；`pnpm exec tsc --noEmit --skipLibCheck --module nodenext --moduleResolution nodenext --allowImportingTsExtensions --target ES2022` 对本项 4 个 TS 源码/测试文件检查退出 0；通过 `vue/compiler-sfc` 对上述三个 Vue 页面执行解析、脚本及模板编译，均返回 `SFC_COMPILE_PASS`；`git diff --cached --check` 退出 0。
+- 检查边界：未执行全量 `vue-tsc`、生产打包或真实业务页面复测，以上是代码级检查证据，不是生产发布或业务闭环证据。
+- 发布版本/时间、实际部署目标：无，未部署；待达到 20 个阈值并完成正式发布门禁后再交 Muse 生产复测。
+
+### Bug 21：销售出库 - 被销售 BOM 校验阻断
+
+- 状态：阻塞/未发布
+- 定位结果：`src/views/wms/stock/out/sell/components/formDialog.vue` 的 `loadSaleOrderForOutbound` 加载订单与 BOM 快照，`buildSaleBomEntryRows` 对无 BOM 明细直接抛出“无法整套出库”；`formDialogBom.vue` 也保留同一阻断逻辑。后端 `StkIoServiceImpl` 对销售出库存在有 BOM/无 BOM 的不同回写分支，不能仅删除前端报错就推断普通成品的扣库与订单回写已正确闭环。
+- 阻塞原因：该项需要明确非套件识别、上下表明细及来源回写的现有契约；销售订单详情链路的 `ErpSaleOrderServiceImpl`、`ErpStockServiceImpl` 及 WMS 查询 API 已被其他会话未提交改动占用。未放开 BOM 校验、未改库存事实源、未执行业务写入。
+- 产品代码 commit、发布版本/时间：无。
+
+### Bug 22：现存量查询 - 明细主表加载系统异常
+
+- 状态：阻塞/未发布
+- 定位结果：`standingStock/index.vue#getList` 先请求 `StkInventoryApi.standingStock`，再请求两次统计，全部成功后才填表；查询接口为 `/mes/stkIo/queryStockQty`，调用链为 `MesStkIoController.queryStockQty` → `StkIoServiceImpl.queryStockQty` → `MesStkInventoryMapper.selectInventoryPage`。任一请求失败都会清空明细和汇总；仓位概览由独立的 `WarehouseWorkbenchApi` 获取，因而概览有数据不代表主表查询成功。
+- 阻塞原因：目标 `MesStkInventoryMapper.xml` 已有其他会话对 `selectInventoryPage` 的未提交改动（`available_qty` 从 `MAX(iol.available_qty)` 改为 `SUM(msi.available_qty)`），对应映射测试也被占用；当前证据不足以判断生产“系统异常”的具体 SQL/运行时根因。未覆盖该文件，未把回归线索标成修复完成。
+- 产品代码 commit、发布版本/时间：无。
+
+### 延续阻塞与发布边界
+
+- Bug 10、11、12、19、20：既有后端调用链仍有其他会话未提交工作，本轮未硬改或混入提交。
+- Bug 14、15：财务手工新增类型、来源与金额口径仍待确认，维持上轮“阻塞/未发布”，不计为修复完成。
+- Bug 17：项目页面及后端项目链路有其他会话未提交改动，未修改。
+- Bug 13：仍以 Muse 清单“待修复”为准；未复用旧发布记录登记新的已发布状态。
+- 本轮仅新增 Bug 18 修复，后端和小程序无本轮产品变更；Bug 16、18 均未发布，后续批次须以届时最新代码重新构建并通过全部生产门禁。
