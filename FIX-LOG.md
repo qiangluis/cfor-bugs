@@ -256,3 +256,14 @@
 - Bug 17：项目页面及后端项目链路有其他会话未提交改动，未修改。
 - Bug 13：仍以 Muse 清单“待修复”为准；未复用旧发布记录登记新的已发布状态。
 - 本轮仅新增 Bug 18 修复，后端和小程序无本轮产品变更；Bug 16、18 均未发布，后续批次须以届时最新代码重新构建并通过全部生产门禁。
+
+## 2026-10-11 00:42 继续生产浏览器走查（未发布）
+
+- 环境：`https://jixu-ai.com`，租户：即序科技；本轮只执行页面访问、菜单展开和控制台/数据库只读核对，没有保存、审核、弃审、出入库、删除或配置修改。
+- Bug 12：质检单新增表单的“单据类型”仍无可选项，打开下拉后没有任何选项。
+- Bug 14：应收单列表仍只有搜索、重置、批量审核、批量弃审，没有新增入口。
+- Bug 15：应付单列表仍只有搜索、重置、批量审核、批量弃审，没有新增入口。
+- Bug 22：仓库报表的两条现存量入口均可打开，库存概览显示总量 150、可用 150，但“库存主表”仍为“暂无数据 / 共 0 条记录”，页面仍出现系统异常。
+- Bug 23：`/wireSideWarehouse/reportForms/standingStock` 与 `/reports/inventory/standingStock` 两条同名现存量入口均可直接访问，导航歧义仍存在。
+- Bug 24：新增运维菜单路由问题。生产控制台反复输出 `skip invalid backend menu component`，涉及 `my-order`、`inspection-plan`、`item-topology`、`schedule`、`duty`、`my-inspection`；标准生产库 `cfor_admin_saas_standard` 中对应菜单挂在 `system_menu.parent_id=100004`，其中 5 条为可见菜单。抽查 `/iot/maintenance/inspection-plan`、`/iot/maintenance/schedule`、`/iot/maintenance/duty` 均只有应用壳，无业务内容。
+- 本轮未修改产品代码、未构建、未部署生产；待后续按菜单事实源核对后统一修复，不能只删除前端告警或直接删除生产菜单。

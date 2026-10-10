@@ -219,6 +219,15 @@
 - **影响**：菜单导航存在歧义，后续修复或配置变更可能只覆盖其中一条入口；用户和测试人员可能进入不同页面，导致结果不一致
 - **状态**：待修复
 
+### Bug 24：运维菜单可见但前端路由组件无效
+- **模块**：研发/物联设置 → 运维
+- **操作**：直接访问运维菜单对应路径：`/iot/maintenance/my-order`、`/iot/maintenance/inspection-plan`、`/iot/maintenance/item-topology`、`/iot/maintenance/schedule`、`/iot/maintenance/duty`、`/iot/maintenance/my-inspection`
+- **现象**：生产前端启动时反复记录 `skip invalid backend menu component`，上述菜单组件没有被动态路由加载；直接访问已确认的 `inspection-plan`、`schedule`、`duty` 路径只显示应用壳，没有业务页面、表格或提示内容
+- **数据库证据**：标准生产库 `system_menu` 中对应 6 条菜单均挂在“运维”（`id=100004`）下，其中 `my-order`、`inspection-plan`、`item-topology`、`schedule`、`duty` 的 `visible=1`，但组件路径分别为 `maintenance/my-repair-order/index`、`maintenance/inspection-plan/index`、`maintenance/item-topology/index`、`maintenance/schedule/index`、`maintenance/duty/index`，与当前前端可加载组件不一致；`my-inspection` 虽为隐藏菜单，也触发同类无效组件告警
+- **影响**：可见菜单可能进入空白页面，运维工单、巡检计划、项目拓扑、值班与调度等功能无法从生产前端使用；同时会污染动态路由加载并增加控制台告警
+- **现场证据**：2026-10-11 00:42 生产浏览器真实操作；控制台复现 6 条无效组件告警，`/iot/maintenance/inspection-plan`、`/iot/maintenance/schedule`、`/iot/maintenance/duty` 均显示空壳页
+- **状态**：待修复
+
 ---
 
 ## 五、验证通过的功能
@@ -251,3 +260,4 @@
 | 2026-10-10 23:30 | Codex 生产浏览器复测：质检单据类型仍无数据、应收/应付列表仍无新增入口、员工新增表单仍显示旧字段；现存量查询明细加载“系统异常”，由瑕疵2升级为 Bug 22 |
 | 2026-10-10 23:50 | Codex 继续生产浏览器复测：确认工作台待办“更多”错误跳转 `/oa/bpm/task/todo`，行政菜单正确入口为 `/oa/todo`；现存量查询再次出现 3 次“系统异常”且明细 0 条 |
 | 2026-10-11 00:20 | Codex 继续生产浏览器走查：新增 Bug 23，菜单搜索出现两个同名“现存量查询”入口，分别指向 `/wireSideWarehouse/reportForms/standingStock` 和 `/reports/inventory/standingStock`；项目中心、我的项目、客户信息、销售订单、员工档案入口本轮可打开 |
+| 2026-10-11 00:42 | Codex 继续生产浏览器走查：新增 Bug 24；运维菜单有 6 条无效组件路径，控制台持续跳过动态路由，抽查 `inspection-plan`、`schedule`、`duty` 均进入空壳页；同步确认 Bug 12、14、15、22、23 仍未解决 |
