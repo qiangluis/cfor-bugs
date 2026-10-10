@@ -159,7 +159,8 @@
 - **现场证据**：2026-10-11 03:50 左右，生产浏览器真实操作，租户“即序科技”；同一表单的单据日期和质检员可以初始化，但 `assay_code` 规则缺失导致流程在取号阶段中断
 - **根因线索**：前端 `src/views/quality/assay/assayForm.vue` 创建时调用 `fillBillNo('assay_code', 'billNo', ...)`；标准迁移 `V202610101800__seed_erp_bill_number_rules.sql` 仅补了采购、销售、仓储、质检等规则，没有补 `assay_code`。历史迁移曾存在“化验单编码 / assay_code”规则，当前标准库初始化未覆盖。
 - **影响**：化验单新增链路完全不可用；后续化验结果录入和质量事实沉淀无法开始。
-- **状态**：待修复
+- **状态**：已验证
+- **生产验证**：2026-10-11 06:45 前的生产复测中，化验单新增已生成 `HYD-261011-001`，未再出现 `assay_code` 编号规则错误；说明生产 Flyway/数据库规则已生效。
 
 ### Bug 37：样品管理 - 新增、导出及维护操作被错误权限隐藏
 - **模块**：质检 → 样品管理
@@ -226,6 +227,23 @@
 - **根因线索**：前端 `EmployeeForm.vue` 依赖 `hrm_employee_entry_status` 与 `hrm_employee_type` 字典，后端 `DictTypeConstants` 也声明了这两个字典类型；当前标准仓库中未检索到对应字典初始化数据，生产页面因此只有默认数值，没有字典标签。
 - **影响**：新员工无法按业务含义选择入职状态和聘用形式，必填字段无法正常维护；新租户初始化 HRM 后仍会复现。
 - **状态**：待修复
+
+### Bug 44：运维调度、值班、项目拓扑列表因租户字段缺失报系统异常
+- **模块**：物联网 → 设备运维 → 调度计划、值班管理、项目拓扑
+- **操作**：
+  1. 打开 `/iot/maintenance/schedule`；
+  2. 打开 `/iot/maintenance/duty`；
+  3. 打开 `/iot/maintenance/item-topology`，等待列表加载。
+- **现象**：三个页面都能显示页面结构和筛选区，但列表为空并弹出两次“系统异常”；项目拓扑页面当前浏览器无障碍树可直接读取到两条“系统异常”。
+- **现场证据**：2026-10-11 06:45，生产浏览器、租户“即序科技”真实访问上述页面；本轮没有新增、保存、导出、删除或修改生产数据。
+- **后端日志证据**：
+  - `schedule`：`SELECT COUNT(*) AS total FROM schedule WHERE tenant_id = 1`，报 `Unknown column 'tenant_id' in 'where clause'`；
+  - `duty`：`SELECT COUNT(*) AS total FROM duty WHERE tenant_id = 1`，报 `Unknown column 'tenant_id' in 'where clause'`；
+  - `item_topology`：查询 SQL 带 `WHERE del_flag = '0' AND tenant_id = 1`，同样报 `Unknown column 'tenant_id' in 'where clause'`。
+- **根因线索**：当前 Java 查询链路已经按 CFOR 多租户上下文注入 `tenant_id`，但生产中的旧表结构没有该列；`schedule`、`duty` 继承公共实体，`item_topology` 仍使用旧表模型，三张表的数据归属和迁移策略尚未确认。
+- **影响**：即使页面路由能够加载，当前租户无法查询运维基础数据，新增、修改、删除及后续巡检关联链路也无法可靠使用；若只修当前租户，后续新租户仍可能复现。
+- **状态**：待修复
+- **处理边界**：未直接修改生产表结构、未补生产数据、未发布 CFOR 代码；需先确认三张旧表的现有数据归属、`tenant_id` 回填规则、索引/唯一约束及新租户初始化脚本，再实施兼容迁移。
 
 ---
 
@@ -301,11 +319,11 @@
 ### Bug 24：运维菜单可见但前端路由组件无效
 - **模块**：研发/物联设置 → 运维
 - **操作**：直接访问运维菜单对应路径：`/iot/maintenance/my-order`、`/iot/maintenance/inspection-plan`、`/iot/maintenance/item-topology`、`/iot/maintenance/schedule`、`/iot/maintenance/duty`、`/iot/maintenance/my-inspection`
-- **现象**：生产前端启动时反复记录 `skip invalid backend menu component`，上述菜单组件没有被动态路由加载；直接访问已确认的 `inspection-plan`、`schedule`、`duty` 路径只显示应用壳，没有业务页面、表格或提示内容
+- **现象**：生产前端启动时反复记录 `skip invalid backend menu component`，部分菜单组件没有被动态路由加载；此前直接访问 `inspection-plan`、`schedule`、`duty` 路径只显示应用壳，没有业务页面、表格或提示内容
 - **数据库证据**：标准生产库 `system_menu` 中对应 6 条菜单均挂在“运维”（`id=100004`）下，其中 `my-order`、`inspection-plan`、`item-topology`、`schedule`、`duty` 的 `visible=1`，但组件路径分别为 `maintenance/my-repair-order/index`、`maintenance/inspection-plan/index`、`maintenance/item-topology/index`、`maintenance/schedule/index`、`maintenance/duty/index`，与当前前端可加载组件不一致；`my-inspection` 虽为隐藏菜单，也触发同类无效组件告警
 - **影响**：可见菜单可能进入空白页面，运维工单、巡检计划、项目拓扑、值班与调度等功能无法从生产前端使用；同时会污染动态路由加载并增加控制台告警
-- **现场证据**：2026-10-11 00:42 生产浏览器真实操作；控制台复现 6 条无效组件告警，`/iot/maintenance/inspection-plan`、`/iot/maintenance/schedule`、`/iot/maintenance/duty` 均显示空壳页
-- **状态**：待修复
+- **现场证据**：2026-10-11 00:42 生产浏览器真实操作；控制台复现 6 条无效组件告警，`/iot/maintenance/inspection-plan`、`/iot/maintenance/schedule`、`/iot/maintenance/duty` 均显示空壳页。2026-10-11 06:45 复测时，`/iot/maintenance/schedule`、`/iot/maintenance/duty`、`/iot/maintenance/item-topology` 已能渲染业务页面，但列表请求仍分别弹出两次“系统异常”，后端字段问题见 Bug 44
+- **状态**：部分修复，待处理 Bug 44
 
 ### Bug 25：项目管理工作台时间窗口固定到过期日期
 - **模块**：项目 → 项目管理工作台
@@ -314,9 +332,10 @@
 - **根因线索**：前端 `src/views/project-management/projectTimeWindowData.ts` 将 `PROJECT_WORKBENCH_TODAY` 硬编码为 `2026-07-28`，工作台因此把过期演示日期当作今天
 - **影响**：项目人员看到的“本周/本日”时间窗口与真实当前日期不一致，无法正确判断近期评审、上线、验收等项目节点；属于生产页面时间基准错误
 - **现场证据**：2026-10-11 生产浏览器真实打开项目工作台；页面同时显示“项目管理工作台”和固定的 `07-28 周二` 时间窗口
-- **修复状态**：代码已修复，待发布并回归
+- **修复状态**：已验证
 - **修复 commit**：`b2d44439d`（`cfor-admin-vue3`）
 - **修复说明**：项目工作台日期改为按浏览器本地日期生成；当天演示任务编号同步使用当前日期，避免日期和任务关联继续停留在 `20260728`。
+- **生产验证**：2026-10-11 06:45，生产浏览器打开项目管理工作台，时间窗口显示 `10-11 周日`，未再出现固定的 `07-28`。
 
 ## 五、2026-10-11 01:20 生产复测补充
 
@@ -498,6 +517,7 @@
 | 2026-10-11 04:08 | Codex 继续生产浏览器走查：Bug 18 待办入口复测通过；Bug 22 仍复现；新增 Bug 38（引导中心显示“福奇科技”而顶部租户为“即序科技”）和 Bug 39（AI 模型选择器重复展示 MiniMax M3/M2.7） |
 | 2026-10-11 04:28 | Codex 继续生产浏览器走查：新增 Bug 40；跨仓调拨、借用归还新增表单的空明细行默认数量为 1，导致未选存货时顶部总数量错误显示 1 |
 | 2026-10-11 05:03 | Codex 完成 Bug 40 修复发布与生产回归：跨仓调拨、借用归还新增表单的空明细行数量均为 0，顶部总数量均为 0，状态更新为已发布、生产验证通过 |
+| 2026-10-11 06:45 | Codex 生产浏览器复测：Bug 25 项目工作台日期已恢复为 `10-11 周日`；Bug 36 化验单已可生成 `HYD-261011-001`；运维页面路由已部分恢复但新增 Bug 44，`schedule`、`duty`、`item_topology` 因生产旧表缺少 `tenant_id` 均报系统异常 |
 
 ## 八、2026-10-11 01:40 生产浏览器回归补充
 
