@@ -128,3 +128,44 @@
 - Codex 生产实测待 Muse 确认：Bug 3、5、6。
 - Bug 8 的编号规则已修复，保存无响应已转为 Bug 9，等待下一轮定位。
 - 本轮仅将 Bug 13 状态登记为“已发布”；Bug 10、11、12 仍待修复。
+
+## 2026-10-10 23:04 本轮修复（待批量发布）
+
+### Bug 14：FMS 应收单 - 无新增按钮
+
+- 状态：修复完成，待批量发布/未发布
+- 根因：应收单列表工具栏未接入已有 `ReceivableForm` 的新增入口，用户无法从列表打开新建表单。
+- 修复说明：在应收单列表增加“新增”按钮，复用已有表单实例并保留 `erp:fin-receivable:create` 权限控制；同时移除新增表单初始化时错误的固定 `id: 1`，避免新建请求被误判为更新。
+- 产品仓库：`cfor/cfor-admin-vue3`
+- 关键文件：`src/views/erp/finance/receivableManage/receivable/index.vue`、`src/views/erp/finance/receivableManage/receivable/receivableForm.vue`
+- 代码 commit：`2468182ce`
+- 检查结果：定向 ESLint 通过；`git diff --check` 通过。
+- 发布版本/时间：无。本轮待处理 Bug 共 11 个，未达到 20 个发布阈值，未部署生产。
+
+### Bug 15：FMS 应付单 - 无新增按钮
+
+- 状态：修复完成，待批量发布/未发布
+- 根因：应付单列表工具栏未接入已有 `PayableForm` 的新增入口。
+- 修复说明：在应付单列表增加“新增”按钮，复用已有表单实例并保留 `erp:fin-payable:create` 权限控制。
+- 产品仓库：`cfor/cfor-admin-vue3`
+- 关键文件：`src/views/erp/finance/payableManage/payable/index.vue`
+- 代码 commit：`2468182ce`
+- 检查结果：定向 ESLint 通过；`git diff --check` 通过。
+- 发布版本/时间：无。本轮待处理 Bug 共 11 个，未达到 20 个发布阈值，未部署生产。
+
+### Bug 16：HRM 员工档案 - 保存报错字段不匹配
+
+- 状态：修复完成，待批量发布/未发布
+- 根因：员工列表页使用旧版内联表单及旧字段 `employeeNo/employmentType/entryDate`，与当前 HRM 员工接口要求的 `jobNumber/entryStatus/type/entryTime` 不一致。
+- 修复说明：移除旧版内联表单，复用仓库已有的 `EmployeeForm.vue`，由其按当前 HRM 契约完成入职状态、聘用形式、入职时间等校验和提交。
+- 产品仓库：`cfor/cfor-admin-vue3`
+- 关键文件：`src/views/hrm/employee/index.vue`、`src/views/hrm/employee/EmployeeForm.vue`（复用，未改动）
+- 代码 commit：`2468182ce`
+- 检查结果：定向 ESLint 通过；`git diff --check` 通过；`vue-tsc` 受项目全量类型检查内存限制失败（Node heap OOM，约 4GB），未据此宣称验证通过。
+- 发布版本/时间：无。本轮待处理 Bug 共 11 个，未达到 20 个发布阈值，未部署生产。
+
+### 本轮阻塞项
+
+- Bug 10、11、12、19、20：对应后端调用链被其他会话的大量未提交改动占用，无法安全区分和提交。
+- Bug 17：`/pms/pm/project` 与旧 `/pms/project` 两套项目模型及归属未明确，暂不擅自修改。
+- Bug 13、18：本轮未修改，继续保留待处理状态。
