@@ -138,6 +138,14 @@
 
 ## 协作结论
 
+## 2026-10-11 03:10 生产浏览器走查补充
+
+- 环境：`https://jixu-ai.com`，租户“即序科技”；当前仅执行页面导航、查询和错误提示读取，没有保存、打卡、提交审批、审核、删除或配置修改。
+- Bug 34：HRM 考勤页面的“考勤组”加载请求 `/hrm/attendance/group/list` 返回接口不存在；填入员工编号和日期范围后，“查询记录”请求 `/hrm/attendance/record/list`、“月度统计”请求 `/hrm/attendance/month-statistics` 也均返回接口不存在。
+- Bug 35：HRM 请假页面填入员工编号后，点击“查询请假单”请求 `/hrm/leave/list` 返回接口不存在。
+- 代码对照：当前后端 `HrmAttendanceGroupController` 暴露 `/page` 与 `/simple-list`，请假使用 `HrmAttendanceLeaveController` 的 `/hrm/attendance/leave/page`；统计能力位于 `/hrm/attendance/statistics/*`。前端仓库同时存在新版 `src/api/hrm/attendance/*`，但生产页面仍走旧的 `src/api/hrm/index.ts`。
+- 结论：两个问题均为前端页面/API 未完成契约切换，不是生产租户没有数据；已登记到 `cfor-bugs/BUG-LIST.md`，等待修复。
+
 ## 2026-10-10 23:50 继续生产浏览器复测
 
 - 环境：`https://jixu-ai.com`，租户：即序科技；本轮仅执行页面导航、下拉展开和只读查询，没有保存、审核、弃审、出入库或其他生产写操作。
