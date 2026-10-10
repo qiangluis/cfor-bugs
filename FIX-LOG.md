@@ -129,29 +129,35 @@
 - Bug 8 的编号规则已修复，保存无响应已转为 Bug 9，等待下一轮定位。
 - 本轮仅将 Bug 13 状态登记为“已发布”；Bug 10、11、12 仍待修复。
 
-## 2026-10-10 23:04 本轮修复（待批量发布）
+## 2026-10-10 23:04 本轮处理（未发布）
+
+- 用户已澄清：20 个阈值只限制生产部署，低于阈值仍应修复并提交安全可推进的产品代码。
+- 开始时待处理 Bug 11 个；同步 Muse 新增 Bug 21 后为 12 个，仍未达到发布阈值。
+- 本轮未构建生产包、未部署、未执行生产健康检查，未修改 `BUG-LIST.md` 或 Muse 的复测结论。
 
 ### Bug 14：FMS 应收单 - 无新增按钮
 
-- 状态：修复完成，待批量发布/未发布
-- 根因：应收单列表工具栏未接入已有 `ReceivableForm` 的新增入口，用户无法从列表打开新建表单。
-- 修复说明：在应收单列表增加“新增”按钮，复用已有表单实例并保留 `erp:fin-receivable:create` 权限控制；同时移除新增表单初始化时错误的固定 `id: 1`，避免新建请求被误判为更新。
+- 状态：阻塞/未发布
+- 定位结果：应收单列表没有新增入口，但已有 `receivableForm.vue` 的客户、金额、日期等字段全部禁用，且 `add-row=false`；只增加按钮无法完成手工新增。
+- 阻塞原因：当前页面围绕来源单据展示应收，手工新增的单据类型、明细来源及金额口径尚未明确，不能仅凭新增接口存在就开放财务写入。需要先确认手工新增应走普通应收、其他应收还是来源单据生成链路。
+- 处理说明：`2468182ce` 中试接的新增入口及初始化修改已通过后续提交 `ca999a746` 完整撤回，最终应收相关文件相对本轮开始没有变更；不计为修复完成。
 - 产品仓库：`cfor/cfor-admin-vue3`
 - 关键文件：`src/views/erp/finance/receivableManage/receivable/index.vue`、`src/views/erp/finance/receivableManage/receivable/receivableForm.vue`
-- 代码 commit：`2468182ce`
-- 检查结果：定向 ESLint 通过；`git diff --check` 通过。
-- 发布版本/时间：无。本轮待处理 Bug 共 11 个，未达到 20 个发布阈值，未部署生产。
+- 代码 commit：尝试 `2468182ce`，撤回 `ca999a746`，均已 push。
+- 检查结果：撤回后定向 ESLint 和 `git diff --check` 通过；未执行业务写入。
+- 发布版本/时间：无，未部署生产。
 
 ### Bug 15：FMS 应付单 - 无新增按钮
 
-- 状态：修复完成，待批量发布/未发布
-- 根因：应付单列表工具栏未接入已有 `PayableForm` 的新增入口。
-- 修复说明：在应付单列表增加“新增”按钮，复用已有表单实例并保留 `erp:fin-payable:create` 权限控制。
+- 状态：阻塞/未发布
+- 定位结果：应付单列表没有新增入口，但已有 `payableForm.vue` 的供应商、金额、日期等字段禁用，且 `add-row=false`；只增加按钮无法完成手工新增。
+- 阻塞原因：`FinPayableServiceImpl.beforePersistAdd` 按来源明细汇总金额，并对 `201*` 类型校验唯一来源单据；在未明确手工新增的类型和来源规则前，不能自行改变财务口径。
+- 处理说明：`2468182ce` 中试接的新增入口已通过后续提交 `ca999a746` 撤回，最终应付相关文件相对本轮开始没有变更；不计为修复完成。
 - 产品仓库：`cfor/cfor-admin-vue3`
 - 关键文件：`src/views/erp/finance/payableManage/payable/index.vue`
-- 代码 commit：`2468182ce`
-- 检查结果：定向 ESLint 通过；`git diff --check` 通过。
-- 发布版本/时间：无。本轮待处理 Bug 共 11 个，未达到 20 个发布阈值，未部署生产。
+- 代码 commit：尝试 `2468182ce`，撤回 `ca999a746`，均已 push。
+- 检查结果：撤回后定向 ESLint 和 `git diff --check` 通过；未执行业务写入。
+- 发布版本/时间：无，未部署生产。
 
 ### Bug 16：HRM 员工档案 - 保存报错字段不匹配
 
@@ -160,12 +166,15 @@
 - 修复说明：移除旧版内联表单，复用仓库已有的 `EmployeeForm.vue`，由其按当前 HRM 契约完成入职状态、聘用形式、入职时间等校验和提交。
 - 产品仓库：`cfor/cfor-admin-vue3`
 - 关键文件：`src/views/hrm/employee/index.vue`、`src/views/hrm/employee/EmployeeForm.vue`（复用，未改动）
-- 代码 commit：`2468182ce`
-- 检查结果：定向 ESLint 通过；`git diff --check` 通过；`vue-tsc` 受项目全量类型检查内存限制失败（Node heap OOM，约 4GB），未据此宣称验证通过。
-- 发布版本/时间：无。本轮待处理 Bug 共 11 个，未达到 20 个发布阈值，未部署生产。
+- 代码 commit：`2468182cea7c6df2a9750642018ef2541d804258`，已 push；后续 `ca999a746` 只撤回应收/应付尝试，保留本项修复。
+- 检查命令与结果：`pnpm exec eslint src/views/hrm/employee/index.vue`（含本轮财务目标文件的定向检查）退出 0；`git diff --check` 退出 0；通过 `vue/compiler-sfc` 对员工列表和 `EmployeeForm.vue` 解析、脚本编译及模板编译，均返回 `SFC_COMPILE_PASS`。
+- 检查边界：`pnpm ts:check`（`vue-tsc --noEmit`）受项目全量类型检查内存限制失败（Node heap OOM，约 4GB，退出 134）；未执行生产构建及业务页面复测，不据此宣称完整业务验证通过。
+- 发布版本/时间：无。当前待处理 Bug 12 个，未达到 20 个发布阈值，未部署生产。
 
 ### 本轮阻塞项
 
 - Bug 10、11、12、19、20：对应后端调用链被其他会话的大量未提交改动占用，无法安全区分和提交。
+- Bug 14、15：手工新增的财务来源及金额口径待确认，尝试性入口已撤回，不计为完成。
 - Bug 17：`/pms/pm/project` 与旧 `/pms/project` 两套项目模型及归属未明确，暂不擅自修改。
 - Bug 13、18：本轮未修改，继续保留待处理状态。
+- Bug 21：Muse 于本轮收尾同步时新增，留待后续定位。
