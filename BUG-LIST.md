@@ -209,7 +209,7 @@
 
 ---
 
-## 四、导航与体验缺陷（1个）
+## 四、导航与体验缺陷（2个）
 
 ### Bug 23：菜单搜索出现两个同名“现存量查询”入口
 - **模块**：全局菜单搜索 → 现存量查询
@@ -226,6 +226,15 @@
 - **数据库证据**：标准生产库 `system_menu` 中对应 6 条菜单均挂在“运维”（`id=100004`）下，其中 `my-order`、`inspection-plan`、`item-topology`、`schedule`、`duty` 的 `visible=1`，但组件路径分别为 `maintenance/my-repair-order/index`、`maintenance/inspection-plan/index`、`maintenance/item-topology/index`、`maintenance/schedule/index`、`maintenance/duty/index`，与当前前端可加载组件不一致；`my-inspection` 虽为隐藏菜单，也触发同类无效组件告警
 - **影响**：可见菜单可能进入空白页面，运维工单、巡检计划、项目拓扑、值班与调度等功能无法从生产前端使用；同时会污染动态路由加载并增加控制台告警
 - **现场证据**：2026-10-11 00:42 生产浏览器真实操作；控制台复现 6 条无效组件告警，`/iot/maintenance/inspection-plan`、`/iot/maintenance/schedule`、`/iot/maintenance/duty` 均显示空壳页
+- **状态**：待修复
+
+### Bug 25：项目管理工作台时间窗口固定到过期日期
+- **模块**：项目 → 项目管理工作台
+- **操作**：打开 `https://jixu-ai.com/project/workbench`
+- **现象**：生产首页显示当前日期为 `2026-10-11`，但项目管理工作台“时间窗口”仍显示 `07-28`，选中日期详情显示 `07-28 周二`；页面上的项目节点也固定落在 `2026-07-28`，与生产当前日期不一致
+- **根因线索**：前端 `src/views/project-management/projectTimeWindowData.ts` 将 `PROJECT_WORKBENCH_TODAY` 硬编码为 `2026-07-28`，工作台因此把过期演示日期当作今天
+- **影响**：项目人员看到的“本周/本日”时间窗口与真实当前日期不一致，无法正确判断近期评审、上线、验收等项目节点；属于生产页面时间基准错误
+- **现场证据**：2026-10-11 生产浏览器真实打开项目工作台；页面同时显示“项目管理工作台”和固定的 `07-28 周二` 时间窗口
 - **状态**：待修复
 
 ---
@@ -261,3 +270,4 @@
 | 2026-10-10 23:50 | Codex 继续生产浏览器复测：确认工作台待办“更多”错误跳转 `/oa/bpm/task/todo`，行政菜单正确入口为 `/oa/todo`；现存量查询再次出现 3 次“系统异常”且明细 0 条 |
 | 2026-10-11 00:20 | Codex 继续生产浏览器走查：新增 Bug 23，菜单搜索出现两个同名“现存量查询”入口，分别指向 `/wireSideWarehouse/reportForms/standingStock` 和 `/reports/inventory/standingStock`；项目中心、我的项目、客户信息、销售订单、员工档案入口本轮可打开 |
 | 2026-10-11 00:42 | Codex 继续生产浏览器走查：新增 Bug 24；运维菜单有 6 条无效组件路径，控制台持续跳过动态路由，抽查 `inspection-plan`、`schedule`、`duty` 均进入空壳页；同步确认 Bug 12、14、15、22、23 仍未解决 |
+| 2026-10-11 01:05 | Codex 继续生产浏览器走查：新增 Bug 25；项目管理工作台当前日期固定为 `2026-07-28`，与生产实际日期 `2026-10-11` 不一致，源码确认存在硬编码时间基准 |

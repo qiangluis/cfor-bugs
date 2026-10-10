@@ -267,3 +267,11 @@
 - Bug 23：`/wireSideWarehouse/reportForms/standingStock` 与 `/reports/inventory/standingStock` 两条同名现存量入口均可直接访问，导航歧义仍存在。
 - Bug 24：新增运维菜单路由问题。生产控制台反复输出 `skip invalid backend menu component`，涉及 `my-order`、`inspection-plan`、`item-topology`、`schedule`、`duty`、`my-inspection`；标准生产库 `cfor_admin_saas_standard` 中对应菜单挂在 `system_menu.parent_id=100004`，其中 5 条为可见菜单。抽查 `/iot/maintenance/inspection-plan`、`/iot/maintenance/schedule`、`/iot/maintenance/duty` 均只有应用壳，无业务内容。
 - 本轮未修改产品代码、未构建、未部署生产；待后续按菜单事实源核对后统一修复，不能只删除前端告警或直接删除生产菜单。
+
+## 2026-10-11 01:05 继续生产浏览器走查（未发布）
+
+- 环境：`https://jixu-ai.com`，租户：即序科技；本轮继续只读访问项目、客户、销售、质检、仓库、研发、财务和设置入口，没有执行保存、审核、弃审、出入库、删除或配置修改。
+- 已复现 Bug 25：项目管理工作台 `/project/workbench` 的“时间窗口”显示 `07-28`，当天详情为 `07-28 周二`，但生产首页当前日期为 `2026-10-11`。
+- 代码证据：`cfor-admin-vue3/src/views/project-management/projectTimeWindowData.ts` 中 `PROJECT_WORKBENCH_TODAY` 固定为 `2026-07-28`，且演示事件使用同一过期日期。
+- 同轮复测：生产、销售、客户、研发产品台账、财务录凭证和仓库工作台均可打开；质检单新增的“单据类型”仍无选项，仓库工作台概览和库位明细可显示库存数据。
+- 本轮未修改产品代码、未构建、未部署生产；Bug 25 待修复。
