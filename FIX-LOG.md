@@ -472,3 +472,13 @@
   - `duty` 查询 `WHERE tenant_id = 1`，报同样错误；
   - `item_topology` 查询 `WHERE del_flag = '0' AND tenant_id = 1`，报同样错误。
 - **处理结论**：Bug 44 只登记到 `BUG-LIST.md`，本轮未修改 CFOR 产品代码、未构建、未部署、未修改生产表结构；必须先确认旧表数据归属和多租户迁移方案，避免只修当前租户而破坏已有运维数据。
+
+## 2026-10-11 07:10 Bug 44 修复发布并完成生产回归
+
+- **修复提交**：CFOR 后端 `bd670fdf6`。
+- **修复文件**：`cfor-server/src/main/resources/db/migration/V202610111600__add_tenant_scope_to_mes_legacy_maintenance.sql`。
+- **根因与修复**：运维旧表 `schedule`、`duty`、`item_topology` 未包含平台租户字段，而 CFOR 查询链路已按租户上下文追加 `tenant_id` 条件。Flyway 迁移以 `information_schema` 动态检查并补充 `tenant_id` 与租户索引；生产三张表原有数据量为 0，因此未发生历史业务数据归属变更。
+- **生产备份**：`/www/server/jixu-ai/backups/standard-20261011065728`；旧库、标准库、环境文件、前端运行时配置、当前 JAR、systemd 和 Nginx 配置均已备份并校验。
+- **生产发布**：后端发布目录为 `/www/server/jixu-ai/releases/standard-20261011070543-bug44-50fba370/`，JAR SHA-256 为 `50fba370a0543b8a3972df5a4d09a789390d7bc0636d4d18c414db044b607cd3`；未发布前端，不修改 Nginx 和生产运行时配置。
+- **运行验证**：`spring_cfor-server-4.service=active`，`48083` 健康检查返回 `{"status":"UP"}`；Flyway `202610111600` 成功；三张表均存在 `tenant_id` 字段及租户索引；`jixu-ai.env` 和 `frontend-config.json` 发布前后 SHA-256 一致。
+- **浏览器验证**：以租户“即序科技”打开 `/iot/maintenance/schedule`、`/iot/maintenance/duty`、`/iot/maintenance/item-topology`，三个页面均正常渲染并显示空数据态，不再出现“系统异常”。本轮未执行任何生产业务写操作。
