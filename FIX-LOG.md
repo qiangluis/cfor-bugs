@@ -956,3 +956,11 @@
 - Web 修复 Bug 115：使用公开菜单路径 `/plm/product-part/part-revision`，保留 `partId / partNo / partName` 上下文。
 - Web 修复 Bug 116：使用公开文档库路径 `/plm/document-cad/document-library`，保留 `productId / productNo / productName` 上下文。
 - 本次登记时尚未发布生产，状态为“代码已修复，待发布”；未修改数据库、Flyway、AI、文件、第三方登录、公众号、企微、数字员工或运行时配置。
+
+## 2026-10-12 Bug 115/116 发布与验证
+
+- Web 提交 `2cd4dbd4b` 使用当前主线完整包发布到 `root@aliCfor`，包 SHA-256 为 `d10260b18439a8435171f5394b16826d5fb6117064ea756461aa9a1e10973907`。
+- Bug 115 生产浏览器回归通过：零部件主数据“版本”进入公开版本页，部件上下文和版本记录正常。
+- Bug 116 生产浏览器回归通过：产品台账“图文档”进入公开文档库，页面正常渲染并返回 5 条文档。
+- 前端外置配置、环境文件、Nginx、后端 PID/JAR/启动时间保持不变；未修改数据库、Flyway 或生产专有配置。
+- 详细报告：[Bug 115/116 修复发布与生产回归](reports/2026-10-12-codex-plm115-116-release.md)。
