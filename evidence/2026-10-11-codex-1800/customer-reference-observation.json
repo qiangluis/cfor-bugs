@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-11",
+  "observer": "Codex",
+  "pagePath": "/crm/menu/deal-collection/contract",
+  "observedRequestPath": "/admin-api/crm/customer/simple-list",
+  "httpStatus": 200,
+  "businessCode": 0,
+  "customerCount": 2,
+  "customerIds": [10863, 10864],
+  "visibleResult": "The new contract customer selector displayed 0 and an empty dropdown.",
+  "boundary": "Read-only observation. The unsaved dialog was closed. No credentials or full customer payload are retained."
+}
