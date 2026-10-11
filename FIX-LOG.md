@@ -949,3 +949,10 @@
 - **正常项**：CAD 普通行选择同步，零结果清空详情并禁用预览/转换；版本与迭代 9 条可加载，规格书版本 A/第 1 次/源文件与文档库一致，零结果清空快照、上传禁用，重置恢复 9 条。
 - **边界**：没有转换、下载、上传、签入/签出、保存、审批、删除、权限修改、SQL、Flyway、服务重启或生产配置修改；待确认日程表单未提交。真实新租户、非管理员仍未覆盖。
 - **报告**：[CAD 续测报告](reports/2026-10-12-codex-cad114-followup.md)、[DOM 与截图证据](evidence/2026-10-12-codex-cad114/observations.json)。
+
+## 2026-10-12 PLM 版本与图文档入口修复
+
+- 生产浏览器复现并登记 Bug 115、116：零部件主数据“版本”入口无法进入版本页；产品台账“图文档”入口只切换到内部组件 URL，页面空白或保留旧工程 BOM 内容。
+- Web 修复 Bug 115：使用公开菜单路径 `/plm/product-part/part-revision`，保留 `partId / partNo / partName` 上下文。
+- Web 修复 Bug 116：使用公开文档库路径 `/plm/document-cad/document-library`，保留 `productId / productNo / productName` 上下文。
+- 本次登记时尚未发布生产，状态为“代码已修复，待发布”；未修改数据库、Flyway、AI、文件、第三方登录、公众号、企微、数字员工或运行时配置。

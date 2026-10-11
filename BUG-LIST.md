@@ -938,7 +938,8 @@
 - **源码依据**：`src/views/plm/core/part-master/index.vue` 的 `goRevision()` 使用 `router.push({ name: 'PlmCorePartRevisionPage' })`；外层菜单页实际注册的是 `PlmMenu265112Page`，导致行内入口目标名称与动态菜单路由不一致。
 - **预期 / 验收**：行内“版本”、上方“版本列表”和详情抽屉“进入版本列表”都应进入实际版本页，并保留 `partId / partNo / partName` 上下文；新旧租户使用同一公共路由逻辑，不补生产数据。
 - **证据**：[点击后仍停留主数据页](evidence/2026-10-12-codex-plm-product-links/bug115-part-revision-no-navigation.jpg)。
-- **状态**：待修复。
+- **修复**：Web 将版本入口从内部组件命名路由改为公开菜单路径 `/plm/product-part/part-revision`，继续传递 `partId / partNo / partName`；行内、列表上方和详情抽屉共用该入口逻辑。
+- **状态**：代码已修复，待发布。
 
 ### Bug 116：产品台账“图文档”入口跳到未渲染的内部路由，页面保留工程 BOM 内容
 
@@ -949,4 +950,5 @@
 - **源码依据**：`src/views/plm/core/product-ledger/index.vue` 的 `goCorePage()` 直接按 `PlmCoreDocumentCadPage` 进行命名路由跳转；该内部组件名不是当前菜单实际注册的公开路由，且跳转后没有校验页面是否成功渲染。
 - **预期 / 验收**：产品台账的“图文档”、产品详情中的图文档入口都应进入正式文档库或明确的产品关联文档页，并正确显示产品上下文；不能停留在工程 BOM 旧工作区，也不能只改变 URL。
 - **证据**：[图文档入口后的错误内容](evidence/2026-10-12-codex-plm-product-links/bug116-product-document-stale-ebom.jpg)。
-- **状态**：待修复。
+- **修复**：Web 将图文档入口从内部组件命名路由改为公开文档库路径 `/plm/document-cad/document-library`，继续传递 `productId / productNo / productName`，避免进入未渲染的内部工作区。
+- **状态**：代码已修复，待发布。
