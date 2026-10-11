@@ -538,3 +538,11 @@
 - **正常链路**：请购单号 `CGSQ261011003` 正常生成；供应商新增表单显示可选“编码”字段；销售订单号 `XSDD261011002` 正常生成，选择 `ERP-FG-001` 后明细成功回填。均未保存生产数据。
 - **仍待处理**：Bug 45 的“其他入库数/其他出库数”继续显示 `-150/-10`；Bug 46 的库龄分析合计继续显示 `175`，与当前库存余额 `145` 不一致。
 - **结论**：本轮未发现新的独立阻断 Bug；未执行保存、审核、弃审、删除、上传、配置修改或生产数据库写入。
+
+## 2026-10-11 09:32 Codex 继续生产浏览器走查（Bug 49，待修复）
+
+- **环境**：`https://jixu-ai.com`，租户“即序科技”；使用当前生产浏览器会话。
+- **安全边界**：本轮仅访问 ERP 经营门户、财务与库存路径并读取页面结果，没有保存、审核、删除、导出、配置修改或生产数据库写入。
+- **复现结果**：`/erp/home` 为 404；`/erp/finance/receivableManage/receivable`、`/erp/finance/payableManage/payable`、`/erp/finance/expenseManage/expense`、`/erp/wireSideWarehouse/stock` 等门户快捷路径进入 404 或错误页面；无 `/erp` 前缀的动态菜单路径可正常打开对应页面。
+- **代码证据**：`cfor-admin-vue3/src/views/erp/home/index.vue` 多处直接拼接 `/erp/finance/...` 和 `/erp/wireSideWarehouse/...`，与生产动态菜单实际路由前缀不一致。
+- **处理结论**：已将 Bug 49 登记到 `BUG-LIST.md`，待修复；修复范围仅限前端路由统一，不修改生产配置、菜单数据或业务数据。
