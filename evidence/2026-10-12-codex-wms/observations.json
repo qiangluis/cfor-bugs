@@ -1,0 +1,150 @@
+{
+  "observedAt": "2026-10-12",
+  "timezone": "Asia/Shanghai",
+  "environment": "https://jixu-ai.com",
+  "tenantLabel": "即序科技",
+  "browser": "Codex In-app Browser",
+  "readOnly": true,
+  "console": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "pages": {
+    "warehouseLedger": {
+      "url": "/wireSideWarehouse/reportForms/warehouseLedger",
+      "rows": [
+        {
+          "warehouse": "原材料仓",
+          "inQty": 50,
+          "outQty": 10,
+          "currentQty": 40
+        },
+        {
+          "warehouse": "成品仓",
+          "inQty": 110,
+          "outQty": 8,
+          "currentQty": 102
+        }
+      ],
+      "totalCurrentQty": 142
+    },
+    "inOutStream": {
+      "url": "/wireSideWarehouse/reportForms/inOutStream",
+      "recordCount": 7,
+      "inQty": 160,
+      "outQty": 18,
+      "balance": 142
+    },
+    "batch": {
+      "url": "/wireSideWarehouse/batch",
+      "recordCount": 3,
+      "summary": {
+        "currentQty": 142,
+        "inQty": 0,
+        "outQty": 0
+      },
+      "rows": [
+        {
+          "warehouse": "成品仓",
+          "batchNo": "0",
+          "currentQty": 10,
+          "inQty": 0,
+          "outQty": 0
+        },
+        {
+          "warehouse": "原材料仓",
+          "batchNo": "0",
+          "currentQty": 40,
+          "inQty": 0,
+          "outQty": 0
+        },
+        {
+          "warehouse": "成品仓",
+          "batchNo": "测试批次001",
+          "currentQty": 92,
+          "inQty": 0,
+          "outQty": 0
+        }
+      ]
+    },
+    "inventoryAge": {
+      "url": "/reports/inventory/inventoryAgeAnalysis",
+      "recordCount": 3,
+      "rows": [
+        {
+          "warehouse": "成品仓",
+          "batchNo": "测试批次001",
+          "ageBucketQty": {
+            "lessThan10Days": 0,
+            "10To29Days": 100,
+            "30To59Days": 0,
+            "60To89Days": 0,
+            "90To149Days": 0,
+            "150To365Days": 0
+          },
+          "totalQty": 108,
+          "totalAmount": 0
+        },
+        {
+          "warehouse": "成品仓",
+          "batchNo": "0",
+          "ageBucketQty": {
+            "lessThan10Days": 10,
+            "10To29Days": 0,
+            "30To59Days": 0,
+            "60To89Days": 0,
+            "90To149Days": 0,
+            "150To365Days": 0
+          },
+          "totalQty": 10,
+          "totalAmount": 100
+        },
+        {
+          "warehouse": "原材料仓",
+          "batchNo": "0",
+          "ageBucketQty": {
+            "lessThan10Days": 50,
+            "10To29Days": 0,
+            "30To59Days": 0,
+            "60To89Days": 0,
+            "90To149Days": 0,
+            "150To365Days": 0
+          },
+          "totalQty": 60,
+          "totalAmount": 0
+        }
+      ],
+      "totalQty": 178,
+      "totalAmount": 100,
+      "ageBucketQtyTotal": 160,
+      "currentInventoryCrossCheck": 142
+    },
+    "inventoryWarning": {
+      "url": "/reports/inventory/inventoryWarning",
+      "recordCount": 4,
+      "currentQtyTotal": 142,
+      "rowsWithStock": [
+        {
+          "warehouse": "原材料仓",
+          "currentQty": 40
+        },
+        {
+          "warehouse": "成品仓",
+          "currentQty": 102
+        }
+      ],
+      "filterAndReset": "passed"
+    }
+  },
+  "mutations": {
+    "save": false,
+    "approve": false,
+    "void": false,
+    "delete": false,
+    "export": false,
+    "upload": false,
+    "configurationChange": false,
+    "databaseWrite": false,
+    "deployment": false
+  }
+}
