@@ -546,3 +546,11 @@
 - **复现结果**：`/erp/home` 为 404；`/erp/finance/receivableManage/receivable`、`/erp/finance/payableManage/payable`、`/erp/finance/expenseManage/expense`、`/erp/wireSideWarehouse/stock` 等门户快捷路径进入 404 或错误页面；无 `/erp` 前缀的动态菜单路径可正常打开对应页面。
 - **代码证据**：`cfor-admin-vue3/src/views/erp/home/index.vue` 多处直接拼接 `/erp/finance/...` 和 `/erp/wireSideWarehouse/...`，与生产动态菜单实际路由前缀不一致。
 - **处理结论**：已将 Bug 49 登记到 `BUG-LIST.md`，待修复；修复范围仅限前端路由统一，不修改生产配置、菜单数据或业务数据。
+
+## 2026-10-11 09:40 Codex 接替 Muse 继续生产浏览器走查（Bug 50，待修复）
+
+- **环境**：`https://jixu-ai.com`，租户“即序科技”；使用当前生产浏览器会话。
+- **安全边界**：本轮仅执行菜单导航、页面刷新、列表读取、浏览器控制台读取和生产日志只读查询，没有保存、审核、删除、导出、配置修改或生产数据库写入。
+- **新增 Bug 50**：销售统计表主表可以显示数据，但 `/erp/sale-order/saleStatistics` 接口连续两次返回“系统异常”，销售统计图数据加载失败。
+- **生产日志证据**：2026-10-11 09:36:12 和 09:36:40，`cfor-server.log` 记录 `only_full_group_by` 拒绝 `so.order_time` 未完整分组的 SQL；调用链为 `ErpSaleOrderController.saleStatistics` → `ErpSaleOrderServiceImpl.saleStatistics` → `ErpSaleOrderMapper.saleStatistics`。
+- **处理结论**：已将 Bug 50 登记到 `BUG-LIST.md`，保持“待修复”；本轮未修改 CFOR 产品代码、未构建、未部署、未修改生产数据库或运行时配置。

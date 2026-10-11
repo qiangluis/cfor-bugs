@@ -322,6 +322,22 @@
 - **影响**：用户从 ERP 经营门户无法进入应收、应付、库存等核心业务页面；新租户与存量租户只要启用 ERP 经营门户都会复现。
 - **状态**：待修复
 
+### Bug 50：销售统计表图表接口在生产数据库模式下报系统异常
+- **模块**：销售 → 报表 → 销售统计表
+- **操作**：
+  1. 打开 `https://jixu-ai.com/erp/sale/saleReportForm/saleStatistics`；
+  2. 保持默认筛选条件，观察页面加载和浏览器控制台。
+- **现象**：
+  - 客户销售统计主表可以显示数据，例如生产租户“即序科技”显示 `测试客户001 / 601 / 51`；
+  - 页面随后调用 `/admin-api/erp/sale-order/saleStatistics` 获取图表数据时返回“系统异常”，销售统计图无法正常完成加载；
+  - 同一请求在浏览器控制台可重复记录 `Object.getSaleStatistics` 错误，页面没有把具体失败原因提示给用户。
+- **现场证据**：2026-10-11 09:36-09:40，生产浏览器租户“即序科技”连续两次打开/刷新页面均复现；只读取页面和控制台，没有保存、导出或修改生产数据。
+- **后端日志证据**：`/www/server/jixu-ai/logs/cfor-server.log` 在 `2026-10-11 09:36:12.667` 和 `09:36:40.458` 记录 `BadSqlGrammarException`：`Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'cfor_admin_saas_standard.so.order_time' ... only_full_group_by`；调用链落在 `ErpSaleOrderController.saleStatistics`。
+- **代码证据**：`cfor-module-erp/cfor-module-erp-biz/src/main/resources/mapper/statistics/ErpSaleOrderMapper.xml` 的 `saleStatistics` 查询选择 `DATE_FORMAT(so.order_time, '%Y-%m')`，但 `GROUP BY` 只按 `YEAR(so.order_time)`、`MONTH(so.order_time)` 和客户分组；生产数据库启用 `only_full_group_by` 时该 SQL 被拒绝。
+- **影响**：销售统计表的主表与图表数据口径无法完整呈现；新租户和存量租户只要启用严格 SQL 模式都会复现。
+- **状态**：待修复
+- **处理边界**：应修正查询分组表达式或按月派生字段完整分组，并补充严格 SQL 模式下的模块测试；不得通过关闭生产 `only_full_group_by` 绕过问题。
+
 ---
 
 ## 二、规律分析
