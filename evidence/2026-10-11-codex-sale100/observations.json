@@ -1,0 +1,84 @@
+{
+  "environment": "https://jixu-ai.com",
+  "date": "2026-10-11",
+  "viewport": { "width": 1280, "height": 720 },
+  "detailBefore": {
+    "billNo": "XSDD261010005",
+    "httpStatus": 200,
+    "businessCode": 0,
+    "apiItemCount": 2,
+    "mainRows": 20,
+    "fixedLeftRows": 20,
+    "fixedRightRows": 20,
+    "counts": [20, 30],
+    "totalPrices": [300, 300],
+    "topLevelBomRows": 1
+  },
+  "detailAfter": {
+    "billNo": "XSDD261010005",
+    "httpStatus": 200,
+    "businessCode": 0,
+    "apiItemCount": 2,
+    "mainRows": 2,
+    "fixedLeftRows": 2,
+    "fixedRightRows": 2,
+    "counts": [20, 30],
+    "totalPrices": [300, 300],
+    "footerCount": 50,
+    "footerTotalPrice": 600,
+    "selectedFirstRowBomQuantity": 20
+  },
+  "singleDetailAfter": {
+    "billNo": "XSDD261010004",
+    "httpStatus": 200,
+    "mainRows": 1,
+    "fixedLeftRows": 1,
+    "fixedRightRows": 1,
+    "count": 1,
+    "totalPrice": 1,
+    "bomQuantity": 1
+  },
+  "invalidNewSave": {
+    "billNo": "XSDD261011004",
+    "message": "请选择客户",
+    "saleOrderRequestsInObservedWindow": 0,
+    "networkHasMore": false,
+    "networkTruncated": false,
+    "cancelledWithoutValidSave": true,
+    "numberGenerationCanHaveCounterSideEffects": true
+  },
+  "bug101Layout": {
+    "rootY": 462.18,
+    "mainBodyFirstRowY": 547.38,
+    "mainBodySecondRowY": 605.38,
+    "mainFooterY": 755.2,
+    "fixedLeftFooterY": 524,
+    "fixedRightFooterY": 524,
+    "fixedFooterHeight": 93
+  },
+  "bug102Fields": {
+    "billNoInputWidth": 46,
+    "orderTimeInputWidth": 24,
+    "deliveryTimeInputWidth": 24,
+    "totalPriceInputWidth": 3,
+    "fieldFontSize": 14,
+    "orderTimeValue": "2026/10/10",
+    "deliveryTimeValue": "2026/10/17",
+    "totalPriceValue": "600.00"
+  },
+  "excluded": [
+    "credentials",
+    "authorizationHeaders",
+    "contacts",
+    "fullApiResponseBodies",
+    "permissionPayloads",
+    "cloudSecrets"
+  ],
+  "notVerified": [
+    "validNewRecordSave",
+    "editRecordSave",
+    "salesDownstreamLifecycle",
+    "newTenantInitialization",
+    "nonAdminWritePermissions"
+  ]
+}
