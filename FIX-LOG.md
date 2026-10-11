@@ -3,6 +3,16 @@
 > Codex 维护，记录修复提交、生产验证证据和剩余复测项。
 > 最终“已验证 / 打回”状态仍以 Muse 维护的 `BUG-LIST.md` 为准。
 
+## 2026-10-11 09:07 Bug 47、48 修复发布并完成生产回归
+
+- **修复提交**：CFOR Web `e04320333`（`cfor-admin-vue3`）。
+- **构建验证**：`pnpm run build:prod:alicfor` 成功；生产前端加密密钥嵌入校验通过。构建耗时 6 分 35 秒，存在既有 Vite/Sass/esbuild 警告，但没有构建错误。
+- **生产发布**：已将当前 `dist-prod/` 同步到 `root@aliCfor:/www/wwwroot/jixu-ai-prod/`；发布前备份为 `/www/server/jixu-ai/backups/frontend-before-bug47-48-20261011-090314.tar.gz`，SHA-256 为 `3a7b6ca659ab1af3483a23e74e47354aee65d1737f4909abe1e2d369b9d2f1c3`。
+- **配置保护**：同步时排除 `config.json`、`.user.ini`、`.htaccess` 和 `404.html`；生产运行时配置 `/www/server/jixu-ai/frontend-config.json` 发布前后 SHA-256 均为 `bf176169574fde57761bcc3c12b0f24a9ff373a41477ad9ae07330ada651f800`。未重启后端、未执行 Flyway、未修改 AI、文件、第三方登录、公众号、企微、数字员工或其他生产配置。
+- **Bug 47 验证**：生产 CRM 新增线索/商机表单不再带入固定金额、过期日期、标签或跟进历史；当前时间、金额 `0`、空计划跟进和空标签均符合新增态。
+- **Bug 48 验证**：生产 IoT 设备管理的 4 张设备卡片均显示默认图片；图片资源 HTTP 200，不再显示“加载失败”。
+- **安全边界**：仅打开/关闭新增表单和查询页面，没有保存、审核、删除、上传或修改生产业务数据。
+
 ## 2026-10-11 08:12 生产浏览器走查新增 Bug 45、46
 
 - **环境**：生产 `https://jixu-ai.com`，主机 `root@aliCfor`，数据库 `cfor_admin_saas_standard`，租户“即序科技”。
