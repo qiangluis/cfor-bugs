@@ -1,0 +1,26 @@
+{
+  "environment": "https://jixu-ai.com",
+  "observedAt": "2026-10-11T16:17:18.093+08:00",
+  "operation": "Switch OA schedule calendar to November 2026",
+  "request": {
+    "method": "GET",
+    "path": "/admin-api/oa/schedule/page",
+    "query": {
+      "includeMine": "true",
+      "includeReceived": "true",
+      "pageNo": "1",
+      "pageSize": "200",
+      "startTime[0]": "2026-11-01 00:00:00",
+      "startTime[1]": "2026-11-30 23:59:59"
+    }
+  },
+  "response": {
+    "httpStatus": 200,
+    "body": {
+      "code": 400,
+      "data": null,
+      "msg": "请求参数不正确:每页条数最大值为 100"
+    }
+  },
+  "redaction": "Authorization, cookies, user identifiers and raw request headers omitted."
+}
