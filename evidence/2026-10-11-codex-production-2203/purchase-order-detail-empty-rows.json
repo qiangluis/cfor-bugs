@@ -1,0 +1,48 @@
+{
+  "observedAt": "2026-10-11T22:03:00+08:00",
+  "environment": "https://jixu-ai.com",
+  "tenantContext": "生产浏览器会话；页面品牌为即序科技；未输出认证头或凭据",
+  "route": "/erp/purchase/order",
+  "orders": [
+    {
+      "billNo": "CGDD261010004",
+      "listSummary": {
+        "supplier": "ZC-1010-供应商002",
+        "productCode": "ERP-RM-001",
+        "count": 10,
+        "taxIncludedTotal": 100
+      },
+      "detailObservation": {
+        "realItemRows": 1,
+        "renderedRowsObserved": 20,
+        "emptyPlaceholderRows": 19,
+        "filledProductCode": "ERP-RM-001",
+        "filledCount": "10.00",
+        "filledTaxIncludedPrice": "100.00"
+      }
+    },
+    {
+      "billNo": "CGDD261010005",
+      "listSummary": {
+        "supplier": "ZC-1010-供应商002",
+        "productCode": "ERP-FG-001",
+        "count": 10,
+        "taxIncludedTotal": 100
+      },
+      "detailObservation": {
+        "realItemRows": 1,
+        "renderedRowsObserved": 20,
+        "emptyPlaceholderRows": 19,
+        "filledProductCode": "ERP-FG-001",
+        "filledCount": "10.00",
+        "filledTaxIncludedPrice": "100.00"
+      }
+    }
+  ],
+  "writeActions": [],
+  "notes": [
+    "仅打开列表和详情，未保存、审核、弃审、删除、入库或修改任何生产数据。",
+    "详情表的空行来自前端固定占位行；本证据不推断数据库存在空明细记录。",
+    "Bug 97 复核：租户列表中 ID 1 的实名为福奇科技，登录页预填该值并可用原有记住我凭据成功登录。"
+  ]
+}
