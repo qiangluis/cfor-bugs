@@ -1,6 +1,6 @@
 # CFOR 5.0.1 Bug 清单（2026-10-10）
 
-> 测试环境：https://jixu-ai.com（租户：即序科技）
+> 测试环境：https://jixu-ai.com（界面品牌：即序科技；2026-10-11 Codex 实际请求确认 tenant-id=1，不能以品牌名称推断租户）
 > 测试方式：浏览器真实操作
 > 状态说明：待修复 = 已报告，AI 修复中；已验证 = 修复后复测通过
 
@@ -250,8 +250,10 @@
   - `item_topology`：查询 SQL 带 `WHERE del_flag = '0' AND tenant_id = 1`，同样报 `Unknown column 'tenant_id' in 'where clause'`。
 - **根因线索**：当前 Java 查询链路已经按 CFOR 多租户上下文注入 `tenant_id`，但生产中的旧表结构没有该列；`schedule`、`duty` 继承公共实体，`item_topology` 仍使用旧表模型，三张表的数据归属和迁移策略尚未确认。
 - **影响**：即使页面路由能够加载，当前租户无法查询运维基础数据，新增、修改、删除及后续巡检关联链路也无法可靠使用；若只修当前租户，后续新租户仍可能复现。
-- **状态**：待修复
-- **处理边界**：未直接修改生产表结构、未补生产数据、未发布 CFOR 代码；需先确认三张旧表的现有数据归属、`tenant_id` 回填规则、索引/唯一约束及新租户初始化脚本，再实施兼容迁移。
+- **状态**：已验证（2026-10-11 Codex 10:42-10:45 生产只读复测）
+- **处理边界（原报告）**：06:45 首次登记时未直接修改生产表结构；之后已通过后端 `bd670fdf6` 和正式迁移 `V202610111600__add_tenant_scope_to_mes_legacy_maintenance.sql` 修复，原表为空，没有回填历史业务归属。发布与备份记录见 `FIX-LOG.md` 的 07:10 条目。
+- **本轮生产证据**：调度、值班、项目拓扑三页均正常加载并展示空态，无“系统异常”；真实列表请求分别为 `/admin-api/mes/schedule/list`、`/admin-api/mes/duty/list`、`/admin-api/mes/itemTopology/list`，HTTP 200，三个响应的业务 `code` 均为 `200`；值班可切换日历视图。仅查询，不验证新增/保存或非空运维业务流程。
+- **截图**：[调度列表](evidence/2026-10-11-codex/bug44-schedule-retest.jpg)、[值班日历](evidence/2026-10-11-codex/bug44-duty-calendar-retest.jpg)、[拓扑列表](evidence/2026-10-11-codex/bug44-topology-retest.jpg)
 
 ### Bug 45：现存量查询的其他入库/出库数量出现负数
 - **模块**：仓库 → 报表 → 现存量查询
@@ -352,9 +354,28 @@
 - **截图**：[点击返回后仍停留新增页](evidence/2026-10-11-codex/bug51-kpi-return.jpg)
 - **代码线索**：`cfor-admin-vue3/src/views/hrm/performance/plan/form/index.vue:449-455` 的 `close()` 先执行 `delView`，再 `router.push({ name: 'HrmPerformancePlan' })`；当前静态路由只声明了 `HrmPerformancePlanForm` / `HrmPerformancePlanDetail`，列表依赖动态菜单。生产控制台与此命名路由解析失败一致，仍需修复时核对动态菜单实际路由名。
 - **影响**：新建流程无法通过“返回”正常退出，用户只能点列表页签或菜单；相同代码路径可能影响保存成功后的回退，但该写入场景本轮未测试，不扩大结论。
-- **状态**：待修复
+- **状态**：代码已修复，待发布（2026-10-11；未标记生产验证通过）
 - **处理建议**：统一列表页的导航契约，并覆盖取消、新增保存后、编辑返回与详情返回；不能只修当前租户的菜单名称。
 - **本轮报告**：[2026-10-11 Codex 生产只读走查](reports/2026-10-11-codex-production-1027.md)
+- **已确认根因**：`src/utils/routerHelper.ts` 的 `buildRouteName()` 对有 ID 的菜单生成 `${componentName}Menu${id}`，故列表的动态路由不是固定的 `HrmPerformancePlan`；原 `close()` 先删除页签，再跳转不存在的命名路由。
+- **修复提交**：Web `dd53818e3`；新增/详情返回列表改为 `/hrm/performance/plan`，编辑返回保留静态详情契约。导航成功后删除原访问页签并重建缓存，导航取消或失败不删页签；保存/初始化异常/详情操作统一等待返回。
+- **代码验证**：`tests/hrmPerformancePlanNavigation.test.mjs` 8 项通过，覆盖两种租户菜单后缀、新增返回、编辑返回、详情返回、守卫取消与异常；受影响 Vue 文件 ESLint 通过。不需要 Flyway、修改权限或数据库。
+
+### Bug 52：HR 工作台人事、招聘和薪资快捷卡片点击不跳转
+- **模块**：行政 → HR 工作台；团队工作台存在相同代码问题，未做有员工数据的生产复测。
+- **级别**：P2，快捷导航失效；侧边栏的正式列表仍可使用。
+- **路径**：`/hrm/home`
+- **操作**：分别点击“正在招聘职位”“在职”“待核算薪资”卡片；随后从侧边栏打开招聘职位、员工档案和月度工资表作对照。
+- **预期**：进入对应列表，保留人员状态、招聘状态或待办筛选。
+- **实际**：三张卡片点击后均留在 `/hrm/home`，控制台新增 Vue 路由 `resolve/push` 异常；侧边栏正式列表能够正常打开。
+- **现场证据**：Codex 2026-10-11 10:38:01、10:38:33、10:38:45（Asia/Shanghai）分别复现；控制台调用栈分别落在 `HrmHomeRecruitSurvey`、`HrmHomeEmployeeSurvey`、`HrmHomeTodoSurvey` 的点击处理函数。未计算或初始化工资、未保存员工/招聘数据。
+- **租户证据**：刷新 HR 工作台后捕获 `/admin-api/hrm/home/hr-statistics-summary` 与 `/admin-api/hrm/home/hr-calendar` 的 GET 请求，`tenant-id=1`；界面“即序科技”为品牌/显示名称，不等于已确认的租户名。
+- **根因**：上述组件固定跳转到 `HrmRecruitPost`、`HrmRecruitCandidate`、`HrmEmployee`、`HrmSalaryMonthRecord`；动态路由生成器对菜单追加 `Menu<ID>`，固定名称不能解析，与 Bug 51 同源但入口及影响不同。
+- **修复提交**：Web `5c7c87ebb`；改用已实际验证的 `/hrm/recruit/post`、`/hrm/recruit/candidate`、`/hrm/employee`、`/hrm/salary/month-record`。团队概况同步修复；原权限校验、状态/待办/直属领导筛选保留，不修改权限和业务数据。
+- **代码验证**：`tests/hrmWorkbenchNavigation.test.mjs` 10 项通过，含权限拒绝与查询参数保留；受影响 4 个 Vue 文件 ESLint 通过。
+- **状态**：代码已修复，待发布；生产仍运行旧前端，本轮没有部署，不能标记“已发布”或“已验证”。
+- **截图**：[快捷卡片点击后仍在 HR 工作台](evidence/2026-10-11-codex/bug52-hr-workbench-shortcuts.jpg)
+- **报告**：[本轮测试与发布门禁](reports/2026-10-11-codex-production-1045.md)
 
 ---
 
@@ -636,6 +657,7 @@
 | 2026-10-11 08:48 | Codex 接替 Muse 继续生产浏览器只读走查：新增 Bug 47，CRM 新增线索/商机表单带入硬编码演示金额、过期日期、标签和 GJ 跟进历史；新增 Bug 48，IoT 设备管理卡片默认图片生产路径错误，4 张卡片均显示“加载失败”；未保存、审核、删除或修改生产数据 |
 | 2026-10-11 09:32 | Codex 继续生产浏览器走查：新增 Bug 49，ERP 经营门户自身及财务、库存快捷入口拼接错误 `/erp` 路由，生产真实访问进入 404；已补充源码和动态菜单路径证据 |
 | 2026-10-11 10:27 | Codex 接替 Muse 补测招聘、绩效、OA、成本和综合报表，新增 Bug 51（KPI 新增返回路由异常），附截图和分轮报告；未保存、审核、删除或修改生产配置，未部署 |
+| 2026-10-11 10:45 | Codex 浏览器确认 Bug 52（HR 人事/招聘/薪资快捷卡片路由异常）；Bug 51/52 修复分别提交 `dd53818e3`、`5c7c87ebb`，待发布；Bug 44 三页列表与值班日历复测通过，修正滞后状态；未部署、未写入生产业务数据或配置 |
 
 ## 八、2026-10-11 01:40 生产浏览器回归补充
 
