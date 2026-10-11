@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-11",
+  "round": "20:05 CST",
+  "environment": "https://jixu-ai.com",
+  "observer": "Codex",
+  "workReport": {
+    "path": "/crm/menu/work-goals/work-report",
+    "networkCursorStart": 12944,
+    "networkCursorEnd": 13565,
+    "hasMore": false,
+    "truncated": false,
+    "requestMethod": "GET",
+    "requestPath": "/admin-api/crm/work-report/page?pageNo=1&pageSize=100",
+    "httpStatus": 200,
+    "businessCode": 0,
+    "serverTotal": 0,
+    "serverListCount": 0,
+    "visibleWeeklyRowCount": 1,
+    "visibleWeeklyPeriod": "2026年第30周",
+    "visibleWeeklyDeadline": "2026-07-27 09:00",
+    "visibleWeeklyCountdown": "剩余18小时",
+    "visibleMonthlyPeriod": "2026年7月",
+    "visibleMonthlyDeadline": "2026-08-01 09:00",
+    "visibleMonthlyCountdown": "剩余5天",
+    "visibleAIConfidence": "89%",
+    "visibleAIDataState": "当前没有可用于生成汇报复盘的后端业务记录。",
+    "visibleSnapshotCheck": "已完成 系统统计快照已生成"
+  },
+  "salesPlan": {
+    "path": "/crm/menu/work-goals/sales-plan",
+    "networkCursorStart": 13628,
+    "networkCursorEnd": 14263,
+    "hasMore": false,
+    "truncated": false,
+    "crmRequestCount": 0,
+    "visiblePlanNo": "SP20260001",
+    "visiblePlanStatus": "已发布",
+    "visibleContractTarget": "1.20亿",
+    "visibleReceiptTarget": "9000.0万",
+    "visibleContractActual": "7286.6万",
+    "visibleReceiptActual": "4744.7万",
+    "visibleExecutionRows": 144,
+    "dataOrigin": "前端固定计划及按索引比率生成的演示执行数据，非正式合同或核销事实"
+  },
+  "limits": [
+    "只保存脱敏的请求摘要，不保存认证头、凭据、完整用户权限或完整业务响应。",
+    "网络窗口只覆盖所述页面重新加载，不代表整个会话或数据库层零副作用证明。",
+    "没有主动保存、提交、审核、核销、变更或修改生产配置；未验证写侧业务流程。"
+  ]
+}
