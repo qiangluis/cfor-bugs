@@ -1,0 +1,37 @@
+{
+  "environment": "https://jixu-ai.com",
+  "observedDate": "2026-10-11",
+  "source": "Browser-observed GET /admin-api/system/auth/get-permission-info after reloading the weekly report",
+  "scope": "Only three menu projections; excludes users, roles, permission codes and authentication headers.",
+  "menus": [
+    {
+      "id": 29612027,
+      "name": "开发日报",
+      "path": "dev-daily/list",
+      "ancestors": ["/project", "reporting", "daily"],
+      "component": "project-management/generic-page/index.vue",
+      "queryPresent": false,
+      "metaPresent": false
+    },
+    {
+      "id": 29612036,
+      "name": "项目周报",
+      "path": "weekly/list",
+      "ancestors": ["/project", "reporting", "daily"],
+      "component": "project-management/generic-page/index.vue",
+      "queryPresent": false,
+      "metaPresent": false
+    },
+    {
+      "id": 29612045,
+      "name": "审核效率统计",
+      "path": "dashboard",
+      "ancestors": ["/project", "reporting", "statistics"],
+      "component": "project-management/generic-page/index.vue",
+      "queryPresent": false,
+      "metaPresent": false
+    }
+  ],
+  "observedPageText": "页面配置异常，请联系管理员",
+  "weeklyReloadReproduced": true
+}

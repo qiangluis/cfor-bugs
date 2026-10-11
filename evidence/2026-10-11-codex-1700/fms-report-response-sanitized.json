@@ -1,0 +1,76 @@
+{
+  "environment": "https://jixu-ai.com",
+  "observedDate": "2026-10-11",
+  "accountSetId": 1,
+  "period": "2026-09",
+  "scope": "Projection of responses to browser-triggered queries; no credentials or full business records.",
+  "balanceSheet": {
+    "path": "/admin-api/fms/report/balance-sheet/get",
+    "httpStatus": 200,
+    "businessCode": 0,
+    "displayRowCount": 4,
+    "assetItems": [
+      {"name": "流动资产：", "rowNo": 0, "formula": "[]"},
+      {"name": "货币资金", "rowNo": 1, "subjectNumbers": ["1001"]},
+      {"name": "资产总计", "rowNo": 30, "formula": "[\"L1\"]"}
+    ],
+    "liabilityItems": [
+      {"name": "流动负债：", "rowNo": 0, "formula": "[]"},
+      {"name": "负债和所有者权益总计", "rowNo": 53, "formula": "[\"L51\"]"}
+    ],
+    "liabilityRow51Present": false
+  },
+  "balanceSheetCheck": {
+    "path": "/admin-api/fms/report/balance-sheet/check",
+    "httpStatus": 200,
+    "response": {"code": 500, "data": null, "msg": "系统异常"},
+    "reproducedOn": ["initial navigation", "refresh"]
+  },
+  "incomeStatement": {
+    "path": "/admin-api/fms/report/income-statement/get",
+    "httpStatus": 200,
+    "businessCode": 0,
+    "visibleItemNames": ["一、营业收入", "减：销售费用", "二、营业利润", "四、净利润"],
+    "displayRowCount": 4,
+    "items": [
+      {"name": "一、营业收入", "rowNo": 1, "subjectNumbers": ["5001"]},
+      {"name": "减：销售费用", "rowNo": 2, "subjectNumbers": ["5601"]},
+      {"name": "二、营业利润", "rowNo": 3, "formula": "[\"L1-L2\"]"},
+      {"name": "四、净利润", "rowNo": 32, "formula": "[\"L3\"]"}
+    ],
+    "recheckedAfterBrowserReload": true
+  },
+  "incomeStatementCheck": {
+    "path": "/admin-api/fms/report/income-statement/check",
+    "httpStatus": 200,
+    "businessCode": 0,
+    "balanced": true,
+    "unmappedSubjectCount": 10,
+    "unmappedSubjects": [
+      {"code": "5051", "name": "其他业务收入"},
+      {"code": "5111", "name": "投资收益"},
+      {"code": "5301", "name": "营业外收入"},
+      {"code": "5401", "name": "主营业务成本"},
+      {"code": "5402", "name": "其他业务成本"},
+      {"code": "5403", "name": "营业税金及附加"},
+      {"code": "5602", "name": "管理费用"},
+      {"code": "5603", "name": "财务费用"},
+      {"code": "5711", "name": "营业外支出"},
+      {"code": "5801", "name": "所得税费用"}
+    ]
+  },
+  "cashFlowStatementCheck": {
+    "path": "/admin-api/fms/report/cash-flow-statement/check",
+    "httpStatus": 200,
+    "response": {"code": 500, "data": null, "msg": "系统异常"}
+  },
+  "productionLogSummary": {
+    "error": "StackOverflowError",
+    "localTimes": ["2026-10-11 16:51:30.040", "2026-10-11 16:52:12.239", "2026-10-11 16:54:07.812"],
+    "repeatingFrames": [
+      "FmsBalanceSheetServiceImpl.checkBalanceSheet:196",
+      "FmsBalanceSheetServiceImpl.isProfitLossTransferred:308",
+      "FmsClosingPeriodServiceImpl.getClosingOverview:165"
+    ]
+  }
+}
