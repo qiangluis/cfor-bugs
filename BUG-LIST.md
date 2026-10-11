@@ -833,8 +833,8 @@
 - **证据**：[默认 1797 年时间](evidence/2026-10-12-codex-browser-0510/schedule-default-1797.png)、[合法日期仍保存失败](evidence/2026-10-12-codex-browser-0510/schedule-save-valid-dates-failed.png)、[失败后标题搜索无结果](evidence/2026-10-12-codex-browser-0510/schedule-failed-save-no-list-result.png)、[脱敏错误摘要](evidence/2026-10-12-codex-browser-0510/observations.json)。
 - **根因确认**：生产日志显示两次请求均在 `OaScheduleSaveReqVO.startTime` 的 Jackson `LocalDateTime` 反序列化阶段被拒绝：第一次是数字字符串 `1791766800883`，第二次是数字毫秒值 `1791770400000`。不是缺表或租户初始化，也不需要修改共享后端 Jackson 配置。
 - **修复**：Web `9bf6050bd` 统一工作台与独立日程表单的 ISO 本地日期时间模型，兼容编辑详情中的数字/字符串毫秒时间戳，复用有效时间范围校验；不改变本地时区、不转 UTC，不改库和历史 Flyway。
-- **状态**：已发布，待实际保存与编辑验证（2026-10-12 05:45 发布当前主目录完整前端；工作台快捷入口默认 `2026-10-12 09:00–10:00`，日程面板选中 13 日后默认 `2026-10-13 09:00–10:00`，独立表单输入回显正常。未在发布后创建日历记录，新增/详情/编辑保存及真实新租户、非管理员闭环尚未验证）。
-- **修复证据**：[默认时间](evidence/2026-10-12-codex-oa107/schedule-default-after.jpg)、[按选中日期新建](evidence/2026-10-12-codex-oa107/schedule-selected-day-after.jpg)、[独立表单时间输入](evidence/2026-10-12-codex-oa107/schedule-independent-input-after.jpg)、[发布报告](reports/2026-10-12-codex-oa107-release.md)。
+- **状态**：已验证（2026-10-12 07:31，生产管理员租户真实完成工作台新增、列表搜索、浏览器刷新、详情查看、编辑保存和再次刷新回查；新租户、非管理员权限和多租户闭环仍未验证）。
+- **修复证据**：[默认时间](evidence/2026-10-12-codex-oa107/schedule-default-after.jpg)、[按选中日期新建](evidence/2026-10-12-codex-oa107/schedule-selected-day-after.jpg)、[独立表单时间输入](evidence/2026-10-12-codex-oa107/schedule-independent-input-after.jpg)、[发布报告](reports/2026-10-12-codex-oa107-release.md)、[新增/编辑持久化回归](reports/2026-10-12-codex-oa107-save-verify.md)。
 
 ## 十八、2026-10-12 Codex 浏览器续测（05:35 起）
 
