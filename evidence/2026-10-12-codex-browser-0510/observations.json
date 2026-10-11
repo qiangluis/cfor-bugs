@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-12",
+  "timezone": "Asia/Shanghai",
+  "environment": "https://jixu-ai.com",
+  "brand": "即序科技",
+  "schedule": {
+    "route": "/index",
+    "testTitle": "CODEX日程测试-20261012",
+    "initialDefaults": {
+      "start": "1797-06-07 01:28:03",
+      "end": "1797-05-04 01:28:03"
+    },
+    "initialSaveMessages": [
+      "请求参数类型错误:1791766800883",
+      "保存失败"
+    ],
+    "correctedDates": {
+      "start": "2026-10-12 10:00:00",
+      "end": "2026-10-12 11:00:00"
+    },
+    "correctedSaveMessages": [
+      "系统异常",
+      "保存失败"
+    ],
+    "messageEvidenceSource": "点击保存后的页面可访问性文本；控制台另记录系统异常",
+    "saveScreenshotNote": "截图拍摄时短暂提示已消失，展示合法日期及未关闭的表单，不独立证明提示原文",
+    "observedConsoleErrors": [
+      {
+        "timestamp": "2026-10-11T21:07:13.814Z",
+        "message": "Failed to save schedule: error",
+        "sourceAsset": "PersonalWorkbench-BO754w3_.js"
+      },
+      {
+        "timestamp": "2026-10-11T21:09:04.990Z",
+        "message": "Failed to save schedule: Error: 系统异常",
+        "sourceAsset": "PersonalWorkbench-BO754w3_.js"
+      }
+    ],
+    "reopenedDefaults": {
+      "start": "1797-06-07 00:50:06",
+      "end": "1797-05-04 00:50:06"
+    },
+    "listCheck": {
+      "route": "/oa/schedule/list",
+      "titleSearch": "CODEX日程测试-20261012",
+      "visibleResult": "暂无数据",
+      "databaseSideEffects": "未验证，不从列表空态推断数据库零副作用"
+    }
+  },
+  "todo": {
+    "action": "工作台 → 待办中心 → 更多",
+    "actualRoute": "/oa/todo",
+    "actualPageTitle": "即序科技 - 待办任务",
+    "result": "筛选、表格与空数据态正常；未执行审批"
+  },
+  "notice": {
+    "action": "工作台 → 通知公告 → 更多",
+    "actualRoute": "/system/notice",
+    "actualPageTitle": "即序科技 - 404",
+    "result": "内容区为空"
+  },
+  "plm": {
+    "route": "/plm/product-part/product-ledger",
+    "existingProduct": "MES-PROD-ERP-FG-001",
+    "targetMaterial": "ERP-FG-001",
+    "unmatchedSearch": "CODEX-NOT-EXIST-20261012",
+    "unmatchedResultCount": 0,
+    "resetResultCount": 1,
+    "writesPerformed": false
+  },
+  "productCodeModified": false,
+  "productionDeploymentPerformed": false
+}
