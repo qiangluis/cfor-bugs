@@ -1,5 +1,13 @@
 # 修复日志
 
+## 2026-10-12 04:51 Bug 106 发布与生产回归
+
+- Web `24117585b` 在 `src/views/erp/mixin/index.ts` 补充 `computeValue` 导入，修复采购退货选单联动的 `ReferenceError: computeValue is not defined`。
+- 从当前主目录完整构建并发布前端到 `root@aliCfor`。生产加密 key 校验通过；生产前端包 SHA-256 为 `78fe315e3a33131f710c58e27bffc1fa4719f87908289f92d011d306cb505776`。
+- 生产浏览器回归：`CGDD261010005` / `ERP-FG-001` 选单确认后，供应商、关联订单、仓库、数量、单价、税率和金额均正常回填，未再出现该运行时错误。
+- 发布前备份为 `/www/server/jixu-ai/backups/frontend-return-fix-20261012044814`；未重启后端、未执行 Flyway、未修改生产数据库、AI、文件、第三方登录、公众号、企微、数字员工或运行时配置。
+- Bug 106 更新为已验证；Bug 105、Bug 12 仍待修复。详细报告：[生产回归](reports/2026-10-12-codex-browser-followup-0451.md)。
+
 ## 2026-10-12 04:38 Codex 生产浏览器续测
 
 - 继续使用生产 `https://jixu-ai.com` 的真实浏览器会话，补测生产计划、生产工单、标准质检单、销售订单和采购退货。
