@@ -1,0 +1,25 @@
+{
+  "environment": "https://jixu-ai.com",
+  "observationDate": "2026-10-11",
+  "page": "/oa/schedule/list",
+  "request": {
+    "method": "GET",
+    "path": "/admin-api/system/auth/get-permission-info"
+  },
+  "response": {
+    "httpStatus": 200,
+    "code": 0,
+    "navigationGroupProjection": {
+      "key": "hrm",
+      "sources": ["/hrm"],
+      "sidebarSources": [],
+      "defaultSource": "/hrm"
+    },
+    "permittedOaMenuProjection": {
+      "path": "/oa",
+      "component": "",
+      "existsInPermissionMenuTree": true
+    }
+  },
+  "redaction": "Only the relevant navigation group and OA path retained; authentication, user, roles and permission codes omitted."
+}
