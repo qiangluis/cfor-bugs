@@ -1,5 +1,15 @@
 # 修复日志
 
+## 2026-10-12 02:31 Bug103/104 发布与生产回归
+
+- **Bug103**：Web `311156828121af6d04bf4db4a8d1e36257b1fda3` 的公共 `VxeTableDialog` 修复已随当前主目录完整前端包发布。生产采购订单 `CGDD261010005` 点击基本信息展开按钮后，按钮进入展开态且当前页签仍为“基本信息”，登记为已验证。
+- **Bug104**：Web `729ae0f4eeb933be8cdea13eb7bd43c59705e398` 删除采购 `purOrder` 配置中重复的 `isQc` 列，保留原质检字段和禁用规则，并新增采购列定向测试。生产回归只看到一个逻辑“是否质检”列，固定列克隆共享同一个 `colid=col_213`；真实数量、价格和价税合计未变，登记为已验证。
+- **本地验证**：采购列测试及布局回归共 17 项通过；定向 ESLint、`git diff --check` 和此前布局回归继续通过。全量 `vue-tsc` 未执行。
+- **前端发布**：从当前主目录完整构建并发布到 `root@aliCfor`；生产入口 SHA-256 为 `263dce7b46b5de6aa57af856e8a202866c671e837ad95c6fe3fb4678853d14d7`，回退目录为 `/www/wwwroot/jixu-ai-prod.previous-20261012022832-bug104`。生产加密 key 校验通过。
+- **生产保护**：后端 PID `29507`、`spring_cfor-server-4.service=active`、health `UP`；未重启后端、未执行 Flyway、未修改生产数据库、AI、文件、第三方登录、公众号、企微、数字员工或运行时配置。`jixu-ai.env`、`frontend-config.json`、Nginx 和 systemd 哈希前后一致。
+- **发布过程**：第一次归档因 macOS xattr 扩展头被远端 tar 以非零状态拒绝，未切换生产；第二次在错误检查 `stage/config.json` 处停止，仍未切换；最终使用 `ustar` 无扩展头归档成功，失败 stage 和归档均保留在生产机/本机作为审计现场。
+- **报告与证据**：[布局与采购列发布报告](reports/2026-10-12-codex-layout101.md)、[采购质检列回归](evidence/2026-10-12-codex-layout101/purchase-quality-after.json)、[展开按钮回归](evidence/2026-10-12-codex-layout101/production-expand-after.json)。
+
 ## 2026-10-11 23:53 Codex 销售生产续测、Bug100完整发布与回归
 
 - **Bug100**：Web `ab971cb9fe892c52638b8ef18c9adb690021c297`，实际销售弹窗详情只显示持久化明细；新增/编辑/复制保留20行，历史缺失主档行、BOM快照/选中行、复制身份清洗不变。

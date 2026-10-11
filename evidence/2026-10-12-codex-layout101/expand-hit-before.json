@@ -1,0 +1,12 @@
+{
+  "button": {
+    "expanded": "true",
+    "h": 12,
+    "w": 30,
+    "x": 455.828125,
+    "y": 387
+  },
+  "hitButton": false,
+  "hitRole": "tab",
+  "hitText": "生产订单"
+}

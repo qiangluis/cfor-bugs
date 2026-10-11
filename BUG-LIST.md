@@ -392,7 +392,8 @@
 - **DOM证据**：表格从 `y=462.18` 开始，主表明细第一行 `y=547.38`、第二行 `y=605.38`；主表 footer 从 `y=755.20` 开始，而固定左/右 footer 均从 `y=524.00` 开始、占高93，覆盖正文。固定层为绝对定位，不能仅凭 DOM 行文本存在判定可见展示正常。
 - **去重/边界**：与 Bug100详情空占位、历史瑕疵10数字框截断、Bug28全局助手遮挡分别登记。本条是已保存列表的固定层纵向错位；只修显示和布局重算，不删除合计、改变金额/数量口径或重写单据。需确认采购等共享表格入口和新旧租户均不回归。
 - **证据**：[生产列表截图](evidence/2026-10-11-codex-sale100/sale-list-fixed-footer-overlap.jpg)、[本轮报告](reports/2026-10-11-codex-sale100.md)。
-- **状态**：待修复（Codex真实浏览器新增；当前构建不包含本条修复）。
+- **状态**：已验证（Codex，2026-10-12 00:30完整前端发布后生产复测：主表、左固定和右固定footer起点均为y571.18，三表体高度均77px；滚动后可见真实第三条明细，数量51、金额601.00不变。采购列表三footer亦对齐于y564，查询后汇总随真实结果更新）。
+- **修复证据**：Web `6baeddee7e4923cf4a9d8b2531c1c3e1b5952c0b`，[发布/回归报告](reports/2026-10-12-codex-layout101.md)、[修复后列表](evidence/2026-10-12-codex-layout101/production-sale-list.jpg)、[滚动后列表](evidence/2026-10-12-codex-layout101/production-sale-list-scrolled.jpg)；仅验证显示/对齐，不扩大为销售业务全流程通过。
 
 ### Bug 102：销售订单弹窗必填日期及价税合计输入区被严重压缩
 - **模块/路径**：销售 → 销售订单 → 新增/详情弹窗，`/erp/sale/order`。
@@ -403,7 +404,30 @@
 - **去重**：与历史快照Bug26“质检单新增弹窗截断”相关，但本条限定实际销售新增/详情入口，不覆盖或修改冲突编号的历史记录；与瑕疵10的明细数值编辑截断和Bug101列表固定层分别定位。若后续确认共用根因，修复时关联同一共享组件，不能按多个页面重复计修复数。
 - **修复边界**：调整表单响应式列数/字段最小宽度，保留全部必填和保存校验；不缩小字体掩盖问题、不删除金额或日期字段、不改数据口径。共享表单有其他会话的未提交改动，实施前需读差异并保留。
 - **证据**：[新增必填拦截时的表头](evidence/2026-10-11-codex-sale100/sale-new-validation.jpg)、[发布后销售详情](evidence/2026-10-11-codex-sale100/sale-detail-after.jpg)、[脱敏测量](evidence/2026-10-11-codex-sale100/observations.json)、[本轮报告](reports/2026-10-11-codex-sale100.md)。
-- **状态**：待修复（Codex真实浏览器新增；本轮仅修Bug100，未改销售表单布局）。
+- **状态**：字段可读性已验证（Codex，2026-10-12 00:30完整前端发布后，单号输入宽233px、日期211px、金额190px，值完整保留）；展开按钮鼠标命中问题由Bug103独立跟踪，本阶段不宣称整个弹窗交互已验收。
+- **修复证据**：Web `6baeddee7e4923cf4a9d8b2531c1c3e1b5952c0b`，[发布/回归报告](reports/2026-10-12-codex-layout101.md)、[生产详情](evidence/2026-10-12-codex-layout101/production-sale-dialog-readable.jpg)。新增/编辑有效保存、新租户与非管理员仍未验证。
+
+### Bug 103：基本信息展开按钮被关联页签覆盖，鼠标点击误切页签
+- **模块/路径**：销售 → 销售订单详情，`/erp/sale/order`；采购共享同一`VxeTableDialog`。
+- **级别**：P2，部分表头字段被折叠后，常规鼠标操作无法可靠展开。
+- **复现**：1280×720打开`XSDD261010005`，展开基本信息后再点击按钮中心，或点击折叠态展开按钮；观察基本信息是否展开及下方当前页签。
+- **实际与命中证据**：旧按钮只有30×12px、容器占高1px，已展开时按钮rect为`x455.83/y387/w30/h12`，下方tabs从y393开始。`elementFromPoint`在按钮中心命中“生产订单”页签、`hitButton=false`；键盘Enter可切换，不能据此判定鼠标正常。
+- **根因/范围**：按钮绝对定位超出1px容器，后绘制的关联页签覆盖点击区域；与瑕疵6列表工具栏遮挡、Bug101列表footer错位分别登记。
+- **修复**：Web `311156828121af6d04bf4db4a8d1e36257b1fda3`，使用原生按钮、独立24px布局行及40×24px点击区，保留展开状态、所有字段和校验，不改页签及数据。真实组件夹具加入关联页签，本地鼠标展开/收起、Enter展开均保持“基本信息”页签且中心命中按钮。
+- **状态**：已验证（Codex，2026-10-12 02:31 生产回归：当前主目录完整包发布后刷新采购订单 `CGDD261010005`，点击“展开基本信息”后按钮为 `aria-expanded=true`，当前页签仍为“基本信息”，没有误切到关联页签；采购明细数量、金额和质检值未改变）。
+- **证据**：[旧按钮命中截图](evidence/2026-10-12-codex-layout101/production-expand-hit-before.jpg)、[旧命中测量](evidence/2026-10-12-codex-layout101/expand-hit-before.json)、[本地带页签修复后](evidence/2026-10-12-codex-layout101/local-expand-with-tabs.jpg)、[报告](reports/2026-10-12-codex-layout101.md)。
+
+### Bug 104：采购订单明细重复显示同一个“是否质检”字段
+- **模块/路径**：供应链 → 采购订单 → 详情 → 基本信息 → 存货清单，`/erp/purchase/order`。
+- **级别**：P3，重复列增加横向滚动及判读成本；未证明质检值或保存数据错误。
+- **复现**：打开`CGDD261010005`，水平滚动存货清单；“存货单位”后有“是否质检”，在“备注”后又有一列同名字段。
+- **实际证据**：主表header含两个不同colid的“是否质检”；两列都显示同一行的禁用复选框。不是主表与固定表重复读出的同一列。
+- **源码依据**：实际入口`src/views/erp/purchase/order/formDialog.vue`使用`table-columns="purOrder"`；`src/components/VxeTable/src/dialogData.ts`的`purOrder`在单位后和备注后各配置了一次`field: 'isQc' / title: '是否质检'`。
+- **修复边界**：去掉重复列但保留原质检字段、来源和禁用规则，覆盖新旧租户的共享列配置；不能为去重修改生产质检值或删除业务字段。
+- **修复**：Web `729ae0f4e` 删除 `purOrder` 列定义中备注后的重复 `isQc`，保留单位后的原质检字段、禁用规则和数据来源；新增 `tests/purchaseOrderColumns.test.mjs` 防止同一采购详情配置再次出现重复质检列。新旧租户共用同一前端列配置，不需要数据库、Flyway 或租户数据补丁。
+- **状态**：已验证（Codex，2026-10-12 02:31 当前主目录完整前端包发布后生产回归：`CGDD261010005` 明细表只显示一个“是否质检”和一个“是否赠送”；DOM 中主表及固定列克隆均使用同一 `colid=col_213`，不再存在两个独立质检列。真实明细 `ERP-FG-001 × 10`、未税单价 `8.85`、含税单价 `10.00`、价税合计 `100.00` 保持不变）。
+- **证据**：[生产回归观察](evidence/2026-10-12-codex-layout101/purchase-quality-after.json)、[发布/回归报告](reports/2026-10-12-codex-layout101.md)。
+- **证据**：[第一列](evidence/2026-10-12-codex-layout101/production-purchase-quality-first.jpg)、[第二列](evidence/2026-10-12-codex-layout101/production-purchase-quality-last.jpg)、[脱敏DOM观察](evidence/2026-10-12-codex-layout101/purchase-quality-observations.json)。
 
 ## 二、规律分析
 

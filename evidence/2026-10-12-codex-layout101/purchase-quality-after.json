@@ -1,0 +1,38 @@
+{
+  "environment": "production",
+  "host": "root@aliCfor",
+  "url": "https://jixu-ai.com/erp/purchase/order",
+  "tenant": "jixu",
+  "order": "CGDD261010005",
+  "logical_quality_header_count": 1,
+  "header_colids": [
+    "col_213",
+    "col_213",
+    "col_213"
+  ],
+  "visible_headers": [
+    "存货编码",
+    "存货名称",
+    "存货规格",
+    "存货型号",
+    "存货单位",
+    "是否质检",
+    "数量",
+    "未税单价",
+    "含税单价",
+    "税率%",
+    "税额",
+    "未税金额",
+    "价税合计",
+    "备注",
+    "是否赠送"
+  ],
+  "detail": {
+    "product_code": "ERP-FG-001",
+    "count": "10.00",
+    "product_price": "8.85",
+    "product_tax_price": "10.00",
+    "total_price": "100.00"
+  },
+  "write_side_effect": false
+}

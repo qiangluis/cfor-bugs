@@ -1,0 +1,10 @@
+{
+  "environment": "production",
+  "host": "root@aliCfor",
+  "url": "https://jixu-ai.com/erp/purchase/order",
+  "order": "CGDD261010005",
+  "button_description": "收起基本信息",
+  "aria_expanded": true,
+  "selected_tab": "基本信息",
+  "write_side_effect": false
+}

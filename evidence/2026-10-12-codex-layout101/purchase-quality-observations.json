@@ -1,0 +1,14 @@
+{
+  "headers": [
+    {
+      "columnId": "col_665",
+      "title": "是否质检"
+    },
+    {
+      "columnId": "col_674",
+      "title": "是否质检"
+    }
+  ],
+  "path": "/erp/purchase/order",
+  "qualityCheckboxes": []
+}
