@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-11",
+  "window": "22:30-22:45 CST",
+  "actor": "Codex",
+  "environment": "https://jixu-ai.com",
+  "viewport": { "width": 1280, "height": 720 },
+  "mode": "browser-query-and-detail-only",
+  "materialCode": "ERP-FG-001",
+  "standingStock": {
+    "path": "/reports/inventory/standingStock",
+    "records": 2,
+    "rows": [
+      {
+        "warehouse": "原材料仓",
+        "quantity": 40,
+        "available": 40,
+        "otherIn": -150,
+        "otherOut": -10
+      },
+      {
+        "warehouse": "成品仓",
+        "quantity": 102,
+        "available": 102,
+        "otherIn": -150,
+        "otherOut": -10
+      }
+    ],
+    "totalQuantity": 142,
+    "totalAvailable": 142,
+    "totalOtherIn": -300,
+    "totalOtherOut": -20,
+    "loadFailureReproduced": false
+  },
+  "inventoryAge": {
+    "path": "/reports/inventory/inventoryAgeAnalysis",
+    "records": 3,
+    "rows": [
+      {
+        "warehouse": "成品仓",
+        "batch": "测试批次001",
+        "quantityBelow10Days": 0,
+        "quantity10To29Days": 100,
+        "otherBucketQuantities": [0, 0, 0, 0],
+        "displayedTotalQuantity": 108
+      },
+      {
+        "warehouse": "成品仓",
+        "batch": "0",
+        "quantityBelow10Days": 10,
+        "quantity10To29Days": 0,
+        "otherBucketQuantities": [0, 0, 0, 0],
+        "displayedTotalQuantity": 10
+      },
+      {
+        "warehouse": "原材料仓",
+        "batch": "0",
+        "quantityBelow10Days": 50,
+        "quantity10To29Days": 0,
+        "otherBucketQuantities": [0, 0, 0, 0],
+        "displayedTotalQuantity": 60
+      }
+    ],
+    "displayedTotalQuantity": 178,
+    "sumOfDisplayedBuckets": 160,
+    "currentInventoryQuantity": 142
+  },
+  "inventoryAlert": {
+    "path": "/reports/inventory/inventoryAlerts",
+    "initialRecords": 4,
+    "totalAvailable": 142,
+    "filter": { "materialCode": "ERP-FG-001", "warehouse": "成品仓" },
+    "filteredRecords": 1,
+    "filteredAvailable": 102
+  },
+  "inOutStream": {
+    "path": "/reports/inventory/inOutStream",
+    "records": 7,
+    "totalIn": 160,
+    "totalOut": 18,
+    "net": 142,
+    "otherOutDetail": {
+      "billNo": "PKCK-261011-003",
+      "materialCode": "ERP-FG-001",
+      "quantity": 2,
+      "batch": "测试批次001",
+      "materialRowsInDom": 1,
+      "renderedEntryRows": 10,
+      "emptyEntryRows": 9,
+      "saveDisabled": true
+    },
+    "purchaseInDetail": {
+      "billNo": "CGRK-261010-002",
+      "materialCode": "ERP-FG-001",
+      "quantity": 10,
+      "sourceBillNo": "CGDD261010005",
+      "entryResponse": {
+        "method": "GET",
+        "path": "/admin-api/mes/stkIo/queryEntryByMainId/dictText",
+        "httpStatus": 200,
+        "businessCode": 200,
+        "dataArrayLength": 1
+      },
+      "renderedEntryRows": 10,
+      "emptyEntryRows": 9,
+      "saveDisabled": true,
+      "wareAreaIdFromResponse": null,
+      "wareLocationIdFromResponse": null
+    }
+  },
+  "warehouseLedger": {
+    "path": "/reports/inventory/warehouseLedger",
+    "records": 2,
+    "rows": [
+      { "warehouse": "原材料仓", "in": 50, "out": 10, "quantity": 40 },
+      { "warehouse": "成品仓", "in": 110, "out": 8, "quantity": 102 }
+    ]
+  },
+  "batch": {
+    "path": "/wireSideWarehouse/batch",
+    "records": 3,
+    "rows": [
+      { "warehouse": "成品仓", "batch": "无批次", "quantity": 10, "totalIn": 0, "totalOut": 0 },
+      { "warehouse": "原材料仓", "batch": "无批次", "quantity": 40, "totalIn": 0, "totalOut": 0 },
+      { "warehouse": "成品仓", "batch": "测试批次001", "quantity": 92, "totalIn": 0, "totalOut": 0 }
+    ],
+    "totalQuantity": 142,
+    "filteredBatch": "测试批次001",
+    "filteredRecords": 1,
+    "filteredQuantity": 92,
+    "resetRecords": 3,
+    "resetQuantity": 142
+  },
+  "notExecuted": [
+    "business-save",
+    "approve",
+    "unapprove",
+    "delete",
+    "export",
+    "print",
+    "generate-barcode",
+    "upload",
+    "database-write",
+    "production-config-edit",
+    "build",
+    "deploy",
+    "restart",
+    "flyway"
+  ],
+  "limitations": [
+    "No database before-and-after diff was collected.",
+    "New tenant initialization and non-admin permissions were not tested.",
+    "Browser query evidence does not prove the complete write workflow."
+  ]
+}
