@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-12",
+  "timezone": "Asia/Shanghai",
+  "environment": "https://jixu-ai.com",
+  "browser": "Codex In-app Browser",
+  "tenantEvidence": "Existing authenticated session; tenant ID 1 confirmed in preceding round. Brand text is not used as proof of tenant name.",
+  "beforeRelease": {
+    "documentQuery": {
+      "query": "DOC-SPEC-ERP-FG-001",
+      "resultCount": 1,
+      "resultFile": "ERP-FG-001_spec.docx",
+      "previewFile": "ERP-FG-001_release_checklist.xlsx",
+      "uploadEnabled": true
+    },
+    "overlappingButtons": {
+      "viewport": { "width": 1280, "height": 720 },
+      "allButtonsTop": 239,
+      "allButtonsBottom": 271,
+      "queryHorizontal": [1109, 1190],
+      "refreshHorizontal": [1137, 1218],
+      "resetHorizontal": [1202, 1283],
+      "uploadHorizontal": [1226, 1349]
+    },
+    "headerActionCounts": { "checkout": 0, "checkin": 0, "reloadPreview": 0 },
+    "templateCreate": {
+      "code": "CODEX-TPL-20261012",
+      "name": "CODEX文档模板保存回归-20261012",
+      "toast": "文档模板已新增",
+      "detailsAfterSave": "CODEX文档模板保存回归-20261012",
+      "tableCodesAfterSave": ["TPL-DOC-SPEC", "TPL-DRW-2D", "TPL-CAD-DWG"],
+      "tableCodesAfterBrowserReload": ["TPL-DOC-SPEC", "TPL-DRW-2D", "TPL-CAD-DWG"],
+      "detailsAfterBrowserReload": "技术规范模板",
+      "sourceFinding": "submitTemplateForm mutates a plain local array; no persistence API is called."
+    },
+    "tagEdit": {
+      "selectedCode": "TAG-RELEASE",
+      "selectedName": "发布必选",
+      "dialog": "维护标签",
+      "codeInput": "",
+      "nameInput": "",
+      "targetSelection": "",
+      "permissionSelection": "",
+      "referencesSelection": "",
+      "result": "Canceled without saving or changing permissions"
+    }
+  },
+  "code": {
+    "commits": ["3475d56d2", "94256ec57"],
+    "testsPassed": 44,
+    "newTests": 15,
+    "eslint": "Passed on the two changed source files",
+    "fullVueTsc": "Not run",
+    "flyway": "No schema, menu, permission, dictionary or initialization changes required for Bugs 108-111",
+    "fixScope": "Shared document/drawing page and Workbench locale; independent CAD page excluded"
+  },
+  "afterRelease": {
+    "publishedAt": "2026-10-12 06:22:47 CST",
+    "sourceFiles": 4826,
+    "sourceManifestSha256": "f304bb7c7eac118a50fa1f9d6daa51cce189eb887d343ed5841b3883e11ebb9d",
+    "sourceFilesChangedDuringBuild": 0,
+    "packageSha256": "7d30ce1f40a6d0111c122b39e3de32402f77413563cdd70a38d5b1a6144403bc",
+    "indexSha256": "31e2a38862b6e31df5363b5af07e34047eacf2d765e71e27f3bfb5641a97f848",
+    "productionProtection": {
+      "runtimeConfigUnchanged": true,
+      "environmentUnchanged": true,
+      "nginxUnchanged": true,
+      "backendPid": 29507,
+      "backendStartedAt": "2026-10-11 22:14:11 CST",
+      "backendHealth": "UP",
+      "sqlExecuted": false,
+      "flywayExecuted": false,
+      "backendRestarted": false,
+      "nginxReloaded": false
+    },
+    "documentLibrary": {
+      "initialCount": 5,
+      "query": "DOC-SPEC-ERP-FG-001",
+      "filteredCount": 1,
+      "filteredDetails": "ERP-FG-001_spec.docx",
+      "filteredVersion": "A",
+      "previewReload": "Clicked; preview remained correct",
+      "noMatchQuery": "CODEX-NO-SUCH-DOCUMENT-20261012",
+      "noMatchCount": 0,
+      "oldDetailsCleared": true,
+      "uploadEnabledWhenEmpty": false,
+      "checkoutEnabledWhenEmpty": false,
+      "checkinEnabledWhenEmpty": false,
+      "previewReloadEnabledWhenEmpty": false,
+      "resetCount": 5,
+      "selectionAfterRefresh": "ERP-FG-001_spec.docx"
+    },
+    "drawingLibrary": {
+      "initialCountAfterLoading": 2,
+      "query": "DOC-DRW-DETAIL-ERP-FG-001",
+      "filteredCount": 1,
+      "filteredDetails": "ERP-FG-001_bracket_detail.dxf",
+      "filteredCadType": "DXF",
+      "filteredVersion": "A",
+      "noMatchQuery": "CODEX-NO-SUCH-DRAWING-20261012",
+      "noMatchCount": 0,
+      "oldDetailsCount": 0,
+      "uploadEnabledWhenEmpty": false,
+      "checkoutEnabledWhenEmpty": false,
+      "checkinEnabledWhenEmpty": false,
+      "previewReloadEnabledWhenEmpty": false,
+      "correction": "The earlier empty state was observed during loading, not a completed empty result."
+    },
+    "toolbar": {
+      "viewport": { "width": 1280, "height": 720 },
+      "pageActionsVertical": [228, 260],
+      "queryActionsVertical": [302.8, 334.8],
+      "allFourButtonsWithinViewport": true,
+      "overlap": false
+    },
+    "headerActions": {
+      "checkoutVisibleWithSelection": true,
+      "checkinVisibleWithSelection": true,
+      "reloadPreviewVisibleWithSelection": true,
+      "writesExecuted": false
+    },
+    "workbenchLocale": {
+      "freshDocumentWeekdays": ["一", "二", "三", "四", "五", "六", "日"],
+      "freshDocumentSelectedDate": "10月12日 星期一",
+      "selectedDay13": "10月13日 星期二",
+      "afterNoticeNavigationAndReturn": "10月12日 星期一",
+      "newErrorOrWarnLogsOnRegressionTab": 0,
+      "pendingCalendarFormInOtherTabPreserved": true
+    }
+  },
+  "boundaries": [
+    "No direct SQL test-data insertion",
+    "No file upload, checkout, checkin, preview conversion or document release",
+    "No permission changes",
+    "Calendar save still awaits action-time user confirmation",
+    "Template success was not accepted as persistence proof",
+    "New-tenant and non-administrator browser coverage not yet performed"
+  ]
+}
