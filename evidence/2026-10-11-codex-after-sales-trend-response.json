@@ -1,0 +1,34 @@
+{
+  "observedDate": "2026-10-11",
+  "observedTimeRange": "15:51-15:53 Asia/Shanghai",
+  "page": "https://jixu-ai.com/after-sales/analysis/trend",
+  "request": {
+    "method": "POST",
+    "path": "/admin-api/after-sales/analysis/trend/query",
+    "body": {
+      "startTime": "2026-10-01T00:00:00",
+      "endTime": "2026-10-11T23:59:59",
+      "granularity": "WEEK",
+      "pageSize": 100
+    }
+  },
+  "response": {
+    "httpStatus": 200,
+    "body": {
+      "code": 500,
+      "data": null,
+      "msg": "系统异常"
+    }
+  },
+  "ui": {
+    "metrics": "-- / 等待查询",
+    "dataUpdatedAt": "--",
+    "rows": 0
+  },
+  "safety": {
+    "businessRecordsCreatedOrUpdated": false,
+    "configurationChanged": false,
+    "snapshotSideEffectsIndependentlyChecked": false,
+    "note": "Only the automatic query and one manual query were observed. This API includes snapshot persistence by design. Credentials, headers and raw session data are omitted."
+  }
+}
