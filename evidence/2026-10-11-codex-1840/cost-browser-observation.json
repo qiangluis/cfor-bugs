@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-11",
+  "timezone": "Asia/Shanghai",
+  "origin": "https://jixu-ai.com",
+  "refreshObservations": [
+    {
+      "cursorBefore": 8649,
+      "cursorAfter": 8649,
+      "eventCount": 0,
+      "hasMore": false,
+      "truncated": false
+    },
+    {
+      "cursorBefore": 9424,
+      "cursorAfter": 9424,
+      "eventCount": 0,
+      "hasMore": false,
+      "truncated": false
+    }
+  ],
+  "costRequestsObserved": [
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.145Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.146Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.147Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:30:51.147Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/workspace-states/get",
+      "time": "2026-10-11T10:33:57.397Z"
+    },
+    {
+      "method": "GET",
+      "path": "/admin-api/cost/model-versions",
+      "time": "2026-10-11T10:33:57.397Z"
+    }
+  ],
+  "formalModelResponse": {
+    "path": "/admin-api/cost/model-versions",
+    "businessCode": 0,
+    "count": 0,
+    "total": 0
+  },
+  "boundary": "No explicit business save, calculation, confirmation or publication was performed. GET-only observations are not a database zero-write proof. Headers, tokens and workspace payloads are intentionally excluded."
+}
