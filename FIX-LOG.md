@@ -554,3 +554,18 @@
 - **新增 Bug 50**：销售统计表主表可以显示数据，但 `/erp/sale-order/saleStatistics` 接口连续两次返回“系统异常”，销售统计图数据加载失败。
 - **生产日志证据**：2026-10-11 09:36:12 和 09:36:40，`cfor-server.log` 记录 `only_full_group_by` 拒绝 `so.order_time` 未完整分组的 SQL；调用链为 `ErpSaleOrderController.saleStatistics` → `ErpSaleOrderServiceImpl.saleStatistics` → `ErpSaleOrderMapper.saleStatistics`。
 - **处理结论**：已将 Bug 50 登记到 `BUG-LIST.md`，保持“待修复”；本轮未修改 CFOR 产品代码、未构建、未部署、未修改生产数据库或运行时配置。
+
+## 2026-10-11 10:00 Codex 接替 Muse 继续生产浏览器回归
+
+- **环境**：`https://jixu-ai.com`，租户“即序科技”；使用当前生产浏览器会话。
+- **安全边界**：本轮仅执行页面导航、列表读取和新增表单打开/取消；没有保存、审核、弃审、删除、导出、上传、配置修改或生产数据库写入。
+- **已复核正常**：
+  - 供应商信息新增表单已展示“编码”字段，Bug 1 当前未再复现；
+  - 请购单新增可生成 `CGSQ261011004`，点击“增行”可生成存货明细行，Bug 2、Bug 3 当前未再复现；
+  - 销售订单新增可生成 `XSDD` 前缀单号，表单可打开，Bug 4 当前未再复现；
+  - 化验单新增可生成 `HYD-261011-003`，Bug 36 当前未再复现。
+- **仍可复现**：
+  - Bug 37：样品管理页面仍只有查询和重置入口，没有新增、导出及维护操作；
+  - Bug 49：直接访问 `/erp/home` 仍进入 404；
+  - Bug 50：销售统计表主表有数据，但图表接口仍提示“系统异常”，浏览器控制台记录 `Object.getSaleStatistics` 错误。
+- **处理结论**：本轮没有发现新的独立 Bug；Bug 37、Bug 49、Bug 50 继续保持“待修复”，本轮未修改 CFOR 产品代码、未构建、未部署生产。
