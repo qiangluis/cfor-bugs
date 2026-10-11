@@ -928,3 +928,25 @@
 - **发布/回归报告**：[2026-10-12 Codex 前端修复生产发布与回归](reports/2026-10-12-codex-production-release-0701.md)
 
 本轮正常补测：版本与迭代列表稳定为 9 条，规格书快照为版本 A、第 1 次、已发布、源文件 `ERP-FG-001_spec.docx`，与文档库一致；无匹配查询清空快照并禁用上传修订，重置恢复 9 条。未上传、签入、签出、转换、下载、保存、审批、删除或改变生产配置。
+
+### Bug 115：零部件主数据的“版本”入口不跳转到版本页
+
+- **模块 / 路径**：研发 → 产品与零部件 → 零部件主数据，`/plm/product-part/part-master`。
+- **级别**：P1，零部件版本维护入口不可达，主档发布后的 Revision / Iteration 维护被阻断。
+- **正常操作**：在 `MAT-ERP-RM-001 / 标准原材料` 行点击“版本”，或选中该行后点击列表上方“版本列表”。
+- **实际**：按钮可以点击，但浏览器仍停留在 `/plm/product-part/part-master`，页面无版本列表、无提示、无跳转；同一登录会话直接打开 `/plm/product-part/part-revision` 可以正常加载 2 条版本记录，证明版本页本身存在。
+- **源码依据**：`src/views/plm/core/part-master/index.vue` 的 `goRevision()` 使用 `router.push({ name: 'PlmCorePartRevisionPage' })`；外层菜单页实际注册的是 `PlmMenu265112Page`，导致行内入口目标名称与动态菜单路由不一致。
+- **预期 / 验收**：行内“版本”、上方“版本列表”和详情抽屉“进入版本列表”都应进入实际版本页，并保留 `partId / partNo / partName` 上下文；新旧租户使用同一公共路由逻辑，不补生产数据。
+- **证据**：[点击后仍停留主数据页](evidence/2026-10-12-codex-plm-product-links/bug115-part-revision-no-navigation.jpg)。
+- **状态**：待修复。
+
+### Bug 116：产品台账“图文档”入口跳到未渲染的内部路由，页面保留工程 BOM 内容
+
+- **模块 / 路径**：研发 → 产品与零部件 → 产品台账，`/plm/product-part/product-ledger`。
+- **级别**：P1，产品到图文档追溯入口不可用，用户会看到错误的工程 BOM 工作区。
+- **正常操作**：在产品 `MES-PROD-ERP-FG-001 / 标准成品` 行点击“图文档”。
+- **实际**：URL 变为 `/plm/core/document-cad?productId=1&productNo=MES-PROD-ERP-FG-001&productName=标准成品`，但标题和主体没有切换到图文档页面，仍显示上一步的“工程 BOM”及“暂无工程 BOM 数据”；真正的 `/plm/document-cad/document-library` 才能加载文档库。
+- **源码依据**：`src/views/plm/core/product-ledger/index.vue` 的 `goCorePage()` 直接按 `PlmCoreDocumentCadPage` 进行命名路由跳转；该内部组件名不是当前菜单实际注册的公开路由，且跳转后没有校验页面是否成功渲染。
+- **预期 / 验收**：产品台账的“图文档”、产品详情中的图文档入口都应进入正式文档库或明确的产品关联文档页，并正确显示产品上下文；不能停留在工程 BOM 旧工作区，也不能只改变 URL。
+- **证据**：[图文档入口后的错误内容](evidence/2026-10-12-codex-plm-product-links/bug116-product-document-stale-ebom.jpg)。
+- **状态**：待修复。

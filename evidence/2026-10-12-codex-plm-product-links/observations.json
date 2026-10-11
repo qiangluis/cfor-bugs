@@ -1,0 +1,31 @@
+{
+  "environment": "https://jixu-ai.com",
+  "observedAt": "2026-10-12",
+  "tenantLabel": "即序科技",
+  "sideEffects": {
+    "saved": false,
+    "uploaded": false,
+    "deleted": false,
+    "approvalOrRelease": false,
+    "productionConfigChanged": false
+  },
+  "bug115": {
+    "sourceUrl": "https://jixu-ai.com/plm/product-part/part-master",
+    "action": "click row action 版本 for MAT-ERP-RM-001",
+    "afterUrl": "https://jixu-ai.com/plm/product-part/part-master",
+    "afterTitle": "即序科技 - 零部件主数据",
+    "directControlUrl": "https://jixu-ai.com/plm/product-part/part-revision",
+    "directControlTitle": "即序科技 - 零部件版本",
+    "directControlRows": 2
+  },
+  "bug116": {
+    "sourceUrl": "https://jixu-ai.com/plm/product-part/product-ledger",
+    "action": "click row action 图文档 for MES-PROD-ERP-FG-001",
+    "afterUrl": "https://jixu-ai.com/plm/core/document-cad?productId=1&productNo=MES-PROD-ERP-FG-001&productName=%E6%A0%87%E5%87%86%E6%88%90%E5%93%81",
+    "afterVisibleContent": [
+      "工程 BOM",
+      "暂无工程 BOM 数据"
+    ],
+    "expectedPublicRoute": "/plm/document-cad/document-library"
+  }
+}
