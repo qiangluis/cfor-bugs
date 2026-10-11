@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-12",
+  "timezone": "Asia/Shanghai",
+  "environment": "https://jixu-ai.com",
+  "browser": "Codex In-app Browser",
+  "tenantEvidence": "Reused authenticated production session. Brand text does not establish the tenant legal name.",
+  "cadFileLibrary": {
+    "path": "/plm/document-cad/cad-file",
+    "countAfterLoading": 2,
+    "first": {
+      "code": "DOC-CAD-FIX-ERP-FG-001",
+      "file": "ERP-FG-001_fixture_layout.dwg"
+    },
+    "second": {
+      "code": "DOC-CAD-ASM-ERP-FG-001",
+      "file": "ERP-FG-001_gearbox_assembly.dwg"
+    },
+    "actions": [
+      "Clicked first row file cell",
+      "Clicked second row status button",
+      "Read table row classes, table text and file-name detail",
+      "Clicked toolbar get-preview button",
+      "Read file-name detail again",
+      "Clicked second row file cell and confirmed synchronized selection",
+      "Queried a non-matching CAD number"
+    ],
+    "afterSecondRowStatus": {
+      "firstRowClass": "el-table__row current-row",
+      "secondRowClass": "el-table__row el-table__row--striped hover-row",
+      "firstRowConversionStatus": "已完成",
+      "firstRowPreviewStatus": "已获取",
+      "secondRowConversionStatus": "待获取",
+      "secondRowPreviewStatus": "待获取",
+      "detailsFile": "ERP-FG-001_gearbox_assembly.dwg"
+    },
+    "afterToolbarGetPreview": {
+      "detailsFile": "ERP-FG-001_fixture_layout.dwg"
+    },
+    "ordinarySecondRowSelection": {
+      "detailsFile": "ERP-FG-001_gearbox_assembly.dwg",
+      "secondRowConversionStatus": "已完成",
+      "secondRowPreviewStatus": "已获取"
+    },
+    "emptyQuery": {
+      "code": "CODEX-NO-SUCH-CAD-20261012",
+      "emptyText": "当前筛选下没有 CAD 文件记录",
+      "detailsCleared": true,
+      "getPreviewEnabled": false,
+      "convertEnabled": false
+    },
+    "sourceFinding": "The row status button stops row selection and updates shared previewState/previewTasks for the clicked row without updating currentRow. Toolbar actions still use currentRow.",
+    "layoutObservationOnly": {
+      "viewportWidth": 1280,
+      "pageMinWidth": 1260,
+      "pageLeft": 240,
+      "pageRight": 1500,
+      "previewPanelRight": 1544,
+      "outerHorizontalScrollbarPresent": true,
+      "classification": "Do not report controls as wholly unreachable. Normal table horizontal scrolling was checked; toolbar locator click scrolled into view."
+    }
+  },
+  "documentIteration": {
+    "path": "/plm/document-cad/document-iteration",
+    "countAfterLoading": 9,
+    "snapshotCode": "DOC-SPEC-ERP-FG-001",
+    "revision": "A",
+    "iteration": 1,
+    "status": "已发布",
+    "sourceFile": "ERP-FG-001_spec.docx",
+    "matchesDocumentLibrary": true,
+    "emptyQuery": "CODEX-NO-SUCH-ITERATION-20261012",
+    "emptyText": "当前筛选下没有图文档版本记录",
+    "snapshotCleared": true,
+    "uploadRevisionEnabledWhenEmpty": false,
+    "countAfterReset": 9
+  },
+  "boundaries": [
+    "No conversion, source-file download, upload, checkout or checkin",
+    "No form save, approval, permission change or deletion",
+    "No SQL, Flyway, backend restart, build or deployment after Bug 114 discovery",
+    "Pending calendar form in the other tab left unsubmitted",
+    "New-tenant and non-administrator coverage not performed",
+    "Read-only UI testing is not database-level proof of zero incidental side effects"
+  ]
+}
