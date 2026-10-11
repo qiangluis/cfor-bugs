@@ -12,6 +12,16 @@
 - **代码核对**：Bug 45 线索位于 `cfor-module-wms/.../service/stock/impl/StkInventoryOutLookServiceImpl.java` 的反向回写分支；Bug 46 线索位于 `cfor-module-wms/.../resources/mapper/stock/MesStkIoMapper.xml` 的 `stockAgeAnalysis` 查询。当前未修改 CFOR 产品代码。
 - **登记结果**：已将 Bug 45、Bug 46 写入 `BUG-LIST.md`，均保持“待修复”；未标记为已发布或已验证，等待产品口径确认和后续修复。
 
+## 2026-10-11 08:48 生产浏览器走查新增 Bug 47、48
+
+- **环境**：生产 `https://jixu-ai.com`，租户“即序科技”；由 Codex 接替 Muse 使用当前浏览器会话继续测试。
+- **安全边界**：本轮仅执行页面导航、列表查询和新增表单打开/取消；没有保存、审核、弃审、删除、上传、配置修改或生产数据库写入。
+- **Bug 47**：CRM 新增线索/商机表单每次打开都把固定演示数据写入新增态，包括预计金额 `180000`、固定创建/跟进日期、制造业标签和 `GJ-202607-*` 历史跟进；客户选择器仍显示未选择真实客户。
+- **Bug 47 代码核对**：`cfor-admin-vue3/src/views/crm/jixu/chance/index.vue` 的 `createEmptyEditorForm()` 写入上述固定值，`openCreateDialog()` 每次新增都会重新调用；属于产品代码的新增态初始化问题，不是生产数据库遗留数据。
+- **Bug 48**：IoT 设备管理卡片视图中的 4 个设备均显示“加载失败”图片错误。
+- **Bug 48 代码核对**：`cfor-admin-vue3/src/views/iot/device/device/index.vue` 使用 `defaultPicUrl` 渲染默认图片，但 `defaultPicUrl` 固定为 `/src/assets/imgs/iot/device.png`，生产构建后该源码路径不可访问。
+- **登记结果**：已将 Bug 47、Bug 48 写入 `BUG-LIST.md`，均保持“待修复”；本轮未修改 CFOR 产品代码，未构建，未部署生产。
+
 ## 2026-10-11 07:39 Bug 43 修复发布并完成生产回归
 
 - **修复提交**：CFOR Web `fcdfca6501a75fb987130e8c9079c58a64ee02f1`。
