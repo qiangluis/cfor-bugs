@@ -1,0 +1,59 @@
+{
+  "dialogText": "JH1002 详情\n基本信息\n生产单号\n单据类型\n生产计划\n单据日期\n生产类型\n正常生产\n客户\n请选择客户\n业务员\n即序科技\n来源类型\n备货订单\n预计时间\n-\n预计工期\n实际时间\n-\n实际工期\n备注\n成品\n增行\n插行\n字段含义\n存货名称\n\t\n存货编码\n\t\n存货型号\n\t\n存货规格\n\t\n存货单位\n\t\n客户料号\n\t\nBOM版本号 *\n\t\n生产工艺名称 *\n\t\n生产数量 *\n\t\n订单交货日期 *\n\t\n是否定制\n\t\n销售订单号\n\t\n定制备注\n\t\n备注\n\t\n标准成品\n\t\nERP-FG-001\n\t\n标准成品\n\t\nFG-001\n\t\n件\n\t\n\t\nV1.0\n\t\n系统初始化标准工艺路线 V1.0\n\t\n100\n\t\n2026-10-20\n\t\n否\n\t\n\t\n\t\n系统初始化成品档案\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n序号\n\t\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n6\n\n\n7\n\n\n8\n\n\n9\n\n\n10\n操作\n\t\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n物料\n成品名称\n\t\n物料编码\n\t\n物料名称\n\t\n物料规格\n\t\n物料型号\n\t\n物料单位\n\t\n颜色\n\t\n标注\n\t\n标准成品\n\t\n\t\n\t\nRM-001\n\t\n标准原材料\n\t\n千克\n\t\n　\n\t\n　\n\t\n数量\n\t\nBOM小计\n\t\n操作\n1\n\t\n100\n\t\n基本信息\n来源单据\n生成工单\n工单任务\n报工记录\n生产领料\n成品入库\n执行跟踪\n质检记录\n单据操作\n选 单\n转工单\n关 联\n打 印\n删 除\n历程信息\n2026-10-10 15:30:27\n生产计划-创建\n制单人：即序科技\n保 存\n弃 审\n取 消",
+  "tables": [
+    {
+      "rows": 0,
+      "text": "存货名称\n\t\n存货编码\n\t\n存货型号\n\t\n存货规格\n\t\n存货单位\n\t\n客户料号\n\t\nBOM版本号 *\n\t\n生产工艺名称 *\n\t\n生产数量 *\n\t\n订单交货日期 *\n\t\n是否定制\n\t\n销售订单号\n\t\n定制备注\n\t\n备注\n\t"
+    },
+    {
+      "rows": 10,
+      "text": "标准成品\n\t\nERP-FG-001\n\t\n标准成品\n\t\nFG-001\n\t\n件\n\t\n\t\nV1.0\n\t\n系统初始化标准工艺路线 V1.0\n\t\n100\n\t\n2026-10-20\n\t\n否\n\t\n\t\n\t\n系统初始化成品档案\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n　\n\t\n　\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t\n\t\n\t\n"
+    },
+    {
+      "rows": 0,
+      "text": "序号\n\t"
+    },
+    {
+      "rows": 10,
+      "text": "1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n6\n\n\n7\n\n\n8\n\n\n9\n\n\n10"
+    },
+    {
+      "rows": 0,
+      "text": "操作\n\t"
+    },
+    {
+      "rows": 10,
+      "text": "删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除\n\n\n删除"
+    },
+    {
+      "rows": 0,
+      "text": "成品名称\n\t\n物料编码\n\t\n物料名称\n\t\n物料规格\n\t\n物料型号\n\t\n物料单位\n\t\n颜色\n\t\n标注\n\t"
+    },
+    {
+      "rows": 1,
+      "text": "标准成品\n\t\n\t\n\t\nRM-001\n\t\n标准原材料\n\t\n千克\n\t\n　\n\t\n　\n\t"
+    },
+    {
+      "rows": 0,
+      "text": "数量\n\t\nBOM小计\n\t\n操作"
+    },
+    {
+      "rows": 1,
+      "text": "1\n\t\n100\n\t"
+    },
+    {
+      "rows": 4,
+      "text": "生产单号JH1002来源类型备货订单客户-生产类型正常生产业务员即序科技业务部门生产部预计开工2026-10-10预计完工2026-10-17"
+    },
+    {
+      "rows": 0,
+      "text": "#来源单号来源类型客户成品计划数量交期备注"
+    },
+    {
+      "rows": 1,
+      "text": "1-备货订单-标准成品100.002026-10-20系统初始化成品档案"
+    }
+  ],
+  "title": "即序科技 - 生产计划",
+  "url": "https://jixu-ai.com/mes/produce/order"
+}
