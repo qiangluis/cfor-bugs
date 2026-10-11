@@ -387,13 +387,60 @@
   3. 观察地址和页面内容。
 - **预期**：进入当前可用的库存明细/现存量页面，并显示库存查询条件、明细表和当前库存数据。
 - **实际**：跳转到 `https://jixu-ai.com/erp/wireSideWarehouse/reportForms/standingStock`；页面只保留顶部导航、标签页和页脚，业务内容区域为空，没有库存查询表单或明细数据。
-- **现场证据**：Codex 于 2026-10-11 10:54-10:57（Asia/Shanghai）使用生产租户“即序科技”复现；截图见 [MES 实时库存快捷入口空壳页](evidence/2026-10-11-codex-1110/mes-realtime-stock-empty.jpg)。
+- **现场证据**：Codex 于 2026-10-11 10:54-10:57（Asia/Shanghai）使用已登录生产会话复现；界面品牌为“即序科技”，本轮库存请求确认 `tenant-id=1`，不能据品牌推断租户实名。截图见 [MES 实时库存快捷入口空壳页](evidence/2026-10-11-codex-1110/mes-realtime-stock-empty.jpg)。
 - **对照证据**：生产工作台本身可正常打开，显示生产订单 `JH1002`；从仓库正式菜单进入的库存查询页面是可用入口。该问题不是生产数据为空，而是快捷入口路径错误。
 - **关联问题**：与 Bug 49 同属门户/工作台快捷路由未统一，但本问题位于 MES 工作台，不能只修 ERP 门户后假定已经覆盖。
 - **影响**：生产计划、车间人员从 MES 首页无法快速核对库存；新租户和存量租户都会复现。
-- **状态**：待修复
+- **状态**：代码已修复，待发布；2026-10-11 本轮生产仍复现，未部署，不能标记“已发布”或“已验证”。
+- **修复提交**：Web `f1c946cb1`；`src/views/mes/workbench/prod.vue` 与 `src/views/mes/workbench/portal.vue` 的库存快捷入口改为已核对可用的 `/reports/inventory/standingStock`。仅本地提交，未推送 Web 仓库或发布生产。
+- **代码验证**：受影响两个 Vue 文件定向 ESLint 通过；没有构建或执行修复后的生产浏览器回归，不修改数据库、Flyway 或生产配置。
 - **修复要求**：统一使用当前注册的库存查询路由/菜单契约，不要继续拼接已失效的 `/erp` 前缀；同时补充 MES 工作台快捷入口的真实路由回归测试。
 - **报告**：[2026-10-11 Codex 生产浏览器继续走查](reports/2026-10-11-codex-production-1057.md)
+
+### Bug 54：现存量查询的三个库存快捷入口进入 404 空壳页
+- **模块**：报表 → 库存统计 → 现存量查询 → 快捷操作
+- **级别**：P1，核心快捷导航失效；对应正式菜单仍可使用。
+- **路径**：`/reports/inventory/standingStock`
+- **操作**：依次点击右侧“库存台账”“批次查询”“仓库工作台”；每次返回正式现存量页后再点击下一项，并从正式菜单打开对应页面作对照。
+- **预期**：进入对应库存台账、批次列表或仓储工作台。
+- **实际**：三个按钮分别跳转 `/erp/wireSideWarehouse/reportForms/warehouseLedger`、`/erp/wireSideWarehouse/batch`、`/erp/wireSideWarehouse/stock`；页面标题为“即序科技 - 404”，只有应用壳，业务区为空。
+- **对照证据**：正式路径 `/reports/inventory/warehouseLedger` 可显示原材料仓入 50、出 10、结存 40，成品仓入 110、出 5、结存 105；`/wireSideWarehouse/batch` 显示 3 条、结存 145；`/wireSideWarehouse/stock` 可加载库存工作台，现存量 145。
+- **现场证据**：Codex 2026-10-11 生产浏览器真实点击；本轮请求 `tenant-id=1`。截图：[台账快捷入口](evidence/2026-10-11-codex-1115/bug54-ledger-shortcut.jpg)、[批次快捷入口](evidence/2026-10-11-codex-1115/bug54-batch-shortcut.jpg)、[工作台快捷入口](evidence/2026-10-11-codex-1115/bug54-workbench-shortcut.jpg)、[正式台账对照](evidence/2026-10-11-codex-1115/stock-ledger-menu-control.jpg)。
+- **代码线索**：Web `src/views/wms/stock/reportForms/standingStock/index.vue:388,392,396` 仍固定拼接上述带 `/erp` 前缀的路径。
+- **关联与去重**：三个按钮合并为一个 Bug；与 Bug 49、53 同属快捷路由契约问题，但入口在库存查询页，不能假定修 ERP/MES 首页后会一并覆盖。
+- **修复边界**：统一前端快捷入口与正式菜单路由，覆盖新旧租户和对应菜单授权；不要修改生产菜单或业务配置掩盖前端路径错误。
+- **状态**：待修复
+- **报告**：[2026-10-11 仓储查询与统计走查](reports/2026-10-11-codex-production-1126.md)
+
+### Bug 55：批次查询累计入出库为 0，与有效库存流水不一致
+- **模块**：仓库 → 批次查询
+- **级别**：P1，库存历史统计口径错误；批次当前结存及基本筛选仍可用。
+- **路径**：`/wireSideWarehouse/batch`
+- **操作**：清空查询条件点击“搜索”，查看“累计入库数”“累计出库数”及主表/合计；对照仓库台账和出入库流水中的同一存货 `ERP-FG-001`。
+- **预期**：累计入出库与相同存货、批次、仓库及有效状态范围的流水一致；不能把未维护的旧余额辅助字段当作历史累计。
+- **实际**：3 行批次结存为成品仓无批次 10、原材料仓无批次 40、成品仓“测试批次001”95；每行 `inQty=0,outQty=0`，顶部、小计和合计累计入/出均为 0，结存合计 145。
+- **流水对照**：当前同一存货的有效流水包括期初入库 100、其他入库 `QTRK-261010-001` 50、采购入库 `CGRK-261010-002` 10、其他出库 `QTCK-261010-001` 10、其他出库 `PKCK-261011-001` 5，状态均为“执行完”；仓库台账累计入 160、出 15、结存 145。该对照用于确认“全部累计为 0”不成立，不代表已完成逐批次历史核销。
+- **API 证据**：生产 GET `/admin-api/mes/stkIo/getBatchQuery?pageNo=1&pageSize=100` 和 `/admin-api/mes/stkIo/getBatchQuerySummary?pageNo=1&pageSize=100` 均 HTTP 200、业务 `code=200`、`tenant-id=1`；汇总返回 `{"inQty":0,"outQty":0,"curQty":145}`，明细 3 行累计入/出均为 0。见[脱敏响应](evidence/2026-10-11-codex-1115/bug55-batch-api-sanitized.json)。
+- **正常项**：按“测试批次001”查询命中 1 条、结存 95；按“原材料仓”查询命中 1 条、结存 40；重置回到 3 条、145。筛选、记录数和当前结存正常，但累计值仍为 0。
+- **代码线索**：后端 `cfor-module-wms/cfor-module-wms-biz/src/main/resources/mapper/stock/MesStkIoMapper.xml` 的 `getMesStkIoBatchQuery`（约 175 行起）直接聚合 `mes_stk_inventory.in_qty/out_qty/qty`；前端 `src/views/wms/stock/batch/index.vue:301,310,359,428` 将前两项作为累计入/出展示及汇总。最终根因需继续核对旧字段初始化、有效单据回写和批次统计契约，当前未断言为某一次迁移遗漏。
+- **修复边界**：先确定累计统计事实源、单据有效状态、期初与无批次语义；同时覆盖历史租户和新租户初始化。不得把 0 改成隐藏文本，也不得为纠正报表而重写实物库存余额。
+- **状态**：待修复
+- **截图**：[累计为 0](evidence/2026-10-11-codex-1115/bug55-batch-zero-in-out.jpg)、[有效流水对照](evidence/2026-10-11-codex-1115/batch-io-stream-control.jpg)、[仓库台账对照](evidence/2026-10-11-codex-1115/stock-ledger-menu-control.jpg)。
+- **报告**：[2026-10-11 仓储查询与统计走查](reports/2026-10-11-codex-production-1126.md)
+
+### Bug 56：仓库工作台有库存与空库位指标错误读取档案统计
+- **模块**：仓库 → 工作台 → 库位指标
+- **级别**：P1，实时库位占用统计误导；现存量查询仍可核对实际库存。
+- **路径**：`/wireSideWarehouse/stock`
+- **操作**：打开仓库工作台，读取库位指标，再与现存量查询及工作台库存接口对照；重新进入工作台仍复现。
+- **预期**：有库存库位与实时库存一致；在相同全仓、启用范围下，空库位应按实际占用计算，而不是全部档案库位。
+- **实际**：工作台现存量为 145，但页面 DOM/可访问性快照的指标为“在用库位 45 / 0 个有库存 / 空库位 45”。同会话现存量查询显示“已占用 2 / 空闲 43”，两个库位库存分别为 40、105。
+- **API 证据**：`tenant-id=1`，布局 GET `/admin-api/mes/stkIo/workbench/warehouse-layout` 的 `summary` 为启用库位 45、占用 0、空位 45、总量 0；实时库存 GET `/admin-api/mes/stkIo/workbench/location-inventory?pageNo=1&pageSize=100` 的 `summary` 为占用 2、总量 145、可用 145。两者业务 `code=200`。见[脱敏响应](evidence/2026-10-11-codex-1115/bug56-workbench-api-sanitized.json)与[界面文本快照](evidence/2026-10-11-codex-1115/bug56-workbench-ui-sanitized.json)。
+- **代码线索**：Web `src/views/wms/stock/workbench.vue:854` 区分 `layoutSummary` 与实时库存汇总，但 `headlineMetrics`（约 955-966 行）的“有库存”“空库位”读取 `layoutSummary.occupiedLocationCount/emptyLocationCount`。当前布局接口只提供档案阶段的占用默认值，与实时库存统计混用。
+- **修复边界**：库位总数/启用数使用档案事实，有库存数使用同范围实时库存事实，空库位处理禁用库位和仓库/库区筛选的一致口径；覆盖空租户和有历史库存租户，不修改库存业务数据或绕过租户隔离。
+- **状态**：待修复
+- **截图**：[工作台现存量及仓库分布](evidence/2026-10-11-codex-1115/bug56-workbench-location-count.jpg)；占用数/空位数以界面文本快照及响应为证，在当前 1280×720 截图中指标区域未完整显示。
+- **报告**：[2026-10-11 仓储查询与统计走查](reports/2026-10-11-codex-production-1126.md)
 
 ---
 
@@ -677,6 +724,7 @@
 | 2026-10-11 10:27 | Codex 接替 Muse 补测招聘、绩效、OA、成本和综合报表，新增 Bug 51（KPI 新增返回路由异常），附截图和分轮报告；未保存、审核、删除或修改生产配置，未部署 |
 | 2026-10-11 10:45 | Codex 浏览器确认 Bug 52（HR 人事/招聘/薪资快捷卡片路由异常）；Bug 51/52 修复分别提交 `dd53818e3`、`5c7c87ebb`，待发布；Bug 44 三页列表与值班日历复测通过，修正滞后状态；未部署、未写入生产业务数据或配置 |
 | 2026-10-11 10:57 | Codex 接替 Muse 继续生产浏览器走查：质检方案、质检存货、质量指标、MES 工具/安灯/柔性制造页面可加载并显示正常空态或初始化数据；质检单“单据类型”仍无选项（Bug 12 复核）；新增 Bug 53，MES 制造工作台“实时库存”快捷入口跳转旧空壳路由；未保存、审核、删除、上传或修改生产数据 |
+| 2026-10-11 11:26 | Codex 接替 Muse 继续仓储浏览器测试：新增 Bug 54（三个库存快捷入口 404）、55（批次累计入/出全为 0，与有效流水不一致）、56（工作台占用库位读档案默认值）；批次号/仓库筛选及结存合计正常，附截图和脱敏响应；Bug 53 本地提交 `f1c946cb1` 登记为代码已修复、待发布，本轮未部署、未改生产数据或配置 |
 
 ## 八、2026-10-11 01:40 生产浏览器回归补充
 

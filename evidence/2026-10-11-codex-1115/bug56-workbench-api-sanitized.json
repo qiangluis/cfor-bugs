@@ -1,0 +1,35 @@
+{
+  "environment": "https://jixu-ai.com",
+  "observedDate": "2026-10-11",
+  "tenantId": 1,
+  "layout": {
+    "path": "/admin-api/mes/stkIo/workbench/warehouse-layout",
+    "businessCode": 200,
+    "summary": {
+      "warehouseCount": 3,
+      "areaCount": 9,
+      "locationCount": 45,
+      "enabledLocationCount": 45,
+      "occupiedLocationCount": 0,
+      "emptyLocationCount": 45,
+      "totalQty": 0,
+      "lockQty": 0,
+      "availableQty": 0
+    }
+  },
+  "inventory": {
+    "path": "/admin-api/mes/stkIo/workbench/location-inventory?pageNo=1&pageSize=100",
+    "businessCode": 200,
+    "summary": {
+      "warehouseCount": 0,
+      "areaCount": 0,
+      "locationCount": 0,
+      "enabledLocationCount": 0,
+      "occupiedLocationCount": 2,
+      "emptyLocationCount": 0,
+      "totalQty": 145,
+      "lockQty": 0,
+      "availableQty": 145
+    }
+  }
+}

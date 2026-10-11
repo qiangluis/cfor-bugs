@@ -1,0 +1,46 @@
+{
+  "observedAt": "2026-10-11T03:19:40.103Z",
+  "tenantId": "1",
+  "responses": [
+    {
+      "url": "https://jixu-ai.com/admin-api/mes/stkIo/getBatchQuerySummary?pageNo=1&pageSize=100",
+      "code": 200,
+      "summary": {
+        "inQty": 0,
+        "outQty": 0,
+        "curQty": 145
+      }
+    },
+    {
+      "url": "https://jixu-ai.com/admin-api/mes/stkIo/getBatchQuery?pageNo=1&pageSize=100",
+      "code": 200,
+      "total": 3,
+      "rows": [
+        {
+          "materialCode": "ERP-FG-001",
+          "batchNo": "0",
+          "warehouseName": "成品仓",
+          "inQty": 0,
+          "outQty": 0,
+          "curQty": 10
+        },
+        {
+          "materialCode": "ERP-FG-001",
+          "batchNo": "0",
+          "warehouseName": "原材料仓",
+          "inQty": 0,
+          "outQty": 0,
+          "curQty": 40
+        },
+        {
+          "materialCode": "ERP-FG-001",
+          "batchNo": "测试批次001",
+          "warehouseName": "成品仓",
+          "inQty": 0,
+          "outQty": 0,
+          "curQty": 95
+        }
+      ]
+    }
+  ]
+}
