@@ -3,6 +3,15 @@
 > Codex 维护，记录修复提交、生产验证证据和剩余复测项。
 > 最终“已验证 / 打回”状态仍以 Muse 维护的 `BUG-LIST.md` 为准。
 
+## 2026-10-11 08:12 生产浏览器走查新增 Bug 45、46
+
+- **环境**：生产 `https://jixu-ai.com`，主机 `root@aliCfor`，数据库 `cfor_admin_saas_standard`，租户“即序科技”。
+- **安全边界**：本轮仅执行浏览器页面导航、报表查询和数据库只读查询；没有保存、审核、弃审、出入库、删除、上传、配置修改或生产数据写入。
+- **Bug 45**：现存量查询页面中，`ERP-FG-001` 的“其他入库数”显示 `-150`、“其他出库数”显示 `-10`。生产 `mes_stk_inventory_out_look` 对应记录为 `in_qty=0`、`out_qty=51`、`other_in_qty=-150`、`other_out_qty=-10`、`available_qty=160`。代码线索为 `StkInventoryOutLookServiceImpl` 在反向回写时直接对其他入/出库累计值执行减法，需核对重复回滚、幂等和历史数据重算。
+- **Bug 46**：库龄分析页面显示成品仓批次 `105`、成品仓无批次 `10`、原材料仓 `60`，底部合计 `175`；同一存货在 `mes_stk_inventory` 的当前有效余额为 `95+10+40=145`。`MesStkIoMapper.xml#stockAgeAnalysis` 对出库数量也按正数累加，当前结果与历史流量合计一致，不等于当前库存余额。
+- **代码核对**：Bug 45 线索位于 `cfor-module-wms/.../service/stock/impl/StkInventoryOutLookServiceImpl.java` 的反向回写分支；Bug 46 线索位于 `cfor-module-wms/.../resources/mapper/stock/MesStkIoMapper.xml` 的 `stockAgeAnalysis` 查询。当前未修改 CFOR 产品代码。
+- **登记结果**：已将 Bug 45、Bug 46 写入 `BUG-LIST.md`，均保持“待修复”；未标记为已发布或已验证，等待产品口径确认和后续修复。
+
 ## 2026-10-11 07:39 Bug 43 修复发布并完成生产回归
 
 - **修复提交**：CFOR Web `fcdfca6501a75fb987130e8c9079c58a64ee02f1`。
