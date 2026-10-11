@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-11",
+  "timezone": "Asia/Shanghai",
+  "tester": "Codex",
+  "environment": "https://jixu-ai.com",
+  "observations": [
+    {
+      "bug": 98,
+      "path": "/erp/purchase/order",
+      "first_release_result": "failed",
+      "first_release_body_rows": [20, 20, 20],
+      "actual_component": "src/views/erp/purchase/order/formDialog.vue",
+      "second_release_result": "verified",
+      "documents": [
+        {
+          "number": "CGDD261010005",
+          "product": "ERP-FG-001",
+          "body_rows": [1, 1, 1],
+          "quantity": 10,
+          "net_amount": 88.5,
+          "tax_amount": 11.5,
+          "gross_amount": 100
+        },
+        {
+          "number": "CGDD261010004",
+          "product": "ERP-RM-001",
+          "body_rows": [1, 1, 1],
+          "quantity": 10,
+          "net_amount": 88.5,
+          "tax_amount": 11.5,
+          "gross_amount": 100
+        }
+      ]
+    },
+    {
+      "bug": 99,
+      "path": "/reports/inventory/inOutStream",
+      "result": "verified",
+      "documents": [
+        {
+          "number": "CGRK-261010-002",
+          "product": "ERP-FG-001",
+          "body_rows": [1, 1, 1],
+          "quantity": 10,
+          "source_number": "CGDD261010005"
+        },
+        {
+          "number": "PKCK-261011-003",
+          "product": "ERP-FG-001",
+          "body_rows": [1, 1, 1],
+          "quantity": 2,
+          "batch": "测试批次001"
+        }
+      ]
+    },
+    {
+      "bug": 100,
+      "path": "/erp/sale/order",
+      "result": "reported_pending_fix",
+      "document": "XSDD261010005",
+      "endpoint": "/admin-api/erp/sale-order/get",
+      "http_status": 200,
+      "business_code": 0,
+      "api_items": 2,
+      "body_rows": [20, 20, 20],
+      "blank_rows": 18,
+      "quantities": [20, 30],
+      "gross_amounts": [300, 300],
+      "quantity_total": 50,
+      "gross_amount_total": 600
+    },
+    {
+      "historical_bug": 68,
+      "duplicate_bug": 96,
+      "path": "/oa/schedule/calendar",
+      "result": "pagination_error_verified_fixed",
+      "endpoint": "/admin-api/oa/schedule/page",
+      "page_size": 100,
+      "http_status": 200,
+      "business_code": 0,
+      "total": 0,
+      "rows": 0,
+      "month_navigation": ["2026-10", "2026-11", "2026-10"],
+      "write_flow_verified": false
+    },
+    {
+      "bug": 16,
+      "path": "/hrm/employee",
+      "result": "fields_deployed_save_not_verified",
+      "entry_status_default": "在职",
+      "hire_type_default": "正式",
+      "department_control": "selector",
+      "form_cancelled": true,
+      "employee_or_account_created": false
+    }
+  ],
+  "explicit_business_saves": 0,
+  "database_writes_by_agent": 0,
+  "flyway_changes": 0,
+  "backend_restarts": 0,
+  "backend_pid_before_after": [29507, 29507],
+  "protected_config_hashes_unchanged": true,
+  "automatic_schedule_reminder_side_effects_verified": false,
+  "new_tenant_and_nonadmin_end_to_end_verified": false
+}
