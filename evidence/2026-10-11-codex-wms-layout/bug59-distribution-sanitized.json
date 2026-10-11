@@ -1,0 +1,54 @@
+{
+  "observedAt": "2026-10-11T04:23:13.216Z",
+  "url": "https://jixu-ai.com/reports/inventory/standingStock",
+  "code": 200,
+  "summary": {
+    "warehouseCount": 0,
+    "areaCount": 0,
+    "locationCount": 0,
+    "enabledLocationCount": 0,
+    "occupiedLocationCount": 2,
+    "emptyLocationCount": 0,
+    "totalQty": 145,
+    "lockQty": 0,
+    "availableQty": 145
+  },
+  "locationSummaries": [
+    {
+      "areaId": null,
+      "areaName": null,
+      "locationId": "2104856934444859396",
+      "qty": 40
+    },
+    {
+      "areaId": null,
+      "areaName": null,
+      "locationId": "2104856934444859415",
+      "qty": 105
+    }
+  ],
+  "list": [
+    {
+      "warehouseName": "成品仓",
+      "areaName": "成品暂存区",
+      "locationId": "2104856934444859415",
+      "qty": 95
+    },
+    {
+      "warehouseName": "原材料仓",
+      "areaName": "原料暂存区",
+      "locationId": "2104856934444859396",
+      "qty": 40
+    },
+    {
+      "warehouseName": "成品仓",
+      "areaName": "成品暂存区",
+      "locationId": "2104856934444859415",
+      "qty": 10
+    }
+  ],
+  "ui": {
+    "distribution": "未指定库区\n145\n100%",
+    "table": "ERP-FG-001\n\t\n标准成品\n\t\nFG-001\n\t\n标准成品\n\t\n成品\n\t\n原材料仓\n\t\n原料暂存区\n\t\n原料暂存区01位\n\t\n件\n\t\n0\n\t\n0\n\t\n0\n\t\n-150\n\t\n51\n\t\n0\n\t\n0\n\t\n-10\n\t\n\nERP-FG-001\n\t\n标准成品\n\t\nFG-001\n\t\n标准成品\n\t\n成品\n\t\n成品仓\n\t\n成品暂存区\n\t\n成品暂存区01位\n\t\n件\n\t\n0\n\t\n0\n\t\n0\n\t\n-150\n\t\n51\n\t\n0\n\t\n0\n\t\n-10\n\t"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "clientHeight": 524,
+  "panels": [
+    {
+      "bodyHeight": 302.9375,
+      "class": "el-card is-never-shadow v-content-wrap mb-15px standing-stock-shell overview-panel",
+      "height": 304.9375,
+      "shrink": "0"
+    },
+    {
+      "bodyHeight": 211.75,
+      "class": "el-card is-never-shadow v-content-wrap mb-15px standing-stock-shell distribution-panel",
+      "height": 213.75,
+      "shrink": "0"
+    },
+    {
+      "bodyHeight": 259.25,
+      "class": "el-card is-never-shadow v-content-wrap mb-15px standing-stock-shell status-panel",
+      "height": 261.25,
+      "shrink": "0"
+    },
+    {
+      "bodyHeight": 159.75,
+      "class": "el-card is-never-shadow v-content-wrap mb-15px standing-stock-shell quick-panel",
+      "height": 161.75,
+      "shrink": "0"
+    },
+    {
+      "bodyHeight": 232,
+      "class": "el-card is-never-shadow v-content-wrap mb-15px standing-stock-shell inventory-alert-panel",
+      "height": 234,
+      "shrink": "0"
+    }
+  ],
+  "scrollHeight": 1299
+}

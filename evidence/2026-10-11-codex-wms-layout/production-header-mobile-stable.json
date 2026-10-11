@@ -1,0 +1,101 @@
+{
+  "canvas": [
+    {
+      "height": 756,
+      "width": 322,
+      "x": 34,
+      "y": 560.59375
+    },
+    {
+      "height": 148,
+      "width": 112,
+      "x": 320,
+      "y": 688
+    }
+  ],
+  "fullscreen": false,
+  "metrics": [
+    {
+      "contained": true,
+      "rect": {
+        "height": 80,
+        "width": 138,
+        "x": 53,
+        "y": 264.5
+      },
+      "text": "现存量\n145\n全仓实时累计"
+    },
+    {
+      "contained": true,
+      "rect": {
+        "height": 80,
+        "width": 138,
+        "x": 199,
+        "y": 264.5
+      },
+      "text": "锁定量\n0\n待占用与冻结"
+    },
+    {
+      "contained": true,
+      "rect": {
+        "height": 80,
+        "width": 138,
+        "x": 53,
+        "y": 453.59375
+      },
+      "text": "在用库位\n45\n2 个有库存"
+    },
+    {
+      "contained": true,
+      "rect": {
+        "height": 80,
+        "width": 138,
+        "x": 199,
+        "y": 453.59375
+      },
+      "text": "空库位\n43\n9 个库区"
+    }
+  ],
+  "root": {
+    "height": 2933.875,
+    "width": 350,
+    "x": 20,
+    "y": 60
+  },
+  "scene": {
+    "height": 760,
+    "width": 326,
+    "x": 32,
+    "y": 558.59375
+  },
+  "title": {
+    "height": 293.09375,
+    "width": 326,
+    "x": 32,
+    "y": 253.5
+  },
+  "viewport": {
+    "height": 844,
+    "width": 390
+  },
+  "wings": [
+    {
+      "overlapsTitle": false,
+      "rect": {
+        "height": 169.5,
+        "width": 157,
+        "x": 32,
+        "y": 72
+      }
+    },
+    {
+      "overlapsTitle": false,
+      "rect": {
+        "height": 169.5,
+        "width": 157,
+        "x": 201,
+        "y": 72
+      }
+    }
+  ]
+}

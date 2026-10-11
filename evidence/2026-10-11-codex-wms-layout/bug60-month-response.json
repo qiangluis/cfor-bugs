@@ -1,0 +1,10 @@
+{
+  "observedAt": "2026-10-11T04:23:39.402Z",
+  "url": "https://jixu-ai.com/reports/inventory/monthlySummary",
+  "request": "/admin-api/mes/stkIo/closeMesStkIoSum?isorter=desc&pageNo=1&pageSize=20&year=2026&month=10",
+  "response": {
+    "code": 500,
+    "data": null,
+    "msg": "系统异常"
+  }
+}
