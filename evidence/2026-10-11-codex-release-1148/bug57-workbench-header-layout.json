@@ -1,0 +1,143 @@
+{
+  "elements": [
+    {
+      "display": "block",
+      "gridTemplateColumns": "none",
+      "overflowX": "visible",
+      "rect": {
+        "height": 126,
+        "width": 976,
+        "x": 262,
+        "y": 134
+      },
+      "selector": ".stage-topbar",
+      "text": "本地时间12:03:262026-10-11现存量145全仓实时累计锁定量0待占用与冻结库存管理工作台3D 仓储数字孪生大屏3 个仓库同屏展示，通知实时映射到仓库、库区、库位在用库位452 个有库存空库位439 个库区档案 12:02:15库存 12:02:15通知 12:03:15"
+    },
+    {
+      "display": "grid",
+      "gridTemplateColumns": "210px",
+      "overflowX": "hidden",
+      "rect": {
+        "height": 90,
+        "width": 248,
+        "x": 262,
+        "y": 134
+      },
+      "selector": ".topbar-meta",
+      "text": "本地时间12:03:262026-10-11"
+    },
+    {
+      "display": "grid",
+      "gridTemplateColumns": "282px",
+      "overflowX": "hidden",
+      "rect": {
+        "height": 104.5,
+        "width": 320,
+        "x": 918,
+        "y": 134
+      },
+      "selector": ".topbar-actions",
+      "text": "档案 12:02:15库存 12:02:15通知 12:03:15"
+    },
+    {
+      "display": "grid",
+      "gridTemplateColumns": "180px 32px 240px 32px 180px",
+      "overflowX": "hidden",
+      "rect": {
+        "height": 144.796875,
+        "width": 448,
+        "x": 526,
+        "y": 134
+      },
+      "selector": ".topbar-title",
+      "text": "现存量145全仓实时累计锁定量0待占用与冻结库存管理工作台3D 仓储数字孪生大屏3 个仓库同屏展示，通知实时映射到仓库、库区、库位在用库位452 个有库存空库位439 个库区"
+    },
+    {
+      "display": "grid",
+      "gridTemplateColumns": "240px",
+      "overflowX": "visible",
+      "rect": {
+        "height": 120.796875,
+        "width": 240,
+        "x": 759,
+        "y": 145
+      },
+      "selector": ".title-copy",
+      "text": "库存管理工作台3D 仓储数字孪生大屏3 个仓库同屏展示，通知实时映射到仓库、库区、库位"
+    },
+    {
+      "display": "grid",
+      "gridTemplateColumns": "86px 86px",
+      "overflowX": "visible",
+      "rect": {
+        "height": 88,
+        "width": 180,
+        "x": 547,
+        "y": 161.3984375
+      },
+      "selector": ".title-metric-rail.left",
+      "text": "现存量145全仓实时累计锁定量0待占用与冻结"
+    },
+    {
+      "display": "grid",
+      "gridTemplateColumns": "86px 86px",
+      "overflowX": "visible",
+      "rect": {
+        "height": 71.5,
+        "width": 180,
+        "x": 1031,
+        "y": 169.6484375
+      },
+      "selector": ".title-metric-rail.right",
+      "text": "在用库位452 个有库存空库位439 个库区"
+    }
+  ],
+  "metrics": [
+    {
+      "rect": {
+        "height": 88,
+        "width": 86,
+        "x": 547,
+        "y": 161.3984375
+      },
+      "text": "现存量145全仓实时累计"
+    },
+    {
+      "rect": {
+        "height": 88,
+        "width": 86,
+        "x": 641,
+        "y": 161.3984375
+      },
+      "text": "锁定量0待占用与冻结"
+    },
+    {
+      "rect": {
+        "height": 71.5,
+        "width": 86,
+        "x": 1031,
+        "y": 169.6484375
+      },
+      "text": "在用库位452 个有库存"
+    },
+    {
+      "rect": {
+        "height": 71.5,
+        "width": 86,
+        "x": 1125,
+        "y": 169.6484375
+      },
+      "text": "空库位439 个库区"
+    }
+  ],
+  "root": {
+    "height": 628,
+    "width": 1020,
+    "x": 240,
+    "y": 116
+  },
+  "viewport": {
+    "height": 720,
+    "width": 1280
+  }
+}

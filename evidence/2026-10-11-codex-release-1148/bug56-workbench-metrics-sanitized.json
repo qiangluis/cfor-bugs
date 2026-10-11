@@ -1,0 +1,34 @@
+{
+  "capturedAt": "2026-10-11T04:02:48.674Z",
+  "tenantId": "1",
+  "url": "https://jixu-ai.com/wireSideWarehouse/stock",
+  "layoutCode": 200,
+  "layoutSummary": {
+    "warehouseCount": 3,
+    "areaCount": 9,
+    "locationCount": 45,
+    "enabledLocationCount": 45,
+    "occupiedLocationCount": 0,
+    "emptyLocationCount": 45,
+    "totalQty": 0,
+    "lockQty": 0,
+    "availableQty": 0
+  },
+  "inventoryCode": 200,
+  "inventorySummary": {
+    "warehouseCount": 0,
+    "areaCount": 0,
+    "locationCount": 0,
+    "enabledLocationCount": 0,
+    "occupiedLocationCount": 2,
+    "emptyLocationCount": 0,
+    "totalQty": 145,
+    "lockQty": 0,
+    "availableQty": 145
+  },
+  "uiText": [
+    "456 text 现存量查询",
+    "465 text 现存量 145 全仓实时累计 锁定量 0 待占用与冻结 库存管理工作台 3D 仓储数字孪生大屏 3 个仓库同屏展示，通知实时映射到仓库、库区、库位 在用库位 45 2 个有库存 空库位 43 9 个库区",
+    "524 text 库位库存 全部库位 最多 100 条 现存 145 锁定 0 可用 145"
+  ]
+}

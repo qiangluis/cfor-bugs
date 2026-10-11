@@ -1,0 +1,185 @@
+{
+  "buttons": [
+    {
+      "hitTestMatches": false,
+      "rect": {
+        "height": 34,
+        "width": 194,
+        "x": 851,
+        "y": 411.203125
+      },
+      "text": "库存导出"
+    },
+    {
+      "hitTestMatches": false,
+      "rect": {
+        "height": 34,
+        "width": 194,
+        "x": 1053,
+        "y": 411.203125
+      },
+      "text": "库存台账"
+    },
+    {
+      "hitTestMatches": false,
+      "rect": {
+        "height": 34,
+        "width": 194,
+        "x": 851,
+        "y": 453.203125
+      },
+      "text": "批次查询"
+    },
+    {
+      "hitTestMatches": false,
+      "rect": {
+        "height": 34,
+        "width": 194,
+        "x": 1053,
+        "y": 453.203125
+      },
+      "text": "仓库工作台"
+    }
+  ],
+  "elements": [
+    {
+      "display": "flex",
+      "height": "524px",
+      "maxHeight": "524px",
+      "minHeight": "0px",
+      "overflow": "hidden auto",
+      "rect": {
+        "height": 524,
+        "width": 420,
+        "x": 840,
+        "y": 116
+      },
+      "selector": ".stock-side-stack",
+      "text": "库存概览实时库存口径库存总量145当前筛选口径下全部库存数量锁定数量0锁定、待检或占用库存可用数量145可发料或可出库数量库位总数45已占用 2 个空闲库位43当前仍可分配库位风险关注0超储与短缺存货关注数库存分布按库区总数量145未指定库区145100%库位状态统计库位占用有库存24.44%部分占用00%满位00%锁定/待检00%空位4395.56%快捷操作库存处理 库存导出 库存台账 批次查询 仓库工作台 库存预警最高库存预警 暂无最高库存预警"
+    },
+    {
+      "display": "block",
+      "height": "54.2344px",
+      "maxHeight": "none",
+      "minHeight": "auto",
+      "overflow": "hidden",
+      "rect": {
+        "height": 54.234375,
+        "width": 418,
+        "x": 840,
+        "y": 116
+      },
+      "selector": ".overview-panel",
+      "text": "库存概览实时库存口径库存总量145当前筛选口径下全部库存数量锁定数量0锁定、待检或占用库存可用数量145可发料或可出库数量库位总数45已占用 2 个空闲库位43当前仍可分配库位风险关注0超储与短缺存货关注数"
+    },
+    {
+      "display": "grid",
+      "height": "219.188px",
+      "maxHeight": "none",
+      "minHeight": "0px",
+      "overflow": "hidden",
+      "rect": {
+        "height": 219.1875,
+        "width": 396,
+        "x": 851,
+        "y": 190.75
+      },
+      "selector": ".overview-metrics",
+      "text": "库存总量145当前筛选口径下全部库存数量锁定数量0锁定、待检或占用库存可用数量145可发料或可出库数量库位总数45已占用 2 个空闲库位43当前仍可分配库位风险关注0超储与短缺存货关注数"
+    },
+    {
+      "display": "block",
+      "height": "38.5156px",
+      "maxHeight": "none",
+      "minHeight": "auto",
+      "overflow": "hidden",
+      "rect": {
+        "height": 38.515625,
+        "width": 418,
+        "x": 840,
+        "y": 197.234375
+      },
+      "selector": ".distribution-panel",
+      "text": "库存分布按库区总数量145未指定库区145100%"
+    },
+    {
+      "display": "grid",
+      "height": "128px",
+      "maxHeight": "none",
+      "minHeight": "128px",
+      "overflow": "visible",
+      "rect": {
+        "height": 128,
+        "width": 396,
+        "x": 851,
+        "y": 271.984375
+      },
+      "selector": ".distribution-body",
+      "text": "总数量145未指定库区145100%"
+    },
+    {
+      "display": "block",
+      "height": "46.7031px",
+      "maxHeight": "none",
+      "minHeight": "auto",
+      "overflow": "hidden",
+      "rect": {
+        "height": 46.703125,
+        "width": 418,
+        "x": 840,
+        "y": 262.75
+      },
+      "selector": ".status-panel",
+      "text": "库位状态统计库位占用有库存24.44%部分占用00%满位00%锁定/待检00%空位4395.56%"
+    },
+    {
+      "display": "flex",
+      "height": "175.5px",
+      "maxHeight": "none",
+      "minHeight": "0px",
+      "overflow": "visible",
+      "rect": {
+        "height": 175.5,
+        "width": 396,
+        "x": 851,
+        "y": 337.5
+      },
+      "selector": ".status-list",
+      "text": "有库存24.44%部分占用00%满位00%锁定/待检00%空位4395.56%"
+    },
+    {
+      "display": "block",
+      "height": "29.5469px",
+      "maxHeight": "none",
+      "minHeight": "auto",
+      "overflow": "hidden",
+      "rect": {
+        "height": 29.546875,
+        "width": 418,
+        "x": 840,
+        "y": 336.453125
+      },
+      "selector": ".quick-panel",
+      "text": "快捷操作库存处理 库存导出 库存台账 批次查询 仓库工作台"
+    },
+    {
+      "display": "grid",
+      "height": "76px",
+      "maxHeight": "none",
+      "minHeight": "0px",
+      "overflow": "visible",
+      "rect": {
+        "height": 76,
+        "width": 396,
+        "x": 851,
+        "y": 411.203125
+      },
+      "selector": ".quick-actions",
+      "text": "库存导出 库存台账 批次查询 仓库工作台"
+    }
+  ],
+  "viewport": {
+    "height": 720,
+    "width": 1280
+  }
+}

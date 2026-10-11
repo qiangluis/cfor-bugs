@@ -354,12 +354,13 @@
 - **截图**：[点击返回后仍停留新增页](evidence/2026-10-11-codex/bug51-kpi-return.jpg)
 - **代码线索**：`cfor-admin-vue3/src/views/hrm/performance/plan/form/index.vue:449-455` 的 `close()` 先执行 `delView`，再 `router.push({ name: 'HrmPerformancePlan' })`；当前静态路由只声明了 `HrmPerformancePlanForm` / `HrmPerformancePlanDetail`，列表依赖动态菜单。生产控制台与此命名路由解析失败一致，仍需修复时核对动态菜单实际路由名。
 - **影响**：新建流程无法通过“返回”正常退出，用户只能点列表页签或菜单；相同代码路径可能影响保存成功后的回退，但该写入场景本轮未测试，不扩大结论。
-- **状态**：代码已修复，待发布（2026-10-11；未标记生产验证通过）
+- **状态**：已验证（2026-10-11 Codex 生产只读回归：稳定新增页“返回”两次回到列表；保存后回退未验证）
 - **处理建议**：统一列表页的导航契约，并覆盖取消、新增保存后、编辑返回与详情返回；不能只修当前租户的菜单名称。
 - **本轮报告**：[2026-10-11 Codex 生产只读走查](reports/2026-10-11-codex-production-1027.md)
 - **已确认根因**：`src/utils/routerHelper.ts` 的 `buildRouteName()` 对有 ID 的菜单生成 `${componentName}Menu${id}`，故列表的动态路由不是固定的 `HrmPerformancePlan`；原 `close()` 先删除页签，再跳转不存在的命名路由。
 - **修复提交**：Web `dd53818e3`；新增/详情返回列表改为 `/hrm/performance/plan`，编辑返回保留静态详情契约。导航成功后删除原访问页签并重建缓存，导航取消或失败不删页签；保存/初始化异常/详情操作统一等待返回。
 - **代码验证**：`tests/hrmPerformancePlanNavigation.test.mjs` 8 项通过，覆盖两种租户菜单后缀、新增返回、编辑返回、详情返回、守卫取消与异常；受影响 Vue 文件 ESLint 通过。不需要 Flyway、修改权限或数据库。
+- **发布与复测**：完整当前前端包于 `2026-10-11 11:56:22 CST` 发布到 `root@aliCfor`，Codex 随后从列表新增、不保存、点击返回，URL/列表/页签同步恢复，无新增路由异常。见[本轮证据](reports/2026-10-11-codex-production-release-1148.md)。
 
 ### Bug 52：HR 工作台人事、招聘和薪资快捷卡片点击不跳转
 - **模块**：行政 → HR 工作台；团队工作台存在相同代码问题，未做有员工数据的生产复测。
@@ -373,9 +374,10 @@
 - **根因**：上述组件固定跳转到 `HrmRecruitPost`、`HrmRecruitCandidate`、`HrmEmployee`、`HrmSalaryMonthRecord`；动态路由生成器对菜单追加 `Menu<ID>`，固定名称不能解析，与 Bug 51 同源但入口及影响不同。
 - **修复提交**：Web `5c7c87ebb`；改用已实际验证的 `/hrm/recruit/post`、`/hrm/recruit/candidate`、`/hrm/employee`、`/hrm/salary/month-record`。团队概况同步修复；原权限校验、状态/待办/直属领导筛选保留，不修改权限和业务数据。
 - **代码验证**：`tests/hrmWorkbenchNavigation.test.mjs` 10 项通过，含权限拒绝与查询参数保留；受影响 4 个 Vue 文件 ESLint 通过。
-- **状态**：代码已修复，待发布；生产仍运行旧前端，本轮没有部署，不能标记“已发布”或“已验证”。
+- **状态**：已验证（2026-10-11 Codex 生产只读回归：在职、招聘职位、待核算薪资三个入口均正常；其他筛选和团队数据场景未生产复测）
 - **截图**：[快捷卡片点击后仍在 HR 工作台](evidence/2026-10-11-codex/bug52-hr-workbench-shortcuts.jpg)
 - **报告**：[本轮测试与发布门禁](reports/2026-10-11-codex-production-1045.md)
+- **发布与复测**：完整当前前端于 `2026-10-11 11:56:22 CST` 发布。实际进入 `/hrm/employee?statusCategory=11`、`/hrm/recruit/post` 和 `/hrm/salary/month-record`，未执行工资初始化/核算，见[发布后报告](reports/2026-10-11-codex-production-release-1148.md)。
 
 ### Bug 53：MES 制造工作台“实时库存”快捷入口进入旧空壳路由
 - **模块**：生产 → MES 制造工作台
@@ -391,11 +393,12 @@
 - **对照证据**：生产工作台本身可正常打开，显示生产订单 `JH1002`；从仓库正式菜单进入的库存查询页面是可用入口。该问题不是生产数据为空，而是快捷入口路径错误。
 - **关联问题**：与 Bug 49 同属门户/工作台快捷路由未统一，但本问题位于 MES 工作台，不能只修 ERP 门户后假定已经覆盖。
 - **影响**：生产计划、车间人员从 MES 首页无法快速核对库存；新租户和存量租户都会复现。
-- **状态**：代码已修复，待发布；2026-10-11 本轮生产仍复现，未部署，不能标记“已发布”或“已验证”。
+- **状态**：已验证（2026-10-11 Codex 生产只读回归：制造工作台实时库存进入正式库存查询、主表和总量 145 正常渲染）
 - **修复提交**：Web `f1c946cb1`；`src/views/mes/workbench/prod.vue` 与 `src/views/mes/workbench/portal.vue` 的库存快捷入口改为已核对可用的 `/reports/inventory/standingStock`。仅本地提交，未推送 Web 仓库或发布生产。
 - **代码验证**：受影响两个 Vue 文件定向 ESLint 通过；没有构建或执行修复后的生产浏览器回归，不修改数据库、Flyway 或生产配置。
 - **修复要求**：统一使用当前注册的库存查询路由/菜单契约，不要继续拼接已失效的 `/erp` 前缀；同时补充 MES 工作台快捷入口的真实路由回归测试。
 - **报告**：[2026-10-11 Codex 生产浏览器继续走查](reports/2026-10-11-codex-production-1057.md)
+- **发布与复测**：完整当前前端于 `2026-10-11 11:56:22 CST` 发布，制造工作台点击后实际 URL 为 `/reports/inventory/standingStock`。另一门户入口仅代码/路由测试覆盖，本轮没有把它写成独立生产客户端验证。见[发布后报告](reports/2026-10-11-codex-production-release-1148.md)。
 
 ### Bug 54：现存量查询的三个库存快捷入口进入 404 空壳页
 - **模块**：报表 → 库存统计 → 现存量查询 → 快捷操作
@@ -409,7 +412,9 @@
 - **代码线索**：Web `src/views/wms/stock/reportForms/standingStock/index.vue:388,392,396` 仍固定拼接上述带 `/erp` 前缀的路径。
 - **关联与去重**：三个按钮合并为一个 Bug；与 Bug 49、53 同属快捷路由契约问题，但入口在库存查询页，不能假定修 ERP/MES 首页后会一并覆盖。
 - **修复边界**：统一前端快捷入口与正式菜单路由，覆盖新旧租户和对应菜单授权；不要修改生产菜单或业务配置掩盖前端路径错误。
-- **状态**：待修复
+- **状态**：已验证（2026-10-11 Codex 生产 AX 按钮操作确认三个路由恢复正式页面；普通鼠标入口仍被裁剪，另见 Bug 58，整个快捷区未合格）
+- **修复提交**：Web `e7a1793b7e09600561ccb962f588dbde90bd958f`；三个路径改为 `/reports/inventory/warehouseLedger`、`/wireSideWarehouse/batch`、`/wireSideWarehouse/stock`。路由测试覆盖新旧租户菜单名称后缀，不新增兜底菜单或绕过权限。
+- **发布证据**：`2026-10-11 11:56:22 CST` 完整当前前端发布；见[发布后报告和三个截图](reports/2026-10-11-codex-production-release-1148.md)。
 - **报告**：[2026-10-11 仓储查询与统计走查](reports/2026-10-11-codex-production-1126.md)
 
 ### Bug 55：批次查询累计入出库为 0，与有效库存流水不一致
@@ -438,9 +443,43 @@
 - **API 证据**：`tenant-id=1`，布局 GET `/admin-api/mes/stkIo/workbench/warehouse-layout` 的 `summary` 为启用库位 45、占用 0、空位 45、总量 0；实时库存 GET `/admin-api/mes/stkIo/workbench/location-inventory?pageNo=1&pageSize=100` 的 `summary` 为占用 2、总量 145、可用 145。两者业务 `code=200`。见[脱敏响应](evidence/2026-10-11-codex-1115/bug56-workbench-api-sanitized.json)与[界面文本快照](evidence/2026-10-11-codex-1115/bug56-workbench-ui-sanitized.json)。
 - **代码线索**：Web `src/views/wms/stock/workbench.vue:854` 区分 `layoutSummary` 与实时库存汇总，但 `headlineMetrics`（约 955-966 行）的“有库存”“空库位”读取 `layoutSummary.occupiedLocationCount/emptyLocationCount`。当前布局接口只提供档案阶段的占用默认值，与实时库存统计混用。
 - **修复边界**：库位总数/启用数使用档案事实，有库存数使用同范围实时库存事实，空库位处理禁用库位和仓库/库区筛选的一致口径；覆盖空租户和有历史库存租户，不修改库存业务数据或绕过租户隔离。
-- **状态**：待修复
+- **状态**：已验证（2026-10-11 Codex 生产接口/DOM 指标取值回归：库存 145、占用 2、空位 43；正常窗口下指标被裁剪另见 Bug 57，页面布局未合格）
+- **修复提交**：Web `e7a1793b7e09600561ccb962f588dbde90bd958f`；按全仓完整实时库位汇总计算占用，空位按档案总数减占用。显式空汇总清掉旧数据，启用 0 不回退到总数；8 项指标测试覆盖空/历史租户、100+ 库位和焦点明细隔离。
+- **发布与复测**：`2026-10-11 11:56:22 CST` 完整当前前端发布。生产布局仍为占用 0/空位 45，实时接口占用 2/库存 145，页面 DOM 正确为占用 2/空位 43，见[脱敏响应和指标](evidence/2026-10-11-codex-release-1148/bug56-workbench-metrics-sanitized.json)。
 - **截图**：[工作台现存量及仓库分布](evidence/2026-10-11-codex-1115/bug56-workbench-location-count.jpg)；占用数/空位数以界面文本快照及响应为证，在当前 1280×720 截图中指标区域未完整显示。
 - **报告**：[2026-10-11 仓储查询与统计走查](reports/2026-10-11-codex-production-1126.md)
+
+### Bug 57：仓库工作台普通桌面窗口下标题挤压、右侧指标被完全裁剪
+- **模块**：仓库 → 工作台 → 顶部统计与标题区域
+- **级别**：P2，核心指标不可见/响应式布局问题，库存取值修复不等于展示合格。
+- **路径**：`/wireSideWarehouse/stock`
+- **操作**：在默认 `1280×720` 浏览器、侧边栏展开的正常工作台模式打开页面；等待库存加载完成，不进入全屏、不调整窗口规避问题。
+- **预期**：标题和四个统计指标在可用内容宽度内可读；操作区不覆盖标题/指标。
+- **实际**：现存量标签被逐字挤成多行，标题换行并被右侧操作区挤压；“在用库位”“空库位”及其值没有出现在可见页面中，虽然 DOM 内已有正确数据。
+- **现场证据**：Codex `2026-10-11 12:03 CST` 生产截图，页面内容区宽 `1020px`。`.topbar-title` 实际宽 `448px`（`x=526` 至 `974`），内部网格轨道最小总宽 `664px`；右侧指标位于 `x=1031/1125`，全部超出标题容器且被 `overflow:hidden` 裁掉。
+- **截图**：[普通窗口顶部遮挡](evidence/2026-10-11-codex-release-1148/bug57-workbench-header-layout.jpg)
+- **布局证据**：[只读 DOM 尺寸、网格与可见性属性](evidence/2026-10-11-codex-release-1148/bug57-workbench-header-layout.json)
+- **代码线索**：`src/views/wms/stock/workbench.vue` 的 `.topbar-title` 使用 `width: min(1120px, calc(100% - 528px))`，同时规定五列网格最小宽度；视口断点不能准确表达侧边栏扣除后的内容容器宽度。
+- **关联与去重**：与 Bug 56 区分：56 是误读档案统计，已修复；57 是正确指标仍不可见。与全局 AI 浮层遮挡亦不是同一根因。
+- **修复边界**：根据可用容器宽度调整标题/指标/操作区域，不隐藏指标或强制要求用户全屏；保留 3D/2D、通知、查询与权限行为，不改生产配置或库存事实。
+- **状态**：待修复
+- **报告**：[本轮发布与复测](reports/2026-10-11-codex-production-release-1148.md)
+
+### Bug 58：现存量查询右侧统计区被压缩，快捷按钮不可见且鼠标无法命中
+- **模块**：报表 → 库存统计 → 现存量查询 → 右侧库存统计与快捷操作
+- **级别**：P1，核心查询指标和库存快捷入口在正常浏览器窗口不可使用。
+- **路径**：`/reports/inventory/standingStock`
+- **操作**：默认 `1280×720` 浏览器、侧边栏展开，打开现存量查询并等待库存加载；观察右侧库存概览、库存分布、库位状态和快捷操作，不使用 AX 操作绕过可见性检查。
+- **预期**：右侧内容保持正常高度，超出可用高度时容器滚动；统计数据和快捷按钮可见、鼠标能够点击。
+- **实际**：右侧四个区块都只剩部分标题，库存概览 145/占用 2/空位 43 等正确内容藏在裁剪区域；四个快捷按钮未显示，按钮中心点 `elementFromPoint` 均不是按钮或其子元素，普通鼠标无法命中。
+- **现场证据**：Codex `2026-10-11 12:07 CST` 生产复现。右侧容器高 `524px`，概览父区块仅 `54.23px`、分布 `38.52px`、状态 `46.70px`、快捷区 `29.55px`，均为 `overflow:hidden`；概览内容自身 `219.19px`，快捷按钮区域自身 `76px`，远超父区块范围。
+- **截图**：[右侧标题与按钮裁剪](evidence/2026-10-11-codex-release-1148/bug58-stock-side-layout.jpg)
+- **布局证据**：[父/子区域尺寸与按钮命中检查](evidence/2026-10-11-codex-release-1148/bug58-stock-side-layout.json)
+- **代码线索**：`src/views/wms/stock/reportForms/standingStock/index.vue` 的 `.stock-side-stack` 是有 `max-height:calc(100vh - 196px)` 的列 flex 容器，子 `ContentWrap/el-card` 没有防止压缩，卡片自身 overflow 裁剪使滚动容器尚未滚动就先丢失内容。
+- **关联与去重**：Bug 54 修的是错误路由，AX 可对隐藏按钮执行操作并证明路由恢复，但不能据此断言普通用户能够使用入口；本 Bug 专门记录可见性/鼠标操作问题。不同于 Bug 57 的工作台标题网格过宽。
+- **修复边界**：保证区块不被压缩、滚动可达，并在真实默认视口验证按钮鼠标命中、统计内容和主表布局；不通过删指标、改库存数或强制全屏规避。
+- **状态**：待修复
+- **报告**：[本轮发布与复测](reports/2026-10-11-codex-production-release-1148.md)
 
 ---
 
