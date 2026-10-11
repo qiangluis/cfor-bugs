@@ -1,0 +1,97 @@
+{
+  "observedAtLocal": "2026-10-12 05:30-05:54 Asia/Shanghai",
+  "environment": "https://jixu-ai.com",
+  "tenantEvidence": {
+    "id": 1,
+    "source": "Previously confirmed production session",
+    "displayBrand": "即序科技",
+    "brandDoesNotProveTenantName": true
+  },
+  "bug86": {
+    "beforeReleaseAuthorizedMenuPath": "/messages/notice",
+    "beforeReleaseMenuFormOpened": true,
+    "afterReleaseWorkbenchMorePath": "/messages/notice",
+    "afterReleaseListRendered": true,
+    "afterReleaseCreateFormOpened": true,
+    "noticeTypeOptions": ["通知", "公告"],
+    "noticeSavedOrPublished": false
+  },
+  "bug107": {
+    "productionLogErrorsBeforeFix": [
+      {
+        "timeLocal": "2026-10-12 05:07:13.859",
+        "field": "OaScheduleSaveReqVO.startTime",
+        "jsonType": "string",
+        "value": "1791766800883",
+        "exception": "Cannot deserialize java.time.LocalDateTime from numeric string"
+      },
+      {
+        "timeLocal": "2026-10-12 05:09:05.034",
+        "field": "OaScheduleSaveReqVO.startTime",
+        "jsonType": "number",
+        "value": 1791770400000,
+        "exception": "Raw timestamp not allowed for java.time.LocalDateTime"
+      }
+    ],
+    "afterReleaseQuickCreateDisplay": ["2026-10-12 09:00:00", "2026-10-12 10:00:00"],
+    "afterReleaseSelectedDayCreateDisplay": ["2026-10-13 09:00:00", "2026-10-13 10:00:00"],
+    "afterReleaseIndependentInputDisplay": ["2026-10-12 09:00:00", "2026-10-12 10:00:00"],
+    "afterReleaseCalendarSaveExecuted": false,
+    "createEditDetailFlowVerified": false
+  },
+  "personalNote": {
+    "createdTitle": "CODEX个人笔记回归-20261012",
+    "editedTitle": "CODEX个人笔记回归-20261012-已编辑",
+    "createTimeDisplay": "2026-10-12 05:35:08",
+    "content": "个人笔记保存、列表查询和详情回显验证。不共享，不包含业务或个人敏感信息。",
+    "createSuccess": true,
+    "updateSuccess": true,
+    "exactTitleSearchResultCount": 1,
+    "detailContentAndOriginalCreateTimePreserved": true,
+    "shared": false,
+    "deleted": false
+  },
+  "bug108": {
+    "path": "/plm/document-cad/document-library",
+    "initialCount": 5,
+    "selectedDocument": "DOC-CHECK-ERP-FG-001",
+    "selectedFile": "ERP-FG-001_release_checklist.xlsx",
+    "firstQuery": "DOC-SPEC-ERP-FG-001",
+    "firstQueryResultCount": 1,
+    "secondQuery": "CODEX-NO-SUCH-DOCUMENT-20261012",
+    "secondQueryEmptyText": "暂无数据",
+    "previewAfterQueries": "DOC-CHECK-ERP-FG-001",
+    "uploadNewVersionStillEnabled": true,
+    "fileSelectedOrUploaded": false,
+    "checkoutOrCheckinExecuted": false,
+    "otherSharedRoutesBrowserVerified": false
+  },
+  "bug109": {
+    "path": "/index",
+    "chineseInterfaceWeekLabels": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+    "selectedDayLabels": ["10月12日 Monday", "10月13日 Tuesday"],
+    "observedAfterReleaseReload": true
+  },
+  "release": {
+    "webCommit": "9bf6050bd",
+    "sourceInputCount": 4825,
+    "sourceInputsUnchanged": true,
+    "sourceManifestSha256": "07d18c56c01885e358441f3218ac37dea9f664fae8b0558b8b6ec362ff6cd323",
+    "publishedAtLocal": "2026-10-12 05:45:33 CST",
+    "packageSha256": "8d05c9d8fb450ecbae9d308a0e70cdcbe509154206225f7351593a3fec7b13b7",
+    "indexSha256": "ff62747f2a1d820caead2d1cf58411182dd045e381f5862b856b28ccd2af3dc5",
+    "localRemoteAndPublicIndexMatch": true,
+    "protectedConfigHashesUnchanged": true,
+    "backendPidBeforeAndAfter": 29507,
+    "backendHealth": "UP",
+    "backendRestarted": false,
+    "databaseOrFlywayChanged": false
+  },
+  "limits": [
+    "No new-tenant or non-admin end-to-end validation",
+    "No actual calendar creation or edit after release",
+    "No announcement publish, employee task send, financial or inventory writes",
+    "No full-repository vue-tsc",
+    "One old pre-release Vue runtime-6 console entry lacks actionable stack; not reported as a new confirmed bug"
+  ]
+}
