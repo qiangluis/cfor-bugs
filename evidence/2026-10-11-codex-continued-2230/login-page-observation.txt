@@ -1,0 +1,55 @@
+- generic: ERP
+- generic: CRM
+- generic: MES
+- generic: 办公
+- generic: AI
+- strong: AI Agent
+- generic: 审查
+- generic: 分析
+- heading "让业务触手可及" [level=2]
+- paragraph: 从合同审查到销售跟进，智能体持续处理企业日常任务。
+- banner:
+  - img "即序科技"
+  - button
+- main:
+  - heading "即序科技统一企业门户" [level=1]
+  - paragraph: 统一连接 ERP、CRM、MES、AI、审批、文件与数据能力，构建即序科技企业智能工作台。
+  - button "账密登录"
+  - button "手机号登录"
+  - link "前往注册":
+    - /url: javascript:void(0)
+  - heading "登录" [level=2]
+  - textbox "请输入租户名称": 即序科技
+  - generic: 企业名称校验通过
+  - textbox "请输入用户名": admin
+  - textbox "请输入密码": <redacted>
+  - checkbox "记住我" [checked]
+  - generic: 记住我
+  - generic: 忘记密码?
+  - button "登录":
+    - generic: 登录
+  - generic: 还没有企业账户？
+  - generic: 立即注册企业
+  - separator:
+    - generic: 其他登录方式
+  - button "微信":
+    - generic: 微信
+  - button "钉钉":
+    - generic: 钉钉
+  - button "飞书":
+    - generic: 飞书
+- contentinfo:
+  - link "法律声明":
+    - /url: javascript:void(0)
+  - link "Cookies 政策":
+    - /url: javascript:void(0)
+  - link "隐私保护":
+    - /url: javascript:void(0)
+  - link "安全举报":
+    - /url: javascript:void(0)
+  - link "联系我们":
+    - /url: javascript:void(0)
+  - link "加入我们":
+    - /url: javascript:void(0)
+  - paragraph: 即序科技企业智能体平台，仅保留现有系统登录逻辑。
+  - paragraph: © 2009-2026 即序科技. 系统仅作企业内部与合作伙伴登录使用。

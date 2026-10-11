@@ -1,0 +1,45 @@
+{
+  "observedAt": "2026-10-11T20:29:00+08:00",
+  "url": "https://jixu-ai.com/oa/schedule/calendar",
+  "initialResult": {
+    "name": "日程日历",
+    "body": "- link \"即序科技\":\n  - /url: /\n  - img \"即序科技\"\n- menubar:\n  - menuitem \"工作台\":\n    - generic \"工作台\"\n  - menuitem \"客户\":\n    - generic \"客户\"\n  - menuitem \"销售\":\n    - generic \"销售\"\n  - menuitem \"供应链\":\n    - generic \"供应链\"\n  - menuitem \"生产\":\n    - generic \"生产\"\n  - menuitem \"质检\":\n    - generic \"质检\"\n  - menuitem \"仓库\":\n    - generic \"仓库\"\n  - menuitem \"项目\":\n    - generic \"项目\"\n  - menuitem \"研发\":\n    - generic \"研发\"\n  - menuitem \"财务\":\n    - generic \"财务\"\n  - menuitem \"成本\":\n    - generic \"成本\"\n  - menuitem \"行政\":\n    - generic \"行政\"\n  - menuitem \"报表\":\n    - generic \"报表\"\n  - menuitem \"设置\":\n    - generic \"设置\"\n- combobox\n- generic: 请输入菜单内容\n- button\n- button\n- button \"即序科技\":\n  - generic: 即序科技\n- menubar:\n  - menuitem \"工作台\":\n    - generic \"工作台\"\n  - menuitem \"AI 员工\":\n    - generic \"AI 员工\"\n  - menuitem \"引导中心 41/43\":\n    - generic \"引导中心\"\n    - generic: 41/43\n- button \"发起流程\":\n  - text: 发起流程\n- button \"HR 工作台\":\n  - text: HR 工作台\n- button \"团队工作台\":\n  - text: 团队工作台\n- button \"员工档案\":\n  - text: 员工档案\n- button \"待办任务\":\n  - text: 待办任务\n- button \"已办任务\":\n  - text: 已办任务\n- button \"抄送我的\":\n  - text: 抄送我的\n- button \"我的流程\":\n  - text: 我的流程\n- button \"日程列表\":\n  - text: 日程列表\n- button \"通讯录\":\n  - text: 通讯录\n- button \"我的笔记\":\n  - text: 我的笔记\n- button \"任务管理\":\n  - text: 任务管理\n- button \"我的任务\":\n  - text: 我的任务\n- button \"日程日历\":\n  - generic: 日程日历\n- button:\n- heading \"日程日历\" [level=1]\n- paragraph: 流程审批与协作办公的统一入口\n- group \"日程范围\":\n  - generic: 日程范围\n  - checkbox \"我的日程\" [checked]\n  - generic: 我的日程\n  - checkbox \"共享给我\" [checked]\n  - generic: 共享给我\n- generic: 标题\n- textbox \"标题\":\n  - /placeholder: 请输入日程标题\n- generic: 日程类型\n- combobox \"日程类型\"\n- generic: 请选择日程类型\n- button \"搜索\":\n  - text: 搜索\n- button \"重置\":\n  - text: 重置\n- button \"新增\":\n  - text: 新增\n- button \"展开\":\n  - text: 展开\n- generic: 2026 年 10 月\n- button \"上个月\":\n  - generic: 上个月\n- button \"今天\":\n  - generic: 今天\n- button \"下个月\":\n  - generic: 下个月\n- table:\n  - rowgroup:\n    - columnheader \"一\"\n    - columnheader \"二\"\n    - columnheader \"三\"\n    - columnheader \"四\"\n    - columnheader \"五\"\n    - columnheader \"六\"\n    - columnheader \"日\"\n  - rowgroup:\n    - row \"28 29 30 01 02 03 04\":\n      - cell \"28\":\n        - generic: \"28\"\n      - cell \"29\":\n        - generic: \"29\"\n      - cell \"30\":\n        - generic: \"30\"\n      - cell \"01\":\n        - generic: \"01\"\n      - cell \"02\":\n        - generic: \"02\"\n      - cell \"03\":\n        - generic: \"03\"\n      - cell \"04\":\n        - generic: \"04\"\n    - row \"05 06 07 08 09 10 11\":\n      - cell \"05\":\n        - generic: \"05\"\n      - cell \"06\":\n        - generic: \"06\"\n      - cell \"07\":\n        - generic: \"07\"\n      - cell \"08\":\n        - generic: \"08\"\n      - cell \"09\":\n        - generic: \"09\"\n      - cell \"10\":\n        - generic: \"10\"\n      - cell \"11\":\n        - generic: \"11\"\n    - row \"12 13 14 15 16 17 18\":\n      - cell \"12\":\n        - generic: \"12\"\n      - cell \"13\":\n        - generic: \"13\"\n      - cell \"14\":\n        - generic: \"14\"\n      - cell \"15\":\n        - generic: \"15\"\n      - cell \"16\":\n        - generic: \"16\"\n      - cell \"17\":\n        - generic: \"17\"\n      - cell \"18\":\n        - generic: \"18\"\n    - row \"19 20 21 22 23 24 25\":\n      - cell \"19\":\n        - generic: \"19\"\n      - cell \"20\":\n        - generic: \"20\"\n      - cell \"21\":\n        - generic: \"21\"\n      - cell \"22\":\n        - generic: \"22\"\n      - cell \"23\":\n        - generic: \"23\"\n      - cell \"24\":\n        - generic: \"24\"\n      - cell \"25\":\n        - generic: \"25\"\n    - row \"26 27 28 29 30 31 01\":\n      - cell \"26\":\n        - generic: \"26\"\n      - cell \"27\":\n        - generic: \"27\"\n      - cell \"28\":\n        - generic: \"28\"\n      - cell \"29\":\n        - generic: \"29\"\n      - cell \"30\":\n        - generic: \"30\"\n      - cell \"31\":\n        - generic: \"31\"\n      - cell \"01\":\n        - generic: \"01\"\n- generic: Copyright ©2026 即序科技\n- button \"唤醒企业 AI 助手\"\n- button \"关闭助手并停止主动提醒\":\n- alert:\n  - heading \"请求参数不正确:每页条数最大值为 100\" [level=2]"
+  },
+  "consoleLogs": [
+    {
+      "level": "error",
+      "message": "Vue error: Error: Unable to preload CSS for /assets/bpmn-embedded-BDgBZ2wD.css\n    at HTMLLinkElement.<anonymous> (https://jixu-ai.com/assets/index-Bz8WVmhz.js:1:1933) in Proxy(Object) info: https://vuejs.org/error-reference/#runtime-13",
+      "timestamp": "2026-10-11T12:21:56.251Z",
+      "url": "https://jixu-ai.com/assets/index-Bz8WVmhz.js"
+    },
+    {
+      "level": "error",
+      "message": "Vue error: Error: Unable to preload CSS for /assets/bpmn-embedded-BDgBZ2wD.css\n    at HTMLLinkElement.<anonymous> (https://jixu-ai.com/assets/index-Bz8WVmhz.js:1:1933) in Proxy(Object) info: https://vuejs.org/error-reference/#runtime-13",
+      "timestamp": "2026-10-11T12:22:55.251Z",
+      "url": "https://jixu-ai.com/assets/index-Bz8WVmhz.js"
+    },
+    {
+      "level": "error",
+      "message": "error",
+      "timestamp": "2026-10-11T12:29:08.777Z",
+      "url": "https://jixu-ai.com/assets/index-D1TqJzt3.js"
+    },
+    {
+      "level": "error",
+      "message": "Vue error: error in Proxy(Object) info: https://vuejs.org/error-reference/#runtime-6",
+      "timestamp": "2026-10-11T13:29:30.323Z",
+      "url": "https://jixu-ai.com/assets/index-Bz8WVmhz.js"
+    },
+    {
+      "level": "error",
+      "message": "Vue error: error in Proxy(Object) info: https://vuejs.org/error-reference/#runtime-6",
+      "timestamp": "2026-10-11T13:30:18.826Z",
+      "url": "https://jixu-ai.com/assets/index-Bz8WVmhz.js"
+    }
+  ],
+  "notes": [
+    "首次打开日程日历时出现请求参数不正确:每页条数最大值为100",
+    "之后页面仍能显示空日历，但初次请求失败提示不能作为成功取数",
+    "未新增、修改或保存日程"
+  ]
+}
