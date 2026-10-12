@@ -1388,3 +1388,23 @@
 - **预期**：明确公共池手工创建的事实源和状态契约后，提供真实表单、后端接口、租户/权限校验、去重、审计、成功失败反馈及刷新回查；新租户和存量租户均有效。若产品不支持手工创建，应隐藏或禁用该入口，而不是保留可点击按钮。
 - **证据**：[生产点击后告警](evidence/2026-10-12-codex-browser-continuation-151/customer-public-pool-add-not-wired.png)
 - **状态**：待修复；公共池创建语义待确认，本轮未写入生产数据。
+
+### Bug 152：PLM 自定义属性和数据字典保存只改浏览器内存
+
+- **模块 / 路径**：研发 → 集成与配置 → 自定义属性、数据字典，P1。
+- **生产复现**：分别新增临时编码 `CODEX-TEMP-20261012-ATTR` 和 `CODEX-TEMP-20261012-DICT`。页面分别提示“自定义属性已保存”“字典配置已保存”，但主表不出现新增记录；刷新后临时记录消失。
+- **源码确认**：两个页面分别使用固定普通数组 `attrRows`、`dictRows`；提交方法只执行 `unshift()` 和成功提示，没有正式 API、保存反馈或重新查询。普通数组追加也不会驱动主表按预期响应式刷新。
+- **影响**：用户会把页面提示误认为属性/字典已经发布并生效，后续产品、零部件、图文档和流程仍使用旧口径。
+- **预期**：先核对正式 PLM 属性/字典事实源、版本、发布、审计、权限和租户字段，再接入分页、保存、发布和回读；新租户初始化和存量租户兼容必须同时有效。不能只改成响应式数组或用 localStorage 代替持久化。
+- **证据**：[自定义属性保存后未进主表](evidence/2026-10-12-codex-plm-config-followup/custom-attribute-local-save-not-in-list.png)、[自定义属性刷新丢失](evidence/2026-10-12-codex-plm-config-followup/custom-attribute-after-reload-lost.png)、[数据字典保存后未进主表](evidence/2026-10-12-codex-plm-config-followup/dict-local-save-not-in-list.png)、[数据字典刷新丢失](evidence/2026-10-12-codex-plm-config-followup/dict-after-reload-lost.png)。
+- **状态**：待修复；本轮临时编号仅在浏览器内存中存在，未写入生产数据。
+
+### Bug 153：信创适配检查确认复检没有提交处理
+
+- **模块 / 路径**：研发 → 集成与配置 → 信创适配检查，`/plm/integration-config/xinchuang-check`，P1。
+- **生产复现**：点击“发起复检”，保留预填验证环境和说明，点击“确认复检”；弹窗直接关闭，没有成功/失败/提交中提示，检查记录没有新增，页面没有刷新结论。
+- **源码确认**：`submitRecheck()` 只有 `recheckDialogVisible.value = false`，没有 API、参数校验、loading、错误处理、日志写入或回读。
+- **影响**：整改对象无法留下复检审计，关闭弹窗容易被误认为复检已经提交。
+- **预期**：核对正式检查记录事实源、责任人、环境、结论和审计字段后，实现带租户/权限校验的提交、成功回读和失败保留表单；不能只在前端追加演示日志。
+- **证据**：[复检表单](evidence/2026-10-12-codex-plm-config-followup/xinchuang-recheck-dialog.png)、[确认后无反馈](evidence/2026-10-12-codex-plm-config-followup/xinchuang-recheck-after-confirm.png)。
+- **状态**：待修复；本轮未写入生产数据。
