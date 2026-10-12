@@ -1069,3 +1069,46 @@
 - **编号说明**：原始本地报告使用 120，但远端 Bug 120 已由 Muse 用于 OA 发起流程持续加载失败；为避免覆盖协作方条目，本问题固定使用 Bug 124。
 - **修复要求**：覆盖共享 PLM 工作区布局，在 1280×720 默认视口完整展示文件选择、预览、批注摘要、修订详情和主要动作；与 Bug 117 批注功能、Bug 119 对比页按钮裁切分开验收。
 - **状态**：待修复。
+
+## 二十三、2026-10-12 Codex PLM 配置与基线续测（11:19–11:27）
+
+### Bug 125：产品基线进入对比后显示其他基线的固定差异
+
+- **页面**：`/plm/configuration-baseline/product-baseline` → `BL-MES-ERP-FG-001 / 标准成品` → `对比`。
+- **实际**：地址带有 `baseBaselineId=1`，但差异页显示“标准控制柜”基准与固定的 `PART-PWR-220`、`DWG-CAB-220`、`CAD-CAB-LAYOUT` 等差异；将目标基线切换为与基准相同后仍保留相同差异。
+- **源码线索**：`baseline-compare/index.vue` 使用固定 `baselineOptions`、`diffRows`、`diffTree`，没有按 URL 基线 ID加载正式数据。
+- **影响**：P1，可能把其他产品的基线差异误用于当前产品评审。
+- **证据**：[入口后错误上下文](evidence/2026-10-12-codex-plm-baseline-followup/baseline-compare-wrong-context.png)、[相同基线仍有差异](evidence/2026-10-12-codex-plm-baseline-followup/baseline-compare-identical-still-different.png)。
+- **状态**：待修复。
+
+### Bug 126：产品基线标题操作与筛选操作在 1280px 视口重叠
+
+- **页面**：`/plm/configuration-baseline/product-baseline`。
+- **实际**：DOM 中刷新 `x=1039..1120` 与搜索 `x=1009..1090` 重叠；重置 `x=1102..1183` 与基线对比 `x=1140..1249` 重叠。
+- **影响**：P2，默认桌面视口下操作区挤压并存在误点击风险。
+- **证据**：[产品基线工具栏重叠](evidence/2026-10-12-codex-plm-baseline-followup/baseline-search-actions-overlap.png)。
+- **状态**：待修复。
+
+### Bug 127：文档基线无结果时仍保留旧快照和冻结对象
+
+- **页面**：`/plm/configuration-baseline/document-baseline`。
+- **实际**：关键字无匹配后主列表为“暂无数据”，右侧仍显示 `DBL-202605-006`、42 个文档、`DWG-CAB-220` / `SPEC-CAB-QA`，且“冻结文档基线”仍可用。
+- **影响**：P1，筛选结果与详情/操作目标不一致。
+- **证据**：[初始详情](evidence/2026-10-12-codex-plm-baseline-followup/document-baseline-static-list.png)、[零结果旧详情](evidence/2026-10-12-codex-plm-baseline-followup/document-baseline-empty-stale-detail.png)。
+- **状态**：待修复。
+
+### Bug 128：适用性查询无结果时仍保留旧命中范围和下游影响
+
+- **页面**：`/plm/configuration-baseline/effectivity`。
+- **实际**：关键字无匹配后零部件版本和 EBOM 列表均为 0，但右侧仍显示旧的 `MAT-ERP-RM-001`、`RELEASED`、`EBOM-MAT-ERP-FG-001-A` 和下游处理建议。
+- **影响**：P1，筛选条件与详情不一致，可能误判当前命中对象。
+- **证据**：[零结果旧详情](evidence/2026-10-12-codex-plm-baseline-followup/effectivity-empty-stale-detail.png)。
+- **状态**：待修复。
+
+### Bug 129：发布包查询无结果时仍保留旧发布包内容和下发信息
+
+- **页面**：`/plm/configuration-baseline/release-package`。
+- **实际**：关键字无匹配后主列表为“暂无数据”，右侧仍显示 `PKG-202605-004`、内容校验“通过”、审批“已批准”、基线/文档/BOM/工艺明细和 `MES, ERP` 下发目标；“内容校验”和“下发”仍可用。
+- **影响**：P1，存在对不可见旧发布包误校验或误下发的风险。
+- **证据**：[零结果旧详情](evidence/2026-10-12-codex-plm-baseline-followup/release-package-empty-stale-detail.png)。
+- **状态**：待修复。
