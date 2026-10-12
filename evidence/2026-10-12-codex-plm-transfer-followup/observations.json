@@ -2,6 +2,7 @@
   "date": "2026-10-12",
   "environment": "https://jixu-ai.com",
   "tenantLabel": "即序科技",
+  "tenantIdIndependentlyVerified": false,
   "accountScope": "production admin session",
   "pages": [
     {
