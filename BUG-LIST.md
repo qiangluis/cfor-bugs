@@ -980,7 +980,8 @@
 - **源码确认**：`preview-annotation/index.vue` 使用固定 `annotationRows`，新增批注按钮没有 `@click` 或弹窗绑定。
 - **修复要求**：批注必须按文档 ID / 修订 ID 从正式 API 加载，新增需接入权限、定位、状态、审计和服务端持久化；布局需保证默认视口可见。不能用固定演示数组或只补成功提示代替。
 - **边界**：本轮没有新增批注、上传、签入、签出、转换、审批、删除或修改生产数据。
-- **证据**：[结构化浏览器观察](evidence/2026-10-12-codex-plm117-119/observations.json)。
+- **最新复测**：2026-10-12 12:31，发布后切换到 `ERP-FG-001_gearbox_assembly.dwg`，右侧仍显示同一组三条批注；点击“新增批注”仍无表单、提示或导航。
+- **证据**：[结构化浏览器观察](evidence/2026-10-12-codex-plm117-119/observations.json)、[发布后批注仍未绑定](evidence/2026-10-12-codex-plm117-119/preview-annotation-static-after-release.jpg)。
 - **状态**：待修复。
 
 ### Bug 118：图纸版本对比切换版本后差异表不重新计算
@@ -1055,6 +1056,8 @@
 - **证据**：[产品台账列表产品族 ID](evidence/2026-10-12-codex-plm-followup/product-ledger-family-id.jpg)、[产品概览产品族 ID](evidence/2026-10-12-codex-plm-followup/product-family-id.jpg)、[本轮报告](reports/2026-10-12-codex-plm-followup.md)。
 - **修复要求**：核对产品族名称的正式事实源和 ID 映射，覆盖列表、概览、筛选、产品结构及下游页面；同时修复生产同步/初始化 Job 的错误来源数据，但不能覆盖用户手工维护的产品族，也不能只修当前租户。
 - **源码线索（非生产运行证明）**：本地 `PlmCoreDataFlowGenerateJob` 与 `BusinessSimulationPlmStageService` 的 `categoryName()` 将物料 `categoryId` 原样作为产品族写入；`MesBasMaterial.categoryId` 关联 `mes_bas_material_category.name`，需核对名称映射及更新分支。
+- **最新复测**：2026-10-12 12:30，生产发布后产品台账仍显示 `2104856930414133251 / FG-001`，产品族字段没有转换为可读名称。
+- **证据**：[发布后产品族 ID](evidence/2026-10-12-codex-plm-followup/product-ledger-family-id-followup.jpg)。
 - **状态**：待修复。
 
 ### Bug 124：PLM 三栏工作区横向溢出，右侧业务区默认不可见
@@ -1079,15 +1082,22 @@
 - **源码线索**：`baseline-compare/index.vue` 使用固定 `baselineOptions`、`diffRows`、`diffTree`，没有按 URL 基线 ID加载正式数据。
 - **影响**：P1，可能把其他产品的基线差异误用于当前产品评审。
 - **证据**：[入口后错误上下文](evidence/2026-10-12-codex-plm-baseline-followup/baseline-compare-wrong-context.png)、[相同基线仍有差异](evidence/2026-10-12-codex-plm-baseline-followup/baseline-compare-identical-still-different.png)。
-- **状态**：待修复。
+- **修复**：Web `6b5e7673d53576089d32ff4e0dff3662977d8545` 移除固定演示对比数据，加载当前租户基线并调用正式对比接口。
+- **最新复测**：2026-10-12 12:25 发布 `web-plm108-20261012122522-94256ec57` 后，从真实产品基线进入对比页，基准基线正确显示为 `BL-MES-ERP-FG-001 / 标准成品 MES反推基线`；将目标基线设为同一基线后，结果为差异 0，未再出现“标准控制柜”固定差异。
+- **证据**：[相同基线无差异](evidence/2026-10-12-codex-plm-baseline-release/bug125-same-baseline-zero-diff.jpg)。
+- **状态**：已验证。
 
-### Bug 126：产品基线标题操作与筛选操作在 1280px 视口重叠
+### Bug 126：产品基线等 PLM 页标题操作与筛选操作在 1280px 视口重叠
 
-- **页面**：`/plm/configuration-baseline/product-baseline`。
+- **页面**：`/plm/configuration-baseline/product-baseline`；本轮截图还确认文档基线、适用性和发布包的同类操作区重叠。
 - **实际**：DOM 中刷新 `x=1039..1120` 与搜索 `x=1009..1090` 重叠；重置 `x=1102..1183` 与基线对比 `x=1140..1249` 重叠。
 - **影响**：P2，默认桌面视口下操作区挤压并存在误点击风险。
 - **证据**：[产品基线工具栏重叠](evidence/2026-10-12-codex-plm-baseline-followup/baseline-search-actions-overlap.png)。
-- **状态**：待修复。
+- **最新复测**：2026-10-12 12:25 发布后的本轮回归仍复现。1280px 视口下 `搜索` 为 `x=1009..1090`，`刷新` 为 `x=1039..1120`，两者重叠 51px；`重置` 为 `x=1102..1183`，与 `基线对比` `x=1140..1249` 重叠 43px。
+- **同类范围**：文档基线的查询/重置覆盖恢复选择/冻结操作，适用性的查询/重置覆盖刷新/详情操作，发布包的查询/重置覆盖恢复选择/内容校验/下发操作。前三条零结果修复只清空数据及禁用目标，没有解决这些操作区布局。
+- **证据**：[发布后仍重叠](evidence/2026-10-12-codex-plm-baseline-followup/product-baseline-overlap-after-production.jpg)。
+- **同类证据**：[文档基线](evidence/2026-10-12-codex-plm-baseline-release/bug127-empty-cleared.jpg)、[适用性](evidence/2026-10-12-codex-plm-baseline-release/bug128-empty-cleared.jpg)、[发布包](evidence/2026-10-12-codex-plm-baseline-release/bug129-empty-cleared.jpg)。
+- **状态**：打回。
 
 ### Bug 127：文档基线无结果时仍保留旧快照和冻结对象
 
@@ -1095,7 +1105,10 @@
 - **实际**：关键字无匹配后主列表为“暂无数据”，右侧仍显示 `DBL-202605-006`、42 个文档、`DWG-CAB-220` / `SPEC-CAB-QA`，且“冻结文档基线”仍可用。
 - **影响**：P1，筛选结果与详情/操作目标不一致。
 - **证据**：[初始详情](evidence/2026-10-12-codex-plm-baseline-followup/document-baseline-static-list.png)、[零结果旧详情](evidence/2026-10-12-codex-plm-baseline-followup/document-baseline-empty-stale-detail.png)。
-- **状态**：待修复。
+- **修复**：Web `6b5e7673d53576089d32ff4e0dff3662977d8545` 在筛选无结果时清空选择、快照、引用对象及冻结操作目标。
+- **最新复测**：2026-10-12 12:25 发布后的本轮回归，输入无匹配关键字后列表、文档快照、版本差异和引用对象均为空，“冻结文档基线”禁用。仅验证零结果同步，不代表真实冻结或服务端持久化流程已验证。
+- **证据**：[发布后零结果已清空](evidence/2026-10-12-codex-plm-baseline-release/bug127-empty-cleared.jpg)。
+- **状态**：已验证。
 
 ### Bug 128：适用性查询无结果时仍保留旧命中范围和下游影响
 
@@ -1103,7 +1116,10 @@
 - **实际**：关键字无匹配后零部件版本和 EBOM 列表均为 0，但右侧仍显示旧的 `MAT-ERP-RM-001`、`RELEASED`、`EBOM-MAT-ERP-FG-001-A` 和下游处理建议。
 - **影响**：P1，筛选条件与详情不一致，可能误判当前命中对象。
 - **证据**：[零结果旧详情](evidence/2026-10-12-codex-plm-baseline-followup/effectivity-empty-stale-detail.png)。
-- **状态**：待修复。
+- **修复**：Web `6b5e7673d53576089d32ff4e0dff3662977d8545` 按筛选结果同步边界对象、统计、下游影响和动作入口。
+- **最新复测**：2026-10-12 12:25 发布后的本轮回归，输入无匹配关键字后零部件版本、EBOM、已关联产品和下游影响均为 0，命中范围显示“请选择一个边界对象”，查看详情按钮禁用。
+- **证据**：[发布后零结果已清空](evidence/2026-10-12-codex-plm-baseline-release/bug128-empty-cleared.jpg)。
+- **状态**：已验证。
 
 ### Bug 129：发布包查询无结果时仍保留旧发布包内容和下发信息
 
@@ -1111,4 +1127,25 @@
 - **实际**：关键字无匹配后主列表为“暂无数据”，右侧仍显示 `PKG-202605-004`、内容校验“通过”、审批“已批准”、基线/文档/BOM/工艺明细和 `MES, ERP` 下发目标；“内容校验”和“下发”仍可用。
 - **影响**：P1，存在对不可见旧发布包误校验或误下发的风险。
 - **证据**：[零结果旧详情](evidence/2026-10-12-codex-plm-baseline-followup/release-package-empty-stale-detail.png)。
+- **修复**：Web `6b5e7673d53576089d32ff4e0dff3662977d8545` 在筛选无结果时清空发布包、内容集合、审批下发信息并禁用操作。
+- **最新复测**：2026-10-12 12:25 发布后的本轮回归，输入无匹配关键字后发布包列表、内容集合和审批下发信息均为空，“内容校验”和“下发”均禁用。仅验证零结果同步，不代表真实校验、审批或下发流程已验证。
+- **证据**：[发布后零结果已清空](evidence/2026-10-12-codex-plm-baseline-release/bug129-empty-cleared.jpg)。
+- **状态**：已验证。
+
+### Bug 130：基线对比未取得有效对象时静默显示零差异
+
+- **页面**：`/plm/configuration-baseline/baseline-compare`
+- **级别**：P1，结果可信性问题。
+- **复现**：
+  1. 从产品基线进入基线对比页，或打开带 `baseBaselineId=1` 的对比页。
+  2. 将“基准基线”输入为 `999`，将“目标基线”输入为 `888`。
+  3. 点击“开始对比”。
+- **实际**：
+  - 页面没有提示基线不存在、无权限或不可比较。
+  - 两侧基线名称和编号均显示 `-`，差异总数、新增、变更、移除、阻塞全部显示 `0`。
+  - 页面只提供自由文本 ID 输入，没有当前租户可选基线列表；用户必须知道内部数据库 ID。
+- **影响**：用户可能把对象无效或接口未返回数据误判为两个基线没有差异，并无法从页面发现输入错误。
+- **证据边界**：已确认 `999/888` 查询后两侧没有有效对象、没有错误说明却显示零差异；未读取数据库或完整接口响应，不将“数据库中不存在这两个 ID”或“接口返回成功”作为已验证前提。
+- **预期**：从当前租户有效基线中选择基准和目标；提交前校验 ID 存在、属于当前租户且可比较；无效输入显示明确错误，不展示可被误解为有效的零差异结果。
+- **证据**：[无效 ID 静默空结果](evidence/2026-10-12-codex-plm-baseline-followup/baseline-compare-invalid-id-empty.jpg)。
 - **状态**：待修复。
