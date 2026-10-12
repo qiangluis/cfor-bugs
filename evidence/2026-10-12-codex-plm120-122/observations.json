@@ -1,0 +1,127 @@
+{
+  "observedAt": "2026-10-12T08:56:18+08:00",
+  "environment": {
+    "url": "https://jixu-ai.com",
+    "browser": "Codex In-app Browser",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "tenantEvidence": "The authenticated session displays the portal brand 即序科技; no legal tenant identity was inferred from the brand."
+  },
+  "bug120": {
+    "title": "PLM 三栏工作区横向溢出，右侧业务区默认不可见",
+    "pages": [
+      {
+        "path": "/plm/document-cad/preview-annotation",
+        "layout": "左侧文件树、中间预览、右侧批注"
+      },
+      {
+        "path": "/plm/document-cad/document-iteration",
+        "layout": "左侧版本台账、右侧修订详情"
+      }
+    ],
+    "previewAnnotation": {
+      "loadedFiles": 9,
+      "selectedFile": "ERP-FG-001_gearbox_assembly.dwg",
+      "rightAnnotationPanel": "默认视口只显示右侧边缘，需要水平滚动才能完整查看",
+      "newAnnotationButton": "点击后没有表单、提示、导航或可见交互变化"
+    },
+    "documentIteration": {
+      "loadedRows": 9,
+      "rightRevisionDetail": "默认视口下详情区与主表共同超出内容区，页面需要横向移动才能完整查看"
+    },
+    "classification": "Distinct from Bug 117 functional annotation failure and Bug 119 drawing-compare toolbar clipping; this is the shared PLM workspace width/layout defect."
+  },
+  "bug121": {
+    "title": "EBOM 结构表字段错位，单位列显示数据库 ID",
+    "path": "/plm/engineering-bom/ebom",
+    "bom": "EBOM-MAT-ERP-FG-001-A",
+    "product": "MAT-ERP-FG-001 / 标准成品",
+    "headers": [
+      "行号 / 零部件",
+      "版本",
+      "数量",
+      "单位",
+      "用量类型",
+      "来源图文档",
+      "生效条件",
+      "生效/审批",
+      "变更状态",
+      "下游状态",
+      "替代件",
+      "操作"
+    ],
+    "observedRow": {
+      "lineAndPart": "10 ｜ MAT-ERP-RM-001 / 标准原材料",
+      "revision": "A",
+      "quantity": "1",
+      "unitCell": "2104856930405744642",
+      "lifecycleAndApproval": [
+        "未生效",
+        "待审批"
+      ],
+      "changeStatus": "未变更"
+    },
+    "detailPanel": {
+      "part": "MAT-ERP-RM-001 / A",
+      "usageText": "1 2104856930405744642",
+      "applicability": "-",
+      "sourceDocument": "-",
+      "substitute": "-"
+    },
+    "classification": "The visible row has fewer populated values than the declared columns; the unit position exposes a numeric identifier and the detail panel concatenates quantity with the same identifier."
+  },
+  "bug122": {
+    "title": "BOM 版本对比页面使用固定演示差异，忽略输入版本",
+    "path": "/plm/engineering-bom/bom-compare",
+    "initialInputs": {
+      "baseVersionId": 1,
+      "targetVersionId": 1
+    },
+    "modifiedInputs": {
+      "baseVersionId": 999,
+      "targetVersionId": 888
+    },
+    "action": "点击“生成差异”",
+    "result": {
+      "differenceCount": 2,
+      "highRiskCount": 1,
+      "rows": [
+        {
+          "level": "1.2",
+          "parent": "整机上盖",
+          "child": "PLM-FASTENER-08 / 内六角螺钉",
+          "changeType": "用量变更",
+          "oldValue": "4 PCS",
+          "newValue": "6 PCS",
+          "risk": "中"
+        },
+        {
+          "level": "2.1",
+          "parent": "电气组件",
+          "child": "PLM-WIRE-12 / 线束组件",
+          "changeType": "替代件变更",
+          "oldValue": "A 供应商",
+          "newValue": "B 供应商",
+          "risk": "高"
+        }
+      ],
+      "visibleValidation": "输入不存在的版本 ID 后仍无错误提示、空结果提示或请求失败提示，固定差异仍保留"
+    },
+    "classification": "The page presents production-looking comparison results before a valid comparison and does not refresh them after changing the version IDs."
+  },
+  "normalChecks": {
+    "documentIteration": "9 records loaded; selected CAD revision detail displayed",
+    "ebom": "1 BOM record and 1 structure row loaded",
+    "bomCompare": "Page and controls loaded"
+  },
+  "safety": {
+    "productionDataWritten": false,
+    "filesUploaded": false,
+    "filesDownloaded": false,
+    "formsSaved": false,
+    "databaseChanged": false,
+    "deploymentPerformed": false
+  }
+}
