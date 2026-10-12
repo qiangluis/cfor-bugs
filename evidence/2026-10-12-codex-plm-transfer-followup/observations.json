@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-12",
+  "environment": "https://jixu-ai.com",
+  "tenantLabel": "即序科技",
+  "accountScope": "production admin session",
+  "pages": [
+    {
+      "name": "转产准备",
+      "result": "empty",
+      "actions": ["open", "inspect empty state"]
+    },
+    {
+      "name": "下发包",
+      "result": "empty",
+      "actions": ["open", "query CODEX-NO-MATCH-20261012", "reset"]
+    },
+    {
+      "name": "试量产订单",
+      "result": "empty",
+      "actions": ["open", "inspect disabled release entry"]
+    },
+    {
+      "name": "量产导入",
+      "result": "static-looking launch rows",
+      "rows": [
+        "ML-202605-012 / PRD-RUB-310",
+        "ML-202605-009 / PRD-SEAL-120",
+        "ML-202605-006 / PRD-COAT-08"
+      ],
+      "actions": ["open", "open release drawer", "select options", "cancel"]
+    },
+    {
+      "name": "生产反馈",
+      "result": "empty",
+      "actions": ["open"]
+    },
+    {
+      "name": "质量反馈",
+      "result": "empty",
+      "actions": ["switch segmented mode"]
+    },
+    {
+      "name": "回研清单",
+      "result": "empty",
+      "actions": ["switch segmented mode"]
+    }
+  ],
+  "safety": {
+    "submittedProductionWrites": false,
+    "executedRelease": false,
+    "executedMesDispatch": false,
+    "changedProductionConfig": false
+  },
+  "evidence": [
+    "evidence/2026-10-12-codex-plm-transfer-followup-mass-launch.png",
+    "evidence/2026-10-12-codex-plm-transfer-followup/release-hold-form.png"
+  ]
+}
