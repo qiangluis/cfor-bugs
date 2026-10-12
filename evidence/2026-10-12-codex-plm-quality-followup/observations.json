@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-12T14:00:00+08:00",
+  "environment": "production",
+  "url": "https://jixu-ai.com/plm/quality-validation/quality-item",
+  "viewport": "1280x720",
+  "evidenceLevel": "Visible production UI and local source inspection; no valid production record saved",
+  "observations": [
+    {
+      "bug": 135,
+      "production": "Three inspection items and fixed reference/impact labels visible",
+      "source": "itemRows literal; create/import handlers mutate in-memory array without API",
+      "notVerified": "Production save, import, refresh after save, database writes"
+    },
+    {
+      "bug": 136,
+      "query": "CODEX-NO-MATCH-20261012",
+      "list": "暂无数据",
+      "detail": "QI-TEN-001 / 拉伸强度 / MPa / DEV-LAB-012 remains visible after scrolling"
+    },
+    {
+      "bug": 137,
+      "action": "Open create form; change category from 物性 to 尺寸; cancel",
+      "category": "尺寸",
+      "unit": "MPa",
+      "code": "QI-物-004",
+      "device": "万能拉力机能力模板",
+      "notVerified": "Save or downstream quality decision"
+    }
+  ]
+}
