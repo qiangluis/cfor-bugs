@@ -1,5 +1,12 @@
 # 修复日志
 
+## 2026-10-12 CRM 公共池续测
+
+- 新增 Bug 151：生产公共池点击“新增客户”直接提示“公共池手工新增接口尚未接入，当前未提交数据”，没有可提交的新增流程。
+- 已保存生产浏览器证据：[customer-public-pool-add-not-wired.png](evidence/2026-10-12-codex-browser-continuation-151/customer-public-pool-add-not-wired.png)。
+- 源码确认 `openCreate()` 只有告警，没有 API 调用、表单或保存回查。现有普通客户创建接口要求负责人并建立私海权限，不能未经确认直接复用为公共池创建。
+- 本轮未写入生产客户数据，未修改 CFOR 产品仓库、数据库、Flyway、生产配置或服务。
+
 ## 2026-10-12 12:25 发布后 Codex PLM 基线续测
 
 - Web `6b5e7673d53576089d32ff4e0dff3662977d8545` 已从当前主工作目录完整构建并发布到 `root@aliCfor`，发布包为 `web-plm108-20261012122522-94256ec57`。
