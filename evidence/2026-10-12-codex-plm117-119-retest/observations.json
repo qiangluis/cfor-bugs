@@ -1,0 +1,68 @@
+{
+  "observedAt": "2026-10-12T08:27:00+08:00",
+  "environment": {
+    "url": "https://jixu-ai.com",
+    "pages": [
+      "/plm/document-cad/preview-annotation",
+      "/plm/document-cad/document-library",
+      "/plm/document-cad/drawing-compare",
+      "/plm/document-cad/cad-library",
+      "/plm/document-cad/revision-iteration"
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "tenantEvidence": "The current session displays the portal brand 即序科技; no tenant identity was inferred from the brand."
+  },
+  "bug33": {
+    "document": "ERP-FG-001_release_checklist.xlsx",
+    "action": "点击检查预览",
+    "result": "未获取到在线预览文件时，请确认文件转换服务配置；当前可下载原文件查看"
+  },
+  "bug117": {
+    "selectedFile": "ERP-FG-001_gearbox_assembly.dwg",
+    "annotationCount": 3,
+    "annotationTexts": [
+      "安装孔标注与 EBOM 子件规格不一致，需要设计确认。",
+      "剖面尺寸已按评审意见修订，等待版本签入。",
+      "图纸标题栏版本号需与当前版本台账保持一致。"
+    ],
+    "newAnnotation": "点击后没有弹窗、表单、提示或导航变化"
+  },
+  "bug118": {
+    "selection": {
+      "left": "DRW-AXLE-001 / A.2",
+      "right": "DRW-AXLE-001 / B.2"
+    },
+    "generateDiffToast": "已按当前双版本生成差异清单",
+    "firstDiffRow": {
+      "object": "DRW-AXLE-001.pdf",
+      "oldValue": "A.2",
+      "newValue": "B.1"
+    },
+    "exportedFile": "evidence/2026-10-12-codex-plm117-119-retest/drawing-compare-A.2-to-B.2.txt",
+    "exportedFirstDiff": "A.2 -> B.1"
+  },
+  "bug119": {
+    "viewportWidth": 1280,
+    "exportButtonRight": 1309,
+    "accessibleNames": [
+      ">生成差异",
+      ">导出报告"
+    ]
+  },
+  "normalChecks": {
+    "drawingLibraryRowsAfterWait": 2,
+    "cadLibraryRowsAfterWait": 2,
+    "revisionIterationRowsAfterWait": 9,
+    "revisionDetailSwitch": "切换版本台账记录后右侧修订详情更新"
+  },
+  "safety": {
+    "productionDataWritten": false,
+    "filesUploaded": false,
+    "documentConverted": false,
+    "databaseChanged": false,
+    "deploymentPerformed": false
+  }
+}
