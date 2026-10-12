@@ -1,0 +1,90 @@
+{
+  "observedAt": "2026-10-12T08:09:56+08:00",
+  "environment": {
+    "url": "https://jixu-ai.com",
+    "pages": [
+      "/plm/document-cad/preview-annotation",
+      "/plm/document-cad/drawing-compare"
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "tenantEvidence": "The current session displays the portal brand 即序科技; no tenant identity was inferred from the brand."
+  },
+  "bug117": {
+    "filesVisible": 9,
+    "selectedFile": "ERP-FG-001_gearbox_assembly.dwg",
+    "annotationTexts": [
+      "安装孔标注与 EBOM 子件规格不一致，需要设计确认。",
+      "剖面尺寸已按评审意见修订，等待版本签入。",
+      "图纸标题栏版本号需与当前版本台账保持一致。"
+    ],
+    "newAnnotationButton": {
+      "visibleToDom": true,
+      "boundingBox": {
+        "x": 1280,
+        "y": 123,
+        "width": 109,
+        "height": 32,
+        "right": 1389
+      },
+      "viewportWidth": 1280,
+      "clickResult": "No dialog, toast, navigation, or form appeared."
+    },
+    "sourceEvidence": {
+      "path": "cfor-admin-vue3/src/views/plm/document-cad/preview-annotation/index.vue",
+      "signals": [
+        "annotationRows is a module-level fixed array.",
+        "The 新增批注 button has no click handler."
+      ]
+    }
+  },
+  "bug118": {
+    "initialSelection": {
+      "left": "DRW-AXLE-001 / A.2",
+      "right": "DRW-AXLE-001 / B.1"
+    },
+    "afterChangingLeft": {
+      "left": "DRW-AXLE-001 / A.1",
+      "right": "DRW-AXLE-001 / B.1",
+      "firstDiffRow": {
+        "oldValue": "A.2",
+        "newValue": "B.1"
+      }
+    },
+    "generateDiffResult": "Toast only: 已按当前双版本生成差异清单",
+    "sourceEvidence": {
+      "path": "cfor-admin-vue3/src/views/plm/document-cad/drawing-compare/index.vue",
+      "signals": [
+        "diffRows is a fixed module-level array.",
+        "generateDiff only calls ElMessage.success and no API."
+      ]
+    }
+  },
+  "bug119": {
+    "buttons": {
+      "generateDiff": {
+        "x": 1050.640625,
+        "right": 1167.8203125,
+        "accessibleName": ">生成差异"
+      },
+      "exportReport": {
+        "x": 1191.8203125,
+        "right": 1309,
+        "accessibleName": ">导出报告"
+      }
+    },
+    "documentWidth": 1280,
+    "bodyWidth": 1280,
+    "visualResult": "导出报告按钮被默认视口右边界裁切"
+  },
+  "safety": {
+    "productionDataWritten": false,
+    "filesUploaded": false,
+    "exportsDownloaded": false,
+    "databaseChanged": false,
+    "deploymentPerformed": false
+  }
+}
+
