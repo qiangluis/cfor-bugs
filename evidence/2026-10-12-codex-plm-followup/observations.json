@@ -1,0 +1,80 @@
+{
+  "observationDate": "2026-10-12",
+  "timezone": "Asia/Shanghai",
+  "observationWindow": "09:20-09:52",
+  "method": "Authenticated production browser navigation, screenshots and read-only DOM inspection; no direct API calls.",
+  "environment": {
+    "url": "https://jixu-ai.com",
+    "browser": "Codex In-app Browser",
+    "tenantEvidence": "Portal brand is 即序科技; tenant legal identity and role scope were not inferred from branding."
+  },
+  "bug121": {
+    "path": "/plm/engineering-bom/ebom",
+    "bom": "EBOM-MAT-ERP-FG-001-A",
+    "headers": [
+      "行号 / 零部件",
+      "版本",
+      "数量",
+      "单位",
+      "用量类型",
+      "来源图文档",
+      "生效条件",
+      "生效/审批",
+      "变更状态",
+      "下游状态",
+      "替代件",
+      "操作"
+    ],
+    "bodyCells": [
+      "10 ｜ MAT-ERP-RM-001标准原材料",
+      "A",
+      "1",
+      "2104856930405744642",
+      "",
+      "",
+      "",
+      "未生效 待审批",
+      "未变更",
+      "",
+      "",
+      "编辑加子项删除"
+    ],
+    "headerCellCount": 12,
+    "bodyCellCount": 12,
+    "correction": "Unit ID display is confirmed. Empty DOM cells were omitted from AX output; a column-count mismatch was not proven.",
+    "partMaster": [
+      {
+        "partNo": "MAT-ERP-RM-001",
+        "unitText": "2104856930405744642"
+      },
+      {
+        "partNo": "MAT-ERP-FG-001",
+        "unitText": "2104856930384773121"
+      }
+    ],
+    "screenshots": [
+      "part-master-unit-id.jpg",
+      "ebom-unit-id.jpg"
+    ]
+  },
+  "bug123": {
+    "path": "/plm/product-part/product-ledger",
+    "productNo": "MES-PROD-ERP-FG-001",
+    "productName": "标准成品",
+    "listFamilyAndModel": "2104856930414133251 / FG-001",
+    "overviewFamily": "2104856930414133251",
+    "persistedAcrossReload": true,
+    "screenshots": [
+      "product-ledger-family-id.jpg",
+      "product-family-id.jpg"
+    ]
+  },
+  "safety": {
+    "productionBusinessDataWritten": false,
+    "formsSaved": false,
+    "filesUploaded": false,
+    "filesDownloaded": false,
+    "deploymentPerformed": false,
+    "permissionChanges": false
+  }
+}

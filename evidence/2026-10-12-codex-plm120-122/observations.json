@@ -1,5 +1,12 @@
 {
   "observedAt": "2026-10-12T08:56:18+08:00",
+  "catalogCorrection": {
+    "date": "2026-10-12",
+    "originalLocalBug120": "Renumbered to Bug 124; remote Bug 120 belongs to Muse's OA create-page report.",
+    "laterDomInspection": "../2026-10-12-codex-plm-followup/observations.json",
+    "bug121Correction": "Column misalignment was not proven; later DOM inspection found 12 header cells and 12 body cells.",
+    "bug122Correction": "The changed input IDs were not independently verified as nonexistent."
+  },
   "environment": {
     "url": "https://jixu-ai.com",
     "browser": "Codex In-app Browser",
@@ -57,8 +64,6 @@
       "revision": "A",
       "quantity": "1",
       "unitCell": "2104856930405744642",
-      "headerCellCount": 12,
-      "dataCellCount": 12,
       "lifecycleAndApproval": [
         "未生效",
         "待审批"
@@ -109,7 +114,7 @@
           "risk": "高"
         }
       ],
-      "visibleValidation": "输入不存在的版本 ID 后仍无错误提示、空结果提示或请求失败提示，固定差异仍保留"
+      "visibleValidation": "变更版本 ID 后仍无错误提示、空结果提示或请求失败提示，固定差异仍保留；本轮没有独立验证这些 ID 是否存在"
     },
     "classification": "The page presents production-looking comparison results before a valid comparison and does not refresh them after changing the version IDs."
   },
