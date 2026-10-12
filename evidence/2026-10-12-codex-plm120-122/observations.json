@@ -9,7 +9,7 @@
     },
     "tenantEvidence": "The authenticated session displays the portal brand 即序科技; no legal tenant identity was inferred from the brand."
   },
-  "bug120": {
+  "bug124": {
     "title": "PLM 三栏工作区横向溢出，右侧业务区默认不可见",
     "pages": [
       {
@@ -31,10 +31,10 @@
       "loadedRows": 9,
       "rightRevisionDetail": "默认视口下详情区与主表共同超出内容区，页面需要横向移动才能完整查看"
     },
-    "classification": "Distinct from Bug 117 functional annotation failure and Bug 119 drawing-compare toolbar clipping; this is the shared PLM workspace width/layout defect."
+    "classification": "Distinct from Bug 117 functional annotation failure and Bug 119 drawing-compare toolbar clipping; this is the shared PLM workspace width/layout defect. The original local number 120 was remapped to 124 because Muse already owns remote Bug 120."
   },
   "bug121": {
-    "title": "EBOM 结构表字段错位，单位列显示数据库 ID",
+    "title": "EBOM 结构表单位显示数据库 ID",
     "path": "/plm/engineering-bom/ebom",
     "bom": "EBOM-MAT-ERP-FG-001-A",
     "product": "MAT-ERP-FG-001 / 标准成品",
@@ -57,6 +57,8 @@
       "revision": "A",
       "quantity": "1",
       "unitCell": "2104856930405744642",
+      "headerCellCount": 12,
+      "dataCellCount": 12,
       "lifecycleAndApproval": [
         "未生效",
         "待审批"
@@ -70,7 +72,7 @@
       "sourceDocument": "-",
       "substitute": "-"
     },
-    "classification": "The visible row has fewer populated values than the declared columns; the unit position exposes a numeric identifier and the detail panel concatenates quantity with the same identifier."
+    "classification": "The unit position exposes a numeric identifier and the detail panel concatenates quantity with the same identifier. DOM inspection confirmed 12 header cells and 12 data cells; a column-count mismatch was not proven."
   },
   "bug122": {
     "title": "BOM 版本对比页面使用固定演示差异，忽略输入版本",

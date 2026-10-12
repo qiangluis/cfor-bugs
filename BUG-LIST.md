@@ -983,6 +983,70 @@
 - **证据**：[结构化浏览器观察](evidence/2026-10-12-codex-plm117-119/observations.json)。
 - **状态**：待修复。
 
+## 二十二、2026-10-12 Codex PLM 产品族与单位字段续测（09:20–09:42）
+
+### Bug 121：PLM 多页面把单位内部 ID 直接展示给用户
+
+- **模块**：研发 → 产品与零部件 / 工程 BOM
+- **级别**：P1，工程人员无法可靠识别物料单位，可能误读用量。
+- **页面**：
+  - `/plm/product-part/part-master`
+  - `/plm/engineering-bom/ebom`
+  - `/plm/engineering-bom/product-structure`
+  - `/plm/engineering-bom/ebom-to-mbom`
+  - `/plm/engineering-bom/release-production-bom`
+- **生产复现**：
+  - 零部件主数据 `MAT-ERP-RM-001 / 标准原材料` 的单位显示 `2104856930405744642`。
+  - 零部件主数据 `MAT-ERP-FG-001 / 标准成品` 的单位显示 `2104856930384773121`。
+  - 设计 BOM `EBOM-MAT-ERP-FG-001-A` 的结构行 `MAT-ERP-RM-001` 单位显示 `2104856930405744642`，详情用量显示为 `1 2104856930405744642`。
+- **证据**：[零部件主数据单位 ID](evidence/2026-10-12-codex-plm-followup/part-master-unit-id.jpg)、[设计 BOM 单位 ID](evidence/2026-10-12-codex-plm-followup/ebom-unit-id.jpg)、[结构化观察](evidence/2026-10-12-codex-plm120-122/observations.json)。
+- **纠偏**：本轮只读 DOM 核对确认 EBOM 表头和数据行实际都是 12 列，未证明存在列数错位；问题明确收敛为单位字段未做名称映射及数量/单位拼接不可读。
+- **修复要求**：统一使用单位字典/名称映射，覆盖 PLM API、详情、列表、Job 初始化和新租户初始化；不能只给当前生产库做显示补丁，也不能用内部 ID 作为回退展示值。
+- **状态**：待修复。
+
+### Bug 122：BOM 版本对比输入不存在时仍展示固定差异
+
+- **模块**：研发 → 工程 BOM → BOM 版本对比
+- **级别**：P1，版本评审结果不可信。
+- **页面**：`/plm/engineering-bom/bom-compare`
+- **复现**：将“基准版本 ID”改为 `999`、“目标版本 ID”改为 `888`，点击“生成差异”。
+- **实际**：仍显示差异数 `2`、高风险 `1`，并保留 `PLM-FASTENER-08` 用量 `4 PCS → 6 PCS`、`PLM-WIRE-12` 替代件 `A 供应商 → B 供应商` 两条固定差异；无版本不存在、空结果或失败提示。
+- **证据**：[PLM BOM 120–122 结构化观察](evidence/2026-10-12-codex-plm120-122/observations.json)、[原始续测报告](reports/2026-10-12-codex-plm120-122.md)。
+- **修复要求**：只在两个有效且可比较的版本校验通过后展示结果；差异、风险、处置建议和导出内容必须绑定本次输入，不得使用固定演示数组。
+- **状态**：待修复。
+
+### Bug 123：产品台账产品族展示内部数据库 ID
+
+- **模块**：研发 → 产品与零部件 → 产品台账
+- **级别**：P1，产品分类信息不可读，影响检索、结构追溯和工程判断。
+- **页面**：`/plm/product-part/product-ledger`
+- **复现**：
+  1. 打开产品台账。
+  2. 查看 `MES-PROD-ERP-FG-001 / 标准成品`。
+  3. 查看列表“产品族 / 型号”和点击“概览”后的“产品族”。
+  4. 刷新页面后再次查看。
+- **实际**：
+  - 列表“产品族 / 型号”显示 `2104856930414133251 / FG-001`。
+  - 产品概览“产品族”显示 `2104856930414133251`。
+  - 刷新后仍复现，没有可读的产品族名称。
+- **证据**：[产品台账列表产品族 ID](evidence/2026-10-12-codex-plm-followup/product-ledger-family-id.jpg)、[产品概览产品族 ID](evidence/2026-10-12-codex-plm-followup/product-family-id.jpg)、[本轮报告](reports/2026-10-12-codex-plm-followup.md)。
+- **修复要求**：核对产品族名称的正式事实源和 ID 映射，覆盖列表、概览、筛选、产品结构及下游页面；同时修复生产同步/初始化 Job 的错误来源数据，但不能覆盖用户手工维护的产品族，也不能只修当前租户。
+- **源码线索（非生产运行证明）**：本地 `PlmCoreDataFlowGenerateJob` 与 `BusinessSimulationPlmStageService` 的 `categoryName()` 将物料 `categoryId` 原样作为产品族写入；`MesBasMaterial.categoryId` 关联 `mes_bas_material_category.name`，需核对名称映射及更新分支。
+- **状态**：待修复。
+
+### Bug 124：PLM 三栏工作区横向溢出，右侧业务区默认不可见
+
+- **模块**：研发 → 图文档与 CAD
+- **级别**：P2，默认桌面视口下右侧业务区不可完整操作。
+- **页面**：
+  - `/plm/document-cad/preview-annotation`
+  - `/plm/document-cad/document-iteration`
+- **实际**：在线预览页左侧文件树、中间预览、右侧批注总宽超出内容区；版本与迭代页主表和右侧修订详情也需要横向移动才能完整查看。
+- **证据**：[原始 PLM 工作区观察](evidence/2026-10-12-codex-plm120-122/observations.json)、[编号更正报告](reports/2026-10-12-codex-plm120-122.md)。
+- **编号说明**：原始本地报告使用 120，但远端 Bug 120 已由 Muse 用于 OA 发起流程持续加载失败；为避免覆盖协作方条目，本问题固定使用 Bug 124。
+- **修复要求**：覆盖共享 PLM 工作区布局，在 1280×720 默认视口完整展示文件选择、预览、批注摘要、修订详情和主要动作；与 Bug 117 批注功能、Bug 119 对比页按钮裁切分开验收。
+- **状态**：待修复。
+
 ### Bug 118：图纸版本对比切换版本后差异表不重新计算
 
 - **路径 / 级别**：`/plm/document-cad/drawing-compare`，P1。
