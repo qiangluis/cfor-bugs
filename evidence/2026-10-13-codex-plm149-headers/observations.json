@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-13",
+  "observedAt": "2026-10-13 21:03 Asia/Shanghai",
+  "bug": 149,
+  "status": "Code fixed, pending deployment",
+  "webCommit": "6aec3cfc8",
+  "scope": "Restore shared configuration panel headings without changing global ContentWrap or business behavior.",
+  "regression": {
+    "current": {
+      "command": "node --test tests/plmConfigHeaders.test.mjs tests/searchCollapse.test.mjs",
+      "passed": 19,
+      "failed": 0,
+      "configEntryPoints": 12
+    },
+    "preFix": {
+      "readOnlyGitRef": "7c9625734",
+      "passed": 1,
+      "failed": 12,
+      "expectedFailure": true,
+      "failure": "All configuration pages rendered zero card headers instead of two."
+    },
+    "checks": [
+      "Targeted ESLint passed",
+      "New-file Prettier passed",
+      "Git diff check passed"
+    ]
+  },
+  "localBrowser": {
+    "url": "http://127.0.0.1:9151/tests/fixtures/config-headers.html",
+    "backendRequests": "All requests rejected by fixture adapter; no production API access or persistence.",
+    "observations": [
+      {
+        "page": "sharing",
+        "viewport": { "width": 1280, "height": 720 },
+        "mainHeader": "共享对象",
+        "subtitle": "页面直接消费真实配置接口",
+        "sideHeader": "联动动作",
+        "mainClientWidth": 804,
+        "mainScrollWidth": 804,
+        "sideClientWidth": 358,
+        "sideScrollWidth": 358,
+        "screenshot": "sharing-1280.jpg"
+      },
+      {
+        "page": "notifications",
+        "viewport": { "width": 1280, "height": 720 },
+        "mainHeader": "通知规则",
+        "subtitle": "不再显示静态通知投递样板",
+        "sideHeader": "联动动作",
+        "mainClientWidth": 804,
+        "mainScrollWidth": 804,
+        "sideClientWidth": 358,
+        "sideScrollWidth": 358,
+        "screenshot": "notifications-1280.jpg"
+      },
+      {
+        "page": "cad",
+        "viewport": { "width": 1024, "height": 720 },
+        "mainHeader": "CAD 源与转换链路",
+        "subtitle": "配置对象、引用范围和生效条件来自真实配置接口",
+        "sideHeader": "联动动作",
+        "mainClientWidth": 1014,
+        "mainScrollWidth": 1014,
+        "sideClientWidth": 1014,
+        "sideScrollWidth": 1014,
+        "documentWidth": 1016,
+        "screenshot": "cad-1024.jpg"
+      },
+      {
+        "page": "cad",
+        "viewport": { "width": 390, "height": 844 },
+        "mainHeader": "CAD 源与转换链路",
+        "subtitle": "配置对象、引用范围和生效条件来自真实配置接口",
+        "sideHeader": "联动动作",
+        "mainClientWidth": 380,
+        "mainScrollWidth": 380,
+        "sideClientWidth": 380,
+        "sideScrollWidth": 380,
+        "documentWidth": 382,
+        "screenshot": "cad-390.jpg"
+      }
+    ],
+    "viewportRestored": true
+  },
+  "production": {
+    "url": "https://jixu-ai.com/login?redirect=/index",
+    "visibleForm": "登录",
+    "businessTesting": "User must restore the authorized test-tenant login.",
+    "deployed": false
+  },
+  "boundaries": [
+    "No production database writes, Flyway changes, runtime configuration changes, permissions changes or service restarts.",
+    "No shared authorization, notification subscription or delivery action.",
+    "Bug 147 and Bug 148 functional gaps remain unresolved.",
+    "Local rendering is not evidence of production release, new-tenant initialization, persistence or non-admin access."
+  ]
+}
