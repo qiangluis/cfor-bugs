@@ -67,6 +67,16 @@
       "action": "Open the mobile-login tab.",
       "result": "The mobile-login form opened with tenant, mobile number, verification code, login, and return controls.",
       "boundary": "No mobile number or verification code was entered."
+    },
+    {
+      "action": "Click the Feishu login button.",
+      "result": "The official Feishu QR login page opened and displayed a QR code.",
+      "boundary": "The QR code was not scanned and no Feishu account was entered."
+    },
+    {
+      "action": "Click the WeChat login button.",
+      "result": "The in-page WeChat login dialog loaded a QR code for mobile enterprise WeChat login.",
+      "boundary": "The QR code was not scanned and no WeChat account was authorized."
     }
   ],
   "sideEffects": [
