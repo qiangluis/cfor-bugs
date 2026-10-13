@@ -79,6 +79,37 @@
       "boundary": "The QR code was not scanned and no WeChat account was authorized."
     }
   ],
+  "localRegression": {
+    "observedAt": "2026-10-13 20:52 Asia/Shanghai",
+    "codeFixCommit": "42ce49f76",
+    "testCommit": "7c9625734",
+    "testFile": "scripts/tests/login-registration-state.test.mjs",
+    "currentSource": {
+      "passed": 11,
+      "failed": 0
+    },
+    "preFixSource": {
+      "readOnlyGitRef": "42ce49f76^",
+      "passed": 6,
+      "failed": 5,
+      "expectedFailure": true,
+      "meaning": "Registration-state assertions detect the original defect; the working tree was not replaced."
+    },
+    "realLocalBrowser": {
+      "origin": "http://127.0.0.1:9151",
+      "directRegistrationUrl": "创建企业账号",
+      "reloadRegistrationUrl": "创建企业账号",
+      "singleClickFromLogin": "创建企业账号",
+      "screenshot": "local-first-click-register.jpg",
+      "boundary": "Existing dev server reused without restart. No registration fields, verification request, or submission."
+    },
+    "checks": ["Targeted ESLint passed", "Test-file Prettier passed", "Git diff check passed"],
+    "production": {
+      "url": "https://jixu-ai.com/login?mode=register",
+      "visibleForm": "登录",
+      "status": "Code fixed, pending deployment; production business testing requires the user to restore login."
+    }
+  },
   "sideEffects": [
     "No username or password was entered.",
     "No email, phone number, verification code, or captcha was entered.",
