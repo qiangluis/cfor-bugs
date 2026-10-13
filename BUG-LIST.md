@@ -197,6 +197,7 @@
 - **再次复测**：2026-10-12 05:00，商机 `3612 / ZC-1010-商机001` 当前阶段为“需求确认”，列表预计金额仍为 `¥0.00`。
 - **再次证据**：[CRM 商机预计金额为零](evidence/2026-10-12-codex-browser-followup-0500/crm-opportunity-amount-zero.png)
 - **2026-10-12 Codex 下午观察**：列表商机 `3612`、`3613` 预计金额均为 `¥0.00`；未重新编辑保存，不能据当前值确认写侧仍清零。[金额列截图](evidence/2026-10-12-codex-plm-quality-followup-crm-opportunity-zero.png)。
+- **2026-10-14 福奇科技观察**：商机列表 5 条预计金额均为 `¥0.00`，CRM 工作台也显示商机金额为 0；未编辑或保存，不能据此独立复现持久化清零。[本轮商机与资格统计](evidence/2026-10-13-codex-fuqi-quality-crm/opportunities-five-zero-approved.png)。
 - **状态**：待修复
 
 ### Bug 82：CRM 客户 - 已创建客户在列表/搜索中不显示
@@ -208,6 +209,7 @@
 - **最新证据**：[CRM 工作台客户统计](evidence/2026-10-12-codex-browser/crm-dashboard-private-count.jpg)、[CRM 私海列表为空](evidence/2026-10-12-codex-browser/crm-private-pool-zero.jpg)、[脱敏页面观察](evidence/2026-10-12-codex-browser/crm-dashboard-private-count.json)
 - **再次证据**：[本轮 CRM 私海列表为空](evidence/2026-10-12-codex-browser-followup-0500/crm-private-pool-empty.png)
 - **2026-10-12 Codex 下午观察**：私海列表及五组统计均为 0，同轮商机台账有 2 条关联客户名称的商机；没有核对客户归属、权限或数据库，不由此单独证明客户丢失。[私海列表截图](evidence/2026-10-12-codex-plm-quality-followup-crm-private-pool-empty.png)。
+- **2026-10-13 至 14 福奇科技复测**：同账号 CRM 工作台显示私有客户 6 条，合同客户下拉可列出 6 条并回填 `KH010868 / ZC-1013-客户CRM`；私海列表稳定加载和刷新后，档案总数及全部客户仍为 0。只证明入口口径不一致，未查数据库或据此宣称客户被删除。证据：[工作台 6 条](evidence/2026-10-13-codex-fuqi-quality-crm/crm-workbench-six-private-customers.png)、[私海列表 0 条](evidence/2026-10-13-codex-fuqi-quality-crm/crm-private-pool-still-empty.png)、[合同客户回填](evidence/2026-10-13-codex-fuqi-quality-crm/contract-customer-product-refill.png)。
 - **状态**：待修复
 
 ### Bug 83：CRM 报价单 - 来源商机下拉无数据，创建被阻断
@@ -219,6 +221,7 @@
 - **再次复测**：2026-10-12 05:00，新增报价弹窗可打开，但“来源商机”下拉仍无可选项；客户、商机编号和预计金额未被带入，未保存报价。
 - **再次证据**：[本轮报价来源商机为空](evidence/2026-10-12-codex-browser-followup-0500/crm-quote-source-opportunity-empty.png)
 - **2026-10-12 Codex 下午观察**：新增报价“来源商机”仍显示“无数据”，但同轮商机台账“资格已通过”为 0；本次空下拉不能独立证明过滤错误，需核对原资格是否持久化。未保存报价。[下拉截图](evidence/2026-10-12-codex-plm-quality-followup-crm-quote-source-empty.png)。
+- **2026-10-14 福奇科技观察**：报价新增来源下拉仍为空，同账号商机台账共 5 条、“资格已通过”为 0。未修改资格、保存报价或核对历史资格持久化；不将本次空下拉认定为新增缺陷，也不将其作为原 Bug 已解决或再次复现的证据。[空下拉](evidence/2026-10-13-codex-fuqi-quality-crm/quote-source-empty.png)、[资格统计](evidence/2026-10-13-codex-fuqi-quality-crm/opportunities-five-zero-approved.png)。
 - **状态**：待修复
 
 ### Bug 84：CRM 报价单 - 单价格区间校验异常
@@ -234,6 +237,7 @@
 - **操作**：合同弹窗可开，编号规则正常（HT+日期+流水，如HT20261011001）；客户名称下拉选择
 - **现象**：客户名称下拉"无数据"，无法保存；来源仅支持"手工新增/选择报价"，报价单本身为 0 条
 - **现场证据**：2026-10-11 16:39 CRM 深测
+- **2026-10-13 福奇科技回归**：当前合同客户下拉有 6 条候选，选择 `ZC-1013-客户CRM` 后回填客户编码 `KH010868`、合同名称和签约公司；产品选择回填名称、规格、数量 1、单价 10 和总额 10。仅客户选择与草稿回填已通过，未保存、审批或签署，未核对生产包版本；不能标记合同全流程已验证。历史 CRM Bug 31 仍位于快照，本条不与当前主台账 WMS Bug 31 混用编号。[回填证据](evidence/2026-10-13-codex-fuqi-quality-crm/contract-customer-product-refill.png)。
 - **状态**：待修复
 
 ### Bug 85：CRM 客户 - 预显编码与实际入库编码不一致
@@ -1623,3 +1627,30 @@
 - **状态**：待修复。
 
 - 本轮流转卡工单选择、待检池、质检选单及追溯的实际范围见 [溯源与质检续测报告](reports/2026-10-13-codex-fuqi-trace-quality.md)。未改产品代码、构建、部署或重启服务，未修改历史 Flyway 或生产配置。
+
+## 三十三、2026-10-13 至 14 Codex 福奇科技整改与 CRM 续测
+
+### Bug 167：质量整改责任人必须手输内部用户 ID，没有人员选择入口
+
+- **模块 / 路径**：质检 → 质量整改闭环 → 新增整改单，`/quality/rectification`。
+- **级别**：P2，必填责任人缺少正常业务录入入口。
+- **生产复现**：打开新增整改单，“责任人”为普通文本输入框，提示“责任人用户ID”；点击后仅聚焦输入框，没有按姓名搜索或选择当前租户人员的弹窗、下拉或其他入口。
+- **实际影响**：业务用户需要事先知道内部用户主键才能指定责任人，不能通过姓名完成整改分派。不等同于已证明保存失败、分派给不存在用户或跨租户越权。
+- **源码证据**：Web `src/views/quality/rectification/index.vue:190-191` 使用 `el-input` 直接绑定 `responsibleUserId`，`:321` 只做必填校验，`:359-373` 将表单直接提交。后端 `MesQualityRectificationSaveReqVO.responsibleUserId` 为 `Long @NotNull`；`MesQualityRectificationServiceImpl.resolveUserName():187-193` 按 ID 查询昵称，不提供前端选择入口。
+- **预期 / 租户边界**：复用当前租户有权限的人员查询与选择组件，展示姓名、保留真实 ID；新增和编辑回显都应有效，覆盖新旧租户。服务端需独立校验人员合法性和数据范围，不能仅把 placeholder 改为“姓名”，不能用当前生产用户固定 ID 初始化所有租户。
+- **证据**：[责任人仅输入用户 ID](evidence/2026-10-13-codex-fuqi-quality-crm/rectification-owner-raw-id.png)。
+- **验证边界**：未输入内部 ID、点击确定或保存整改，草稿已取消；未验证后台对非法或跨租户 ID 的处理。此问题与 WMS Bug 155 不同模块，不扩大为同一后端根因。
+- **状态**：待修复。
+
+### Bug 168：合同产品库和明细把内部主键当成产品编码展示
+
+- **模块 / 路径**：客户 → 成交与回款 → 合同管理 → 新增合同 → 产品库选择，`/crm/menu/deal-collection/contract`。
+- **级别**：P2，产品编码展示与业务主数据不一致，长 ID 被截断，难以按编码识别产品。
+- **生产复现**：选择已有客户后打开产品库，“产品编码”列显示 19 位内部 ID，例如标准原材料显示 `2104856930422521858`；标准成品与测试办公用品也显示同类内部 ID。选择标准原材料并确认后，合同明细“产品编码”输入框值仍为该 ID，名称、规格 `RM-001`、数量 1、单价 10 和金额 10 正常回填。
+- **源码根因**：`src/views/crm/jixu/contract/index.vue:2224` 将主数据 `item.id` 写入产品候选 `code`，`:2625` 又赋给明细 `productCode`；选择器和明细按“产品编码”展示这个字段。`BaseMaterialVO` 本身分别提供 `id` 和业务 `code`，页面已经要求二者存在，却丢弃业务编码。详情映射 `:2129` 也优先用 `productId` 填显示字段。
+- **修复边界**：内部关联 ID 与展示编码分开建模；选择、明细、编辑/详情、打印和检索保持一致，提交继续按后端 `products[].productId` 的正式契约传真实关联 ID。不能简单把 `code` 替换为业务编码而连带把提交主键改掉，不能修改历史合同产品关联或擅自改变主数据事实源。
+- **证据**：[产品库编码列显示内部 ID](evidence/2026-10-13-codex-fuqi-quality-crm/contract-product-code-internal-id.png)、[选单后合同明细仍显示 ID](evidence/2026-10-13-codex-fuqi-quality-crm/contract-customer-product-refill.png)、[结构化输入值观察](evidence/2026-10-13-codex-fuqi-quality-crm/observations.json)。
+- **租户与验证边界**：共享展示修复应覆盖新旧租户、新增及历史回显，不给单一租户改编码数据。未保存或签署合同，未测试检索输入、打印或错误关联，不能据此宣称产品提交失败。
+- **状态**：待修复。
+
+- 本轮另补充 81/82/83 和历史合同客户选择问题的观察，详见 [整改与 CRM 续测报告](reports/2026-10-14-codex-fuqi-quality-crm.md)。没有产品代码修复、构建、部署、服务重启或生产配置修改；所有草稿关闭，回到主工作台继续保留测试登录态。

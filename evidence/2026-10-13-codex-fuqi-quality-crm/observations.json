@@ -1,0 +1,86 @@
+{
+  "site": "https://jixu-ai.com",
+  "tenant": "福奇科技",
+  "account": "admin",
+  "timezone": "Asia/Shanghai",
+  "startedAt": "2026-10-13T23:46:51+08:00",
+  "browserChecksEndedAt": "2026-10-14T00:04:13+08:00",
+  "tenantVerification": "Reused the prior round's verification; no database query in this round.",
+  "sourceSnapshots": {
+    "web": "6aec3cfc815df9316746ea26596a991cd571a3cb",
+    "backend": "26554621b562da39ec1772157ce21243955b6e15",
+    "productionBuildVersionVerified": false
+  },
+  "findings": [
+    {
+      "bug": 167,
+      "route": "/quality/rectification",
+      "observed": {
+        "responsibleUserRequired": true,
+        "responsibleUserControl": "textbox",
+        "placeholder": "责任人用户ID",
+        "personSelectorOpenedAfterClick": false,
+        "submitted": false
+      },
+      "status": "待修复",
+      "notVerified": ["invalid ID handling", "cross-tenant ID handling", "save", "assignment"]
+    },
+    {
+      "bug": 168,
+      "route": "/crm/menu/deal-collection/contract",
+      "observed": {
+        "productName": "标准原材料",
+        "spec": "RM-001",
+        "productCodeInputValue": "2104856930422521858",
+        "productCodeInputReadOnly": true,
+        "quantity": 1,
+        "unitPrice": 10,
+        "contractAmount": 10,
+        "customerCode": "KH010868",
+        "customerName": "ZC-1013-客户CRM",
+        "saved": false
+      },
+      "status": "待修复",
+      "notVerified": ["save", "print", "product search input", "sign", "incorrect persisted association"]
+    }
+  ],
+  "knownIssueObservations": {
+    "81": {
+      "opportunities": 5,
+      "allDisplayedExpectedAmounts": 0,
+      "editedOrSaved": false
+    },
+    "82": {
+      "workbenchPrivateCustomers": 6,
+      "contractCustomerOptions": 6,
+      "privatePoolAllCustomers": 0,
+      "privatePoolListRowsAfterRefresh": 0,
+      "databaseOwnershipChecked": false
+    },
+    "83": {
+      "quoteSourceOptions": 0,
+      "approvedQuoteQualificationCount": 0,
+      "qualificationChanged": false,
+      "independentReproductionEstablished": false
+    },
+    "historicalCrm31Alias37": {
+      "customerSelectionAndRefill": "passed for the current account and entry only",
+      "saveApprovalAndSignVerified": false
+    }
+  },
+  "cleanup": {
+    "route": "/index",
+    "visibleDialogs": 0,
+    "loginTabPreservedForContinuation": true
+  },
+  "safety": {
+    "businessDocumentSaved": false,
+    "aiInvoked": false,
+    "uploadPerformed": false,
+    "databaseQueriedOrChanged": false,
+    "productionConfigurationChanged": false,
+    "productCodeChanged": false,
+    "deploymentOrRestartPerformed": false,
+    "absoluteZeroSystemWriteClaimed": false
+  }
+}
