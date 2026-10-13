@@ -52,6 +52,23 @@
     "lines": "192-235",
     "detail": "onMounted sets REGISTER for route.query.mode=register, then ensureEnabledLoginState treats REGISTER as disabled and switches back to the first enabled login state."
   },
+  "followUpChecks": [
+    {
+      "action": "Click the DingTalk login button.",
+      "result": "Redirected to the official DingTalk OAuth page; no system exception appeared before authorization.",
+      "boundary": "No DingTalk account was entered and no authorization was granted."
+    },
+    {
+      "action": "Open the forgot-password entry.",
+      "result": "The reset-password form opened and the return button worked.",
+      "boundary": "No phone number, email, verification code, or reset request was submitted."
+    },
+    {
+      "action": "Open the mobile-login tab.",
+      "result": "The mobile-login form opened with tenant, mobile number, verification code, login, and return controls.",
+      "boundary": "No mobile number or verification code was entered."
+    }
+  ],
   "sideEffects": [
     "No username or password was entered.",
     "No email, phone number, verification code, or captcha was entered.",
