@@ -1,0 +1,100 @@
+{
+  "observedAt": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "environment": "production",
+  "tenant": "福奇科技",
+  "accountRole": "admin",
+  "newBugs": [
+    {
+      "id": 164,
+      "route": "/mes/produce/detail",
+      "selectedOrder": "JH1002",
+      "associatedWorkOrder": "GD10001",
+      "resetResult": {
+        "selectionValue": "",
+        "selectionPlaceholder": "请选择生产订单编号",
+        "headerOrder": "JH1002",
+        "headerQty": "100",
+        "workOrderStillVisible": "GD10001"
+      },
+      "switchToInboundAfterReset": {
+        "tableEmpty": true,
+        "headerOrder": "JH1002"
+      },
+      "businessSaveSubmitted": false
+    },
+    {
+      "id": 165,
+      "route": "/quality/order",
+      "draftBillNo": "ZJD-261013-002",
+      "sourceMode": "生产工单",
+      "selectedWorkOrder": "GD10001",
+      "sourceMaterialName": "标准成品",
+      "sourceSpecification": "FG-001",
+      "sourceQty": "100",
+      "sourceStoredQty": "0",
+      "afterConfirm": {
+        "productHeaderVisible": true,
+        "productDataRowsVisible": false,
+        "inspectionDetailToggleDidNotRestoreProductRows": true
+      },
+      "primaryError": "TypeError: Cannot read properties of undefined (reading 'field')",
+      "errorComponents": [
+        "QualityOrderForm-pCZgimyD.js",
+        "VxeTableDialog-Dd8nVcOy.js"
+      ],
+      "errorObservedAgainAt": "2026-10-13T15:33:45.509Z",
+      "secondaryError": "TypeError: ze.querySelector is not a function",
+      "sourceFinding": "edit_name slot receives only row but uses column and rowIndex",
+      "businessSaveSubmitted": false
+    },
+    {
+      "id": 166,
+      "route": "/quality/trace",
+      "traceType": "BATCH",
+      "existingTraceKey": "测试批次001",
+      "visibleResult": "系统异常",
+      "productionErrorTime": "2026-10-13 23:34:58.299",
+      "productionCause": "Field 'id' doesn't have a default value",
+      "failedTable": "mes_quality_trace_anomaly",
+      "insertContainsId": false,
+      "noMatchQuery": {
+        "traceKey": "ZC-QA-NO-MATCH-20261013",
+        "visibleResult": "该批号/序列号暂无追溯事实",
+        "systemErrorVisible": false
+      },
+      "automaticAnomalyInsertAttemptedByQuery": true,
+      "manualAnomalyWriteSubmitted": false,
+      "databaseRecordCountVerified": false
+    }
+  ],
+  "existingBugRetests": [
+    {
+      "id": 12,
+      "draftBillNo": "ZJD-261013-002",
+      "documentTypeOptions": [],
+      "visibleDropdownText": "暂无数据"
+    }
+  ],
+  "normalObservations": {
+    "flowCardWorkOrderSelection": "GD10001",
+    "flowCardCreateSubmitted": false,
+    "pendingInspectionTypes": [
+      "来料检验",
+      "过程检验",
+      "出货检验",
+      "退货检验"
+    ],
+    "pendingInspectionProcessFilterResult": "暂无数据"
+  },
+  "handoff": {
+    "route": "/index",
+    "activeDialogCount": 0,
+    "draftsCanceled": true
+  },
+  "productionConfigModified": false,
+  "sqlExecuted": false,
+  "flywayModified": false,
+  "serviceRestarted": false,
+  "deployed": false
+}

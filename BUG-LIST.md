@@ -83,6 +83,8 @@
 - **最新复测**：2026-10-12 04:38，新增单号 `ZJD-261012-005` 后“单据类型”下拉仍无选项；本轮取消退出，未提交单据。
 - **再次复测**：2026-10-12 05:00，新增单号 `ZJD-261012-006` 后展开下拉仍仅显示“暂无数据”；未保存。
 - **最新证据**：[标准质检单单据类型为空](evidence/2026-10-12-codex-browser-followup-0500/quality-order-document-type-empty.png)
+- **2026-10-13 福奇科技复测**：新增草稿 `ZJD-261013-002` 的“单据类型”仍只有“暂无数据”；待检池筛选的四类检验类型则可选，不将两个入口的枚举混为一谈。本轮取消草稿未保存；选生产工单后成品表渲染异常另列 Bug 165。
+- **本轮证据**：[类型下拉仍为空](evidence/2026-10-13-codex-fuqi-trace-quality/quality-order-type-still-empty.png)。
 - **状态**：待修复
 
 ### Bug 13：CRM 私海客户 - 新增按钮被遮挡
@@ -1580,3 +1582,44 @@
 - **状态**：待修复。
 
 - 本轮来源单选择、正常结果和未验证范围见 [销售与 MES 续测报告](reports/2026-10-13-codex-fuqi-sales-mes.md)；没有保存、审核、开票、红冲、排产、报工、库存和财务操作，也没有部署。
+
+## 三十二、2026-10-13 Codex 福奇科技溯源与质检续测
+
+### Bug 164：生产溯源重置后保留旧计划抬头和工单记录
+
+- **模块 / 路径**：生产 → 生产溯源，`/mes/produce/detail`。
+- **级别**：P2，筛选范围与显示的追溯结果不一致。
+- **生产复现**：选择生产计划 `JH1002`，搜索后切换“工单记录”，正常带出 `GD10001`；点击“重置”。
+- **实际结果**：订单选择框恢复“请选择生产订单编号”，DOM 值为空，但抬头仍为 `JH1002`、数量 100、计划日期 2026-10-10～2026-10-17，工单表仍显示旧 `GD10001`。后续独立读取仍然如此；切换“入库记录”后表格为空，但旧计划抬头继续保留，不是仅等待异步响应期间的瞬时状态。
+- **源码证据**：Web `src/views/mes/produce/order/ProduceDetail.vue:139-158` 的 `resetQuery()` 删除查询字段却不清空 `produceOrder`，ID watcher 只处理非空值；子表 `components/pickingTable.vue:193-194` 在没有 ID 时直接返回，不清空旧数据和总数。
+- **预期结果**：清空生产订单后同步失效抬头、关联表和分页总数；异步旧响应不能重新回填已经失效的上下文。不得改业务单据或用当前租户数据补丁代替共享状态修复。
+- **证据**：[正常计划与工单关联](evidence/2026-10-13-codex-fuqi-trace-quality/trace-selected-plan-work-refill.png)、[重置后的旧抬头和工单](evidence/2026-10-13-codex-fuqi-trace-quality/trace-reset-stale-plan-work.png)。
+- **验证边界**：只读查询和切换页签；未修改、打开编辑或保存工单，未证明跨租户泄漏或库存写入问题。需覆盖新旧租户、有/无关联记录和快速切换查询。
+- **状态**：待修复。
+
+### Bug 165：标准质检工单选单后成品表渲染失败
+
+- **模块 / 路径**：质检 → 质检单 → 新增 → 来源方式“生产工单”，`/quality/order`。
+- **级别**：P1，选单后的成品、检验数量和通过数量无法正常查看或录入。
+- **生产复现**：新增质检草稿，选择“生产工单”，打开来源单据，勾选 `GD10001`；子表显示“标准成品 / FG-001 / 生产数量 100”，成品行默认勾选；点击来源弹窗“确定”。
+- **实际结果**：来源弹窗关闭，成品表只剩表头，没有可见数据行；控制台反复出现 `TypeError: Cannot read properties of undefined (reading 'field')`，堆栈定位生产 `QualityOrderForm-pCZgimyD.js` 和 `VxeTableDialog-Dd8nVcOy.js` 的单元格渲染。切换检验明细折叠、重选同一正式来源仍复现，不能归因于空选单或普通布局收起。
+- **源码根因**：`src/views/quality/order/QualityOrderForm.vue:94` 的 `#edit_name` 只接收 `{ row }`，但 `:95-148` 直接使用 `column.field` 和 `rowIndex`。共享 `VxeTableDialog.vue:168-174` 已传入三个参数，问题在调用方漏接，不是共享组件没有提供列参数。
+- **预期结果**：正确接收列和行索引；来源回填后可见正式成品及源单数量、检验数量、通过/让步/待判定/不合格数量，控件联动使用当前行。不得通过隐藏异常、插入演示行或跳过数量约束绕过问题。
+- **去重**：与 Bug 12 的类型初始化缺失、历史快照 Bug 26 的弹窗截断分别定位；本条有独立的生产渲染异常和插槽契约证据。
+- **证据**：[来源主子表已勾选](evidence/2026-10-13-codex-fuqi-trace-quality/quality-work-order-source-selected.png)、[确认后只剩表头](evidence/2026-10-13-codex-fuqi-trace-quality/quality-work-order-refill.png)、[折叠后仍无成品行](evidence/2026-10-13-codex-fuqi-trace-quality/quality-work-order-after-toggle.png)、[脱敏错误观察](evidence/2026-10-13-codex-fuqi-trace-quality/observations.json)。
+- **租户与验证边界**：修复共享质检表单，覆盖新旧租户及新增/编辑/详情的真实行；MSA 共用入口也须回归，不能直接认定已复现同一现象。本轮没有保存、审核或形成检验结论，草稿已取消；`GD10001` 为待排产，只证明选单和渲染，不证明它当前具备质检写侧资格。
+- **状态**：待修复。
+
+### Bug 166：质量链路追溯登记异常时缺少主键，整次追溯报系统异常
+
+- **模块 / 路径**：质检 → 质量链路追溯，`/quality/trace`；调用 `GET /mes/quality/trace/detail`。
+- **级别**：P1，已有批次的链路缺失检查阻断，无法查看追溯结果。
+- **生产复现**：追溯类型“批号”，输入已有“测试批次001”，点击“追溯”；页面提示“系统异常”，不显示追溯明细。无匹配键 `ZC-QA-NO-MATCH-20261013` 则正常显示“该批号/序列号暂无追溯事实”，错误不是所有查询或登录会话都失败。
+- **生产日志证据**：只读查看 `root@aliCfor` 主站日志，2026-10-13 23:34:58 的异常为 `DataIntegrityViolationException`，根因 `Field 'id' doesn't have a default value`。失败语句向 `mes_quality_trace_anomaly` 插入追溯键、缺失环节等字段但没有 `id`；调用链是 `getTraceDetail():117` → `registerAnomalies():284` → `upsertAnomaly():318` → Mapper insert。未修改生产数据库或运行配置。
+- **初始化与源码证据**：历史 Flyway `V202610030110__create_mes_quality_trace_anomaly.sql:5` 定义 `id bigint NOT NULL`，不自增；`MesQualityTraceAnomalyDO.java:53` 使用未显式指定策略的 `@TableId`，服务构造异常记录不赋 ID。生产实际 SQL 已证明有效插入策略没有生成 ID；未读取生产全局主键配置，不能将具体策略值当作已核实事实。
+- **预期结果与修复边界**：主键策略与初始化结构一致，链路缺失可以登记后返回真实节点；重复查询幂等，保留租户隔离和数据权限。优先核对本实体的明确 ID 策略，不能为修复单表改变全局主键、认证 Key 或租户配置，也不能吞异常后宣称链路完整。历史 Flyway 不得修改；确需结构修复时新增更高版本兼容迁移，同时验证新库初始化和存量库。
+- **证据**：[已有批次追溯系统异常](evidence/2026-10-13-codex-fuqi-trace-quality/quality-trace-system-error.png)、[无匹配查询正常返回](evidence/2026-10-13-codex-fuqi-trace-quality/quality-trace-no-match.png)、[脱敏生产日志摘录](evidence/2026-10-13-codex-fuqi-trace-quality/quality-trace-error-excerpt.txt)。
+- **验证边界**：界面操作是查询，但服务会自动登记链路异常；本轮该插入失败且处于事务，不将此次测试描述为绝对零写请求。没有人工新增、处理或删除异常，没有修改库存、质检结论或有效业务单据；没有独立查询数据库确认异常表行数。
+- **状态**：待修复。
+
+- 本轮流转卡工单选择、待检池、质检选单及追溯的实际范围见 [溯源与质检续测报告](reports/2026-10-13-codex-fuqi-trace-quality.md)。未改产品代码、构建、部署或重启服务，未修改历史 Flyway 或生产配置。

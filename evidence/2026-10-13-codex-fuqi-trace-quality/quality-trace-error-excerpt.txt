@@ -1,0 +1,23 @@
+Production log excerpt, observed read-only on root@aliCfor.
+Timestamp: 2026-10-13 23:34:58.299 (Asia/Shanghai).
+Unrelated scheduler messages, request headers, query parameter values and full stack omitted.
+
+org.springframework.dao.DataIntegrityViolationException
+Cause: java.sql.SQLException: Field 'id' doesn't have a default value
+Mapper: MesQualityTraceAnomalyMapper.insert-Inline
+
+Observed SQL shape:
+INSERT INTO mes_quality_trace_anomaly
+(trace_key, trace_type, missing_stage, source_bill_type, source_bill_id,
+ source_no, detail, status, create_time, update_time, creator, updater, tenant_id)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, <current tenant>)
+
+The actual INSERT omits the id column. No bind values are included here.
+
+Relevant stack:
+MesQualityTraceServiceImpl.upsertAnomaly(MesQualityTraceServiceImpl.java:318)
+MesQualityTraceServiceImpl.registerAnomalies(MesQualityTraceServiceImpl.java:284)
+MesQualityTraceServiceImpl.getTraceDetail(MesQualityTraceServiceImpl.java:117)
+MesQualityTraceController.getTraceDetail(MesQualityTraceController.java:43)
+
+Read-only log inspection only. No SQL change, configuration change or service restart.
