@@ -1,0 +1,110 @@
+{
+  "observedOn": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "environment": "production",
+  "site": "https://jixu-ai.com",
+  "tenant": "福奇科技",
+  "username": "admin",
+  "identityEvidence": "Tenant identity reuses the previous round's read-only database verification; no database access in this round.",
+  "authenticationDataCaptured": false,
+  "businessWritesSubmitted": false,
+  "observations": [
+    {
+      "route": "/erp/sale/return",
+      "operation": "Open new draft and source order selector",
+      "draftNumber": "XSTH261013003",
+      "sourceOrderCount": 0,
+      "confirmationEnabled": false,
+      "context": "Sale order list currently shows shipped quantity zero for all three orders.",
+      "outcome": "Not classified as a bug; unsaved draft cancelled."
+    },
+    {
+      "bug": 160,
+      "route": "/erp/sale/invoice",
+      "firstSource": "XSDD261012004",
+      "invoiceTypeBeforeReselection": "普通发票",
+      "secondSource": "XSDD261010004",
+      "sourceReplacementConsistent": true,
+      "invoiceTypeAfterReselection": "",
+      "headerInvoiceAmount": "1",
+      "outcome": "Existing required selection cleared; no save."
+    },
+    {
+      "bug": 161,
+      "route": "/erp/sale/invoice",
+      "source": "XSDD261010004",
+      "remainingInvoiceableAmount": "1.00",
+      "amountInputBeforeBlur": "0.50",
+      "amountInputAfterBlur": "1.00",
+      "headerInvoiceAmountAfterBlur": "1",
+      "blurMethodsObserved": ["Click remark input", "Tab"],
+      "reproducesWithSingleSelection": true,
+      "outcome": "Allowed partial amount reverts; unsaved draft cancelled."
+    },
+    {
+      "bug": 162,
+      "route": "/mes/produce/work-order",
+      "workOrder": "GD10001",
+      "sourcePlan": "JH1002",
+      "expectedArrivalDate": "2026-10-20",
+      "status": "待排产",
+      "unfilteredRowCount": 1,
+      "visibleDueSummary": {
+        "正常": 0,
+        "三日内到期": 0,
+        "今日到期": 1,
+        "已逾期": 0,
+        "异常": 0
+      },
+      "emptySearchRowCount": 0,
+      "emptySearchSummaryAllZero": true,
+      "resetRowCount": 1,
+      "outcome": "Due summary uses mismatched level mapping; no work order modification."
+    },
+    {
+      "route": "/mes/produce/work-order",
+      "operation": "Click GD10001 twice",
+      "dialogCountAfterClicks": 0,
+      "rowDetailButtonEnabled": false,
+      "outcome": "Observation only; production detail contract for pending scheduling not confirmed."
+    },
+    {
+      "route": "/mes/produce/productionTask",
+      "rowCount": 0,
+      "batchReportEnabled": false,
+      "outcome": "Empty task state guarded; task workflow not executed."
+    },
+    {
+      "route": "/mes/produce/reportwork",
+      "rowCount": 0,
+      "batchApproveEnabled": false,
+      "batchUnapproveEnabled": false,
+      "outcome": "Read-only empty list; no report or approval."
+    },
+    {
+      "bug": 163,
+      "route": "/mes/produce/prodLineManage",
+      "initialTab": "产线1",
+      "selectedTab": "产线2",
+      "visibleProcessesAfterSwitch": [
+        "工序1",
+        "工序2",
+        "工序3",
+        "工序4",
+        "工序5",
+        "工序6",
+        "工序7",
+        "工序8",
+        "工序9",
+        "工序10",
+        "工序11",
+        "工序12"
+      ],
+      "consoleError": "TypeError: Cannot read properties of undefined (reading 'id')",
+      "stackContains": "Array.reduce",
+      "errorObservedAt": "2026-10-13T15:04:18.583Z",
+      "internalIframeOpened": false,
+      "outcome": "Runtime error leaves fixed samples; no line or process configuration changed."
+    }
+  ]
+}

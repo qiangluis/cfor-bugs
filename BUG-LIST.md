@@ -1527,3 +1527,56 @@
 
 - 本轮转换单、盘点单、生产领料、请购单、采购退货的实际测试范围和正常结果见 [福奇科技生产续测报告](reports/2026-10-13-codex-fuqi-production-qa.md)。
 - 除登录鉴权、系统自动编号及安全审计等系统行为外，未提交业务写请求；只读核对租户/账号归属，未更新生产数据库、配置、权限、Flyway 或服务。
+
+## 三十一、2026-10-13 Codex 福奇科技销售与 MES 续测
+
+### Bug 160：销售发票重选来源订单后清空已选发票类型
+
+- **模块 / 路径**：销售 → 销售发票 → 新增，`/erp/sale/invoice`。
+- **级别**：P2，重选来源单会丢失用户已经填写的必填字段。
+- **生产复现**：选单带入 `XSDD261012004` 后，将发票类型选择为“普通发票”；再次选单，改选同一客户的 `XSDD261010004` 并确认。
+- **实际结果**：来源单号和明细正常替换为 `XSDD261010004`，开票金额为 1 元；发票类型却恢复为“请选择发票类型”，DOM 输入值为空。没有改变发票类型的提示。
+- **预期结果**：重选来源订单时保留有效的用户输入；确需改变发票类型时明确提示并依据正式契约处理。合法枚举值 `0` 不能按空值处理。
+- **源码证据**：`cfor-admin-vue3/src/views/erp/sale/invoice/formDialogTable.vue:549` 无条件用来源项的 `invoiceType` 覆盖表头，且使用 `|| ''`；期初来源分支 `:480` 也直接清空。当前销售选单采用替换语义，本轮没有出现采购 Bug 154 的累计来源/金额错配，不将两者混为一项。
+- **证据**：[选单后已选择普通发票](evidence/2026-10-13-codex-fuqi-sales-mes/sale-invoice-first-selection.png)、[重选后类型清空](evidence/2026-10-13-codex-fuqi-sales-mes/sale-invoice-reselection-cleared-type.png)。
+- **租户与验证边界**：修复应覆盖新旧租户的新增/编辑及普通/期初来源，不依赖生产数据补丁；本轮未保存、开票或红冲，后端持久化与权限未验证。
+- **状态**：待修复。
+
+### Bug 161：销售发票本次开票金额输入失焦后回退旧值
+
+- **模块 / 路径**：销售 → 销售发票 → 新增，`/erp/sale/invoice`。
+- **级别**：P1，无法录入本次部分开票金额。
+- **生产复现**：新增销售发票，选单带入 `XSDD261010004`，未开票金额为 `1.00`；将“本次开票金额”填为 `0.50`，再点击备注输入框离开该字段。
+- **实际结果**：聚焦时输入框可见 `0.50`，失焦后回到 `1.00`；表头开票金额仍为 `1`。使用 Tab 离开也同样回退。单次选单和二次选单场景均复现，不依赖重选来源。
+- **预期结果**：在允许的范围内保留用户输入的部分开票金额，明细和表头同步为 `0.50`；保存请求按同一来源汇总，不提交旧金额。
+- **源码线索**：`cfor-admin-vue3/src/views/erp/sale/invoice/formDialogTable.vue:24-36` 使用 `v-model="row[column.field]"` 和 `@change="invoiceChange(row)"`，`:573-599` 再从行对象同步与汇总；选单金额及上限使用 `toFixed()` 字符串。`src/components/VxeTable/src/dialogData.ts:2790-2798` 确认该列为 `invoiceMoney`。需核对控件数值事件、表格行对象及重渲染，不将尚未定位的具体事件顺序当成已证明根因。
+- **调用边界**：保存经 `/erp/sale-invoice/create` → `SaleInvoiceController.createSaleInvoice()` → `SaleInvoiceServiceImpl.createSaleInvoice()`；本轮未调用保存接口，不能宣称已经错误开票。
+- **证据**：[输入 0.50](evidence/2026-10-13-codex-fuqi-sales-mes/sale-invoice-amount-visible-before-blur.png)、[失焦回到 1.00](evidence/2026-10-13-codex-fuqi-sales-mes/sale-invoice-amount-visible-after-blur.png)。
+- **租户与验证边界**：覆盖新旧租户、新增/编辑、重复物料来源行和部分开票；不更改开票、对账、审核和财务事实源口径。草稿已取消。
+- **状态**：待修复。
+
+### Bug 162：生产工单底部交期统计等级映射错位
+
+- **模块 / 路径**：生产 → 生产工单，`/mes/produce/work-order`。
+- **级别**：P2，交期风险统计误导。
+- **生产复现**：2026-10-13 查看未加筛选的工单列表，唯一工单为 `GD10001`，预计交期为 `2026-10-20`；底部却显示“正常: 0、今日到期: 1、已逾期: 0”。无匹配查询后各项归零，重置后再次出现同一错位。
+- **源码证据**：Web `src/views/mes/produce/workorder/index.vue:2533-2541` 将 `level=1` 当正常、`level=2` 当紧急、`level=4` 当今日到期；API `src/api/mes/produce/report/index.ts:19-20` 调用 `/mes/prodWork/urgentLevelStatistics`。后端 `MesProdWorkServiceImpl.getUrgentLevelStatistics():3648-3652` 返回的契约是 `1=逾期、2=今日到期、3=三日内到期、4=正常`。
+- **预期结果**：按已有正式统计契约展示；该工单应计入正常交期，不应计入今日到期。修复需核对筛选、重置及其他同接口调用方，不能擅自改变紧急优先级或生产状态含义。
+- **证据**：[生产工单底部统计](evidence/2026-10-13-codex-fuqi-sales-mes/work-order-due-summary-mismatch.png)、[脱敏结构化观察](evidence/2026-10-13-codex-fuqi-sales-mes/observations.json)。
+- **租户与验证边界**：属于共享展示逻辑，新旧租户均需有效；本轮没有修改交期、排产、工单或数据库。
+- **状态**：待修复。
+
+### Bug 163：工单工艺加载异常后保留样例工序，切换产线不联动
+
+- **模块 / 路径**：生产 → 工单工艺，`/mes/produce/prodLineManage`。
+- **级别**：P1，无法据此查看正式工单工艺和产线上下文。
+- **生产复现**：从实际菜单进入，页面显示“产线1～4”和“工序1～12”；控制台记录 `TypeError: Cannot read properties of undefined (reading 'id')`，堆栈含 `Array.reduce`。点击“产线2”后仍显示同一套样例工序。
+- **源码证据**：Web `src/views/mes/produce/prodLineManage/index.vue:3-7` 固定产线标签；`:95-99` 在工艺子表 `records` 中查找 `item.parentId` 对应的记录，并未判空就取 `parentItem.id`；`:141-166` 默认填充样例工序。切换标签只调用布局函数 `findLastParallel()`，没有加载该产线或工单的数据。
+- **调用契约**：`ProduceTechniqueRouteApi.subList()` 查询 `/mes/wmsTechRoute/listMesWmsTechRouteSubByMainId`；后端 `MesWmsTechRouteController.queryMesWmsTechRouteSubByMainId()` 返回工艺路线子表分页并附加 `procedure`，不是包含产线/父级记录的完整树。页面还未传 `parentId`，传入 `pageSize=999`，超过项目页面查询规范。
+- **附带源码风险**：工序点击弹窗 iframe 使用固定内部 HTTP 地址；本轮没有点击工序或打开该内部地址，不将其可达性或浏览器拦截作为已验证结论。
+- **预期结果**：以当前租户的正式工单、工艺路线和产线关系查询；加载失败显示明确错误或空态，不能继续把样例当正式内容。恢复业务关联前先确认该入口的正式产品职责，不用填充演示数据或隐藏异常替代修复。
+- **证据**：[产线1样例](evidence/2026-10-13-codex-fuqi-sales-mes/work-process-line1-demo.png)、[切换产线2仍是同一套工序](evidence/2026-10-13-codex-fuqi-sales-mes/work-process-line2-same-demo.png)、[脱敏错误观察](evidence/2026-10-13-codex-fuqi-sales-mes/observations.json)。
+- **租户与验证边界**：需覆盖有/无工单、有/无工艺和新旧租户；本轮没有修改产线、工艺、工单或外部集成配置。
+- **状态**：待修复。
+
+- 本轮来源单选择、正常结果和未验证范围见 [销售与 MES 续测报告](reports/2026-10-13-codex-fuqi-sales-mes.md)；没有保存、审核、开票、红冲、排产、报工、库存和财务操作，也没有部署。
