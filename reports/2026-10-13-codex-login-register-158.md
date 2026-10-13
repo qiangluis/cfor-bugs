@@ -21,7 +21,9 @@
 - **影响**：新租户注册入口被阻断，尤其影响从外部注册链接进入的用户。
 - **源码线索**：当前 Web 源码 `cfor-admin-vue3/src/views/Login/Login.vue:192-235` 先按 `route.query.mode=register` 设置注册态，随后 `ensureEnabledLoginState()` 又把 `REGISTER` 判定为需要回退的状态并切回默认登录态。生产行为与该状态冲突一致。
 - **证据**：[结构化浏览器观察](../evidence/2026-10-13-codex-login-register-158/observations.json)。
-- **状态**：待修复；本轮未修改产品仓库、数据库、Flyway、生产配置或认证配置。
+- **修复**：Web `42ce49f76`。仅在注册功能关闭时才把 `REGISTER` 视为不可用状态，保留登录配置异步加载、直接打开和刷新 `mode=register` 时的注册态；不改注册接口、验证码、协议确认、租户隔离或审核流程。
+- **验证**：该文件 ESLint 通过，`git diff --check` 通过；全量 `vue-tsc` 默认堆和 8GB 堆均因现有大工作区 OOM，未得到全量类型结论。尚未构建或发布生产，需发布后用直接 URL、刷新和首次点击回归。
+- **状态**：代码已修复，待发布；生产数据库、Flyway、运行配置和认证配置未修改。
 
 ## 同轮入口复测
 

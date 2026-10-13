@@ -1101,3 +1101,10 @@
 - 当前 Web 源码 `src/views/Login/Login.vue:192-235` 提供了对应状态线索：路由设置注册态后，`ensureEnabledLoginState()` 把 `REGISTER` 视为需要回退的状态。
 - 本轮只检查公共页面状态，没有输入账号、密码、邮箱、手机号、验证码或图形验证码，没有提交注册申请，没有改产品源码、生产数据库、Flyway、运行配置或认证配置。
 - Bug 158 状态为“待修复”；详见 [公共登录注册入口续测](reports/2026-10-13-codex-login-register-158.md) 和 [结构化浏览器观察](evidence/2026-10-13-codex-login-register-158/observations.json)。
+
+## 2026-10-13 Bug 158 登录注册状态修复（待发布）
+
+- Web 精准提交 `42ce49f76`：`ensureEnabledLoginState()` 只在注册功能关闭时回退 `REGISTER`，避免登录配置异步完成后覆盖路由注册态。
+- 单文件 ESLint、`git diff --check` 通过；全量 `vue-tsc` 使用默认堆和 8GB 堆均因工作区 OOM，未宣称全量类型通过。
+- 尚未构建、发布或重启生产；发布后必须回归首次点击“立即注册企业”、直接打开 `/login?mode=register`、刷新注册 URL，以及登录、手机号登录和第三方登录入口。
+- Bug 158 已更新为“代码已修复，待发布”；没有修改生产数据库、Flyway、运行配置、认证配置或注册数据。
