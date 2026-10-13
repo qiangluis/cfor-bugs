@@ -1,0 +1,160 @@
+{
+  "testedAt": "2026-10-14T00:15:14+08:00",
+  "browserTestingEndedAt": "2026-10-14T00:37:00+08:00",
+  "timezone": "Asia/Shanghai",
+  "site": "https://jixu-ai.com",
+  "requestedTenant": "福奇科技",
+  "username": "admin",
+  "tenantVerification": "User-specified test login retained; no independent database verification in this round",
+  "sourceSnapshots": {
+    "web": "6aec3cfc815df9316746ea26596a991cd571a3cb",
+    "backend": "26554621b562da39ec1772157ce21243955b6e15",
+    "bugsBase": "b4c9cb0",
+    "productionBuildVerified": false
+  },
+  "fms": {
+    "accountSetDisplay": "测试账套2026",
+    "defaultReportPeriod": "2026-09",
+    "eventInbox": {
+      "path": "/fms/event-inbox",
+      "existingEventCount": 44,
+      "noMatchFilter": "CODEX-NO-MATCH-20261014",
+      "noMatchResult": "Empty table",
+      "resetResult": "Filter cleared; 44 records restored",
+      "wmsPendingReason": "Missing ERP controlled cost snapshot",
+      "retryClicked": false
+    },
+    "voucherDraft": {
+      "path": "/fms/voucher-draft",
+      "existingDraftCount": 29,
+      "sourceBillNo": "CGFK-261013-001",
+      "sourceBillId": "2109907702059315202",
+      "observedDrafts": [
+        {
+          "draftNo": "FMSD202610-000028",
+          "eventType": "ERP_PAYMENT_CONFIRMED",
+          "status": "草稿",
+          "debit": {"subjectCode": "1123", "subjectName": "预付账款", "amount": "100"},
+          "credit": {"subjectCode": "1002", "subjectName": "银行存款", "amount": "100"}
+        },
+        {
+          "draftNo": "FMSD202610-000029",
+          "eventType": "ERP_PAYMENT_DISBURSED",
+          "status": "草稿",
+          "debit": {"subjectCode": "2202", "subjectName": "应付账款", "amount": "100"},
+          "credit": {"subjectCode": "1002", "subjectName": "银行存款", "amount": "100"}
+        }
+      ],
+      "riskId": 169,
+      "riskStatus": "Pending accounting semantics confirmation",
+      "duplicatePostingProven": false,
+      "ledgerOrBankBalanceVerified": false,
+      "confirmedOrPosted": false
+    },
+    "balanceSheet": {
+      "path": "/fms/report/balance-sheet",
+      "checkDisplay": "资产负债表检查通过",
+      "displayRowCount": 4,
+      "observationOnly": true
+    },
+    "incomeStatement": {
+      "path": "/fms/report/income-statement",
+      "displayRowCount": 4,
+      "rows": [
+        {"line": "1", "name": "一、营业收入"},
+        {"line": "2", "name": "减：销售费用"},
+        {"line": "3", "name": "二、营业利润"},
+        {"line": "32", "name": "四、净利润"}
+      ],
+      "unmappedFirstLevelAccountCount": 10,
+      "visibleUnmappedAccounts": ["5051", "5111", "5301", "5401", "5402"],
+      "knownIssueReference": {
+        "catalogCommit": "53df443",
+        "historicalNumber": 70,
+        "matchBy": "FMS report template coverage title and report paths, not current main-list number"
+      },
+      "formulaEdited": false
+    },
+    "cashFlowStatement": {
+      "path": "/fms/report/cash-flow-statement",
+      "checkDisplay": "现金流量表检查通过",
+      "displayRowCount": 7,
+      "adjustmentClicked": false,
+      "statutoryCompletenessVerified": false
+    }
+  },
+  "hrm": {
+    "home": {
+      "employeeCounts": "All displayed employee categories are zero",
+      "pendingSalaryTableCount": 1,
+      "calendarDate": "2026-10-14"
+    },
+    "employee": {
+      "path": "/hrm/employee",
+      "list": "Empty",
+      "tabs": ["个人信息", "入职信息"],
+      "entryStatusDefault": "在职",
+      "entryStatusOptions": ["在职", "待入职"],
+      "employmentTypeDefault": "正式",
+      "employmentTypeOptions": ["正式", "非正式"],
+      "departmentCandidateCount": 13,
+      "departmentRefillVerified": false,
+      "personalDataEntered": false,
+      "accountCreated": false,
+      "saved": false,
+      "draftCancelled": true
+    },
+    "leave": {
+      "path": "/hrm/leave",
+      "month": "2026-10",
+      "noMatchEmployee": "CODEX-NO-MATCH-20261014",
+      "queryResult": "Empty table without observed interface-not-found error",
+      "resetEmployeeValue": "",
+      "createdOrApproved": false
+    },
+    "attendance": {
+      "groupCount": 1,
+      "groupDisplay": "测试考勤组",
+      "scheduleDisplay": "周一、周二、周三、周四、周五 09:00-18:00",
+      "ruleDisplay": "早晚打卡",
+      "scopeDisplay": "部门：总经办",
+      "overview": "Empty for 2026-10",
+      "detailNoMatchEmployee": "CODEX-NO-MATCH-20261014",
+      "detailQueryResult": "Empty table",
+      "resetEmployeeValue": "",
+      "clockedCorrectedOrDeleted": false
+    },
+    "organization": {
+      "departmentCount": 13,
+      "employeeCounts": "All zero",
+      "noMatchQueryResult": "Header only",
+      "resetDepartmentCount": 13,
+      "modified": false
+    },
+    "monthlySalary": {
+      "path": "/hrm/salary/month-record",
+      "period": ["2026-10-01", "2026-10-31"],
+      "employeeCategoryCounts": "All zero",
+      "list": "Empty",
+      "editCalculateCreateDeleteClicked": false
+    }
+  },
+  "safety": {
+    "businessRecordsSubmitted": false,
+    "accountingMappingsChanged": false,
+    "productionConfigurationChanged": false,
+    "historicalFlywayChanged": false,
+    "productCodeChanged": false,
+    "builtDeployedOrRestarted": false,
+    "databaseDiffPerformed": false,
+    "absoluteZeroSystemWritesClaimed": false,
+    "screenshotsReviewed": true,
+    "credentialsOrPersonalContactsRecorded": false
+  },
+  "handoff": {
+    "url": "https://jixu-ai.com/index",
+    "visibleDialogCount": 0,
+    "testSessionRetained": true,
+    "overallTestingComplete": false
+  }
+}
