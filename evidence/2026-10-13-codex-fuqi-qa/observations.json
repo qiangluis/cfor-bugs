@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "site": "https://jixu-ai.com",
+  "identity": {
+    "requestedTenant": "福奇科技",
+    "username": "admin",
+    "standardDatabaseReadOnlyCheck": {
+      "tenantId": 1,
+      "tenantName": "福奇科技",
+      "adminUserId": 1,
+      "adminTenantId": 1,
+      "adminNickname": "即序科技"
+    },
+    "login": "Entered the specified tenant and user; disabled remember-me; login reached /index.",
+    "browserTenantIdIndependentlyCaptured": false
+  },
+  "conversion": {
+    "path": "/wireSideWarehouse/convert/convertReceipt",
+    "generatedNumber": "ZHD-261013-001",
+    "sourceMaterial": "ERP-RM-001",
+    "sourceWarehouse": "原材料仓",
+    "sourceArea": "原料暂存区",
+    "enteredSourceQuantity": 1,
+    "targetMaterial": "ERP-FG-001",
+    "targetDefaultWarehouse": "成品仓",
+    "firstTargetPickerClick": "No visible picker; matching overlay display was none.",
+    "secondTargetPickerClick": "Picker opened with 3 material rows.",
+    "existingBug": 156,
+    "saved": false
+  },
+  "stockCheck": {
+    "path": "/wireSideWarehouse/checkBusiness/entries",
+    "generatedNumber": "KCPD-261013-002",
+    "initialWarehouse": "成品仓",
+    "initialArea": "成品暂存区",
+    "selectedInventoryRows": [
+      {
+        "materialCode": "ERP-FG-001",
+        "batch": "0",
+        "bookQuantity": 10,
+        "initialCountedQuantity": 10
+      },
+      {
+        "materialCode": "ERP-FG-001",
+        "batch": "测试批次001",
+        "bookQuantity": 91,
+        "initialCountedQuantity": 91
+      }
+    ],
+    "changedWarehouse": "原材料仓",
+    "areaAfterChange": "成品暂存区",
+    "oldDetailRowsRetained": true,
+    "warehouseChangeWarningShown": false,
+    "areaOptions": [
+      "原料暂存区",
+      "批量存储区",
+      "领料备料区",
+      "成品暂存区",
+      "待发区",
+      "整托区",
+      "不良品待判定区",
+      "返工待处理区",
+      "报废待处理区"
+    ],
+    "newBug": 159,
+    "saved": false,
+    "backendRejectionOrInventoryWrite": "Not exercised."
+  },
+  "productionRequisition": {
+    "path": "/wireSideWarehouse/out/outProdRequisition",
+    "generatedNumber": "CLCK-261013003",
+    "sourcePickerRows": 0,
+    "eligibleWorkOrdersIndependentlyChecked": false,
+    "saved": false
+  },
+  "purchaseRequest": {
+    "path": "/erp/purchase/purchaseRequest",
+    "generatedNumber": "CGSQ261013002",
+    "inventorySourceRows": 5,
+    "refilledMaterial": "ERP-RM-001",
+    "refilledUnit": "千克",
+    "refilledQuantity": 100,
+    "rowsBeforeAdd": 20,
+    "rowsAfterAdd": 21,
+    "saved": false
+  },
+  "purchaseReturn": {
+    "path": "/erp/purchase/return",
+    "generatedNumber": "CGTH261013004",
+    "selectedSourceOrder": "CGDD261010005",
+    "refilledSupplier": "ZC-1010-供应商002",
+    "refilledMaterial": "ERP-FG-001",
+    "sourceReturnableQuantity": 10,
+    "refilledQuantity": 10,
+    "refilledTotalAmount": 100,
+    "finalWarehouseAndBatchConfigured": false,
+    "saved": false
+  },
+  "boundaries": {
+    "businessSaveOrApproval": false,
+    "productionDatabaseUpdate": false,
+    "configurationOrPermissionChange": false,
+    "deploymentOrRestart": false,
+    "systemNumberAllocationAndAuditMayWrite": true
+  }
+}
