@@ -1457,7 +1457,9 @@
 - **源码证据**：`cfor-admin-vue3/src/components/MPopup/src/MPopup.vue:166-176` 在第一次点击时异步挂载 `defineAsyncComponent`，`await nextTick()` 后直接读取 `popupModalRef`；冷启动时 ref 为空，`modal?.open()` 被跳过，组件挂载后没有补偿打开动作。
 - **预期结果**：冷启动第一次点击就打开选择弹窗；重复点击不应打开重复实例，选择、取消和关闭行为保持一致。
 - **证据**：[首次点击无弹窗](evidence/2026-10-13-codex-wms-continuation/borrow-material-cold-first-click-no-dialog.jpg)、[第二次点击打开](evidence/2026-10-13-codex-wms-continuation/borrow-material-cold-second-click-open.jpg)。
-- **状态**：待修复；共享组件修复必须回归采购、销售、WMS、MES 等其他 MPopup 引用页面。
+- **修复**：Web `736c80a45e15d99a87a3f01ae3105116cc38b2da`。共享组件增加待打开请求，在异步弹窗实例真正挂载后补偿执行首次打开；快速重复点击只保留一个待打开请求；仅在 `triggerMethod="dbclick"` 时响应双击；禁用和卸载期间取消待打开请求。
+- **验证**：新增 `scripts/tests/mpopup-lazy-open.test.mjs`，冷启动首次点击、快速重复点击、禁用、加载中禁用、双击模式、点击模式双击事件、最新查询参数、选择回填和卸载共 9 项定向回归通过；组件 ESLint、Prettier（新增测试文件）和差异检查通过。尚未构建、发布生产或执行采购、销售、WMS、MES 页面真实回归。
+- **状态**：代码已修复，待发布；共享组件发布后必须回归采购、销售、WMS、MES 等其他 MPopup 引用页面。
 
 ### Bug 157：到货通知新增弹窗底部操作超出默认视口
 
