@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "environment": "https://jixu-ai.com",
+  "scope": "Public login and tenant registration entry; no credentials entered and no registration submitted.",
+  "steps": [
+    {
+      "step": 1,
+      "action": "Open the production login page.",
+      "url": "https://jixu-ai.com/login?redirect=/index",
+      "visibleState": {
+        "heading": "即序科技统一企业门户",
+        "form": "登录",
+        "registrationEntry": "立即注册企业"
+      }
+    },
+    {
+      "step": 2,
+      "action": "Click the visible registration entry once.",
+      "url": "https://jixu-ai.com/login?mode=register",
+      "visibleState": {
+        "heading": "即序科技统一企业门户",
+        "form": "登录",
+        "registrationFormVisible": false
+      }
+    },
+    {
+      "step": 3,
+      "action": "Reload the resulting registration URL.",
+      "url": "https://jixu-ai.com/login?mode=register",
+      "visibleState": {
+        "heading": "即序科技企业智能体工作台",
+        "form": "登录",
+        "registrationFormVisible": false
+      }
+    },
+    {
+      "step": 4,
+      "action": "Click the visible registration entry again.",
+      "url": "https://jixu-ai.com/login?mode=register",
+      "visibleState": {
+        "heading": "创建企业账号",
+        "form": "创建企业账号",
+        "registrationFormVisible": true
+      }
+    }
+  ],
+  "expected": "A single click on the registration entry, or opening /login?mode=register directly, should show the tenant registration form.",
+  "actual": "The URL changes to mode=register but the login form remains. A second click is required; refreshing the registration URL also returns the login form.",
+  "sourceClue": {
+    "file": "cfor-admin-vue3/src/views/Login/Login.vue",
+    "lines": "192-235",
+    "detail": "onMounted sets REGISTER for route.query.mode=register, then ensureEnabledLoginState treats REGISTER as disabled and switches back to the first enabled login state."
+  },
+  "sideEffects": [
+    "No username or password was entered.",
+    "No email, phone number, verification code, or captcha was entered.",
+    "No registration request or production database write was performed."
+  ]
+}
