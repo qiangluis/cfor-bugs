@@ -23,6 +23,15 @@
         "备注"
       ],
       "missingCurrentContractField": "工作性质",
+      "sourceCallChain": {
+        "activePage": "src/views/hrm/recruit/post/index.vue",
+        "api": "src/api/hrm/recruit/index.ts",
+        "legacyFields": ["code", "name", "headcount", "ownerUserId", "requirement", "remark"],
+        "currentBackendFields": ["postName", "jobNature", "recruitNum", "ownerEmployeeId", "description"],
+        "payloadAdapterPresent": false,
+        "modernRecruitPostFormUsedByPage": false,
+        "oldProductionBuildProvenAsSoleCause": false
+      },
       "rawInternalIdInputs": [
         "招聘部门编号",
         "岗位编号",

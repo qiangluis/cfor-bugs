@@ -33,7 +33,11 @@
 | 任职要求 | 多行文本 |
 | 备注 | 文本输入 |
 
-表单没有“工作性质”，也没有部门、岗位、员工选择器。当前后端 `HrmRecruitPostSaveReqVO` 的 `jobNature` 使用 `@NotNull(message = "工作性质不能为空")`，`deptId`、`ownerEmployeeId` 是内部关联 ID；当前工作区 Web 表单 `RecruitPostForm.vue` 已经使用 `DeptSelect`，并展示工作性质、工作城市、招聘原因、工作经验、学历、薪资、年龄等字段。生产页面与当前请求契约不一致，可能是旧前端包或生产发布未包含当前招聘表单。
+表单没有“工作性质”，也没有部门、岗位、员工选择器。当前后端 `HrmRecruitPostSaveReqVO` 的 `jobNature` 使用 `@NotNull(message = "工作性质不能为空")`，`deptId`、`ownerEmployeeId` 是内部关联 ID。
+
+完整调用链补查后更正初始定位：不是仅有“生产旧包”的可能。当前工作区 `src/views/hrm/recruit/post/index.vue:88-118` 就是生产所见内联表单，引用 `src/api/hrm/recruit/index.ts`，原样发送 `code/name/headcount/ownerUserId/requirement/remark`；没有转换为后端 `postName/jobNature/recruitNum/ownerEmployeeId/description`。新版独立组件 `RecruitPostForm.vue` 虽已提供用人部门、工作性质和员工选择等字段，但列表没有引用它。单纯打包当前同一入口未必能解决，修复必须按真实入口统一调用契约。
+
+同一列表的字段、字符串 `OPEN/CLOSED` 状态、关闭/重开端点和旧 `hrm:recruit-post:*` 按钮权限还存在与正式后端模型的源码差异。当前 Controller 使用 `hrm:recruit:post:*` 并提供 `/update-status`。本轮没有已有职位或普通角色，也未执行关闭/重开，因此把这些记为修复时必须覆盖的契约风险，不冒充已经生产复现的写侧结果。
 
 这次没有点击确认保存。报告只确认已发布生产页面的字段契约和用户录入入口存在问题，不把未提交的请求结果写成“保存失败”。修复后需要在测试租户执行：新增职位、编辑回显、部门选择、负责人/面试官选择、必填校验、列表回读和候选人职位联动。
 
