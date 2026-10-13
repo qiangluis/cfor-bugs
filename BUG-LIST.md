@@ -1408,3 +1408,23 @@
 - **预期**：核对正式检查记录事实源、责任人、环境、结论和审计字段后，实现带租户/权限校验的提交、成功回读和失败保留表单；不能只在前端追加演示日志。
 - **证据**：[复检表单](evidence/2026-10-12-codex-plm-config-followup/xinchuang-recheck-dialog.png)、[确认后无反馈](evidence/2026-10-12-codex-plm-config-followup/xinchuang-recheck-after-confirm.png)。
 - **状态**：待修复；本轮未写入生产数据。
+
+## 二十七、2026-10-13 Codex 供应链续测
+
+### Bug 154：采购发票重复选单后抬头、明细和金额不一致
+
+- **模块 / 路径**：供应链 → 采购发票，`/erp/purchase/invoice` → 新增。
+- **级别**：P1，发票保存前的数据语义不一致，可能导致错误开票或后端校验失败。
+- **生产复现**：
+  1. 新增采购发票，先选择采购订单 `CGDD261010005`，确认明细回填后选择“普通发票”。
+  2. 再次点击“选单”，追加同一供应商的采购订单 `CGDD261010004`。
+  3. 复现结果：明细同时保留 `CGDD261010005` 和 `CGDD261010004`，各 100 元；抬头采购单号只显示后一张 `CGDD261010004`，抬头开票金额仍为 100 元，发票类型被清空；明细下方还保留空白占位行。
+  4. 随后取消未保存草稿，未提交生产发票。
+- **源码定位**：
+  - `cfor-admin-vue3/src/views/erp/purchase/invoice/formDialogTable.vue:445-549` 的 `popupChange()` 每次只按本次选单更新抬头，并调用 `setTableData()` 合并到既有表格，没有先清理旧明细。
+  - `popupChange()` 以 `items[0]?.invoiceType` 和当前选单的 `unInvoiceMount` 回写发票类型、抬头金额，不能表达多张订单累计值；明细累计逻辑只在金额编辑时由 `invoiceUpdate()` 触发。
+  - `src/mixins/ListMixin.ts:247-270` 的 `setTableData()` 会保留已有带 `billNo` 的行，并补充空占位行；它适合向表格填充数据，不能直接作为“替换选单集合”的语义。
+- **影响**：用户在界面上看到的发票来源、开票金额和明细集合互相矛盾；保存请求还会按表格行去重后提交多张采购订单，存在抬头与后端校验/打印数据不一致的风险。
+- **预期**：明确“选单”是替换还是追加，并在同一语义下同步维护来源单号、供应商、发票类型、抬头金额、明细和空占位行；多订单时抬头金额应等于有效明细金额之和，已有发票类型不应被来源订单空值覆盖；保存前需要按真实提交集合回读校验。
+- **证据**：[追加选单后抬头与明细不一致](evidence/2026-10-13-codex-procurement-followup/invoice-reselection-header-mismatch.jpg)、[再次选单前已选择普通发票](evidence/2026-10-13-codex-procurement-followup/invoice-type-before-reselection.jpg)。
+- **状态**：待修复；本轮未修改产品仓库、生产数据库、生产配置或生产业务数据。
