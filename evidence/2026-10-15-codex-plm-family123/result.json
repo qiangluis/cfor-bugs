@@ -1,0 +1,36 @@
+{
+  "observedAt": "2026-10-14T22:53:04.451Z",
+  "requests": [
+    {
+      "pathname": "/admin-api/plm/core/product/page",
+      "status": 200,
+      "code": 0,
+      "rows": [
+        {
+          "productNo": "MES-PROD-ERP-FG-001",
+          "productFamily": "2104856930414133251",
+          "productModel": "FG-001"
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/product/get",
+      "status": 200,
+      "code": 0,
+      "rows": [
+        {
+          "productNo": "MES-PROD-ERP-FG-001",
+          "productFamily": "2104856930414133251",
+          "productModel": "FG-001"
+        }
+      ]
+    }
+  ],
+  "blockedWrites": [],
+  "errors": [],
+  "rowText": "MES-PROD-ERP-FG-001\n\t\n标准成品\n\t\n2104856930414133251 / FG-001\n\t\n已发布\n\t\n标准成品\n\t\n1\n\t\n待维护\n\t\n文档 -\nCAD -\n\t\n0\n\t\nMES 主数据\n\t\n产品工程\n\t\n2026-09-29T16:53:03\n\t\n2026-09-29T16:53:03\n\t\n概览\nEBOM\n图文档\n编辑\n流转",
+  "familyLabel": [
+    "产品族"
+  ],
+  "status": "READ_ONLY_OBSERVATION_COMPLETE"
+}

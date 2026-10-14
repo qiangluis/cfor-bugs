@@ -1145,7 +1145,26 @@
 - **源码线索（非生产运行证明）**：本地 `PlmCoreDataFlowGenerateJob` 与 `BusinessSimulationPlmStageService` 的 `categoryName()` 将物料 `categoryId` 原样作为产品族写入；`MesBasMaterial.categoryId` 关联 `mes_bas_material_category.name`，需核对名称映射及更新分支。
 - **最新复测**：2026-10-12 12:30，生产发布后产品台账仍显示 `2104856930414133251 / FG-001`，产品族字段没有转换为可读名称。
 - **证据**：[发布后产品族 ID](evidence/2026-10-12-codex-plm-followup/product-ledger-family-id-followup.jpg)。
-- **状态**：待修复。
+- **2026-10-15 生产复核**：福奇科技账号只读打开列表、概览，
+  两个正式接口均返回 `2104856930414133251`；生产同租户基础分类名称为“成品”。
+  本次迁移条件在生产只读统计匹配 1 条明确来源记录，没有执行修数。
+- **修复**：后端 `f6c256019`，两条生成路径通过基础分类公开 API 写入名称，
+  显式按当前租户及软删除范围查询，停用历史分类仍可回显。
+  新增 `V202610152300__repair_generated_plm_product_family_names.sql`，
+  仅修复来源、创建者、目标物料、租户及原分类编号均精确匹配的生成记录；
+  手工产品族、已删除或跨租户引用、生命周期、主键和审计字段不变。
+- **覆盖**：列表、概览、产品族名称筛选及下游继续读取同一产品主档；
+  新租户及后续任务创建使用正式分类名，更新分支保留已有手工产品族。
+  不将 Bug 121 的单位字段改成文字，单位下发仍需单独修复。
+- **验证**：Java 17 定向编译及 6 项回归通过（0 跳过），
+  包含真实 MySQL 8.4 / Flyway 迁移、两种排序规则、手工值保护、
+  跨租户及删除引用、停用历史分类、审计保护和重复执行。
+- **最新证据**：[生产观察与修复报告](reports/2026-10-15-codex-plm-family123.md)、
+  [列表及详情返回](evidence/2026-10-15-codex-plm-family123/result.json)、
+  [产品概览](evidence/2026-10-15-codex-plm-family123/product-family-detail.png)、
+  [实库回归](evidence/2026-10-15-codex-plm-family123/result.log)。
+- **状态**：代码已修复，待发布；已推 GitLab
+  `bugfix/plm-product-family-20261015`。未全量构建、部署或执行生产迁移。
 
 ### Bug 124：PLM 三栏工作区横向溢出，右侧业务区默认不可见
 

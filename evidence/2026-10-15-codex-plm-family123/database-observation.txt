@@ -1,0 +1,4 @@
+tenant_id	affected_rows
+1	1
+product_no	product_family	category_name	tenant_id
+MES-PROD-ERP-FG-001	2104856930414133251	成品	1
