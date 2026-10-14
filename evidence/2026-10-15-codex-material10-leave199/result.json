@@ -1,0 +1,173 @@
+{
+  "observedAt": "2026-10-14T23:47:44.047Z",
+  "pageErrors": [],
+  "externalRequests": [],
+  "checkbox": {
+    "checked": true,
+    "snapshot": {
+      "material": {
+        "code": "PB032-OWNED",
+        "name": "存货回归样本",
+        "categoryId": "C1",
+        "isEnabled": 1,
+        "type": "",
+        "model": "",
+        "unitId": "U1",
+        "brand": "",
+        "colorId": "",
+        "unitGroupId": "",
+        "auxUnitId": "",
+        "auxName": "",
+        "packageCount": 1,
+        "isMaterial": "Y",
+        "oneBarcode": "N",
+        "batchManaged": "Y",
+        "periodManaged": "Y",
+        "virtualGoods": "N",
+        "inventoryNature": "STOCK",
+        "produced": "N",
+        "purchased": "Y",
+        "saled": "Y",
+        "colorManaged": "N",
+        "brandManaged": "N",
+        "gradeManaged": "Y",
+        "defaultGradeId": "G1",
+        "allowedGradeIds": [
+          "G1",
+          "G2"
+        ],
+        "remark": "",
+        "safeStock": 0,
+        "maxStock": 0,
+        "minStock": 0,
+        "materialType": "raw",
+        "source": "mixed",
+        "qualityEnabled": "Y",
+        "purchaseInspection": "Y",
+        "productionInspection": "N",
+        "inboundInspection": "N",
+        "outboundInspection": "N",
+        "purchaseQualityPlanId": "P1",
+        "productionQualityPlanId": "",
+        "inboundQualityPlanId": "",
+        "outboundQualityPlanId": "",
+        "productImagesJson": "[]",
+        "productDescription": "<p>存货文字描述</p>",
+        "attachmentItemsJson": "[]",
+        "mesBasMaterialProperty": {
+          "packingGrow": 10,
+          "packingWide": 20,
+          "packingHigh": 30,
+          "packageVolume": "",
+          "netWeight": "",
+          "weight": "",
+          "outerPackingGrow": 40,
+          "outerPackingWide": 50,
+          "outerPackingHigh": 60,
+          "outerPackageVolume": "",
+          "outerNetWeight": "",
+          "outerGrossWeight": "",
+          "outerPackingMaterial": "",
+          "outerPackingRemark": ""
+        },
+        "id": "9223372036854775001",
+        "leadTime": 1,
+        "bufferTime": 1,
+        "picture": "",
+        "defaultWareArea": "",
+        "defaultWareLocation": ""
+      },
+      "images": [],
+      "attachments": [],
+      "ready": true,
+      "loading": false
+    },
+    "controls": {
+      "disabled": false,
+      "ariaDisabled": "true",
+      "components": [
+        {
+          "name": "ElInput",
+          "disabled": false
+        },
+        {
+          "name": "ElInputNumber",
+          "disabled": false
+        },
+        {
+          "name": "ElFormItem"
+        },
+        {
+          "name": "ElCol"
+        },
+        {
+          "name": "ElRow"
+        },
+        {
+          "name": "ElTabPane",
+          "disabled": false
+        },
+        {
+          "name": "ElTabs"
+        },
+        {
+          "name": "ElForm",
+          "disabled": false
+        },
+        {
+          "name": "ElScrollbar"
+        },
+        {
+          "name": "ElDialogContent"
+        },
+        {
+          "name": "ElFocusTrap"
+        },
+        {
+          "name": "ElOverlay"
+        },
+        {
+          "name": "BaseTransition"
+        },
+        {},
+        {
+          "name": "teleport",
+          "disabled": true
+        },
+        {
+          "name": "ElDialog"
+        },
+        {
+          "name": "Dialog"
+        },
+        {
+          "name": "BaseMaterialForm",
+          "periodManaged": "Y",
+          "loading": false
+        },
+        {}
+      ]
+    }
+  },
+  "material": {
+    "selectedTab": "存货控制",
+    "message": "保质期天数不能为空",
+    "savedBeforeCorrection": 0
+  },
+  "leave": {
+    "rejectedReversedRange": true,
+    "validPayload": {
+      "path": "/hrm/portal/attendance/leave/create",
+      "method": "post",
+      "data": {
+        "type": "personal",
+        "startTime": 1792198800000,
+        "endTime": 1792285200000,
+        "day": 1,
+        "reason": "日期范围回归",
+        "remark": ""
+      }
+    }
+  },
+  "status": "REAL_COMPONENT_LOCAL_ADAPTER_PASS"
+}

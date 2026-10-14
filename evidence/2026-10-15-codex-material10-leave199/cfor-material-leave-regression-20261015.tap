@@ -1,0 +1,232 @@
+TAP version 13
+# Subtest: real leave component compiles and retains the formal employee-only create API
+ok 1 - real leave component compiles and retains the formal employee-only create API
+  ---
+  duration_ms: 25.29575
+  type: 'test'
+  ...
+# Subtest: valid picker strings is checked when either start or end changes
+ok 2 - valid picker strings is checked when either start or end changes
+  ---
+  duration_ms: 130.987833
+  type: 'test'
+  ...
+# Subtest: reversed picker strings is checked when either start or end changes
+ok 3 - reversed picker strings is checked when either start or end changes
+  ---
+  duration_ms: 15.969083
+  type: 'test'
+  ...
+# Subtest: equal picker strings is checked when either start or end changes
+ok 4 - equal picker strings is checked when either start or end changes
+  ---
+  duration_ms: 17.374458
+  type: 'test'
+  ...
+# Subtest: numeric milliseconds is checked when either start or end changes
+ok 5 - numeric milliseconds is checked when either start or end changes
+  ---
+  duration_ms: 13.228917
+  type: 'test'
+  ...
+# Subtest: mixed milliseconds is checked when either start or end changes
+ok 6 - mixed milliseconds is checked when either start or end changes
+  ---
+  duration_ms: 11.543625
+  type: 'test'
+  ...
+# Subtest: invalid picker value is checked when either start or end changes
+ok 7 - invalid picker value is checked when either start or end changes
+  ---
+  duration_ms: 6.814875
+  type: 'test'
+  ...
+# Subtest: infinite value is checked when either start or end changes
+ok 8 - infinite value is checked when either start or end changes
+  ---
+  duration_ms: 7.234041
+  type: 'test'
+  ...
+# Subtest: empty end handled by required rule is checked when either start or end changes
+ok 9 - empty end handled by required rule is checked when either start or end changes
+  ---
+  duration_ms: 9.276584
+  type: 'test'
+  ...
+# Subtest: failed validation retains the draft and never starts approval
+ok 10 - failed validation retains the draft and never starts approval
+  ---
+  duration_ms: 15.864208
+  type: 'test'
+  ...
+# Subtest: valid selection sends numeric milliseconds and emits success once
+ok 11 - valid selection sends numeric milliseconds and emits success once
+  ---
+  duration_ms: 8.636709
+  type: 'test'
+  ...
+# Subtest: rapid repeated clicks cannot start two validation or approval requests
+ok 12 - rapid repeated clicks cannot start two validation or approval requests
+  ---
+  duration_ms: 7.855208
+  type: 'test'
+  ...
+# Subtest: API failure does not close the request or emit a successful approval submission
+ok 13 - API failure does not close the request or emit a successful approval submission
+  ---
+  duration_ms: 6.593417
+  type: 'test'
+  ...
+# Subtest: real material script/template compile; controls belong to control tab and quality uses value contract
+ok 14 - real material script/template compile; controls belong to control tab and quality uses value contract
+  ---
+  duration_ms: 154.522875
+  type: 'test'
+  ...
+# Subtest: editing a sparse list row reloads detail and preserves allowed grades without mutating the row
+ok 15 - editing a sparse list row reloads detail and preserves allowed grades without mutating the row
+  ---
+  duration_ms: 171.222834
+  type: 'test'
+  ...
+# Subtest: service clears stock controls while purchasing and sales remain independent
+ok 16 - service clears stock controls while purchasing and sales remain independent
+  ---
+  duration_ms: 84.575792
+  type: 'test'
+  ...
+# Subtest: named images, attachment metadata, both packaging layers and rich description are included in payload
+ok 17 - named images, attachment metadata, both packaging layers and rich description are included in payload
+  ---
+  duration_ms: 48.9115
+  type: 'test'
+  ...
+# Subtest: quality requires at least one stage and a plan for every selected stage
+ok 18 - quality requires at least one stage and a plan for every selected stage
+  ---
+  duration_ms: 41.258
+  type: 'test'
+  ...
+# Subtest: quality loads and changes only generic undated rules; scoped and dated rules survive
+ok 19 - quality loads and changes only generic undated rules; scoped and dated rules survive
+  ---
+  duration_ms: 38.63925
+  type: 'test'
+  ...
+# Subtest: duplicate generic rules or load failures block submission rather than resetting live rules
+ok 20 - duplicate generic rules or load failures block submission rather than resetting live rules
+  ---
+  duration_ms: 35.841084
+  type: 'test'
+  ...
+# Subtest: schema options, defaults, required fields, multi-select values and empty values use master identity
+ok 21 - schema options, defaults, required fields, multi-select values and empty values use master identity
+  ---
+  duration_ms: 33.956208
+  type: 'test'
+  ...
+# Subtest: failed configuration request keeps saved identity so retry updates rather than inserts again
+ok 22 - failed configuration request keeps saved identity so retry updates rather than inserts again
+  ---
+  duration_ms: 37.864417
+  type: 'test'
+  ...
+# Subtest: file upload limit allows its first pending file but rejects a second
+ok 23 - file upload limit allows its first pending file but rejects a second
+  ---
+  duration_ms: 11.445792
+  type: 'test'
+  ...
+# Subtest: named fixed scheme fills main/aux/rate and floating scheme clears fixed rate
+ok 24 - named fixed scheme fills main/aux/rate and floating scheme clears fixed rate
+  ---
+  duration_ms: 44.669209
+  type: 'test'
+  ...
+# Subtest: submitForm reports the first hidden validation error and opens its tab without writing
+ok 25 - submitForm reports the first hidden validation error and opens its tab without writing
+  ---
+  duration_ms: 102.984
+  type: 'test'
+  ...
+# Subtest: submitForm suppresses repeated saves while validation is pending
+ok 26 - submitForm suppresses repeated saves while validation is pending
+  ---
+  duration_ms: 33.782125
+  type: 'test'
+  ...
+# Subtest: submitForm does not save with an absent form or a false validation result
+ok 27 - submitForm does not save with an absent form or a false validation result
+  ---
+  duration_ms: 35.016583
+  type: 'test'
+  ...
+# Subtest: submitAndCopy reports the first hidden validation error and opens its tab without writing
+ok 28 - submitAndCopy reports the first hidden validation error and opens its tab without writing
+  ---
+  duration_ms: 30.380083
+  type: 'test'
+  ...
+# Subtest: submitAndCopy suppresses repeated saves while validation is pending
+ok 29 - submitAndCopy suppresses repeated saves while validation is pending
+  ---
+  duration_ms: 29.738375
+  type: 'test'
+  ...
+# Subtest: submitAndCopy does not save with an absent form or a false validation result
+ok 30 - submitAndCopy does not save with an absent form or a false validation result
+  ---
+  duration_ms: 33.337833
+  type: 'test'
+  ...
+# Subtest: backend rejection retains the edit draft and gives a visible error without success
+ok 31 - backend rejection retains the edit draft and gives a visible error without success
+  ---
+  duration_ms: 52.064167
+  type: 'test'
+  ...
+# Subtest: both real form components compile
+ok 32 - both real form components compile
+  ---
+  duration_ms: 318.891208
+  type: 'test'
+  ...
+# Subtest: project name editing never starts submission; validation and API failures restore state
+ok 33 - project name editing never starts submission; validation and API failures restore state
+  ---
+  duration_ms: 40.613417
+  type: 'test'
+  ...
+# Subtest: customer API rejection keeps draft open and never claims success
+ok 34 - customer API rejection keeps draft open and never claims success
+  ---
+  duration_ms: 86.034458
+  type: 'test'
+  ...
+# Subtest: saved customer clears incompatible filters and does not duplicate after list failure
+ok 35 - saved customer clears incompatible filters and does not duplicate after list failure
+  ---
+  duration_ms: 28.767541
+  type: 'test'
+  ...
+# Subtest: customer creation rejects an empty ID and suppresses repeated clicks
+ok 36 - customer creation rejects an empty ID and suppresses repeated clicks
+  ---
+  duration_ms: 18.712375
+  type: 'test'
+  ...
+# Subtest: saved customer retains success when the list explicitly reports refresh failure
+ok 37 - saved customer retains success when the list explicitly reports refresh failure
+  ---
+  duration_ms: 14.716125
+  type: 'test'
+  ...
+1..37
+# tests 37
+# suites 0
+# pass 37
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1491.308
