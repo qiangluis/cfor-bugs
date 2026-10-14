@@ -1,0 +1,192 @@
+{
+  "observedAt": "2026-10-14T21:45:14.856Z",
+  "production": false,
+  "pageErrors": [],
+  "blockedWrites": [],
+  "blockedNetwork": [],
+  "layouts": [
+    {
+      "width": 1280,
+      "viewport": 1280,
+      "scroll": 1280,
+      "bounds": {
+        "x": 240,
+        "right": 1260,
+        "width": 1020
+      },
+      "buttons": [
+        {
+          "text": "生成差异",
+          "x": 1019,
+          "right": 1128,
+          "width": 109
+        },
+        {
+          "text": "导出报告",
+          "x": 1140,
+          "right": 1249,
+          "width": 109
+        }
+      ],
+      "selectors": [
+        {
+          "x": 251,
+          "right": 511,
+          "width": 260
+        },
+        {
+          "x": 551,
+          "right": 811,
+          "width": 260
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "viewport": 1440,
+      "scroll": 1440,
+      "bounds": {
+        "x": 240,
+        "right": 1420,
+        "width": 1180
+      },
+      "buttons": [
+        {
+          "text": "生成差异",
+          "x": 1179,
+          "right": 1288,
+          "width": 109
+        },
+        {
+          "text": "导出报告",
+          "x": 1300,
+          "right": 1409,
+          "width": 109
+        }
+      ],
+      "selectors": [
+        {
+          "x": 251,
+          "right": 511,
+          "width": 260
+        },
+        {
+          "x": 551,
+          "right": 811,
+          "width": 260
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "viewport": 1920,
+      "scroll": 1920,
+      "bounds": {
+        "x": 240,
+        "right": 1900,
+        "width": 1660
+      },
+      "buttons": [
+        {
+          "text": "生成差异",
+          "x": 1659,
+          "right": 1768,
+          "width": 109
+        },
+        {
+          "text": "导出报告",
+          "x": 1780,
+          "right": 1889,
+          "width": 109
+        }
+      ],
+      "selectors": [
+        {
+          "x": 251,
+          "right": 511,
+          "width": 260
+        },
+        {
+          "x": 551,
+          "right": 811,
+          "width": 260
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "viewport": 768,
+      "scroll": 768,
+      "bounds": {
+        "x": 240,
+        "right": 748,
+        "width": 508
+      },
+      "buttons": [
+        {
+          "text": "生成差异",
+          "x": 251,
+          "right": 360,
+          "width": 109
+        },
+        {
+          "text": "导出报告",
+          "x": 372,
+          "right": 481,
+          "width": 109
+        }
+      ],
+      "selectors": [
+        {
+          "x": 251,
+          "right": 511,
+          "width": 260
+        },
+        {
+          "x": 251,
+          "right": 511,
+          "width": 260
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "viewport": 390,
+      "scroll": 390,
+      "bounds": {
+        "x": 20,
+        "right": 370,
+        "width": 350
+      },
+      "buttons": [
+        {
+          "text": "生成差异",
+          "x": 31,
+          "right": 140,
+          "width": 109
+        },
+        {
+          "text": "导出报告",
+          "x": 152,
+          "right": 261,
+          "width": 109
+        }
+      ],
+      "selectors": [
+        {
+          "x": 31,
+          "right": 359,
+          "width": 328
+        },
+        {
+          "x": 31,
+          "right": 359,
+          "width": 328
+        }
+      ]
+    }
+  ],
+  "originalMinimumWidthOverflows": true,
+  "permissionBoundaryPreserved": true,
+  "status": "PASS"
+}

@@ -1068,7 +1068,21 @@
 - **修复要求**：操作区应在默认桌面视口完整可见，并清理按钮模板的多余字符；补充 1280×720 布局回归。
 - **边界**：没有点击下载，没有产生生产文件。
 - **证据**：[结构化浏览器观察](evidence/2026-10-12-codex-plm117-119/observations.json)。
-- **状态**：待修复。
+- **2026-10-15 生产复核**：福奇科技账号在 1280px 视口仍读到导出按钮右边界
+  `1309px`，两个按钮名称仍带多余 `>`；没有点击生成或导出。
+- **修复**：Web `7b621f800` 移除 1080px 页面最小宽度，标题操作允许换行，
+  选择器限制在容器内，预览列使用可收缩网格；移除按钮中的多余文本字符。
+- **验证**：真实页面组件在 1280/1440/1920/768/390px 均无页面横向溢出，
+  按钮及两侧选择器完整可见；1280px 导出按钮右边界为 `1249px`。
+  恢复原 1080px 最小宽度后同一边界检查失败，缺权限时按钮仍不显示。
+- **范围**：只解决按钮裁切和名称污染，不把 Bug 118 的固定对比结果、
+  候选版本、报告内容或下载链路标为修复；没有新增菜单、权限或 Flyway。
+- **最新证据**：[生产边界](evidence/2026-10-15-codex-drawing-toolbar119/production/result.json)、
+  [本地真实组件回归](evidence/2026-10-15-codex-drawing-toolbar119/regression/result.json)、
+  [1280px](evidence/2026-10-15-codex-drawing-toolbar119/regression/drawing-toolbar-1280.png)、
+  [390px](evidence/2026-10-15-codex-drawing-toolbar119/regression/drawing-toolbar-390.png)。
+- **状态**：代码已修复，待发布；共享页面覆盖新旧租户，已推 GitLab
+  `bugfix/production-handover-plm-20261015`，尚未发布或生产回归。
 
 ## 二十二、2026-10-12 Codex PLM 产品族与单位字段续测（09:20–09:52）
 
@@ -2128,3 +2142,48 @@
 - **证据**：[生产选择器](evidence/2026-10-15-codex-project-context/production/plan-review.png)、[原样式负向结果](evidence/2026-10-15-codex-project-context/regression/filter-baseline.json)、[桌面](evidence/2026-10-15-codex-project-context/regression/project-filter-1440.png)、[窄屏](evidence/2026-10-15-codex-project-context/regression/project-filter-390.png)。
 - **边界**：只验证选择器布局，不把窄屏完整数据表、项目审批或任务写侧判为通过。
 - **状态**：代码已修复，待发布；无需数据库初始化/Flyway，覆盖共享入口和新旧租户。
+
+## 四十二、2026-10-15 Codex 项目交接正式链路续查
+
+### Bug 198：项目交接仍使用内存单据，列表、保存与审批未接正式 PMS
+
+- **模块 / 路径**：项目 → 项目执行 → 项目交接，`/project/execution/handover`；
+  兼容发起、详情、审核及风险页同样依赖 `handoverData`。
+- **级别**：P1，交接入口可见但无法形成可追溯的正式交接、审核及建项记录。
+- **需求依据**：《平台功能梳理1008.xlsx》PB-248～252；
+  开发文档确认 `pm_project_handover` 为唯一交接事实源，
+  来源快照只读、项目经理人工审核、同合同防重及建项失败可重试。
+- **生产观察**：福奇科技测试账号从真实可见菜单进入项目交接，
+  再打开空发起表单并取消；菜单、列表和弹窗可见，
+  全程没有请求 `/pm/handover/page` 或任何正式交接接口。
+  未点击保存或审核，不能声称已在生产实测保存成功或刷新丢失。
+- **源码确认**：`management/index.vue` 从空内存种子形成列表，查询仅改本地页码；
+  `submitCreate` 生成本地 ID、固定日期编号和分析结果，插入内存后提示成功。
+  审核、分派和变更也只操作本地对象。
+  兼容发起页的保存只提示“保存当前模拟数据”，审批及详情 getter 恒返回 undefined。
+- **去重**：Bug 176 的菜单入口已通过生产迁移恢复，当前管理员入口可达；
+  本条是正式业务链路缺失，不重复修菜单或扩大角色授权来掩盖问题。
+- **修复范围**：列表、详情、来源读取、草稿保存、提交、退回、升级、审核建项、
+  分派及既有工作台入口统一接正式 PMS；保留租户、数据权限、Long ID、
+  状态与人工确认，不伪造单号、分析结论、审核人或成功记录。
+  正式源快照和后台前置校验还需继续核对，不能只接列表后标为完整修复。
+- **证据**：[真实菜单入口](evidence/2026-10-15-codex-handover198/production/handover-menu.png)、
+  [空发起表单](evidence/2026-10-15-codex-handover198/production/handover-empty-draft.png)。
+- **边界**：只读生产观察，无交接、合同、项目、库存或财务业务写请求；
+  不迁移生产配置，不修改历史 Flyway，不新增生产测试数据。
+- **读取部分修复**：Web `ba4baf584` 将兼容详情与风险页接正式
+  `/pm/handover/get`，校验 Long ID 和返回记录，按租户、访问租户、用户和权限
+  废弃迟到请求；失败清旧并允许刷新。只展示保存的来源、检查结果、最近审核及
+  项目链接，不回退模拟对象或伪造附件地址。
+- **验证**：26 项定向检查与既有项目工作区回归合计 51 项通过，
+  含真实 API/helper/SFC 的隔离 TypeScript 语义检查。真实组件在 1440/390px
+  验证读取、权限撤销、竞态、失败恢复和错误快照；标签 104px，页面不横向溢出。
+- **尚缺**：实际菜单列表、发起、写侧审核及分派未接通；完整合同源快照、
+  项目化交付判定和同合同唯一有效交接仍缺失，不自动对既有合同补默认值。
+- **开发文档**：后端 `e1852796b` 明确历史切片不等于主线完成；
+  产品改动已推 GitLab `bugfix/production-handover-plm-20261015`。
+- **最新证据**：[真实组件](evidence/2026-10-15-codex-handover198/regression/result.json)、
+  [51 项回归](evidence/2026-10-15-codex-handover198/regression/cfor-handover-record-combined-20261015.tap)、
+  [窄屏详情](evidence/2026-10-15-codex-handover198/regression/formal-detail-mobile.png)。
+- **状态**：部分修复，未发布；完整待发布数量为 14（新增 Bug 119），
+  本条不计入发布门槛，仍须完成原列出的整条正式交接链路。

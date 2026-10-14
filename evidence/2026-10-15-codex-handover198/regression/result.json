@@ -1,0 +1,186 @@
+{
+  "observedAt": "2026-10-14T21:40:04.409Z",
+  "pageErrors": [],
+  "blockedNetwork": [],
+  "preciseRecordA": "HO-2104856934444859413\n待项目经理审核",
+  "riskUsesSavedResult": true,
+  "missingResultIsNotFabricated": true,
+  "staleReadDiscarded": true,
+  "failedReadClearsRecord": true,
+  "readRecovered": true,
+  "noDefaultSeedRequest": true,
+  "invalidIdBlocked": true,
+  "revokedPermissionClearsRecord": true,
+  "malformedResultsExplicit": true,
+  "mobileWidth": {
+    "client": 390,
+    "scroll": 390
+  },
+  "mobileLabels": [
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "width": 104,
+      "whiteSpace": "nowrap"
+    }
+  ],
+  "requests": [
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859413"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859413"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859414"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859413"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859414"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859414"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859414"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859413"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859413"
+      }
+    },
+    {
+      "path": "/pm/handover/get",
+      "method": "get",
+      "params": {
+        "id": "2104856934444859413"
+      }
+    }
+  ],
+  "status": "PASS"
+}

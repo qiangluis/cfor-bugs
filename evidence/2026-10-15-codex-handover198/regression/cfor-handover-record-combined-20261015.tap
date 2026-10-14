@@ -1,0 +1,316 @@
+TAP version 13
+# Subtest: actual record script, template and both wrappers compile
+ok 1 - actual record script, template and both wrappers compile
+  ---
+  duration_ms: 37.501208
+  type: 'test'
+  ...
+# Subtest: formal API, helpers and SFC script pass isolated semantic TypeScript checks
+ok 2 - formal API, helpers and SFC script pass isolated semantic TypeScript checks
+  ---
+  duration_ms: 1148.5175
+  type: 'test'
+  ...
+# Subtest: get and submit preserve adjacent Long IDs without Number conversion
+ok 3 - get and submit preserve adjacent Long IDs without Number conversion
+  ---
+  duration_ms: 37.177125
+  type: 'test'
+  ...
+# Subtest: normalizer accepts only complete positive Java Long identifiers
+ok 4 - normalizer accepts only complete positive Java Long identifiers
+  ---
+  duration_ms: 25.263875
+  type: 'test'
+  ...
+# Subtest: create, update, review and assign keep every referenced ID and do not mutate inputs
+ok 5 - create, update, review and assign keep every referenced ID and do not mutate inputs
+  ---
+  duration_ms: 25.284291
+  type: 'test'
+  ...
+# Subtest: missing or unsafe write IDs are rejected before any request
+ok 6 - missing or unsafe write IDs are rejected before any request
+  ---
+  duration_ms: 19.548
+  type: 'test'
+  ...
+# Subtest: page contract never exceeds 100 and preserves the requested project
+ok 7 - page contract never exceeds 100 and preserves the requested project
+  ---
+  duration_ms: 15.121666
+  type: 'test'
+  ...
+# Subtest: page results validate exact Long IDs, totals and duplicate or malformed rows
+ok 8 - page results validate exact Long IDs, totals and duplicate or malformed rows
+  ---
+  duration_ms: 15.008625
+  type: 'test'
+  ...
+# Subtest: record validation rejects wrong objects, unsafe relations and incomplete records
+ok 9 - record validation rejects wrong objects, unsafe relations and incomplete records
+  ---
+  duration_ms: 19.672042
+  type: 'test'
+  ...
+# Subtest: risk results only come from saved server fields and malformed results are not replaced
+ok 10 - risk results only come from saved server fields and malformed results are not replaced
+  ---
+  duration_ms: 13.175084
+  type: 'test'
+  ...
+# Subtest: source snapshots remain immutable and never fall back to seed contracts
+ok 11 - source snapshots remain immutable and never fall back to seed contracts
+  ---
+  duration_ms: 13.398625
+  type: 'test'
+  ...
+# Subtest: attachments preserve stored references and only http URLs are navigable
+ok 12 - attachments preserve stored references and only http URLs are navigable
+  ---
+  duration_ms: 14.60775
+  type: 'test'
+  ...
+# Subtest: actual component reads the explicit formal record with no default seed or writes
+ok 13 - actual component reads the explicit formal record with no default seed or writes
+  ---
+  duration_ms: 27.675792
+  type: 'test'
+  ...
+# Subtest: missing, duplicated, unsafe and malformed route IDs cause a visible error without querying
+ok 14 - missing, duplicated, unsafe and malformed route IDs cause a visible error without querying
+  ---
+  duration_ms: 142.676
+  type: 'test'
+  ...
+# Subtest: explicit component ID overrides the route only when it is valid
+ok 15 - explicit component ID overrides the route only when it is valid
+  ---
+  duration_ms: 18.738667
+  type: 'test'
+  ...
+# Subtest: same-page ID changes fetch the new record and discard a delayed former response
+ok 16 - same-page ID changes fetch the new record and discard a delayed former response
+  ---
+  duration_ms: 19.795875
+  type: 'test'
+  ...
+# Subtest: a delayed former failure cannot replace the newly loaded record
+ok 17 - a delayed former failure cannot replace the newly loaded record
+  ---
+  duration_ms: 18.840291
+  type: 'test'
+  ...
+# Subtest: query failures clear old records and recover only after a successful read
+ok 18 - query failures clear old records and recover only after a successful read
+  ---
+  duration_ms: 20.105625
+  type: 'test'
+  ...
+# Subtest: null and mismatched backend records do not render a different handover
+ok 19 - null and mismatched backend records do not render a different handover
+  ---
+  duration_ms: 37.941292
+  type: 'test'
+  ...
+# Subtest: missing and revoked query permission clear data and cannot call the API
+ok 20 - missing and revoked query permission clear data and cannot call the API
+  ---
+  duration_ms: 37.801916
+  type: 'test'
+  ...
+# Subtest: a tenant switch cannot accept a response from the former identity
+ok 21 - a tenant switch cannot accept a response from the former identity
+  ---
+  duration_ms: 20.88225
+  type: 'test'
+  ...
+# Subtest: a visit switch cannot accept a response from the former identity
+ok 22 - a visit switch cannot accept a response from the former identity
+  ---
+  duration_ms: 15.241917
+  type: 'test'
+  ...
+# Subtest: a userId switch cannot accept a response from the former identity
+ok 23 - a userId switch cannot accept a response from the former identity
+  ---
+  duration_ms: 22.925375
+  type: 'test'
+  ...
+# Subtest: deactivation cancels pending reads and reactivation rereads the formal record
+ok 24 - deactivation cancels pending reads and reactivation rereads the formal record
+  ---
+  duration_ms: 29.865125
+  type: 'test'
+  ...
+# Subtest: malformed snapshots and analysis are explicit section errors without fake fallback content
+ok 25 - malformed snapshots and analysis are explicit section errors without fake fallback content
+  ---
+  duration_ms: 29.283708
+  type: 'test'
+  ...
+# Subtest: project navigation uses only the stored formal project code and current permission
+ok 26 - project navigation uses only the stored formal project code and current permission
+  ---
+  duration_ms: 18.233709
+  type: 'test'
+  ...
+# Subtest: the actual formal workspace script and template compile
+ok 27 - the actual formal workspace script and template compile
+  ---
+  duration_ms: 59.526375
+  type: 'test'
+  ...
+# Subtest: an explicit initial project keeps its precise Long ID
+ok 28 - an explicit initial project keeps its precise Long ID
+  ---
+  duration_ms: 130.5705
+  type: 'test'
+  ...
+# Subtest: project lookup includes subsequent allowed pages without increasing page size
+ok 29 - project lookup includes subsequent allowed pages without increasing page size
+  ---
+  duration_ms: 58.758958
+  type: 'test'
+  ...
+# Subtest: a same-page projectCode change selects and reads the new project
+ok 30 - a same-page projectCode change selects and reads the new project
+  ---
+  duration_ms: 66.087833
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all milestones
+ok 31 - an unresolved explicit project cannot fall back to another project or all milestones
+  ---
+  duration_ms: 173.9555
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all plans
+ok 32 - an unresolved explicit project cannot fall back to another project or all plans
+  ---
+  duration_ms: 79.186458
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all tasks
+ok 33 - an unresolved explicit project cannot fall back to another project or all tasks
+  ---
+  duration_ms: 34.220417
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all risks
+ok 34 - an unresolved explicit project cannot fall back to another project or all risks
+  ---
+  duration_ms: 25.629666
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all issues
+ok 35 - an unresolved explicit project cannot fall back to another project or all issues
+  ---
+  duration_ms: 29.717042
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all bugs
+ok 36 - an unresolved explicit project cannot fall back to another project or all bugs
+  ---
+  duration_ms: 29.962166
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all changes
+ok 37 - an unresolved explicit project cannot fall back to another project or all changes
+  ---
+  duration_ms: 33.023417
+  type: 'test'
+  ...
+# Subtest: switching to an unresolved project clears old rows and every old action dialog
+ok 38 - switching to an unresolved project clears old rows and every old action dialog
+  ---
+  duration_ms: 29.810583
+  type: 'test'
+  ...
+# Subtest: without an explicit project, milestones retain the existing default project
+ok 39 - without an explicit project, milestones retain the existing default project
+  ---
+  duration_ms: 29.323958
+  type: 'test'
+  ...
+# Subtest: without an explicit project, plans retain the existing all-projects query
+ok 40 - without an explicit project, plans retain the existing all-projects query
+  ---
+  duration_ms: 28.661
+  type: 'test'
+  ...
+# Subtest: route codes normalize whitespace and use the first repeated query value
+ok 41 - route codes normalize whitespace and use the first repeated query value
+  ---
+  duration_ms: 212.179917
+  type: 'test'
+  ...
+# Subtest: removing an explicit project restores the unfiltered plan view
+ok 42 - removing an explicit project restores the unfiltered plan view
+  ---
+  duration_ms: 40.640083
+  type: 'test'
+  ...
+# Subtest: a user can explicitly select an allowed project after an invalid deep link
+ok 43 - a user can explicitly select an allowed project after an invalid deep link
+  ---
+  duration_ms: 28.499875
+  type: 'test'
+  ...
+# Subtest: a new valid deep link recovers after an unresolved project
+ok 44 - a new valid deep link recovers after an unresolved project
+  ---
+  duration_ms: 25.711
+  type: 'test'
+  ...
+# Subtest: changing plan type preserves the selected project and the exact backend filter
+ok 45 - changing plan type preserves the selected project and the exact backend filter
+  ---
+  duration_ms: 21.34275
+  type: 'test'
+  ...
+# Subtest: changing a tab does not override a manually selected project
+ok 46 - changing a tab does not override a manually selected project
+  ---
+  duration_ms: 27.797583
+  type: 'test'
+  ...
+# Subtest: route changes during project initialization do not send an unscoped query
+ok 47 - route changes during project initialization do not send an unscoped query
+  ---
+  duration_ms: 19.680583
+  type: 'test'
+  ...
+# Subtest: late results for the previous project cannot populate an unresolved context
+ok 48 - late results for the previous project cannot populate an unresolved context
+  ---
+  duration_ms: 21.558125
+  type: 'test'
+  ...
+# Subtest: late detail and editor requests cannot reopen the previous project
+ok 49 - late detail and editor requests cannot reopen the previous project
+  ---
+  duration_ms: 25.186458
+  type: 'test'
+  ...
+# Subtest: a confirmation from the old route cannot write after switching projects
+ok 50 - a confirmation from the old route cannot write after switching projects
+  ---
+  duration_ms: 21.635584
+  type: 'test'
+  ...
+# Subtest: an explicit code without project lookup permission does not broaden task scope
+ok 51 - an explicit code without project lookup permission does not broaden task scope
+  ---
+  duration_ms: 25.696375
+  type: 'test'
+  ...
+1..51
+# tests 51
+# suites 0
+# pass 51
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2278.794583

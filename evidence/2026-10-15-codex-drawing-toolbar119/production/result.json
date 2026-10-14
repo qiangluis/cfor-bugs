@@ -1,0 +1,46 @@
+{
+  "observedAt": "2026-10-14T21:45:14.890Z",
+  "production": true,
+  "pageErrors": [],
+  "blockedWrites": [],
+  "blockedNetwork": [],
+  "layouts": [
+    {
+      "width": 1280,
+      "viewport": 1280,
+      "scroll": 1280,
+      "bounds": {
+        "x": 240,
+        "right": 1320,
+        "width": 1080
+      },
+      "buttons": [
+        {
+          "text": ">生成差异",
+          "x": 1050.625,
+          "right": 1167.8125,
+          "width": 117.1875
+        },
+        {
+          "text": ">导出报告",
+          "x": 1191.8125,
+          "right": 1309,
+          "width": 117.1875
+        }
+      ],
+      "selectors": [
+        {
+          "x": 251,
+          "right": 511,
+          "width": 260
+        },
+        {
+          "x": 551,
+          "right": 811,
+          "width": 260
+        }
+      ]
+    }
+  ],
+  "status": "OBSERVED_WITHOUT_WRITES"
+}
