@@ -1,0 +1,16 @@
+Command:
+node --test tests/plmUnitReference.test.mjs tests/plmEbomCompare.test.mjs
+
+Excerpt from the successful command output:
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+
+The new suite contributes 10 tests. The existing comparison suite contributes 16.
+Scope: actual Vue component script behavior and template compilation.
+Full production build, whole-project type check and production writes were not run.

@@ -1,0 +1,150 @@
+{
+  "observedAt": "2026-10-14T23:13:07.447Z",
+  "pages": [
+    {
+      "route": "/plm/product-part/part-master",
+      "matchedSource": true,
+      "unitIdVisible": true,
+      "rowText": "MAT-ERP-RM-001\n\t\n标准原材料\n\t\nCOMPONENT\n\t\n2104856930405744642\n\t\n已发布\n\t\n2\n\t\n标准原材料\n\t\n否\n\t\n未锁定\n\t\nMES 主数据\n\t\n2026-09-29T16:53:03\n\t\n概览\n版本\n编辑\n流转"
+    },
+    {
+      "route": "/plm/engineering-bom/ebom",
+      "matchedSource": true,
+      "unitIdVisible": true,
+      "rowText": "EBOM-MAT-ERP-FG-001-A\n\t\n标准成品\nMAT-ERP-FG-001\n\t\nA\n\t\n已发布\n\t\n\t\n1\n\t\n0\n\t\n0\n\t\nMES 主数据\n\t\n2026-09-29T16:53:03\n\t\n结构\n对比"
+    },
+    {
+      "route": "/plm/engineering-bom/product-structure",
+      "matchedSource": true,
+      "unitIdVisible": true,
+      "rowText": "EBOM-MAT-ERP-FG-001-A\n\t\n标准成品\nMAT-ERP-FG-001\n\t\nA"
+    },
+    {
+      "route": "/plm/engineering-bom/ebom-to-mbom",
+      "matchedSource": true,
+      "unitIdVisible": true,
+      "rowText": "EBOM-MAT-ERP-FG-001-A\n\t\n标准成品\nMAT-ERP-FG-001\n\t\nA\n\t\n已发布\n\t\n1\n\t\n0\n\t\nMES 主数据\n\t\n2026-09-29T16:53:03\n\t\n选择\n校验"
+    },
+    {
+      "route": "/plm/engineering-bom/release-production-bom",
+      "matchedSource": true,
+      "unitIdVisible": true,
+      "rowText": "EBOM-MAT-ERP-FG-001-A\n\t\n标准成品\nMAT-ERP-FG-001\n\t\nA\n\t\n已发布\n\t\n1\n\t\nMES 主数据\n\t"
+    }
+  ],
+  "requests": [
+    {
+      "pathname": "/admin-api/plm/core/part/page",
+      "code": 0,
+      "rows": [
+        {
+          "partNo": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642"
+        },
+        {
+          "partNo": "MAT-ERP-FG-001",
+          "unit": "2104856930384773121"
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/ebom/tree",
+      "code": 0,
+      "rows": [
+        {
+          "partCode": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642",
+          "unitName": "2104856930405744642",
+          "children": []
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/ebom/tree",
+      "code": 0,
+      "rows": [
+        {
+          "partCode": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642",
+          "unitName": "2104856930405744642",
+          "children": []
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/ebom/tree",
+      "code": 0,
+      "rows": [
+        {
+          "partCode": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642",
+          "unitName": "2104856930405744642",
+          "children": []
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/ebom/tree",
+      "code": 0,
+      "rows": [
+        {
+          "partCode": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642",
+          "unitName": "2104856930405744642",
+          "children": []
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/ebom/tree",
+      "code": 0,
+      "rows": [
+        {
+          "partCode": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642",
+          "unitName": "2104856930405744642",
+          "children": []
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/ebom/tree",
+      "code": 0,
+      "rows": [
+        {
+          "partCode": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642",
+          "unitName": "2104856930405744642",
+          "children": []
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/ebom/tree",
+      "code": 0,
+      "rows": [
+        {
+          "partCode": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642",
+          "unitName": "2104856930405744642",
+          "children": []
+        }
+      ]
+    },
+    {
+      "pathname": "/admin-api/plm/core/ebom/tree",
+      "code": 0,
+      "rows": [
+        {
+          "partCode": "MAT-ERP-RM-001",
+          "unit": "2104856930405744642",
+          "unitName": "2104856930405744642",
+          "children": []
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "blockedWrites": [],
+  "status": "READ_ONLY_OBSERVATION_COMPLETE"
+}

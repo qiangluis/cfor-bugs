@@ -1110,7 +1110,29 @@
 - **证据**：[零部件主数据单位 ID](evidence/2026-10-12-codex-plm-followup/part-master-unit-id.jpg)、[设计 BOM 单位 ID](evidence/2026-10-12-codex-plm-followup/ebom-unit-id.jpg)、[本轮 DOM 观察](evidence/2026-10-12-codex-plm-followup/observations.json)、[前轮观察](evidence/2026-10-12-codex-plm120-122/observations.json)。
 - **纠偏**：本轮只读 DOM 核对确认 EBOM 表头和数据行实际都是 12 列，未证明存在列数错位；问题收敛为单位值错误，不把正常的“数量 + 单位名称”拼接认定为缺陷。
 - **修复要求**：统一使用单位字典/名称映射，覆盖 PLM API、详情、列表、Job 初始化和新租户初始化；不能只给当前生产库做显示补丁，也不能用内部 ID 作为回退展示值。
-- **状态**：待修复。
+- **2026-10-15 生产复现**：使用福奇科技授权账号只读打开五个入口，
+  零部件主档、设计 BOM、产品结构、EBOM 转 MBOM、下发生产 BOM
+  均可见单位内部 ID；正式 `/plm/core/part/page` 保留原 `unit`，
+  `/plm/core/ebom/tree` 的 `unitName` 也错误返回同一 ID。未执行保存、
+  校验、预览下发或实际下发。
+- **修复**：后端 `4262682d6` 新增基础单位名称只读 API，按当前租户、
+  未删除范围批量查询，停用单位保留历史名称；PLM 列表、详情、递归树、
+  下发预览同时返回原始 `unit` 和展示 `unitName`。未知数字或 UUID 不回退为
+  用户可见名称，历史 `kg`、`PCS` 等文本继续兼容。
+- **前端修复**：Web `5c07e858c` 在零部件主档、工程 BOM、生产 BOM
+  下发对照及相关类型中分离单位引用与展示名称；编辑和选择零部件保留
+  子件/版本 ID。旧客户端只提交 `unitName` 时，后端优先保留同子件已有
+  单位引用，再回读主档，不把展示名称写入 `mes_wms_assemble_sub.unit_id`。
+  下发 SQL 和版本比较仍使用原始单位引用。
+- **验证**：Java 15 项定向测试、前端 26 项回归全部通过；
+  定向 ESLint、Prettier、`git diff --check` 通过。未执行完整 Maven、
+  全项目 `vue-tsc` 或生产写侧。
+- **状态**：代码已修复，待发布；后端和 Web 均已推至
+  `bugfix/plm-unit-display-20261015`，尚未部署生产。
+- **最新证据**：[生产复现与修复报告](reports/2026-10-15-codex-material-release-and-unit121.md)、
+  [生产观察](evidence/2026-10-15-codex-unit121/production-result.json)、
+  [Java 回归](evidence/2026-10-15-codex-unit121/java-result.log)、
+  [Web 回归](evidence/2026-10-15-codex-unit121/web-result.log)。
 
 ### Bug 122：BOM 版本对比变更输入后仍展示固定差异
 

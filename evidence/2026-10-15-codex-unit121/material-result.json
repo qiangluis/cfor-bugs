@@ -1,0 +1,71 @@
+{
+  "observedAt": "2026-10-14T23:05:12.364Z",
+  "pages": [
+    {
+      "route": "/settings/erp/material",
+      "labels": {
+        "单位组/方案": 1,
+        "是否成品": 0,
+        "是否组装件": 0,
+        "参与齐套计算": 0
+      },
+      "tabs": [
+        "存货属性",
+        "存货控制",
+        "包装",
+        "质量",
+        "存货描述",
+        "自定义项",
+        "附件信息"
+      ],
+      "resources": [
+        {
+          "path": "/assets/BaseMaterialForm-BQvJRDiE.js",
+          "sha256": "81446cfe8b1c839df556cbe5f342a6251dadcdf1791377af215e8ed636a2bd09"
+        }
+      ],
+      "codePopulated": true
+    },
+    {
+      "route": "/systemModel/base/stock",
+      "labels": {
+        "单位组/方案": 1,
+        "是否成品": 0,
+        "是否组装件": 0,
+        "参与齐套计算": 0
+      },
+      "tabs": [
+        "存货属性",
+        "存货控制",
+        "包装",
+        "质量",
+        "存货描述",
+        "自定义项",
+        "附件信息"
+      ],
+      "resources": [
+        {
+          "path": "/assets/BaseMaterialForm-BQvJRDiE.js",
+          "sha256": "81446cfe8b1c839df556cbe5f342a6251dadcdf1791377af215e8ed636a2bd09"
+        }
+      ],
+      "codePopulated": true
+    }
+  ],
+  "pageErrors": [
+    "Cannot read properties of undefined (reading 'find')",
+    "Cannot read properties of undefined (reading 'find')"
+  ],
+  "apiFailures": [
+    {
+      "pathname": "/admin-api/mes/dictCode/getData",
+      "code": 500
+    },
+    {
+      "pathname": "/admin-api/mes/dictCode/getData",
+      "code": 500
+    }
+  ],
+  "blockedWrites": [],
+  "status": "DEPLOYED_MATERIAL_VERSION_CONFIRMED_WITH_EXISTING_FORM_ERRORS"
+}
