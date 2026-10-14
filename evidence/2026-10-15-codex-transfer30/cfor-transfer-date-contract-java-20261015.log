@@ -1,0 +1,483 @@
+[INFO] Scanning for projects...
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for tech.cfor17:cfor-server-4:jar:4.0.3-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.flywaydb:flyway-maven-plugin is missing. @ tech.cfor17:cfor-server-4:${revision}, /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-server/pom.xml, line 338, column 21
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for tech.cfor17:cfor-module-erp-biz:jar:4.0.3-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: tech.cfor17:cfor-module-system:jar -> duplicate declaration of version ${revision} @ tech.cfor17:cfor-module-erp-biz:${revision}, /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-biz/pom.xml, line 88, column 21
+[WARNING] 'dependencies.dependency.systemPath' for com.alibaba.ocean:ocean-client-java-biz:jar should not point at files within the project directory, ${project.basedir}/src/main/resources/lib.taobao/ocean.client.java.biz.jar will be unresolvable by dependent projects @ tech.cfor17:cfor-module-erp-biz:${revision}, /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-biz/pom.xml, line 156, column 25
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: tech.cfor17:cfor-module-base:jar -> duplicate declaration of version ${revision} @ tech.cfor17:cfor-module-erp-biz:${revision}, /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-biz/pom.xml, line 158, column 21
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for tech.cfor17:cfor-module-mes-biz:jar:4.0.3-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: tech.cfor17:cfor-module-system:jar -> duplicate declaration of version ${revision} @ tech.cfor17:cfor-module-mes-biz:${revision}, /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-mes/cfor-module-mes-biz/pom.xml, line 141, column 21
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: tech.cfor17:cfor-module-plugin-api:jar -> duplicate declaration of version ${revision} @ tech.cfor17:cfor-module-mes-biz:${revision}, /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-mes/cfor-module-mes-biz/pom.xml, line 172, column 21
+[WARNING] 'dependencies.dependency.scope' for org.optaplanner:optaplanner-bom:pom must be one of [provided, compile, runtime, test, system] but is 'import'. @ tech.cfor17:cfor-module-mes-biz:${revision}, /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-mes/cfor-module-mes-biz/pom.xml, line 125, column 20
+[WARNING]
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING]
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING]
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO]
+[INFO] cfor                                                               [pom]
+[INFO] cfor-module-system                                                 [jar]
+[INFO] cfor-module-integration                                            [pom]
+[INFO] cfor-module-integration-api                                        [jar]
+[INFO] cfor-module-bpm                                                    [jar]
+[INFO] cfor-module-hrm                                                    [pom]
+[INFO] cfor-module-hrm-api                                                [jar]
+[INFO] cfor-module-ai-runtime-api                                         [jar]
+[INFO] cfor-module-base                                                   [jar]
+[INFO] cfor-module-mes                                                    [pom]
+[INFO] cfor-module-mes-api                                                [jar]
+[INFO] cfor-module-erp                                                    [pom]
+[INFO] cfor-module-erp-api                                                [jar]
+[INFO] cfor-module-crm                                                    [jar]
+[INFO] cfor-module-wms                                                    [pom]
+[INFO] cfor-module-wms-api                                                [jar]
+[INFO] cfor-module-fms                                                    [pom]
+[INFO] cfor-module-fms-api                                                [jar]
+[INFO] cfor-module-erp-biz                                                [jar]
+[INFO] cfor-module-wms-biz                                                [jar]
+[INFO]
+[INFO] --------------------------< tech.cfor17:cfor >--------------------------
+[INFO] Building cfor 4.0.3-SNAPSHOT                                      [1/20]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor:pom:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] -------------------< tech.cfor17:cfor-module-system >-------------------
+[INFO] Building cfor-module-system 4.0.3-SNAPSHOT                        [2/20]
+[INFO]   from cfor-module-system/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-system ---
+[INFO] Copying 43 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-system ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-system:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-system ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-system ---
+[INFO] Copying 4 resources from src/test/resources to target/test-classes
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-system ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-system ---
+[INFO]
+[INFO] ----------------< tech.cfor17:cfor-module-integration >-----------------
+[INFO] Building cfor-module-integration 4.0.3-SNAPSHOT                   [3/20]
+[INFO]   from cfor-module-integration/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-integration ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-integration:pom:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --------------< tech.cfor17:cfor-module-integration-api >---------------
+[INFO] Building cfor-module-integration-api 4.0.3-SNAPSHOT               [4/20]
+[INFO]   from cfor-module-integration/cfor-module-integration-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-integration-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-integration/cfor-module-integration-api/src/main/resources
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-integration-api ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-integration-api:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-integration-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-integration-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-integration/cfor-module-integration-api/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-integration-api ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-integration-api ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --------------------< tech.cfor17:cfor-module-bpm >---------------------
+[INFO] Building cfor-module-bpm 4.0.3-SNAPSHOT                           [5/20]
+[INFO]   from cfor-module-bpm/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-bpm ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-bpm ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-bpm:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-bpm ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-bpm ---
+[INFO] Copying 4 resources from src/test/resources to target/test-classes
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-bpm ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-bpm ---
+[INFO]
+[INFO] --------------------< tech.cfor17:cfor-module-hrm >---------------------
+[INFO] Building cfor-module-hrm 4.0.3-SNAPSHOT                           [6/20]
+[INFO]   from cfor-module-hrm/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-hrm ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-hrm:pom:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] ------------------< tech.cfor17:cfor-module-hrm-api >-------------------
+[INFO] Building cfor-module-hrm-api 4.0.3-SNAPSHOT                       [7/20]
+[INFO]   from cfor-module-hrm/cfor-module-hrm-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-hrm-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-hrm/cfor-module-hrm-api/src/main/resources
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-hrm-api ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-hrm-api:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-hrm-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-hrm-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-hrm/cfor-module-hrm-api/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-hrm-api ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-hrm-api ---
+[INFO] No tests to run.
+[INFO]
+[INFO] ---------------< tech.cfor17:cfor-module-ai-runtime-api >---------------
+[INFO] Building cfor-module-ai-runtime-api 4.0.3-SNAPSHOT                [8/20]
+[INFO]   from cfor-module-ai-runtime-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-ai-runtime-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-ai-runtime-api/src/main/resources
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-ai-runtime-api ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-ai-runtime-api:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-ai-runtime-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-ai-runtime-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-ai-runtime-api/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-ai-runtime-api ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-ai-runtime-api ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --------------------< tech.cfor17:cfor-module-base >--------------------
+[INFO] Building cfor-module-base 4.0.3-SNAPSHOT                          [9/20]
+[INFO]   from cfor-module-base/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-base ---
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-base ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-base:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-base ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-base ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-base/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-base ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-base ---
+[INFO]
+[INFO] --------------------< tech.cfor17:cfor-module-mes >---------------------
+[INFO] Building cfor-module-mes 4.0.3-SNAPSHOT                          [10/20]
+[INFO]   from cfor-module-mes/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-mes ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-mes:pom:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] ------------------< tech.cfor17:cfor-module-mes-api >-------------------
+[INFO] Building cfor-module-mes-api 4.0.3-SNAPSHOT                      [11/20]
+[INFO]   from cfor-module-mes/cfor-module-mes-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-mes-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-mes/cfor-module-mes-api/src/main/resources
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-mes-api ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-mes-api:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-mes-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-mes-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-mes/cfor-module-mes-api/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-mes-api ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-mes-api ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --------------------< tech.cfor17:cfor-module-erp >---------------------
+[INFO] Building cfor-module-erp 4.0.3-SNAPSHOT                          [12/20]
+[INFO]   from cfor-module-erp/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-erp ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-erp:pom:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] ------------------< tech.cfor17:cfor-module-erp-api >-------------------
+[INFO] Building cfor-module-erp-api 4.0.3-SNAPSHOT                      [13/20]
+[INFO]   from cfor-module-erp/cfor-module-erp-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-erp-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-api/src/main/resources
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-erp-api ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-erp-api:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-erp-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-erp-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-api/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-erp-api ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-erp-api ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --------------------< tech.cfor17:cfor-module-crm >---------------------
+[INFO] Building cfor-module-crm 4.0.3-SNAPSHOT                          [14/20]
+[INFO]   from cfor-module-crm/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-crm ---
+[INFO] Copying 6 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-crm ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-crm:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-crm ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-crm ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-crm ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-crm ---
+[INFO]
+[INFO] --------------------< tech.cfor17:cfor-module-wms >---------------------
+[INFO] Building cfor-module-wms 4.0.3-SNAPSHOT                          [15/20]
+[INFO]   from cfor-module-wms/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-wms ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-wms:pom:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] ------------------< tech.cfor17:cfor-module-wms-api >-------------------
+[INFO] Building cfor-module-wms-api 4.0.3-SNAPSHOT                      [16/20]
+[INFO]   from cfor-module-wms/cfor-module-wms-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-wms-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-api/src/main/resources
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-wms-api ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-wms-api:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-wms-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-wms-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-api/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-wms-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-wms-api ---
+[INFO]
+[INFO] --------------------< tech.cfor17:cfor-module-fms >---------------------
+[INFO] Building cfor-module-fms 4.0.3-SNAPSHOT                          [17/20]
+[INFO]   from cfor-module-fms/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-fms ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-fms:pom:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] ------------------< tech.cfor17:cfor-module-fms-api >-------------------
+[INFO] Building cfor-module-fms-api 4.0.3-SNAPSHOT                      [18/20]
+[INFO]   from cfor-module-fms/cfor-module-fms-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-fms-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-fms/cfor-module-fms-api/src/main/resources
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-fms-api ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-fms-api:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-fms-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-fms-api ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-fms/cfor-module-fms-api/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-fms-api ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-fms-api ---
+[INFO] No tests to run.
+[INFO]
+[INFO] ------------------< tech.cfor17:cfor-module-erp-biz >-------------------
+[INFO] Building cfor-module-erp-biz 4.0.3-SNAPSHOT                      [19/20]
+[INFO]   from cfor-module-erp/cfor-module-erp-biz/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-erp-biz ---
+[INFO] Copying 59 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-erp-biz ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-erp-biz:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-erp-biz ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-erp-biz ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-biz/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-erp-biz ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 106 source files with javac [target 17] to target/test-classes
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-biz/src/test/java/tech/cfor17/module/erp/api/purchase/ErpPurchaseCostSourceApiImplTest.java: 某些输入文件使用或覆盖了已过时的 API。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-biz/src/test/java/tech/cfor17/module/erp/api/purchase/ErpPurchaseCostSourceApiImplTest.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-biz/src/test/java/tech/cfor17/module/erp/service/fin/Impl/FinPaymentServiceImplOutsourceTest.java: 某些输入文件使用了未经检查或不安全的操作。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-erp/cfor-module-erp-biz/src/test/java/tech/cfor17/module/erp/service/fin/Impl/FinPaymentServiceImplOutsourceTest.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-erp-biz ---
+[INFO]
+[INFO] ------------------< tech.cfor17:cfor-module-wms-biz >-------------------
+[INFO] Building cfor-module-wms-biz 4.0.3-SNAPSHOT                      [20/20]
+[INFO]   from cfor-module-wms/cfor-module-wms-biz/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ cfor-module-wms-biz ---
+[INFO] Copying 18 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- flatten:1.6.0:flatten (flatten) @ cfor-module-wms-biz ---
+[INFO] Generating flattened POM of project tech.cfor17:cfor-module-wms-biz:jar:4.0.3-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ cfor-module-wms-biz ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 256 source files with javac [target 17] to target/classes
+[WARNING] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/main/java/tech/cfor17/module/wms/service/stock/impl/StkIoServiceImpl.java:[5887,43] 最后一个参数使用了不准确的变量类型的 varargs 方法的非 varargs 调用;
+  对于 varargs 调用, 应使用 java.lang.Object
+  对于非 varargs 调用, 应使用 java.lang.Object[], 这样也可以抑制此警告
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/main/java/tech/cfor17/module/wms/service/arrival/WmsArrivalNoticeServiceImpl.java: 某些输入文件使用或覆盖了已过时的 API。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/main/java/tech/cfor17/module/wms/service/arrival/WmsArrivalNoticeServiceImpl.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/main/java/tech/cfor17/module/wms/service/stock/impl/StkQtyWareHouseServiceImpl.java: /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/main/java/tech/cfor17/module/wms/service/stock/impl/StkQtyWareHouseServiceImpl.java使用了未经检查或不安全的操作。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/main/java/tech/cfor17/module/wms/service/stock/impl/StkQtyWareHouseServiceImpl.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ cfor-module-wms-biz ---
+[INFO] skip non existing resourceDirectory /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/test/resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ cfor-module-wms-biz ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 58 source files with javac [target 17] to target/test-classes
+[WARNING] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/test/java/tech/cfor17/module/wms/dal/mysql/stock/MesStkIoEntryMapperBindingContractTest.java:[23,42] org.mybatis.spring.mapper.ClassPathMapperScanner 中的 ClassPathMapperScanner(org.springframework.beans.factory.support.BeanDefinitionRegistry) 已过时, 且标记为待删除
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/test/java/tech/cfor17/module/wms/service/arrival/WmsArrivalNoticeServiceImplTest.java: /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/test/java/tech/cfor17/module/wms/service/arrival/WmsArrivalNoticeServiceImplTest.java使用或覆盖了已过时的 API。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/test/java/tech/cfor17/module/wms/service/arrival/WmsArrivalNoticeServiceImplTest.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/test/java/tech/cfor17/module/wms/controller/admin/stock/MesStkIoControllerTest.java: 某些输入文件使用了未经检查或不安全的操作。
+[INFO] /Users/liuqiang/code/cfor-standard/cfor/cfor-admin/cfor-module-wms/cfor-module-wms-biz/src/test/java/tech/cfor17/module/wms/controller/admin/stock/MesStkIoControllerTest.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ cfor-module-wms-biz ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running tech.cfor17.module.wms.controller.admin.stock.WmsTransferBillDateContractTest
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+02:56:41.612 [main] INFO tech.cfor17.framework.jackson.config.CforJacksonAutoConfiguration -- [init][初始化 JsonUtils 成功]
+02:56:41.759 [main] INFO org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 8.0.2.Final
+02:56:42.108 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+02:56:42.108 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+02:56:42.110 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 1 ms
+02:56:42.171 [main] INFO tech.cfor17.framework.jackson.config.CforJacksonAutoConfiguration -- [init][初始化 JsonUtils 成功]
+02:56:42.180 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+02:56:42.180 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+02:56:42.180 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+02:56:42.314 [main] INFO tech.cfor17.framework.jackson.config.CforJacksonAutoConfiguration -- [init][初始化 JsonUtils 成功]
+02:56:42.321 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+02:56:42.321 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+02:56:42.321 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+02:56:42.341 [main] INFO tech.cfor17.framework.jackson.config.CforJacksonAutoConfiguration -- [init][初始化 JsonUtils 成功]
+02:56:42.347 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+02:56:42.347 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+02:56:42.347 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+02:56:42.363 [main] INFO tech.cfor17.framework.jackson.config.CforJacksonAutoConfiguration -- [init][初始化 JsonUtils 成功]
+02:56:42.369 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+02:56:42.369 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+02:56:42.369 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+02:56:42.409 [main] WARN org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver -- Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public tech.cfor17.framework.common.pojo.CommonResult<tech.cfor17.framework.common.pojo.PageResult<tech.cfor17.module.wms.controller.admin.stock.vo.WmsTransferBillRespVO>> tech.cfor17.module.wms.controller.admin.stock.WmsTransferBillController.page(tech.cfor17.module.wms.controller.admin.stock.vo.WmsTransferBillPageReqVO): [Field error in object 'wmsTransferBillPageReqVO' on field 'billDateStart': rejected value [not-a-date]; codes [typeMismatch.wmsTransferBillPageReqVO.billDateStart,typeMismatch.billDateStart,typeMismatch.java.time.LocalDateTime,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [wmsTransferBillPageReqVO.billDateStart,billDateStart]; arguments []; default message [billDateStart]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'java.time.LocalDateTime' for property 'billDateStart'; Failed to convert from type [java.lang.String] to type [@io.swagger.v3.oas.annotations.media.Schema java.time.LocalDateTime] for value [not-a-date]]] ]
+02:56:42.411 [main] INFO tech.cfor17.framework.jackson.config.CforJacksonAutoConfiguration -- [init][初始化 JsonUtils 成功]
+02:56:42.416 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+02:56:42.416 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+02:56:42.416 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+02:56:42.425 [main] INFO tech.cfor17.framework.jackson.config.CforJacksonAutoConfiguration -- [init][初始化 JsonUtils 成功]
+02:56:42.430 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+02:56:42.430 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+02:56:42.430 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.620 s -- in tech.cfor17.module.wms.controller.admin.stock.WmsTransferBillDateContractTest
+[INFO] Running tech.cfor17.module.wms.service.stock.impl.WmsTransferBillServiceImplTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.216 s -- in tech.cfor17.module.wms.service.stock.impl.WmsTransferBillServiceImplTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for cfor 4.0.3-SNAPSHOT:
+[INFO]
+[INFO] cfor ............................................... SUCCESS [  0.172 s]
+[INFO] cfor-module-system ................................. SUCCESS [  1.381 s]
+[INFO] cfor-module-integration ............................ SUCCESS [  0.027 s]
+[INFO] cfor-module-integration-api ........................ SUCCESS [  0.040 s]
+[INFO] cfor-module-bpm .................................... SUCCESS [  0.303 s]
+[INFO] cfor-module-hrm .................................... SUCCESS [  0.028 s]
+[INFO] cfor-module-hrm-api ................................ SUCCESS [  0.037 s]
+[INFO] cfor-module-ai-runtime-api ......................... SUCCESS [  0.025 s]
+[INFO] cfor-module-base ................................... SUCCESS [  0.161 s]
+[INFO] cfor-module-mes .................................... SUCCESS [  0.018 s]
+[INFO] cfor-module-mes-api ................................ SUCCESS [  0.094 s]
+[INFO] cfor-module-erp .................................... SUCCESS [  0.018 s]
+[INFO] cfor-module-erp-api ................................ SUCCESS [  0.035 s]
+[INFO] cfor-module-crm .................................... SUCCESS [  0.194 s]
+[INFO] cfor-module-wms .................................... SUCCESS [  0.018 s]
+[INFO] cfor-module-wms-api ................................ SUCCESS [  0.117 s]
+[INFO] cfor-module-fms .................................... SUCCESS [  0.017 s]
+[INFO] cfor-module-fms-api ................................ SUCCESS [  0.038 s]
+[INFO] cfor-module-erp-biz ................................ SUCCESS [  3.684 s]
+[INFO] cfor-module-wms-biz ................................ SUCCESS [  8.951 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.686 s
+[INFO] Finished at: 2026-10-15T02:56:42+08:00
+[INFO] ------------------------------------------------------------------------

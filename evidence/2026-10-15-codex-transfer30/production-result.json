@@ -1,0 +1,17 @@
+{
+  "observedAt": "2026-10-14T18:59:40.457Z",
+  "route": "/wireSideWarehouse/transfer",
+  "blockedWrites": [],
+  "pageErrors": [],
+  "legacy": {
+    "httpStatus": 200,
+    "code": 400
+  },
+  "iso": {
+    "httpStatus": 200,
+    "code": 0,
+    "total": 0
+  },
+  "defaultDateText": "2026-10-15 02:59:49",
+  "status": "READONLY_QUERY_CONTRACT_CONFIRMED"
+}

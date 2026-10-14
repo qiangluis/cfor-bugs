@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: the actual stock-take form script and template compile
+ok 1 - the actual stock-take form script and template compile
+  ---
+  duration_ms: 47.419666
+  type: 'test'
+  ...
+# Subtest: area selection is disabled without a warehouse and filters by the exact selected ID
+ok 2 - area selection is disabled without a warehouse and filters by the exact selected ID
+  ---
+  duration_ms: 107.904584
+  type: 'test'
+  ...
+# Subtest: changing warehouse clears the area and snapshots without deleting document history
+ok 3 - changing warehouse clears the area and snapshots without deleting document history
+  ---
+  duration_ms: 169.305708
+  type: 'test'
+  ...
+# Subtest: changing or clearing area invalidates selected snapshots but the same range does not
+ok 4 - changing or clearing area invalidates selected snapshots but the same range does not
+  ---
+  duration_ms: 88.017541
+  type: 'test'
+  ...
+# Subtest: editing an existing range preserves hydrated rows until a real scope change
+ok 5 - editing an existing range preserves hydrated rows until a real scope change
+  ---
+  duration_ms: 120.237834
+  type: 'test'
+  ...
+# Subtest: a delayed old-warehouse picker response cannot refill the new range
+ok 6 - a delayed old-warehouse picker response cannot refill the new range
+  ---
+  duration_ms: 29.684959
+  type: 'test'
+  ...
+# Subtest: an out-of-area response cannot be accepted even when its warehouse matches
+ok 7 - an out-of-area response cannot be accepted even when its warehouse matches
+  ---
+  duration_ms: 46.998125
+  type: 'test'
+  ...
+# Subtest: selection copies inventory rows and preserves both batches and their book quantities
+ok 8 - selection copies inventory rows and preserves both batches and their book quantities
+  ---
+  duration_ms: 34.889958
+  type: 'test'
+  ...
+# Subtest: saving refuses mixed warehouse or area rows instead of retagging them
+ok 9 - saving refuses mixed warehouse or area rows instead of retagging them
+  ---
+  duration_ms: 27.399625
+  type: 'test'
+  ...
+# Subtest: saving valid rows keeps the selected scope and snapshot without mutating the source row
+ok 10 - saving valid rows keeps the selected scope and snapshot without mutating the source row
+  ---
+  duration_ms: 50.173041
+  type: 'test'
+  ...
+# Subtest: an empty range cannot submit and whole-warehouse selection accepts multiple areas
+ok 11 - an empty range cannot submit and whole-warehouse selection accepts multiple areas
+  ---
+  duration_ms: 56.875792
+  type: 'test'
+  ...
+# Subtest: the actual tenant form and error alert compile
+ok 12 - the actual tenant form and error alert compile
+  ---
+  duration_ms: 34.814083
+  type: 'test'
+  ...
+# Subtest: the actual username rules accept backend boundary lengths and alphanumeric names
+ok 13 - the actual username rules accept backend boundary lengths and alphanumeric names
+  ---
+  duration_ms: 83.9115
+  type: 'test'
+  ...
+# Subtest: the actual username rules reject short, long, underscored and non-ASCII names
+ok 14 - the actual username rules reject short, long, underscored and non-ASCII names
+  ---
+  duration_ms: 18.835542
+  type: 'test'
+  ...
+# Subtest: the actual password rules preserve the backend 4 and 16 character boundaries
+ok 15 - the actual password rules preserve the backend 4 and 16 character boundaries
+  ---
+  duration_ms: 23.119333
+  type: 'test'
+  ...
+# Subtest: tenant API preserves the full ID for successful business code 0
+ok 16 - tenant API preserves the full ID for successful business code 0
+  ---
+  duration_ms: 11.180041
+  type: 'test'
+  ...
+# Subtest: tenant API preserves the full ID for successful business code 200
+ok 17 - tenant API preserves the full ID for successful business code 200
+  ---
+  duration_ms: 6.346667
+  type: 'test'
+  ...
+# Subtest: tenant API preserves a rejected business message from the real raw-response shape
+ok 18 - tenant API preserves a rejected business message from the real raw-response shape
+  ---
+  duration_ms: 25.064
+  type: 'test'
+  ...
+# Subtest: tenant API rejects empty and malformed responses without reporting success
+ok 19 - tenant API rejects empty and malformed responses without reporting success
+  ---
+  duration_ms: 210.360833
+  type: 'test'
+  ...
+# Subtest: a business failure remains visible without closing the form or erasing credentials
+ok 20 - a business failure remains visible without closing the form or erasing credentials
+  ---
+  duration_ms: 76.1235
+  type: 'test'
+  ...
+# Subtest: legacy opaque rejection is caught and replaced with a visible failure message
+ok 21 - legacy opaque rejection is caught and replaced with a visible failure message
+  ---
+  duration_ms: 18.38
+  type: 'test'
+  ...
+# Subtest: validation rejection does not send a create request or become an unhandled event error
+ok 22 - validation rejection does not send a create request or become an unhandled event error
+  ---
+  duration_ms: 48.785292
+  type: 'test'
+  ...
+# Subtest: a failed form can retry once and only emit success after a successful create
+ok 23 - a failed form can retry once and only emit success after a successful create
+  ---
+  duration_ms: 13.9345
+  type: 'test'
+  ...
+# Subtest: a pending request blocks repeated submit events
+ok 24 - a pending request blocks repeated submit events
+  ---
+  duration_ms: 22.146917
+  type: 'test'
+  ...
+# Subtest: editing a tenant uses its original update API and catches update failures
+ok 25 - editing a tenant uses its original update API and catches update failures
+  ---
+  duration_ms: 81.419875
+  type: 'test'
+  ...
+# Subtest: reopening the form clears the previous error and credentials
+ok 26 - reopening the form clears the previous error and credentials
+  ---
+  duration_ms: 8.009291
+  type: 'test'
+  ...
+# Subtest: the actual transfer SFC compiles with its date bindings
+ok 27 - the actual transfer SFC compiles with its date bindings
+  ---
+  duration_ms: 70.956709
+  type: 'test'
+  ...
+# Subtest: the actual form uses millisecond pickers and ISO list parameters
+ok 28 - the actual form uses millisecond pickers and ISO list parameters
+  ---
+  duration_ms: 1.015833
+  type: 'test'
+  ...
+# Subtest: a new form initializes an exact millisecond timestamp, not display text
+ok 29 - a new form initializes an exact millisecond timestamp, not display text
+  ---
+  duration_ms: 303.428959
+  type: 'test'
+  ...
+# Subtest: create sends numeric millisecond JSON and preserves document dimensions
+ok 30 - create sends numeric millisecond JSON and preserves document dimensions
+  ---
+  duration_ms: 58.111042
+  type: 'test'
+  ...
+# Subtest: update sends numeric millisecond JSON and preserves document dimensions
+ok 31 - update sends numeric millisecond JSON and preserves document dimensions
+  ---
+  duration_ms: 47.834583
+  type: 'test'
+  ...
+# Subtest: date normalization handles numeric responses and legacy Date response strings
+ok 32 - date normalization handles numeric responses and legacy Date response strings
+  ---
+  duration_ms: 6.165291
+  type: 'test'
+  ...
+# Subtest: clearing optional arrival keeps null, while missing arrival remains omitted
+ok 33 - clearing optional arrival keeps null, while missing arrival remains omitted
+  ---
+  duration_ms: 5.843292
+  type: 'test'
+  ...
+# Subtest: invalid or absent dates are rejected before sending a request
+ok 34 - invalid or absent dates are rejected before sending a request
+  ---
+  duration_ms: 32.585666
+  type: 'test'
+  ...
+# Subtest: opening an existing document normalizes both dates without altering audit fields
+ok 35 - opening an existing document normalizes both dates without altering audit fields
+  ---
+  duration_ms: 120.207375
+  type: 'test'
+  ...
+# Subtest: the actual query preserves whole-day ISO boundaries and reset removes them
+ok 36 - the actual query preserves whole-day ISO boundaries and reset removes them
+  ---
+  duration_ms: 63.073417
+  type: 'test'
+  ...
+# Subtest: list and execution timestamps render human-readable dates, including epoch zero
+ok 37 - list and execution timestamps render human-readable dates, including epoch zero
+  ---
+  duration_ms: 41.748208
+  type: 'test'
+  ...
+# Subtest: both save paths preserve non-midnight time while retaining warehouse and batch values
+ok 38 - both save paths preserve non-midnight time while retaining warehouse and batch values
+  ---
+  duration_ms: 61.706916
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1339.813417

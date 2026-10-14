@@ -1,0 +1,63 @@
+{
+  "observedAt": "2026-10-14T19:06:52.475Z",
+  "pageErrors": [],
+  "blockedNetwork": [],
+  "create": {
+    "path": "/wms/transfer-bill/create",
+    "method": "post",
+    "data": {
+      "billDate": 1791653683000,
+      "lines": [
+        {
+          "qty": 1,
+          "outPostedQty": 0,
+          "inPostedQty": 0,
+          "materialId": "fixture-material",
+          "materialName": "Regression material",
+          "unitId": "fixture-unit",
+          "unitName": "件"
+        }
+      ],
+      "outWarehouseId": "fixture-out",
+      "inWarehouseId": "fixture-in",
+      "expectedArrivalTime": 1791797136000,
+      "idempotencyKey": "WMS-TRANSFER-1792004817459-ni2kg2wl"
+    }
+  },
+  "update": {
+    "path": "/wms/transfer-bill/update",
+    "method": "put",
+    "data": {
+      "id": "fixture-bill",
+      "billNo": "FIXTURE-TRANSFER",
+      "billDate": 1791653683000,
+      "expectedArrivalTime": null,
+      "createTime": 1791653683000,
+      "outWarehouseId": "fixture-out",
+      "inWarehouseId": "fixture-in",
+      "transferStatus": "DRAFT",
+      "isEffective": 0,
+      "version": "3",
+      "lines": [
+        {
+          "materialId": "fixture-material",
+          "qty": 2,
+          "outBatchNo": "fixture-batch",
+          "materialName": "FIXTURE-MATERIAL / Regression material",
+          "unitName": "件"
+        }
+      ]
+    }
+  },
+  "query": {
+    "pageNo": 1,
+    "pageSize": 20,
+    "billDateStart": "2026-10-10T00:00:00",
+    "billDateEnd": "2026-10-15T23:59:59"
+  },
+  "reset": {
+    "pageNo": 1,
+    "pageSize": 20
+  },
+  "status": "PASS"
+}
