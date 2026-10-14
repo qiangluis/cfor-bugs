@@ -1,0 +1,346 @@
+TAP version 13
+# Subtest: actual record script, template and both wrappers compile
+ok 1 - actual record script, template and both wrappers compile
+  ---
+  duration_ms: 29.823875
+  type: 'test'
+  ...
+# Subtest: formal API, helpers and SFC script pass isolated semantic TypeScript checks
+ok 2 - formal API, helpers and SFC script pass isolated semantic TypeScript checks
+  ---
+  duration_ms: 529.376042
+  type: 'test'
+  ...
+# Subtest: get and submit preserve adjacent Long IDs without Number conversion
+ok 3 - get and submit preserve adjacent Long IDs without Number conversion
+  ---
+  duration_ms: 33.739
+  type: 'test'
+  ...
+# Subtest: normalizer accepts only complete positive Java Long identifiers
+ok 4 - normalizer accepts only complete positive Java Long identifiers
+  ---
+  duration_ms: 19.51275
+  type: 'test'
+  ...
+# Subtest: create, update, review and assign keep every referenced ID and do not mutate inputs
+ok 5 - create, update, review and assign keep every referenced ID and do not mutate inputs
+  ---
+  duration_ms: 17.772084
+  type: 'test'
+  ...
+# Subtest: missing or unsafe write IDs are rejected before any request
+ok 6 - missing or unsafe write IDs are rejected before any request
+  ---
+  duration_ms: 16.271667
+  type: 'test'
+  ...
+# Subtest: page contract never exceeds 100 and preserves the requested project
+ok 7 - page contract never exceeds 100 and preserves the requested project
+  ---
+  duration_ms: 15.263708
+  type: 'test'
+  ...
+# Subtest: page results validate exact Long IDs, totals and duplicate or malformed rows
+ok 8 - page results validate exact Long IDs, totals and duplicate or malformed rows
+  ---
+  duration_ms: 17.416041
+  type: 'test'
+  ...
+# Subtest: record validation rejects wrong objects, unsafe relations and incomplete records
+ok 9 - record validation rejects wrong objects, unsafe relations and incomplete records
+  ---
+  duration_ms: 14.201666
+  type: 'test'
+  ...
+# Subtest: risk results only come from saved server fields and malformed results are not replaced
+ok 10 - risk results only come from saved server fields and malformed results are not replaced
+  ---
+  duration_ms: 14.315625
+  type: 'test'
+  ...
+# Subtest: source snapshots remain immutable and never fall back to seed contracts
+ok 11 - source snapshots remain immutable and never fall back to seed contracts
+  ---
+  duration_ms: 15.317
+  type: 'test'
+  ...
+# Subtest: attachments preserve stored references and only http URLs are navigable
+ok 12 - attachments preserve stored references and only http URLs are navigable
+  ---
+  duration_ms: 11.82375
+  type: 'test'
+  ...
+# Subtest: actual component reads the explicit formal record with no default seed or writes
+ok 13 - actual component reads the explicit formal record with no default seed or writes
+  ---
+  duration_ms: 29.59625
+  type: 'test'
+  ...
+# Subtest: missing, duplicated, unsafe and malformed route IDs cause a visible error without querying
+ok 14 - missing, duplicated, unsafe and malformed route IDs cause a visible error without querying
+  ---
+  duration_ms: 147.392625
+  type: 'test'
+  ...
+# Subtest: explicit component ID overrides the route only when it is valid
+ok 15 - explicit component ID overrides the route only when it is valid
+  ---
+  duration_ms: 35.966125
+  type: 'test'
+  ...
+# Subtest: same-page ID changes fetch the new record and discard a delayed former response
+ok 16 - same-page ID changes fetch the new record and discard a delayed former response
+  ---
+  duration_ms: 20.061666
+  type: 'test'
+  ...
+# Subtest: a delayed former failure cannot replace the newly loaded record
+ok 17 - a delayed former failure cannot replace the newly loaded record
+  ---
+  duration_ms: 22.262375
+  type: 'test'
+  ...
+# Subtest: query failures clear old records and recover only after a successful read
+ok 18 - query failures clear old records and recover only after a successful read
+  ---
+  duration_ms: 19.30225
+  type: 'test'
+  ...
+# Subtest: null and mismatched backend records do not render a different handover
+ok 19 - null and mismatched backend records do not render a different handover
+  ---
+  duration_ms: 37.663125
+  type: 'test'
+  ...
+# Subtest: missing and revoked query permission clear data and cannot call the API
+ok 20 - missing and revoked query permission clear data and cannot call the API
+  ---
+  duration_ms: 38.784084
+  type: 'test'
+  ...
+# Subtest: a tenant switch cannot accept a response from the former identity
+ok 21 - a tenant switch cannot accept a response from the former identity
+  ---
+  duration_ms: 18.618791
+  type: 'test'
+  ...
+# Subtest: a visit switch cannot accept a response from the former identity
+ok 22 - a visit switch cannot accept a response from the former identity
+  ---
+  duration_ms: 16.135708
+  type: 'test'
+  ...
+# Subtest: a userId switch cannot accept a response from the former identity
+ok 23 - a userId switch cannot accept a response from the former identity
+  ---
+  duration_ms: 17.841042
+  type: 'test'
+  ...
+# Subtest: deactivation cancels pending reads and reactivation rereads the formal record
+ok 24 - deactivation cancels pending reads and reactivation rereads the formal record
+  ---
+  duration_ms: 19.780625
+  type: 'test'
+  ...
+# Subtest: malformed snapshots and analysis are explicit section errors without fake fallback content
+ok 25 - malformed snapshots and analysis are explicit section errors without fake fallback content
+  ---
+  duration_ms: 17.11825
+  type: 'test'
+  ...
+# Subtest: project navigation uses only the stored formal project code and current permission
+ok 26 - project navigation uses only the stored formal project code and current permission
+  ---
+  duration_ms: 19.388916
+  type: 'test'
+  ...
+# Subtest: query selects a result, retains an existing ID across string/number responses and refreshes details
+ok 27 - query selects a result, retains an existing ID across string/number responses and refreshes details
+  ---
+  duration_ms: 2.586208
+  type: 'test'
+  ...
+# Subtest: filtered-out selection is replaced by the new result and empty queries clear all action targets
+ok 28 - filtered-out selection is replaced by the new result and empty queries clear all action targets
+  ---
+  duration_ms: 1.059791
+  type: 'test'
+  ...
+# Subtest: pending and failed queries clear old details and disable selection-dependent writes
+ok 29 - pending and failed queries clear old details and disable selection-dependent writes
+  ---
+  duration_ms: 0.571334
+  type: 'test'
+  ...
+# Subtest: late list results do not replace newer results or clear their loading state
+ok 30 - late list results do not replace newer results or clear their loading state
+  ---
+  duration_ms: 0.257833
+  type: 'test'
+  ...
+# Subtest: late details cannot overwrite a different document selection
+ok 31 - late details cannot overwrite a different document selection
+  ---
+  duration_ms: 2.167709
+  type: 'test'
+  ...
+# Subtest: late successful previews cannot overwrite a new preview
+ok 32 - late successful previews cannot overwrite a new preview
+  ---
+  duration_ms: 0.223958
+  type: 'test'
+  ...
+# Subtest: late failed previews cannot overwrite a new preview
+ok 33 - late failed previews cannot overwrite a new preview
+  ---
+  duration_ms: 0.220375
+  type: 'test'
+  ...
+# Subtest: a cleared empty selection cannot be repopulated by an old detail response
+ok 34 - a cleared empty selection cannot be repopulated by an old detail response
+  ---
+  duration_ms: 0.197125
+  type: 'test'
+  ...
+# Subtest: detail failures clear the selection; documents outside the list are never selected
+ok 35 - detail failures clear the selection; documents outside the list are never selected
+  ---
+  duration_ms: 0.508041
+  type: 'test'
+  ...
+# Subtest: refresh and reset use the same selection synchronization and cap pagination at 100
+ok 36 - refresh and reset use the same selection synchronization and cap pagination at 100
+  ---
+  duration_ms: 0.933833
+  type: 'test'
+  ...
+# Subtest: unmount invalidates an in-flight list and cannot restore its selection
+ok 37 - unmount invalidates an in-flight list and cannot restore its selection
+  ---
+  duration_ms: 0.269584
+  type: 'test'
+  ...
+# Subtest: revision upload and check-in/out keep the selected ID and revision in their write contracts
+ok 38 - revision upload and check-in/out keep the selected ID and revision in their write contracts
+  ---
+  duration_ms: 0.512958
+  type: 'test'
+  ...
+# Subtest: upload, checkout, checkin and reload controls bind the same readiness guard
+ok 39 - upload, checkout, checkin and reload controls bind the same readiness guard
+  ---
+  duration_ms: 0.086333
+  type: 'test'
+  ...
+# Subtest: panel titles enable ContentWrap header slots and search actions have a separate toolbar
+ok 40 - panel titles enable ContentWrap header slots and search actions have a separate toolbar
+  ---
+  duration_ms: 0.062458
+  type: 'test'
+  ...
+# Subtest: initial and missing-selection states contain no demonstration rows and send no compare
+ok 41 - initial and missing-selection states contain no demonstration rows and send no compare
+  ---
+  duration_ms: 2.739292
+  type: 'test'
+  ...
+# Subtest: version choices load all pages at <=100 and preserve large IDs without number conversion
+ok 42 - version choices load all pages at <=100 and preserve large IDs without number conversion
+  ---
+  duration_ms: 2.391792
+  type: 'test'
+  ...
+# Subtest: a new tenant with no EBOMs has a truthful empty list and comparison remains disabled
+ok 43 - a new tenant with no EBOMs has a truthful empty list and comparison remains disabled
+  ---
+  duration_ms: 0.539959
+  type: 'test'
+  ...
+# Subtest: an empty successful comparison is no differences, never demonstration fallback
+ok 44 - an empty successful comparison is no differences, never demonstration fallback
+  ---
+  duration_ms: 0.436
+  type: 'test'
+  ...
+# Subtest: actual API fields and risk are retained without inventing parent or hierarchy values
+ok 45 - actual API fields and risk are retained without inventing parent or hierarchy values
+  ---
+  duration_ms: 0.6835
+  type: 'test'
+  ...
+# Subtest: malformed response null is failure, not no differences
+ok 46 - malformed response null is failure, not no differences
+  ---
+  duration_ms: 0.358334
+  type: 'test'
+  ...
+# Subtest: malformed response {} is failure, not no differences
+ok 47 - malformed response {} is failure, not no differences
+  ---
+  duration_ms: 0.28125
+  type: 'test'
+  ...
+# Subtest: malformed response "bad" is failure, not no differences
+ok 48 - malformed response "bad" is failure, not no differences
+  ---
+  duration_ms: 0.191542
+  type: 'test'
+  ...
+# Subtest: malformed response [null] is failure, not no differences
+ok 49 - malformed response [null] is failure, not no differences
+  ---
+  duration_ms: 0.559666
+  type: 'test'
+  ...
+# Subtest: failed comparisons clear prior data and distinguish failure from an empty success
+ok 50 - failed comparisons clear prior data and distinguish failure from an empty success
+  ---
+  duration_ms: 0.799583
+  type: 'test'
+  ...
+# Subtest: late successful comparison cannot overwrite changed choices
+ok 51 - late successful comparison cannot overwrite changed choices
+  ---
+  duration_ms: 0.339833
+  type: 'test'
+  ...
+# Subtest: late failed comparison cannot overwrite changed choices
+ok 52 - late failed comparison cannot overwrite changed choices
+  ---
+  duration_ms: 0.227
+  type: 'test'
+  ...
+# Subtest: refresh failure clears old choices, prevents stale comparison and does not look like an empty tenant
+ok 53 - refresh failure clears old choices, prevents stale comparison and does not look like an empty tenant
+  ---
+  duration_ms: 0.208416
+  type: 'test'
+  ...
+# Subtest: an old version query cannot replace a newer list or restore a removed selected ID
+ok 54 - an old version query cannot replace a newer list or restore a removed selected ID
+  ---
+  duration_ms: 0.198875
+  type: 'test'
+  ...
+# Subtest: unmount invalidates pending results
+ok 55 - unmount invalidates pending results
+  ---
+  duration_ms: 0.200708
+  type: 'test'
+  ...
+# Subtest: template compiles and binds read permission, selectable versions and distinct error states
+ok 56 - template compiles and binds read permission, selectable versions and distinct error states
+  ---
+  duration_ms: 11.894792
+  type: 'test'
+  ...
+1..56
+# tests 56
+# suites 0
+# pass 56
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1544.356208

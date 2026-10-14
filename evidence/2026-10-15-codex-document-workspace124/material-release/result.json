@@ -1,0 +1,105 @@
+{
+  "observedAt": "2026-10-14T22:03:24.940Z",
+  "consoleErrors": [],
+  "pageErrors": [
+    "Cannot read properties of undefined (reading 'find')"
+  ],
+  "failedApiResponses": [],
+  "blockedWrites": [],
+  "loadedAssets": [
+    {
+      "path": "/assets/BaseMaterialForm-BQvJRDiE.js",
+      "httpStatus": 200
+    }
+  ],
+  "businessErrors": [
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 500
+    }
+  ],
+  "form": {
+    "unitScheme": true,
+    "tabs": [
+      "存货属性",
+      "存货控制",
+      "包装",
+      "质量",
+      "存货描述",
+      "自定义项",
+      "附件信息"
+    ],
+    "obsoleteFields": [],
+    "roleContainerWidth": 1440
+  },
+  "screenshot": "/tmp/cfor-material-release-recheck-20261015/material-form.png",
+  "status": "NEW_PAGE_CONFIRMED_WITH_EXISTING_ERRORS",
+  "dictionaryResponses": [
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 500
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "httpStatus": 200,
+      "code": 200
+    }
+  ]
+}

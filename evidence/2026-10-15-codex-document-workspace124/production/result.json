@@ -1,0 +1,107 @@
+{
+  "observedAt": "2026-10-14T21:56:53.768Z",
+  "production": true,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedApiResponses": [],
+  "blockedNetwork": [],
+  "blockedWrites": [],
+  "pages": [
+    {
+      "key": "preview",
+      "layouts": [
+        {
+          "width": 1280,
+          "viewport": 1280,
+          "scroll": 1280,
+          "right": 1400,
+          "x": 240,
+          "panels": [
+            {
+              "text": "全部图文档标准成品资料包文件ERP-FG-001_fixture_layout.dwgERP-FG-001_gearbox_assembly.dwgERP-FG-001_flang",
+              "x": 240,
+              "right": 500,
+              "width": 260,
+              "y": 309.796875
+            },
+            {
+              "text": "请选择文件后查看在线预览",
+              "x": 512,
+              "right": 1058,
+              "width": 546,
+              "y": 309.796875
+            },
+            {
+              "text": "第 2 页 / 右上角待处理安装孔标注与 EBOM 子件规格不一致，需要设计确认。结构工程师 / 2026-05-26模型视图 / 剖面 B已回复剖面尺寸已按评审意见修订，等待版本",
+              "x": 1070,
+              "right": 1400,
+              "width": 330,
+              "y": 309.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 1175,
+              "right": 1256,
+              "width": 81,
+              "y": 239
+            },
+            {
+              "text": "新增批注",
+              "x": 1280,
+              "right": 1389,
+              "width": 109,
+              "y": 239
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "iteration",
+      "layouts": [
+        {
+          "width": 1280,
+          "viewport": 1280,
+          "scroll": 1280,
+          "right": 1320,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文档版本号当前轮次版本状态签出人签出时间发布时间更新时间操作当前筛选下没有图文档版本记录共 0 条100条/页 1 前往页",
+              "x": 240,
+              "right": 940,
+              "width": 700,
+              "y": 373.796875
+            },
+            {
+              "text": "请选择文档查看版本与迭代历史",
+              "x": 952,
+              "right": 1372,
+              "width": 420,
+              "y": 373.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 1067,
+              "right": 1148,
+              "width": 81,
+              "y": 239
+            },
+            {
+              "text": "上传修订文件",
+              "x": 1172,
+              "right": 1309,
+              "width": 137,
+              "y": 239
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "OBSERVED_WITHOUT_BUSINESS_WRITES"
+}

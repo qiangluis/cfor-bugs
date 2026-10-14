@@ -1,0 +1,865 @@
+{
+  "observedAt": "2026-10-14T22:09:42.666Z",
+  "production": false,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedApiResponses": [],
+  "blockedNetwork": [],
+  "blockedWrites": [],
+  "pages": [
+    {
+      "key": "preview",
+      "layouts": [
+        {
+          "width": 1280,
+          "viewport": 1280,
+          "scroll": 1280,
+          "right": 1260,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文件树Regression document folder文件regression-drawing-a.dwgregression-drawing-b.dwg",
+              "x": 240,
+              "right": 460,
+              "width": 220,
+              "y": 101.796875
+            },
+            {
+              "text": "预览区regression-drawing-a.dwg刷新预览预览内容未就绪当前文件需要先生成可在线查看的文档、图片或 CAD 内容。原因：Regression preview p",
+              "x": 472,
+              "right": 968,
+              "width": 496,
+              "y": 101.796875
+            },
+            {
+              "text": "批注列表第 2 页 / 右上角待处理安装孔标注与 EBOM 子件规格不一致，需要设计确认。结构工程师 / 2026-05-26模型视图 / 剖面 B已回复剖面尺寸已按评审意见修订，",
+              "x": 980,
+              "right": 1260,
+              "width": 280,
+              "y": 101.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 1047,
+              "right": 1128,
+              "width": 81,
+              "y": 31
+            },
+            {
+              "text": "新增批注",
+              "x": 1140,
+              "right": 1249,
+              "width": 109,
+              "y": 31
+            }
+          ],
+          "paginationControls": []
+        },
+        {
+          "width": 1440,
+          "viewport": 1440,
+          "scroll": 1440,
+          "right": 1420,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文件树Regression document folder文件regression-drawing-a.dwgregression-drawing-b.dwg",
+              "x": 240,
+              "right": 460,
+              "width": 220,
+              "y": 101.796875
+            },
+            {
+              "text": "预览区regression-drawing-a.dwg刷新预览预览内容未就绪当前文件需要先生成可在线查看的文档、图片或 CAD 内容。原因：Regression preview p",
+              "x": 472,
+              "right": 1128,
+              "width": 656,
+              "y": 101.796875
+            },
+            {
+              "text": "批注列表第 2 页 / 右上角待处理安装孔标注与 EBOM 子件规格不一致，需要设计确认。结构工程师 / 2026-05-26模型视图 / 剖面 B已回复剖面尺寸已按评审意见修订，",
+              "x": 1140,
+              "right": 1420,
+              "width": 280,
+              "y": 101.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 1207,
+              "right": 1288,
+              "width": 81,
+              "y": 31
+            },
+            {
+              "text": "新增批注",
+              "x": 1300,
+              "right": 1409,
+              "width": 109,
+              "y": 31
+            }
+          ],
+          "paginationControls": []
+        },
+        {
+          "width": 1920,
+          "viewport": 1920,
+          "scroll": 1920,
+          "right": 1900,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文件树Regression document folder文件regression-drawing-a.dwgregression-drawing-b.dwg",
+              "x": 240,
+              "right": 460,
+              "width": 220,
+              "y": 101.796875
+            },
+            {
+              "text": "预览区regression-drawing-a.dwg刷新预览预览内容未就绪当前文件需要先生成可在线查看的文档、图片或 CAD 内容。原因：Regression preview p",
+              "x": 472,
+              "right": 1608,
+              "width": 1136,
+              "y": 101.796875
+            },
+            {
+              "text": "批注列表第 2 页 / 右上角待处理安装孔标注与 EBOM 子件规格不一致，需要设计确认。结构工程师 / 2026-05-26模型视图 / 剖面 B已回复剖面尺寸已按评审意见修订，",
+              "x": 1620,
+              "right": 1900,
+              "width": 280,
+              "y": 101.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 1687,
+              "right": 1768,
+              "width": 81,
+              "y": 31
+            },
+            {
+              "text": "新增批注",
+              "x": 1780,
+              "right": 1889,
+              "width": 109,
+              "y": 31
+            }
+          ],
+          "paginationControls": []
+        },
+        {
+          "width": 768,
+          "viewport": 768,
+          "scroll": 768,
+          "right": 748,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文件树Regression document folder文件regression-drawing-a.dwgregression-drawing-b.dwg",
+              "x": 240,
+              "right": 748,
+              "width": 508,
+              "y": 145.796875
+            },
+            {
+              "text": "预览区regression-drawing-a.dwg刷新预览预览内容未就绪当前文件需要先生成可在线查看的文档、图片或 CAD 内容。原因：Regression preview p",
+              "x": 240,
+              "right": 748,
+              "width": 508,
+              "y": 529.796875
+            },
+            {
+              "text": "批注列表第 2 页 / 右上角待处理安装孔标注与 EBOM 子件规格不一致，需要设计确认。结构工程师 / 2026-05-26模型视图 / 剖面 B已回复剖面尺寸已按评审意见修订，",
+              "x": 240,
+              "right": 748,
+              "width": 508,
+              "y": 1141.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 251,
+              "right": 332,
+              "width": 81,
+              "y": 90.796875
+            },
+            {
+              "text": "新增批注",
+              "x": 344,
+              "right": 453,
+              "width": 109,
+              "y": 90.796875
+            }
+          ],
+          "paginationControls": []
+        },
+        {
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "right": 370,
+          "x": 20,
+          "panels": [
+            {
+              "text": "文件树Regression document folder文件regression-drawing-a.dwgregression-drawing-b.dwg",
+              "x": 20,
+              "right": 370,
+              "width": 350,
+              "y": 166.59375
+            },
+            {
+              "text": "预览区regression-drawing-a.dwg刷新预览预览内容未就绪当前文件需要先生成可在线查看的文档、图片或 CAD 内容。原因：Regression preview p",
+              "x": 20,
+              "right": 370,
+              "width": 350,
+              "y": 674.59375
+            },
+            {
+              "text": "批注列表第 2 页 / 右上角待处理安装孔标注与 EBOM 子件规格不一致，需要设计确认。结构工程师 / 2026-05-26模型视图 / 剖面 B已回复剖面尺寸已按评审意见修订，",
+              "x": 20,
+              "right": 370,
+              "width": 350,
+              "y": 1410.59375
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 31,
+              "right": 112,
+              "width": 81,
+              "y": 111.59375
+            },
+            {
+              "text": "新增批注",
+              "x": 124,
+              "right": 233,
+              "width": 109,
+              "y": 111.59375
+            }
+          ],
+          "paginationControls": []
+        }
+      ],
+      "selectionStillWorks": true,
+      "requests": [
+        {
+          "path": "/plm/core/document/folders",
+          "method": "get",
+          "params": {}
+        },
+        {
+          "path": "/plm/core/document/page",
+          "method": "get",
+          "params": {
+            "pageNo": 1,
+            "pageSize": 100
+          }
+        },
+        {
+          "path": "/plm/core/document/get",
+          "method": "get",
+          "params": {
+            "id": "2104856934444859401"
+          }
+        },
+        {
+          "path": "/plm/core/document/preview",
+          "method": "get",
+          "params": {
+            "documentId": "2104856934444859401",
+            "revisionId": "2104856934444859411"
+          }
+        },
+        {
+          "path": "/plm/core/document/get",
+          "method": "get",
+          "params": {
+            "id": "2104856934444859402"
+          }
+        },
+        {
+          "path": "/plm/core/document/preview",
+          "method": "get",
+          "params": {
+            "documentId": "2104856934444859402",
+            "revisionId": "2104856934444859412"
+          }
+        }
+      ],
+      "originalMinimumWidthOverflows": true
+    },
+    {
+      "key": "iteration",
+      "layouts": [
+        {
+          "width": 1280,
+          "viewport": 1280,
+          "scroll": 1280,
+          "right": 1260,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文档主档列表展示当前生效版本，选中后查看版本与迭代历史文档版本号当前轮次版本状态签出人签出时间发布时间更新时间操作Regression drawing A with a longe",
+              "x": 240,
+              "right": 828,
+              "width": 588,
+              "y": 165.796875
+            },
+            {
+              "text": "版本历史共 1 条版本记录Regression drawing A with a longer document titleREG-DOC-A / 当前版本 A.1 / 当前 第 ",
+              "x": 840,
+              "right": 1260,
+              "width": 420,
+              "y": 165.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 1019,
+              "right": 1100,
+              "width": 81,
+              "y": 31
+            },
+            {
+              "text": "上传修订文件",
+              "x": 1112,
+              "right": 1249,
+              "width": 137,
+              "y": 31
+            },
+            {
+              "text": "签出",
+              "x": 851,
+              "right": 911,
+              "width": 60,
+              "y": 870.96875
+            },
+            {
+              "text": "签入",
+              "x": 935,
+              "right": 995,
+              "width": 60,
+              "y": 870.96875
+            },
+            {
+              "text": "上传修订文件",
+              "x": 1019,
+              "right": 1135,
+              "width": 116,
+              "y": 870.96875
+            }
+          ],
+          "paginationControls": [
+            {
+              "text": "Total 2",
+              "x": 390.453125,
+              "right": 436.484375,
+              "width": 46.03125,
+              "y": 636.296875
+            },
+            {
+              "text": "100/page",
+              "x": 444.484375,
+              "right": 572.484375,
+              "width": 128,
+              "y": 630.796875
+            },
+            {
+              "text": "",
+              "x": 580.484375,
+              "right": 612.484375,
+              "width": 32,
+              "y": 630.796875
+            },
+            {
+              "text": "1",
+              "x": 620.484375,
+              "right": 660.484375,
+              "width": 40,
+              "y": 630.796875
+            },
+            {
+              "text": "",
+              "x": 668.484375,
+              "right": 700.484375,
+              "width": 32,
+              "y": 630.796875
+            },
+            {
+              "text": "Go to",
+              "x": 708.484375,
+              "right": 817,
+              "width": 108.515625,
+              "y": 630.796875
+            }
+          ]
+        },
+        {
+          "width": 1440,
+          "viewport": 1440,
+          "scroll": 1440,
+          "right": 1420,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文档主档列表展示当前生效版本，选中后查看版本与迭代历史文档版本号当前轮次版本状态签出人签出时间发布时间更新时间操作Regression drawing A with a longe",
+              "x": 240,
+              "right": 988,
+              "width": 748,
+              "y": 165.796875
+            },
+            {
+              "text": "版本历史共 1 条版本记录Regression drawing A with a longer document titleREG-DOC-A / 当前版本 A.1 / 当前 第 ",
+              "x": 1000,
+              "right": 1420,
+              "width": 420,
+              "y": 165.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 1179,
+              "right": 1260,
+              "width": 81,
+              "y": 31
+            },
+            {
+              "text": "上传修订文件",
+              "x": 1272,
+              "right": 1409,
+              "width": 137,
+              "y": 31
+            },
+            {
+              "text": "签出",
+              "x": 1011,
+              "right": 1071,
+              "width": 60,
+              "y": 870.96875
+            },
+            {
+              "text": "签入",
+              "x": 1095,
+              "right": 1155,
+              "width": 60,
+              "y": 870.96875
+            },
+            {
+              "text": "上传修订文件",
+              "x": 1179,
+              "right": 1295,
+              "width": 116,
+              "y": 870.96875
+            }
+          ],
+          "paginationControls": [
+            {
+              "text": "Total 2",
+              "x": 550.453125,
+              "right": 596.484375,
+              "width": 46.03125,
+              "y": 636.296875
+            },
+            {
+              "text": "100/page",
+              "x": 604.484375,
+              "right": 732.484375,
+              "width": 128,
+              "y": 630.796875
+            },
+            {
+              "text": "",
+              "x": 740.484375,
+              "right": 772.484375,
+              "width": 32,
+              "y": 630.796875
+            },
+            {
+              "text": "1",
+              "x": 780.484375,
+              "right": 820.484375,
+              "width": 40,
+              "y": 630.796875
+            },
+            {
+              "text": "",
+              "x": 828.484375,
+              "right": 860.484375,
+              "width": 32,
+              "y": 630.796875
+            },
+            {
+              "text": "Go to",
+              "x": 868.484375,
+              "right": 977,
+              "width": 108.515625,
+              "y": 630.796875
+            }
+          ]
+        },
+        {
+          "width": 1920,
+          "viewport": 1920,
+          "scroll": 1920,
+          "right": 1900,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文档主档列表展示当前生效版本，选中后查看版本与迭代历史文档版本号当前轮次版本状态签出人签出时间发布时间更新时间操作Regression drawing A with a longe",
+              "x": 240,
+              "right": 1468,
+              "width": 1228,
+              "y": 165.796875
+            },
+            {
+              "text": "版本历史共 1 条版本记录Regression drawing A with a longer document titleREG-DOC-A / 当前版本 A.1 / 当前 第 ",
+              "x": 1480,
+              "right": 1900,
+              "width": 420,
+              "y": 165.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 1659,
+              "right": 1740,
+              "width": 81,
+              "y": 31
+            },
+            {
+              "text": "上传修订文件",
+              "x": 1752,
+              "right": 1889,
+              "width": 137,
+              "y": 31
+            },
+            {
+              "text": "签出",
+              "x": 1491,
+              "right": 1551,
+              "width": 60,
+              "y": 870.96875
+            },
+            {
+              "text": "签入",
+              "x": 1575,
+              "right": 1635,
+              "width": 60,
+              "y": 870.96875
+            },
+            {
+              "text": "上传修订文件",
+              "x": 1659,
+              "right": 1775,
+              "width": 116,
+              "y": 870.96875
+            }
+          ],
+          "paginationControls": [
+            {
+              "text": "Total 2",
+              "x": 1030.453125,
+              "right": 1076.484375,
+              "width": 46.03125,
+              "y": 636.296875
+            },
+            {
+              "text": "100/page",
+              "x": 1084.484375,
+              "right": 1212.484375,
+              "width": 128,
+              "y": 630.796875
+            },
+            {
+              "text": "",
+              "x": 1220.484375,
+              "right": 1252.484375,
+              "width": 32,
+              "y": 630.796875
+            },
+            {
+              "text": "1",
+              "x": 1260.484375,
+              "right": 1300.484375,
+              "width": 40,
+              "y": 630.796875
+            },
+            {
+              "text": "",
+              "x": 1308.484375,
+              "right": 1340.484375,
+              "width": 32,
+              "y": 630.796875
+            },
+            {
+              "text": "Go to",
+              "x": 1348.484375,
+              "right": 1457,
+              "width": 108.515625,
+              "y": 630.796875
+            }
+          ]
+        },
+        {
+          "width": 768,
+          "viewport": 768,
+          "scroll": 768,
+          "right": 748,
+          "x": 240,
+          "panels": [
+            {
+              "text": "文档主档列表展示当前生效版本，选中后查看版本与迭代历史文档版本号当前轮次版本状态签出人签出时间发布时间更新时间操作Regression drawing A with a longe",
+              "x": 240,
+              "right": 748,
+              "width": 508,
+              "y": 309.796875
+            },
+            {
+              "text": "版本历史共 1 条版本记录Regression drawing A with a longer document titleREG-DOC-A / 当前版本 A.1 / 当前 第 ",
+              "x": 240,
+              "right": 748,
+              "width": 508,
+              "y": 899.796875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 251,
+              "right": 332,
+              "width": 81,
+              "y": 90.796875
+            },
+            {
+              "text": "上传修订文件",
+              "x": 344,
+              "right": 481,
+              "width": 137,
+              "y": 90.796875
+            },
+            {
+              "text": "签出",
+              "x": 251,
+              "right": 311,
+              "width": 60,
+              "y": 1603.46875
+            },
+            {
+              "text": "签入",
+              "x": 335,
+              "right": 395,
+              "width": 60,
+              "y": 1603.46875
+            },
+            {
+              "text": "上传修订文件",
+              "x": 419,
+              "right": 535,
+              "width": 116,
+              "y": 1603.46875
+            }
+          ],
+          "paginationControls": [
+            {
+              "text": "Total 2",
+              "x": 251,
+              "right": 601,
+              "width": 350,
+              "y": 780.296875
+            },
+            {
+              "text": "100/page",
+              "x": 609,
+              "right": 737,
+              "width": 128,
+              "y": 774.796875
+            },
+            {
+              "text": "",
+              "x": 500.484375,
+              "right": 532.484375,
+              "width": 32,
+              "y": 814.796875
+            },
+            {
+              "text": "1",
+              "x": 540.484375,
+              "right": 580.484375,
+              "width": 40,
+              "y": 814.796875
+            },
+            {
+              "text": "",
+              "x": 588.484375,
+              "right": 620.484375,
+              "width": 32,
+              "y": 814.796875
+            },
+            {
+              "text": "Go to",
+              "x": 628.484375,
+              "right": 737,
+              "width": 108.515625,
+              "y": 814.796875
+            }
+          ]
+        },
+        {
+          "width": 390,
+          "viewport": 390,
+          "scroll": 390,
+          "right": 370,
+          "x": 20,
+          "panels": [
+            {
+              "text": "文档主档列表展示当前生效版本，选中后查看版本与迭代历史文档版本号当前轮次版本状态签出人签出时间发布时间更新时间操作Regression drawing A with a longe",
+              "x": 20,
+              "right": 370,
+              "width": 350,
+              "y": 330.59375
+            },
+            {
+              "text": "版本历史共 1 条版本记录Regression drawing A with a longer document titleREG-DOC-A / 当前版本 A.1 / 当前 第 ",
+              "x": 20,
+              "right": 370,
+              "width": 350,
+              "y": 1062.1875
+            }
+          ],
+          "primaryActions": [
+            {
+              "text": "刷新",
+              "x": 31,
+              "right": 112,
+              "width": 81,
+              "y": 111.59375
+            },
+            {
+              "text": "上传修订文件",
+              "x": 124,
+              "right": 261,
+              "width": 137,
+              "y": 111.59375
+            },
+            {
+              "text": "签出",
+              "x": 31,
+              "right": 91,
+              "width": 60,
+              "y": 1788.859375
+            },
+            {
+              "text": "签入",
+              "x": 115,
+              "right": 175,
+              "width": 60,
+              "y": 1788.859375
+            },
+            {
+              "text": "上传修订文件",
+              "x": 199,
+              "right": 315,
+              "width": 116,
+              "y": 1788.859375
+            }
+          ],
+          "paginationControls": [
+            {
+              "text": "Total 2",
+              "x": 31,
+              "right": 223,
+              "width": 192,
+              "y": 942.6875
+            },
+            {
+              "text": "100/page",
+              "x": 231,
+              "right": 359,
+              "width": 128,
+              "y": 937.1875
+            },
+            {
+              "text": "",
+              "x": 122.484375,
+              "right": 154.484375,
+              "width": 32,
+              "y": 977.1875
+            },
+            {
+              "text": "1",
+              "x": 162.484375,
+              "right": 202.484375,
+              "width": 40,
+              "y": 977.1875
+            },
+            {
+              "text": "",
+              "x": 210.484375,
+              "right": 242.484375,
+              "width": 32,
+              "y": 977.1875
+            },
+            {
+              "text": "Go to",
+              "x": 250.484375,
+              "right": 359,
+              "width": 108.515625,
+              "y": 977.1875
+            }
+          ]
+        }
+      ],
+      "uploadDialogOpenWithoutWrite": true,
+      "selectionStillWorks": true,
+      "requests": [
+        {
+          "path": "/plm/core/document/page",
+          "method": "get",
+          "params": {
+            "pageNo": 1,
+            "pageSize": 100
+          }
+        },
+        {
+          "path": "/plm/core/document/get",
+          "method": "get",
+          "params": {
+            "id": "2104856934444859401"
+          }
+        },
+        {
+          "path": "/plm/core/document/revisions",
+          "method": "get",
+          "params": {
+            "documentId": "2104856934444859401"
+          }
+        },
+        {
+          "path": "/plm/core/document/get",
+          "method": "get",
+          "params": {
+            "id": "2104856934444859402"
+          }
+        },
+        {
+          "path": "/plm/core/document/revisions",
+          "method": "get",
+          "params": {
+            "documentId": "2104856934444859402"
+          }
+        }
+      ],
+      "originalMinimumWidthOverflows": true
+    }
+  ],
+  "status": "PASS"
+}
