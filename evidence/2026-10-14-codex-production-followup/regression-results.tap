@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: system-init is displayed without a request or identity mutation
+ok 1 - system-init is displayed without a request or identity mutation
+  ---
+  duration_ms: 8.331667
+  type: 'test'
+  ...
+# Subtest: non-user audit text is preserved and never used as a SQL condition
+ok 2 - non-user audit text is preserved and never used as a SQL condition
+  ---
+  duration_ms: 3.33325
+  type: 'test'
+  ...
+# Subtest: adjacent Long IDs remain exact strings
+ok 3 - adjacent Long IDs remain exact strings
+  ---
+  duration_ms: 3.904917
+  type: 'test'
+  ...
+# Subtest: out-of-range numeric identities do not reach the Long endpoint
+ok 4 - out-of-range numeric identities do not reach the Long endpoint
+  ---
+  duration_ms: 2.283834
+  type: 'test'
+  ...
+# Subtest: failed reads retain the provided historical label and identity
+ok 5 - failed reads retain the provided historical label and identity
+  ---
+  duration_ms: 2.474042
+  type: 'test'
+  ...
+# Subtest: missing or malformed responses cannot become undefined lists or another identity
+ok 6 - missing or malformed responses cannot become undefined lists or another identity
+  ---
+  duration_ms: 2.784875
+  type: 'test'
+  ...
+# Subtest: mixed system, disabled and missing users retain order
+ok 7 - mixed system, disabled and missing users retain order
+  ---
+  duration_ms: 1.341958
+  type: 'test'
+  ...
+# Subtest: late lookup cannot overwrite a newer identity
+ok 8 - late lookup cannot overwrite a newer identity
+  ---
+  duration_ms: 2.278875
+  type: 'test'
+  ...
+# Subtest: clearing the parent value invalidates the pending lookup
+ok 9 - clearing the parent value invalidates the pending lookup
+  ---
+  duration_ms: 2.632333
+  type: 'test'
+  ...
+# Subtest: a response from the previous tenant cannot hydrate the current tenant
+ok 10 - a response from the previous tenant cannot hydrate the current tenant
+  ---
+  duration_ms: 1.334458
+  type: 'test'
+  ...
+# Subtest: disabled fields cannot open or accept selector events
+ok 11 - disabled fields cannot open or accept selector events
+  ---
+  duration_ms: 1.373666
+  type: 'test'
+  ...
+# Subtest: an explicit selection emits once and invalidates a pending display lookup
+ok 12 - an explicit selection emits once and invalidates a pending display lookup
+  ---
+  duration_ms: 2.0025
+  type: 'test'
+  ...
+# Subtest: custom identity fields use tenant simple-list and reach the selector
+ok 13 - custom identity fields use tenant simple-list and reach the selector
+  ---
+  duration_ms: 1.738708
+  type: 'test'
+  ...
+# Subtest: work-order footer follows the actual four due levels
+ok 14 - work-order footer follows the actual four due levels
+  ---
+  duration_ms: 2.965458
+  type: 'test'
+  ...
+# Subtest: string due codes and zero counts retain the correct categories
+ok 15 - string due codes and zero counts retain the correct categories
+  ---
+  duration_ms: 0.4485
+  type: 'test'
+  ...
+# Subtest: no-result filter clears every previous footer count
+ok 16 - no-result filter clears every previous footer count
+  ---
+  duration_ms: 0.404208
+  type: 'test'
+  ...
+# Subtest: portal production-order and task conventions remain separate
+ok 17 - portal production-order and task conventions remain separate
+  ---
+  duration_ms: 0.9395
+  type: 'test'
+  ...
+# Subtest: portal work summary applies its own response contract at the real caller
+ok 18 - portal work summary applies its own response contract at the real caller
+  ---
+  duration_ms: 0.54625
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 506.804541
