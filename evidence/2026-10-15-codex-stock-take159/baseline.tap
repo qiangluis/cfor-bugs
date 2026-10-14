@@ -1,0 +1,234 @@
+TAP version 13
+# Subtest: the actual stock-take form script and template compile
+ok 1 - the actual stock-take form script and template compile
+  ---
+  duration_ms: 40.912042
+  type: 'test'
+  ...
+# Subtest: area selection is disabled without a warehouse and filters by the exact selected ID
+not ok 2 - area selection is disabled without a warehouse and filters by the exact selected ID
+  ---
+  duration_ms: 67.126209
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:132:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:136:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: changing warehouse clears the area and snapshots without deleting document history
+not ok 3 - changing warehouse clears the area and snapshots without deleting document history
+  ---
+  duration_ms: 48.871625
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:144:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'owned-area' !== ''
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ''
+  actual: 'owned-area'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:154:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: changing or clearing area invalidates selected snapshots but the same range does not
+not ok 4 - changing or clearing area invalidates selected snapshots but the same range does not
+  ---
+  duration_ms: 31.476917
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:162:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:171:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: editing an existing range preserves hydrated rows until a real scope change
+not ok 5 - editing an existing range preserves hydrated rows until a real scope change
+  ---
+  duration_ms: 32.51375
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:174:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:187:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a delayed old-warehouse picker response cannot refill the new range
+not ok 6 - a delayed old-warehouse picker response cannot refill the new range
+  ---
+  duration_ms: 26.297291
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:190:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:196:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an out-of-area response cannot be accepted even when its warehouse matches
+not ok 7 - an out-of-area response cannot be accepted even when its warehouse matches
+  ---
+  duration_ms: 22.789959
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:200:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:206:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: selection copies inventory rows and preserves both batches and their book quantities
+not ok 8 - selection copies inventory rows and preserves both batches and their book quantities
+  ---
+  duration_ms: 17.703083
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:209:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + null
+    - 'owned-material'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'owned-material'
+  actual: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:221:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: saving refuses mixed warehouse or area rows instead of retagging them
+not ok 9 - saving refuses mixed warehouse or area rows instead of retagging them
+  ---
+  duration_ms: 25.308875
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:226:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:235:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: saving valid rows keeps the selected scope and snapshot without mutating the source row
+not ok 10 - saving valid rows keeps the selected scope and snapshot without mutating the source row
+  ---
+  duration_ms: 17.362292
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:243:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'existing-row-id'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'existing-row-id'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:260:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an empty range cannot submit and whole-warehouse selection accepts multiple areas
+not ok 11 - an empty range cannot submit and whole-warehouse selection accepts multiple areas
+  ---
+  duration_ms: 22.025083
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:263:1'
+  failureType: 'testCodeFailure'
+  error: 'message.error is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    Object.saveDialogData (evalmachine.<anonymous>:202:24)
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/stock-take-scope.test.mjs:268:15)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 1
+# fail 10
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 938.279083

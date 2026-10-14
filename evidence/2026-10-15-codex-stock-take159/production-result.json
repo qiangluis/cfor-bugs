@@ -1,0 +1,84 @@
+{
+  "observedAt": "2026-10-14T18:21:14.625Z",
+  "route": "/wireSideWarehouse/checkBusiness/entries",
+  "pageErrors": [],
+  "apiErrors": [],
+  "blockedWrites": [],
+  "previewNumbers": [
+    "/admin-api/mes/fillRule/executeRuleByCode/stk_kcpd_bill_no"
+  ],
+  "areaQueries": [
+    {
+      "query": "mes_wms_house_area,area_name,id",
+      "code": 200,
+      "labels": [
+        "原料暂存区",
+        "批量存储区",
+        "领料备料区",
+        "成品暂存区",
+        "待发区",
+        "整托区",
+        "不良品待判定区",
+        "返工待处理区",
+        "报废待处理区"
+      ]
+    },
+    {
+      "query": "mes_wms_house_area,area_name,id",
+      "code": 200,
+      "labels": [
+        "原料暂存区",
+        "批量存储区",
+        "领料备料区",
+        "成品暂存区",
+        "待发区",
+        "整托区",
+        "不良品待判定区",
+        "返工待处理区",
+        "报废待处理区"
+      ]
+    }
+  ],
+  "inventoryQuery": {
+    "warehouseId": "2104856934444859413",
+    "wareAreaId": "2104856934444859414",
+    "code": 200
+  },
+  "beforeSwitchRows": [
+    "1标准成品FG-001标准成品件021210　删除",
+    "2ERP-FG-001标准成品FG-001标准成品件BATCH-261013-006990　删除",
+    "3　　　　　　　　　　删除",
+    "4　　　　　　　　　　删除",
+    "5　　　　　　　　　　删除",
+    "6　　　　　　　　　　删除",
+    "7　　　　　　　　　　删除",
+    "8　　　　　　　　　　删除",
+    "9　　　　　　　　　　删除",
+    "10　　　　　　　　　　删除"
+  ],
+  "afterSwitchRows": [
+    "1ERP-FG-001标准成品FG-001标准成品件021210　删除",
+    "2ERP-FG-001标准成品FG-001标准成品件BATCH-261013-006990　删除",
+    "3　　　　　　　　　　删除",
+    "4　　　　　　　　　　删除",
+    "5　　　　　　　　　　删除",
+    "6　　　　　　　　　　删除",
+    "7　　　　　　　　　　删除",
+    "8　　　　　　　　　　删除",
+    "9　　　　　　　　　　删除",
+    "10　　　　　　　　　　删除"
+  ],
+  "areaAfterSwitch": "盘点库区\n成品暂存区",
+  "bug159Reproduced": true,
+  "filteredAreaApi": {
+    "httpStatus": 200,
+    "code": 200,
+    "query": "mes_wms_house_area,area_name,id,(house_id='2104856934444859413' AND is_enabled=1)",
+    "labels": [
+      "成品暂存区",
+      "待发区",
+      "整托区"
+    ]
+  },
+  "status": "BUG_CONFIRMED_READONLY"
+}

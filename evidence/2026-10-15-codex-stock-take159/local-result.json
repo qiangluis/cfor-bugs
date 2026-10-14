@@ -1,0 +1,170 @@
+{
+  "observedAt": "2026-10-14T18:18:31.976Z",
+  "pageErrors": [],
+  "blockedNetwork": [],
+  "selected": {
+    "form": {
+      "stockIoType": "104",
+      "checker": "owned-user",
+      "sysOrgCode": "owned-dept",
+      "billDate": "2026-10-15",
+      "inType": "盘盈入库",
+      "outType": "盘亏出库",
+      "warehouseId": "2104856934444859413",
+      "billNo": "REGRESSION-COUNT",
+      "wareAreaId": "owned-area",
+      "wareAreaId_dictText": ""
+    },
+    "rows": [
+      {
+        "_X_ROW_KEY": "row_38",
+        "id": null,
+        "id_dictText": "Regression material",
+        "code": "OWNED-MATERIAL",
+        "warehouseId": "2104856934444859413",
+        "wareAreaId": "owned-area",
+        "unitId": "owned-unit",
+        "unitId_dictText": "件",
+        "batchNo": "first-batch",
+        "qty": 91,
+        "POPUP_ID": "ql4trpk4fgd",
+        "selected": true,
+        "oldBatch": "first-batch",
+        "bookQty": 91,
+        "profitQty": 0,
+        "materialCode": "OWNED-MATERIAL",
+        "materialId_dictText": "Regression material",
+        "materialId": "owned-material",
+        "remark": ""
+      },
+      {
+        "_X_ROW_KEY": "row_39",
+        "id": null,
+        "id_dictText": "Regression material",
+        "code": "OWNED-MATERIAL",
+        "warehouseId": "2104856934444859413",
+        "wareAreaId": "owned-area",
+        "unitId": "owned-unit",
+        "unitId_dictText": "件",
+        "batchNo": "second-batch",
+        "qty": 10,
+        "POPUP_ID": "s2kixjryn2s",
+        "selected": true,
+        "oldBatch": "second-batch",
+        "bookQty": 10,
+        "profitQty": 0,
+        "materialCode": "OWNED-MATERIAL",
+        "materialId_dictText": "Regression material",
+        "materialId": "owned-material",
+        "remark": ""
+      }
+    ],
+    "fields": [
+      {
+        "title": "单据编号",
+        "field": "billNo",
+        "formType": "input"
+      },
+      {
+        "title": "单据日期",
+        "field": "billDate",
+        "formType": "date",
+        "valueFormat": "YYYY-MM-DD"
+      },
+      {
+        "title": "入库类别",
+        "field": "inType",
+        "disabled": true,
+        "formType": "input"
+      },
+      {
+        "title": "出库类别",
+        "field": "outType",
+        "disabled": true,
+        "formType": "input"
+      },
+      {
+        "title": "盘点仓库",
+        "field": "warehouseId",
+        "formType": "dictSelect",
+        "dictCode": "mes_wms_ware_house,name,id"
+      },
+      {
+        "title": "盘点库区",
+        "field": "wareAreaId",
+        "clearable": true,
+        "formType": "dictSelect",
+        "dictCode": "mes_wms_house_area,area_name,id,(house_id='2104856934444859413' AND is_enabled=1)",
+        "disabled": false
+      },
+      {
+        "title": "备注",
+        "field": "remark",
+        "formType": "input"
+      }
+    ]
+  },
+  "afterWarehouseChange": {
+    "form": {
+      "stockIoType": "104",
+      "checker": "owned-user",
+      "sysOrgCode": "owned-dept",
+      "billDate": "2026-10-15",
+      "inType": "盘盈入库",
+      "outType": "盘亏出库",
+      "warehouseId": "2104856934444859414",
+      "billNo": "REGRESSION-COUNT",
+      "wareAreaId": "",
+      "wareAreaId_dictText": ""
+    },
+    "rows": [],
+    "fields": [
+      {
+        "title": "单据编号",
+        "field": "billNo",
+        "formType": "input"
+      },
+      {
+        "title": "单据日期",
+        "field": "billDate",
+        "formType": "date",
+        "valueFormat": "YYYY-MM-DD"
+      },
+      {
+        "title": "入库类别",
+        "field": "inType",
+        "disabled": true,
+        "formType": "input"
+      },
+      {
+        "title": "出库类别",
+        "field": "outType",
+        "disabled": true,
+        "formType": "input"
+      },
+      {
+        "title": "盘点仓库",
+        "field": "warehouseId",
+        "formType": "dictSelect",
+        "dictCode": "mes_wms_ware_house,name,id"
+      },
+      {
+        "title": "盘点库区",
+        "field": "wareAreaId",
+        "clearable": true,
+        "formType": "dictSelect",
+        "dictCode": "mes_wms_house_area,area_name,id,(house_id='2104856934444859414' AND is_enabled=1)",
+        "disabled": false
+      },
+      {
+        "title": "备注",
+        "field": "remark",
+        "formType": "input"
+      }
+    ]
+  },
+  "rawWarehouseAreaOptions": [
+    "Regression raw area"
+  ],
+  "status": "PASS"
+}

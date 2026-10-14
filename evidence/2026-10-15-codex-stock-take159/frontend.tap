@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: the actual stock-take form script and template compile
+ok 1 - the actual stock-take form script and template compile
+  ---
+  duration_ms: 32.775875
+  type: 'test'
+  ...
+# Subtest: area selection is disabled without a warehouse and filters by the exact selected ID
+ok 2 - area selection is disabled without a warehouse and filters by the exact selected ID
+  ---
+  duration_ms: 52.927458
+  type: 'test'
+  ...
+# Subtest: changing warehouse clears the area and snapshots without deleting document history
+ok 3 - changing warehouse clears the area and snapshots without deleting document history
+  ---
+  duration_ms: 27.15275
+  type: 'test'
+  ...
+# Subtest: changing or clearing area invalidates selected snapshots but the same range does not
+ok 4 - changing or clearing area invalidates selected snapshots but the same range does not
+  ---
+  duration_ms: 21.661042
+  type: 'test'
+  ...
+# Subtest: editing an existing range preserves hydrated rows until a real scope change
+ok 5 - editing an existing range preserves hydrated rows until a real scope change
+  ---
+  duration_ms: 22.041292
+  type: 'test'
+  ...
+# Subtest: a delayed old-warehouse picker response cannot refill the new range
+ok 6 - a delayed old-warehouse picker response cannot refill the new range
+  ---
+  duration_ms: 17.2175
+  type: 'test'
+  ...
+# Subtest: an out-of-area response cannot be accepted even when its warehouse matches
+ok 7 - an out-of-area response cannot be accepted even when its warehouse matches
+  ---
+  duration_ms: 16.280542
+  type: 'test'
+  ...
+# Subtest: selection copies inventory rows and preserves both batches and their book quantities
+ok 8 - selection copies inventory rows and preserves both batches and their book quantities
+  ---
+  duration_ms: 17.72675
+  type: 'test'
+  ...
+# Subtest: saving refuses mixed warehouse or area rows instead of retagging them
+ok 9 - saving refuses mixed warehouse or area rows instead of retagging them
+  ---
+  duration_ms: 19.318959
+  type: 'test'
+  ...
+# Subtest: saving valid rows keeps the selected scope and snapshot without mutating the source row
+ok 10 - saving valid rows keeps the selected scope and snapshot without mutating the source row
+  ---
+  duration_ms: 20.267417
+  type: 'test'
+  ...
+# Subtest: an empty range cannot submit and whole-warehouse selection accepts multiple areas
+ok 11 - an empty range cannot submit and whole-warehouse selection accepts multiple areas
+  ---
+  duration_ms: 17.819417
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 724.055834
