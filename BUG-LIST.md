@@ -1546,7 +1546,9 @@
 - **源码证据**：`cfor-admin-vue3/src/views/erp/sale/invoice/formDialogTable.vue:549` 无条件用来源项的 `invoiceType` 覆盖表头，且使用 `|| ''`；期初来源分支 `:480` 也直接清空。当前销售选单采用替换语义，本轮没有出现采购 Bug 154 的累计来源/金额错配，不将两者混为一项。
 - **证据**：[选单后已选择普通发票](evidence/2026-10-13-codex-fuqi-sales-mes/sale-invoice-first-selection.png)、[重选后类型清空](evidence/2026-10-13-codex-fuqi-sales-mes/sale-invoice-reselection-cleared-type.png)。
 - **租户与验证边界**：修复应覆盖新旧租户的新增/编辑及普通/期初来源，不依赖生产数据补丁；本轮未保存、开票或红冲，后端持久化与权限未验证。
-- **状态**：待修复。
+- **2026-10-15 修复**：Web `fa1abc5c1` 仅在类型未填写时使用来源默认值，保留用户已选类型与合法枚举 `0`；正常和期初选单沿用替换语义。没有修改后端开票、对账或审核口径。
+- **验证**：11 项定向行为回归通过；本地真实 Element Plus / VXE 表单重选来源后保留类型 `0`。所有响应为内存替身，未提交生产发票。
+- **状态**：代码已修复，待发布；当前生产仍为 Web `89f562734`。销售发票必填开票资料缺少输入项另见 Bug 194，不能据此认定整个保存链路已通过。
 
 ### Bug 161：销售发票本次开票金额输入失焦后回退旧值
 
@@ -1559,7 +1561,10 @@
 - **调用边界**：保存经 `/erp/sale-invoice/create` → `SaleInvoiceController.createSaleInvoice()` → `SaleInvoiceServiceImpl.createSaleInvoice()`；本轮未调用保存接口，不能宣称已经错误开票。
 - **证据**：[输入 0.50](evidence/2026-10-13-codex-fuqi-sales-mes/sale-invoice-amount-visible-before-blur.png)、[失焦回到 1.00](evidence/2026-10-13-codex-fuqi-sales-mes/sale-invoice-amount-visible-after-blur.png)。
 - **租户与验证边界**：覆盖新旧租户、新增/编辑、重复物料来源行和部分开票；不更改开票、对账、审核和财务事实源口径。草稿已取消。
-- **状态**：待修复。
+- **2026-10-15 修复**：Web `fa1abc5c1` 使用控件数值更新事件同步实际来源行，绑定最新金额，同源多物料行同步更新；按来源去重并用 Decimal 汇总，保存和删除前后保持表头一致。期初编辑保留精确 Long ID 和无物料的来源汇总行，附件兼容已有字符串格式。
+- **验证**：11 项定向行为回归通过，覆盖部分金额、同源多行、相邻 Long ID、上下限、清空、Decimal 汇总、删除和编辑。实际 Element Plus / VXE 输入 `0.50` 失焦后仍为 `0.50`，表头同步；重选后输入 `0.25`，内存保存参数为同一来源 `0.25`。没有页面异常或请求发送至后端；相关 ESLint、Prettier 通过，未宣称全项目类型检查或真实持久化通过。
+- **证据**：[本地实际控件](evidence/2026-10-15-codex-sale-invoice-input/partial-amount-after-blur.png)、[行为和内存保存参数](evidence/2026-10-15-codex-sale-invoice-input/result.json)、[11 项回归](evidence/2026-10-15-codex-sale-invoice-input/regression-results.tap)。
+- **状态**：代码已修复，待发布；当前生产仍为 Web `89f562734`，未进行生产修复后验证。
 
 ### Bug 162：生产工单底部交期统计等级映射错位
 
@@ -1607,7 +1612,10 @@
   不将状态残留当成接口报错或未部署；没有业务写请求。
 - **最新证据**：[重置后旧抬头](evidence/2026-10-14-codex-production-followup/trace-reset-stale-header.png)、
   [脱敏查询与前后观察](evidence/2026-10-14-codex-production-followup/trace-reset-recheck.json)。
-- **状态**：待修复。
+- **2026-10-14 修复**：Web `15ff82afb` 对齐选择器 `v-model:value`，清空时同时失效抬头、关联明细和分页总数；父子查询防止旧订单、页签、分页、租户及访问租户响应回填，卸载后同样失效。查询失败清除旧结果并显示重试状态，无订单时不发送查询；七个页签继续使用正式接口。
+- **验证**：15 项真实 SFC 渲染与行为回归通过，覆盖重置、空选择、旧响应、失败、分页、七页签和嵌入入口；相关 ESLint、Prettier 通过。不依赖初始化数据、菜单或 Flyway，不改业务单据或库存。
+- **回归证据**：[15 项回归结果](evidence/2026-10-14-codex-production-followup/trace-regression-results.tap)。
+- **状态**：代码已修复，待发布；提交晚于 22:44 全量包，未进行生产修复后验证。
 
 ### Bug 165：标准质检工单选单后成品表渲染失败
 
@@ -1955,3 +1963,31 @@
 - **证据补充**：[实际生产版本复核](evidence/2026-10-14-codex-production-followup/deployment-recheck.json)、
   [18 项组合回归](evidence/2026-10-14-codex-production-followup/regression-results.tap)。
 - **状态**：代码已修复，待发布；与旧生产包问题分开记录，当前新包版本已确认。
+
+## 三十九、2026-10-15 Codex 销售发票契约续查
+
+### Bug 194：销售发票缺少后端必填的开票公司与纳税人识别号输入
+
+- **模块 / 路径**：销售 → 销售发票 → 新增，`/erp/sale/invoice`。
+- **级别**：P1，正式保存契约要求的字段在活跃表单中无法填写。
+- **生产观察**：2026-10-15 00:08，使用福奇科技测试账号打开新增对话框。
+  表头仅有销售单号、发票号、发票类型、客户、税率、开票金额、备注；
+  全部表单标签和输入占位均没有开票公司、发票抬头或纳税人识别号。
+  没有页面异常、业务失败响应或业务写请求，未点击保存。
+- **源码与契约**：当前列表实际使用 `formDialogTable.vue`，
+  `resetFormData()` 将 `companyName` 和 `taxNo` 初始化为空，
+  `popupChange()` 不回填这两个字段，`saveDialogData()` 将空值随表头提交。
+  后端 `SaleInvoiceSaveReqVO` 对两个字段均有 `@NotBlank`，
+  `SaleInvoiceController.createSaleInvoice()` 对请求使用 `@Valid`。
+  因此是已确认的输入/保存契约缺口；未提交生产请求，不能描述为已实测保存报错。
+- **预期与边界**：按正式契约提供可填写、可校验的开票资料，
+  保留编辑时已有公司和税号。不得用普通客户名称伪造开票公司或虚构税号，
+  不降低后端校验，不修改开票、对账、审核、财务归属或生产客户数据。
+  若自动带入客户资料，必须来自正式客户开票字段并保留用户确认。
+- **去重**：独立于 Bug 160 的重选类型和 Bug 161 的部分金额。
+  那两项本地内存保存替身仅验证字段和金额参数，不能证明本条缺失资料已解决。
+- **证据**：[生产缺少输入项](evidence/2026-10-15-codex-sale-invoice-input/sale-invoice-missing-billing-fields.png)、
+  [脱敏标签与请求观察](evidence/2026-10-15-codex-sale-invoice-input/production-field-observation.json)。
+- **租户与验证边界**：需修复共享表单、覆盖新旧租户及新增/编辑；
+  无需生产数据补丁或初始化脚本。本轮只读观察，没有保存、开票、红冲或迁移。
+- **状态**：待修复。

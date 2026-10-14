@@ -1,0 +1,129 @@
+{
+  "observedAt": "2026-10-14T16:06:31.941Z",
+  "pageErrors": [],
+  "network": [],
+  "mockedRequests": [],
+  "partialAmount": {
+    "form": {
+      "id": "",
+      "customerId": "owned-customer",
+      "customerName": "Regression customer",
+      "companyName": "",
+      "taxNo": "",
+      "invoiceType": "0",
+      "invoiceMoney": 0.5,
+      "fileUrl": [],
+      "saleOrderNo": "OWNED-ORDER",
+      "openingBank": "",
+      "remark": "",
+      "items": [],
+      "taxRate": 13,
+      "isAuto": 0,
+      "isRubric": 0,
+      "srcNo": "OWNED-ORDER",
+      "srcBillId": "2104856930422521858",
+      "srcBillVersion": "1",
+      "srcBillType": "SALE_ORDER"
+    },
+    "rows": [
+      {
+        "entryNo": 2,
+        "id": "2104856930422521858",
+        "billNo": "OWNED-ORDER",
+        "version": 1,
+        "customerId": "owned-customer",
+        "customerName": "Regression customer",
+        "totalPrice": "1.00",
+        "invoiceMount": "0.00",
+        "unInvoiceMount": 1,
+        "invoiceType": 0,
+        "items": [],
+        "productNames": "Regression material",
+        "productCode": "OWNED-MATERIAL",
+        "productName": "Regression material",
+        "invoiceNoMount": "1.00",
+        "invoiceMoney": 0.5,
+        "taxRate": 13,
+        "seq": 1,
+        "_X_ROW_KEY": "row_26"
+      }
+    ],
+    "type": "create"
+  },
+  "reselection": {
+    "form": {
+      "id": "",
+      "customerId": "owned-customer",
+      "customerName": "Regression customer",
+      "companyName": "",
+      "taxNo": "",
+      "invoiceType": "0",
+      "invoiceMoney": 1,
+      "fileUrl": [],
+      "saleOrderNo": "OWNED-ORDER",
+      "openingBank": "",
+      "remark": "",
+      "items": [],
+      "taxRate": 13,
+      "isAuto": 0,
+      "isRubric": 0,
+      "srcNo": "OWNED-ORDER",
+      "srcBillId": "2104856930422521859",
+      "srcBillVersion": "1",
+      "srcBillType": "SALE_ORDER"
+    },
+    "rows": [
+      {
+        "entryNo": 2,
+        "id": "2104856930422521859",
+        "billNo": "OWNED-ORDER",
+        "version": 1,
+        "customerId": "owned-customer",
+        "customerName": "Regression customer",
+        "totalPrice": "1.00",
+        "invoiceMount": "0.00",
+        "unInvoiceMount": 1,
+        "invoiceType": 0,
+        "items": [],
+        "productNames": "Regression material",
+        "productCode": "OWNED-MATERIAL",
+        "productName": "Regression material",
+        "invoiceNoMount": "1.00",
+        "invoiceMoney": "1.00",
+        "taxRate": 13,
+        "seq": 1,
+        "_X_ROW_KEY": "row_43"
+      }
+    ],
+    "type": "create"
+  },
+  "saved": [
+    {
+      "id": "",
+      "customerId": "owned-customer",
+      "customerName": "Regression customer",
+      "companyName": "",
+      "taxNo": "",
+      "invoiceType": 0,
+      "invoiceMoney": 0.25,
+      "fileUrl": "",
+      "saleOrderNo": "OWNED-ORDER",
+      "openingBank": "",
+      "remark": "",
+      "items": [
+        {
+          "saleOrderId": "2104856930422521859",
+          "invoiceMoneyItem": 0.25
+        }
+      ],
+      "taxRate": 13,
+      "isAuto": 0,
+      "isRubric": 0,
+      "srcNo": "OWNED-ORDER",
+      "srcBillId": "2104856930422521859",
+      "srcBillVersion": "1",
+      "srcBillType": "SALE_ORDER"
+    }
+  ],
+  "status": "PASS"
+}

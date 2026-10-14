@@ -1,0 +1,117 @@
+{
+  "observedAt": "2026-10-14T16:08:44.917Z",
+  "requests": [
+    {
+      "path": "/admin-api/system/tenant/get-by-website",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/login-config",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/tenant/get-id-by-name",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/tenant/get-id-by-name",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/sys/sysCustomizColumn/list",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/system/config/getConfigList",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/get-permission-info",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/dict-data/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/infra/config/get-value-by-key",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/get-permission-info",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/notify-message/get-unread-count",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/system-init/state",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/system-init/readiness",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/erp/sale-invoice/page",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/erp/sale-invoice/statistics",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/user/profile/get",
+      "http": 200,
+      "code": 0
+    }
+  ],
+  "errors": [],
+  "blockedWrites": [],
+  "labels": [
+    "销售单号",
+    "发票号",
+    "发票类型",
+    "客户",
+    "税率%",
+    "开票金额(元)",
+    "备注"
+  ],
+  "placeholders": [
+    "请选择销售单号",
+    "请输入发票号",
+    "请选择客户",
+    "请输入开票金额",
+    "请输入发票备注"
+  ],
+  "fields": [],
+  "missingCompanyName": true,
+  "missingTaxNo": true,
+  "status": "MISSING_REQUIRED_INPUTS_CONFIRMED_WITHOUT_SAVE"
+}
