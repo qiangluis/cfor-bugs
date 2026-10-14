@@ -70,9 +70,19 @@ Bug 162：Web `9866a7197`，仅修改工单列表、生产工作台及回归文�
 
 本轮其他只读页面走查包括销售发票、售后工作台、生产工单、生产溯源和
 工作计划。首次生产溯源只等 2.5 秒，不能据此报空白 Bug；
-后续等控件加载后七页签与领料表正常出现，选择 / 重置关联仍需单独深测。
+后续等控件加载后七页签与领料表正常出现，没有依据登记空白缺陷。
 工单统计错位继续补充现有 Bug 162，不另建重复编号。
+
+本轮随后完成生产溯源选择 / 重置深测：选择 `JH1002` 后正常显示抬头，
+搜索并切“工单记录”后显示 `GD10001`；重置后抬头仍为 `JH1002`、
+数量 100、原计划日期，原工单按钮仍在。没有页面错误、业务失败响应或写请求。
+复核现有 Bug 164 成立，仍待修复，不新建编号、不计入已修复数。
+脚本首次用 placeholder 定位 Element Plus 选择器超时；
+核对组件后改为点击实际可见选择器，复测顺利完成，
+不能把自动化脚本定位失败记为产品故障。
 
 - [实际版本与脱敏请求](../evidence/2026-10-14-codex-production-followup/deployment-recheck.json)
 - [实际生产表单](../evidence/2026-10-14-codex-production-followup/production-material-form.png)
 - [18 项组合回归结果](../evidence/2026-10-14-codex-production-followup/regression-results.tap)
+- [生产溯源查询与重置观察](../evidence/2026-10-14-codex-production-followup/trace-reset-recheck.json)
+- [重置后保留旧抬头](../evidence/2026-10-14-codex-production-followup/trace-reset-stale-header.png)

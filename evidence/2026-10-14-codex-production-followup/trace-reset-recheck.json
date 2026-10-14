@@ -1,0 +1,351 @@
+{
+  "observedAt": "2026-10-14T15:30:26.899Z",
+  "pages": [
+    {
+      "path": "/mes/produce/detail",
+      "component": "mes/produce/order/ProduceDetail",
+      "traceSearchVisible": true,
+      "tabs": [
+        "领料记录",
+        "入库记录",
+        "出库记录",
+        "质检记录",
+        "工单记录",
+        "报工记录",
+        "采购记录"
+      ],
+      "text": "",
+      "headerAfterSelect": "生产单号\nJH1002\n单据日期\n2026-10-10\n销售订单号\n客户名称\n生产总数\n100\n预计开工日期\n2026-10-10\n预计完工日期\n2026-10-17\n实际开工日期\n实际完工日期\n业务员\n即序科技\n业务部门\n生产部\n备注\nZC-1010-计划001",
+      "headerAfterSearch": "生产单号\nJH1002\n单据日期\n2026-10-10\n销售订单号\n客户名称\n生产总数\n100\n预计开工日期\n2026-10-10\n预计完工日期\n2026-10-17\n实际开工日期\n实际完工日期\n业务员\n即序科技\n业务部门\n生产部\n备注\nZC-1010-计划001",
+      "workRowsBeforeReset": 3,
+      "headerAfterReset": "生产单号\nJH1002\n单据日期\n2026-10-10\n销售订单号\n客户名称\n生产总数\n100\n预计开工日期\n2026-10-10\n预计完工日期\n2026-10-17\n实际开工日期\n实际完工日期\n业务员\n即序科技\n业务部门\n生产部\n备注\nZC-1010-计划001",
+      "workRowsAfterReset": 3,
+      "finalPath": "/mes/produce/detail",
+      "buttons": [
+        "",
+        "",
+        "即序科技",
+        " 生产溯源 ",
+        "",
+        " 搜索",
+        " 重置",
+        "GD10001",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "headings": [],
+      "columns": [
+        "工单编号",
+        "工单名称",
+        "工单进度",
+        "开工时间",
+        "完工时间",
+        "计划开工时间",
+        "计划完工时间",
+        "条码编号",
+        "备注",
+        "序号",
+        "状态"
+      ],
+      "messages": [],
+      "bodyRows": 3,
+      "status": "read-only-page-visited"
+    }
+  ],
+  "requests": [
+    {
+      "phase": "login",
+      "path": "/admin-api/system/tenant/get-by-website",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "login",
+      "path": "/admin-api/system/auth/login-config",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "login",
+      "path": "/admin-api/system/tenant/get-id-by-name",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "login",
+      "path": "/admin-api/system/config/getConfigList",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "login",
+      "path": "/admin-api/sys/sysCustomizColumn/list",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "login",
+      "path": "/admin-api/system/auth/get-permission-info",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "login",
+      "path": "/admin-api/system/dict-data/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "login",
+      "path": "/admin-api/infra/config/get-value-by-key",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/infra/config/get-value-by-key",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/system/auth/get-permission-info",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/system/notify-message/get-unread-count",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/system/system-init/state",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/system/system-init/readiness",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/wmsWareHouse/allTree",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/wmsWareHouse/allTree",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/wmsWareHouse/allTree",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/system/plugin/enabled",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/infra/config/get-value-by-key",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/prodOrder/list/dictText",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/oa/announcement/received-page",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/system/notify-message/get-unread-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/stkIo/queryMaterialPickByProdOrderId/dictText",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/prodOrder/queryById/dictText",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/stkIo/queryMaterialPickByProdOrderId/dictText",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/prodOrder/queryById/dictText",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "phase": "mes/produce/order/ProduceDetail",
+      "path": "/admin-api/mes/prodWork/list/dictText",
+      "http": 200,
+      "code": 200
+    }
+  ],
+  "errors": [],
+  "blockedWrites": []
+}

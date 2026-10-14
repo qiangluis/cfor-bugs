@@ -1601,6 +1601,12 @@
 - **预期结果**：清空生产订单后同步失效抬头、关联表和分页总数；异步旧响应不能重新回填已经失效的上下文。不得改业务单据或用当前租户数据补丁代替共享状态修复。
 - **证据**：[正常计划与工单关联](evidence/2026-10-13-codex-fuqi-trace-quality/trace-selected-plan-work-refill.png)、[重置后的旧抬头和工单](evidence/2026-10-13-codex-fuqi-trace-quality/trace-reset-stale-plan-work.png)。
 - **验证边界**：只读查询和切换页签；未修改、打开编辑或保存工单，未证明跨租户泄漏或库存写入问题。需覆盖新旧租户、有/无关联记录和快速切换查询。
+- **2026-10-14 新包复测**：福奇科技选择 `JH1002` 后抬头正确加载，
+  搜索并切“工单记录”显示 `GD10001`；重置后抬头仍保留 `JH1002`、
+  数量 100 和原计划日期，旧工单按钮仍在。无页面错误和业务失败响应，
+  不将状态残留当成接口报错或未部署；没有业务写请求。
+- **最新证据**：[重置后旧抬头](evidence/2026-10-14-codex-production-followup/trace-reset-stale-header.png)、
+  [脱敏查询与前后观察](evidence/2026-10-14-codex-production-followup/trace-reset-recheck.json)。
 - **状态**：待修复。
 
 ### Bug 165：标准质检工单选单后成品表渲染失败
