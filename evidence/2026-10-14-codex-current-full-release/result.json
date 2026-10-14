@@ -1,0 +1,234 @@
+{
+  "observedAt": "2026-10-14T14:48:59.912Z",
+  "requests": [
+    {
+      "path": "/admin-api/system/tenant/get-by-website",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/login-config",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/tenant/get-id-by-name",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/tenant/get-id-by-name",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/sys/sysCustomizColumn/list",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/system/config/getConfigList",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/get-permission-info",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/dict-data/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/infra/config/get-value-by-key",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/get-permission-info",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/notify-message/get-unread-count",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/basMaterialCategory/rootList",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterialCategory/rootList",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_wms_ware_house%2Cname%2Cid%2C%28is_enabled%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterialCategory/rootList",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basUnit/getChildListBatch",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterial/listByCategory",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/system/system-init/state",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/system-init/readiness",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_wms_ware_house%2Cname%2Cid%2C%28is_enabled%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=system_users%2Cnickname%2Cid%2C%28deleted%20%3D%200%20AND%20status%20%3D%200%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_wms_attribute%2Cname%2Cid%2C%28is_enabled%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_wms_house_area%2Carea_name%2Cid%2C%28is_enabled%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_wms_house_location%2Clocation_name%2Cid%2C%28is_enabled%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterialCategory/rootList",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterial/queryById",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basUnit/list/enabled",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/base/unit-scheme/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_wms_house_area%2Carea_name%2Cid%2C%28house_id%3D2104856934444859413%20AND%20is_enabled%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_wms_house_location%2Clocation_name%2Cid%2C%28house_id%3D2104856934444859413%20AND%20is_enabled%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=system_users%2Cnickname%2Cid%2C%28id%3Dsystem-init%29",
+      "http": 200,
+      "code": 500
+    },
+    {
+      "path": "/admin-api/system/custom-field/runtime-schema",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/quality/qualityMaterial/list/dictText",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/system/custom-field/values",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_quality_plan%2Cplan_name%2Cid%2C%28type%20%3D%20101%20AND%20publish_status%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_quality_plan%2Cplan_name%2Cid%2C%28type%20%3D%20201%20AND%20publish_status%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_quality_plan%2Cplan_name%2Cid%2C%28type%20%3D%20300%20AND%20publish_status%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "query": "?queryParam=mes_quality_plan%2Cplan_name%2Cid%2C%28type%20%3D%20104%20AND%20publish_status%20%3D%201%29",
+      "http": 200,
+      "code": 200
+    }
+  ],
+  "errors": [
+    {
+      "message": "Cannot read properties of undefined (reading 'find')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'find')\n    at _ (https://jixu-ai.com/assets/MSwitchUser.vue_vue_type_script_setup_true_lang-Be8bkirg.js:1:6151)\n    at https://jixu-ai.com/assets/MSwitchUser.vue_vue_type_script_setup_true_lang-Be8bkirg.js:1:6464"
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "code": 500,
+      "message": "系统异常"
+    }
+  ],
+  "blockedWrites": [],
+  "login": true,
+  "form": {
+    "width": 900,
+    "namedUnitScheme": 1,
+    "oldFinishedFlag": 0,
+    "oldAssemblyFlag": 0,
+    "oldKittingFlag": 0
+  },
+  "status": "PAGE_VERSION_CONFIRMED_WITH_ERRORS"
+}
