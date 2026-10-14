@@ -1,0 +1,268 @@
+TAP version 13
+# Subtest: new 101 inspection displays the saved core scene 采购入库检
+ok 1 - new 101 inspection displays the saved core scene 采购入库检
+  ---
+  duration_ms: 225.794459
+  type: 'test'
+  ...
+# Subtest: new 104 inspection displays the saved core scene 生产入库检
+ok 2 - new 104 inspection displays the saved core scene 生产入库检
+  ---
+  duration_ms: 116.94825
+  type: 'test'
+  ...
+# Subtest: new 201 inspection displays the saved core scene 销售出库检
+ok 3 - new 201 inspection displays the saved core scene 销售出库检
+  ---
+  duration_ms: 89.425458
+  type: 'test'
+  ...
+# Subtest: new 300 inspection displays the saved core scene 生产过程检
+ok 4 - new 300 inspection displays the saved core scene 生产过程检
+  ---
+  duration_ms: 66.973708
+  type: 'test'
+  ...
+# Subtest: standard creation without a tab retains the production-process default
+ok 5 - standard creation without a tab retains the production-process default
+  ---
+  duration_ms: 60.285
+  type: 'test'
+  ...
+# Subtest: MSA creation remains MSA even when a standard default type is supplied
+ok 6 - MSA creation remains MSA even when a standard default type is supplied
+  ---
+  duration_ms: 58.627916
+  type: 'test'
+  ...
+# Subtest: rebuilding form controls preserves historical core types and subtype snapshots
+ok 7 - rebuilding form controls preserves historical core types and subtype snapshots
+  ---
+  duration_ms: 61.325541
+  type: 'test'
+  ...
+# Subtest: legacy sample-assay type is displayable without adding a core-scene branch
+ok 8 - legacy sample-assay type is displayable without adding a core-scene branch
+  ---
+  duration_ms: 53.642833
+  type: 'test'
+  ...
+# Subtest: standard plan selection uses the saved core type instead of a document master ID
+ok 9 - standard plan selection uses the saved core type instead of a document master ID
+  ---
+  duration_ms: 70.139916
+  type: 'test'
+  ...
+# Subtest: MSA material selection and quantity changes retain the MSA plan query
+ok 10 - MSA material selection and quantity changes retain the MSA plan query
+  ---
+  duration_ms: 51.263625
+  type: 'test'
+  ...
+# Subtest: MSA input blur cannot replace the entered quantity with NaN
+ok 11 - MSA input blur cannot replace the entered quantity with NaN
+  ---
+  duration_ms: 55.15225
+  type: 'test'
+  ...
+# Subtest: MSA clearing a numeric input still clears row and project quantities
+ok 12 - MSA clearing a numeric input still clears row and project quantities
+  ---
+  duration_ms: 51.893084
+  type: 'test'
+  ...
+# Subtest: both form branches no longer issue ZJD document-master queries
+ok 13 - both form branches no longer issue ZJD document-master queries
+  ---
+  duration_ms: 0.210459
+  type: 'test'
+  ...
+# Subtest: quality-order SFC script and template still compile
+ok 14 - quality-order SFC script and template still compile
+  ---
+  duration_ms: 73.198083
+  type: 'test'
+  ...
+# Subtest: the actual sales invoice script and template compile
+ok 15 - the actual sales invoice script and template compile
+  ---
+  duration_ms: 66.245042
+  type: 'test'
+  ...
+# Subtest: replacement selection preserves a manually chosen invoice type including zero
+ok 16 - replacement selection preserves a manually chosen invoice type including zero
+  ---
+  duration_ms: 123.639084
+  type: 'test'
+  ...
+# Subtest: an unset type accepts a zero source default and an empty reselection does nothing
+ok 17 - an unset type accepts a zero source default and an empty reselection does nothing
+  ---
+  duration_ms: 88.760791
+  type: 'test'
+  ...
+# Subtest: normal and opening replacement sources both preserve the chosen type
+ok 18 - normal and opening replacement sources both preserve the chosen type
+  ---
+  duration_ms: 54.612083
+  type: 'test'
+  ...
+# Subtest: partial input updates every material row from the same source and the save payload
+ok 19 - partial input updates every material row from the same source and the save payload
+  ---
+  duration_ms: 39.893125
+  type: 'test'
+  ...
+# Subtest: current-source binding ignores stale render row amounts
+ok 20 - current-source binding ignores stale render row amounts
+  ---
+  duration_ms: 40.710417
+  type: 'test'
+  ...
+# Subtest: amount bounds, clearing and invalid numeric input do not restore old values
+ok 21 - amount bounds, clearing and invalid numeric input do not restore old values
+  ---
+  duration_ms: 32.650792
+  type: 'test'
+  ...
+# Subtest: save recalculates source amounts with exact decimal summation
+ok 22 - save recalculates source amounts with exact decimal summation
+  ---
+  duration_ms: 33.49675
+  type: 'test'
+  ...
+# Subtest: deleting a source removes all its material rows and updates the amount
+ok 23 - deleting a source removes all its material rows and updates the amount
+  ---
+  duration_ms: 38.788583
+  type: 'test'
+  ...
+# Subtest: editing retains persisted invoice type, source amount and attachment format
+ok 24 - editing retains persisted invoice type, source amount and attachment format
+  ---
+  duration_ms: 35.042417
+  type: 'test'
+  ...
+# Subtest: opening invoice edits use exact source IDs and remain editable without material rows
+ok 25 - opening invoice edits use exact source IDs and remain editable without material rows
+  ---
+  duration_ms: 34.584042
+  type: 'test'
+  ...
+# Subtest: single customer billing profile supplies required fields without inventing a company
+ok 26 - single customer billing profile supplies required fields without inventing a company
+  ---
+  duration_ms: 41.704916
+  type: 'test'
+  ...
+# Subtest: multiple billing profiles require a choice unless there is one explicit default
+ok 27 - multiple billing profiles require a choice unless there is one explicit default
+  ---
+  duration_ms: 32.369166
+  type: 'test'
+  ...
+# Subtest: reselection for the same customer preserves manually entered billing fields and invoice number
+ok 28 - reselection for the same customer preserves manually entered billing fields and invoice number
+  ---
+  duration_ms: 29.616584
+  type: 'test'
+  ...
+# Subtest: changing the source customer clears obsolete billing details and drops unrelated profiles
+ok 29 - changing the source customer clears obsolete billing details and drops unrelated profiles
+  ---
+  duration_ms: 30.323
+  type: 'test'
+  ...
+# Subtest: existing invoice billing snapshot is retained when current customer profiles differ
+ok 30 - existing invoice billing snapshot is retained when current customer profiles differ
+  ---
+  duration_ms: 30.672292
+  type: 'test'
+  ...
+# Subtest: profile request failures preserve current user input and release loading
+ok 31 - profile request failures preserve current user input and release loading
+  ---
+  duration_ms: 25.652334
+  type: 'test'
+  ...
+# Subtest: late customer responses cannot replace new source details or overwrite later user edits
+ok 32 - late customer responses cannot replace new source details or overwrite later user edits
+  ---
+  duration_ms: 34.295833
+  type: 'test'
+  ...
+# Subtest: reset, close, unmount and tenant changes invalidate pending profile responses
+ok 33 - reset, close, unmount and tenant changes invalidate pending profile responses
+  ---
+  duration_ms: 126.85075
+  type: 'test'
+  ...
+# Subtest: shouldDisplayQualityEntryDetailRow should hide empty placeholder rows
+ok 34 - shouldDisplayQualityEntryDetailRow should hide empty placeholder rows
+  ---
+  duration_ms: 0.562542
+  type: 'test'
+  ...
+# Subtest: shouldDisplayQualityEntryDetailRow should keep pass rows with measured value
+ok 35 - shouldDisplayQualityEntryDetailRow should keep pass rows with measured value
+  ---
+  duration_ms: 0.863917
+  type: 'test'
+  ...
+# Subtest: shouldDisplayQualityEntryDetailRow should keep ng rows with project reason
+ok 36 - shouldDisplayQualityEntryDetailRow should keep ng rows with project reason
+  ---
+  duration_ms: 0.134167
+  type: 'test'
+  ...
+# Subtest: getEnteredQualityBatchNos should ignore only empty placeholder rows
+ok 37 - getEnteredQualityBatchNos should ignore only empty placeholder rows
+  ---
+  duration_ms: 0.523125
+  type: 'test'
+  ...
+# Subtest: inspectionQty renders the actual cell and sends the nonzero row index
+ok 38 - inspectionQty renders the actual cell and sends the nonzero row index
+  ---
+  duration_ms: 7.50025
+  type: 'test'
+  ...
+# Subtest: passQty renders the actual cell and sends the nonzero row index
+ok 39 - passQty renders the actual cell and sends the nonzero row index
+  ---
+  duration_ms: 0.921791
+  type: 'test'
+  ...
+# Subtest: concessionQty renders the actual cell and sends the nonzero row index
+ok 40 - concessionQty renders the actual cell and sends the nonzero row index
+  ---
+  duration_ms: 0.971583
+  type: 'test'
+  ...
+# Subtest: pendingJudgeQty renders the actual cell and sends the nonzero row index
+ok 41 - pendingJudgeQty renders the actual cell and sends the nonzero row index
+  ---
+  duration_ms: 0.477792
+  type: 'test'
+  ...
+# Subtest: nonconforming quantity renders instead of crashing the source-selection table
+ok 42 - nonconforming quantity renders instead of crashing the source-selection table
+  ---
+  duration_ms: 0.303375
+  type: 'test'
+  ...
+# Subtest: nonconforming type controls read and update the selected row, not an undefined index
+ok 43 - nonconforming type controls read and update the selected row, not an undefined index
+  ---
+  duration_ms: 0.974042
+  type: 'test'
+  ...
+1..43
+# tests 43
+# suites 0
+# pass 43
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1473.0395

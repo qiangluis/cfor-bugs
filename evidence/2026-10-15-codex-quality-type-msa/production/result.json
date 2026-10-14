@@ -1,0 +1,72 @@
+{
+  "observedAt": "2026-10-14T17:33:19.516Z",
+  "scenes": [
+    {
+      "scene": "standard",
+      "queries": [
+        {
+          "path": "/admin-api/mes/dictCode/getData",
+          "http": 200,
+          "code": 200,
+          "query": "system_document_type,name,id,(pid IN (SELECT id FROM system_document_type WHERE code = \"ZJD\") AND deleted = 0)",
+          "optionCount": 0
+        }
+      ],
+      "formLabels": [
+        "单据编号",
+        "单据类型",
+        "单据日期",
+        "质检员",
+        "备注"
+      ],
+      "options": [],
+      "empty": [
+        "暂无数据"
+      ]
+    },
+    {
+      "scene": "msa",
+      "queries": [
+        {
+          "path": "/admin-api/mes/dictCode/getData",
+          "http": 200,
+          "code": 200,
+          "query": "system_document_type,name,id,(pid IN (SELECT id FROM system_document_type WHERE code = \"ZJD\") AND deleted = 0)",
+          "optionCount": 0
+        }
+      ],
+      "formLabels": [
+        "单据编号",
+        "单据类型",
+        "单据日期",
+        "MSA存货",
+        "存货编码",
+        "规格",
+        "型号",
+        "单位",
+        "检验数量",
+        "质检方案",
+        "质检员",
+        "备注"
+      ],
+      "options": [],
+      "empty": [
+        "暂无数据"
+      ],
+      "quantityAfterInput": "5",
+      "quantityAfterBlur": ""
+    }
+  ],
+  "errors": [],
+  "blockedWrites": [
+    {
+      "path": "/admin-api/mes/fillRule/executeRuleByCode/qc_zjd_bill_no",
+      "method": "PUT"
+    },
+    {
+      "path": "/admin-api/mes/fillRule/executeRuleByCode/qc_zjd_bill_no",
+      "method": "PUT"
+    }
+  ],
+  "status": "EXISTING_BUG_12_61_REPRODUCED"
+}

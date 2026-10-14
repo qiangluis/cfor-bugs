@@ -1,0 +1,822 @@
+{
+  "observedAt": "2026-10-14T17:39:05.147Z",
+  "scenes": [
+    {
+      "type": "300",
+      "label": "生产过程检",
+      "fields": [
+        "billNo",
+        "type",
+        "billDate",
+        "inspector",
+        "remark"
+      ]
+    },
+    {
+      "type": "101",
+      "label": "采购入库检",
+      "fields": [
+        "billNo",
+        "type",
+        "billDate",
+        "inspector",
+        "remark"
+      ]
+    },
+    {
+      "type": "104",
+      "label": "生产入库检",
+      "fields": [
+        "billNo",
+        "type",
+        "billDate",
+        "inspector",
+        "remark"
+      ]
+    },
+    {
+      "type": "201",
+      "label": "销售出库检",
+      "fields": [
+        "billNo",
+        "type",
+        "billDate",
+        "inspector",
+        "remark"
+      ]
+    },
+    {
+      "type": "MSA",
+      "label": "MSA 检验",
+      "fields": [
+        "billNo",
+        "type",
+        "billDate",
+        "materialId",
+        "materialCode",
+        "materialModel",
+        "materialTypeText",
+        "materialUnitText",
+        "inspectionQty",
+        "inspectionPlan_dictText",
+        "inspector",
+        "remark"
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "network": [],
+  "msaMaterial": {
+    "form": {
+      "billNo": "OWNED-QC-NO",
+      "billDate": "2026-10-15",
+      "billType": "MSA",
+      "billStage": "",
+      "type": "MSA",
+      "prodWorkId": "",
+      "srcNo": "",
+      "srcBillId": "",
+      "srcBillType": "",
+      "isAuto": 0,
+      "isRubic": 0,
+      "remark": "",
+      "inspector": "1",
+      "inspectionQty": 1,
+      "inspectionPlan": "",
+      "passQty": 0,
+      "qty": 0,
+      "sysOrgCode": "",
+      "isClosed": 0,
+      "isVoided": 0,
+      "materialId": "owned-material",
+      "materialId_dictText": "Regression material",
+      "materialCode": "OWNED-MAT",
+      "materialModel": "",
+      "materialTypeText": "",
+      "materialUnitText": "件",
+      "inspectionPlan_dictText": "",
+      "customField1": "",
+      "customField2": "",
+      "customField3": "",
+      "customField4": "",
+      "customField5": "",
+      "customField6": "",
+      "customField7": "",
+      "customField8": "",
+      "customField9": "",
+      "customField10": ""
+    },
+    "rows": [
+      {
+        "id": null,
+        "materialId": "owned-material",
+        "materialId_dictText": "Regression material",
+        "materialCode": "OWNED-MAT",
+        "model": "",
+        "type": "",
+        "unitId_dictText": "件",
+        "qty": 1,
+        "inspectionQty": 1,
+        "passQty": 0,
+        "ngQty": 1,
+        "srcBillId": "",
+        "srcBillType": "",
+        "srcNo": "",
+        "_X_ROW_KEY": "row_259"
+      }
+    ],
+    "fields": [
+      {
+        "title": "单据编号",
+        "field": "billNo",
+        "formType": "input",
+        "colSpan": 12
+      },
+      {
+        "title": "质检类型",
+        "field": "type",
+        "formType": "select",
+        "disabled": true,
+        "option": [
+          {
+            "value": "101",
+            "label": "采购入库检"
+          },
+          {
+            "value": "104",
+            "label": "生产入库检"
+          },
+          {
+            "value": "201",
+            "label": "销售出库检"
+          },
+          {
+            "value": "300",
+            "label": "生产过程检"
+          },
+          {
+            "value": "400",
+            "label": "样品化验"
+          },
+          {
+            "value": "MSA",
+            "label": "MSA 检验"
+          }
+        ],
+        "colSpan": 12
+      },
+      {
+        "title": "单据日期",
+        "field": "billDate",
+        "formType": "date",
+        "colSpan": 12
+      },
+      {
+        "title": "MSA存货",
+        "field": "materialId",
+        "formType": "popup",
+        "popupTitle": "选择 MSA 检验存货",
+        "columnsType": "material",
+        "formList": [
+          {
+            "field": "name",
+            "label": "存货名称",
+            "view": "string"
+          },
+          {
+            "field": "model",
+            "label": "规格",
+            "view": "string"
+          },
+          {
+            "field": "type",
+            "label": "型号",
+            "view": "string"
+          }
+        ],
+        "colMb": true,
+        "colSpan": 12
+      },
+      {
+        "title": "存货编码",
+        "field": "materialCode",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "规格",
+        "field": "materialModel",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "型号",
+        "field": "materialTypeText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "单位",
+        "field": "materialUnitText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "检验数量",
+        "field": "inspectionQty",
+        "formType": "inputNumber",
+        "min": 1,
+        "precision": 0,
+        "colSpan": 12
+      },
+      {
+        "title": "质检方案",
+        "field": "inspectionPlan_dictText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "质检员",
+        "field": "inspector",
+        "formType": "switchUser",
+        "colSpan": 12
+      },
+      {
+        "title": "备注",
+        "field": "remark",
+        "formType": "input",
+        "colSpan": 12
+      }
+    ],
+    "scene": "msa"
+  },
+  "msaAfterBlur": {
+    "form": {
+      "billNo": "OWNED-QC-NO",
+      "billDate": "2026-10-15",
+      "billType": "MSA",
+      "billStage": "",
+      "type": "MSA",
+      "prodWorkId": "",
+      "srcNo": "",
+      "srcBillId": "",
+      "srcBillType": "",
+      "isAuto": 0,
+      "isRubic": 0,
+      "remark": "",
+      "inspector": "1",
+      "inspectionQty": 5,
+      "inspectionPlan": "",
+      "passQty": 0,
+      "qty": 5,
+      "sysOrgCode": "",
+      "isClosed": 0,
+      "isVoided": 0,
+      "materialId": "owned-material",
+      "materialId_dictText": "Regression material",
+      "materialCode": "OWNED-MAT",
+      "materialModel": "",
+      "materialTypeText": "",
+      "materialUnitText": "件",
+      "inspectionPlan_dictText": "",
+      "customField1": "",
+      "customField2": "",
+      "customField3": "",
+      "customField4": "",
+      "customField5": "",
+      "customField6": "",
+      "customField7": "",
+      "customField8": "",
+      "customField9": "",
+      "customField10": ""
+    },
+    "rows": [
+      {
+        "id": null,
+        "materialId": "owned-material",
+        "materialId_dictText": "Regression material",
+        "materialCode": "OWNED-MAT",
+        "model": "",
+        "type": "",
+        "unitId_dictText": "件",
+        "qty": 5,
+        "inspectionQty": 5,
+        "passQty": 0,
+        "ngQty": 1,
+        "srcBillId": "",
+        "srcBillType": "",
+        "srcNo": "",
+        "_X_ROW_KEY": "row_259"
+      }
+    ],
+    "fields": [
+      {
+        "title": "单据编号",
+        "field": "billNo",
+        "formType": "input",
+        "colSpan": 12
+      },
+      {
+        "title": "质检类型",
+        "field": "type",
+        "formType": "select",
+        "disabled": true,
+        "option": [
+          {
+            "value": "101",
+            "label": "采购入库检"
+          },
+          {
+            "value": "104",
+            "label": "生产入库检"
+          },
+          {
+            "value": "201",
+            "label": "销售出库检"
+          },
+          {
+            "value": "300",
+            "label": "生产过程检"
+          },
+          {
+            "value": "400",
+            "label": "样品化验"
+          },
+          {
+            "value": "MSA",
+            "label": "MSA 检验"
+          }
+        ],
+        "colSpan": 12
+      },
+      {
+        "title": "单据日期",
+        "field": "billDate",
+        "formType": "date",
+        "colSpan": 12
+      },
+      {
+        "title": "MSA存货",
+        "field": "materialId",
+        "formType": "popup",
+        "popupTitle": "选择 MSA 检验存货",
+        "columnsType": "material",
+        "formList": [
+          {
+            "field": "name",
+            "label": "存货名称",
+            "view": "string"
+          },
+          {
+            "field": "model",
+            "label": "规格",
+            "view": "string"
+          },
+          {
+            "field": "type",
+            "label": "型号",
+            "view": "string"
+          }
+        ],
+        "colMb": true,
+        "colSpan": 12
+      },
+      {
+        "title": "存货编码",
+        "field": "materialCode",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "规格",
+        "field": "materialModel",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "型号",
+        "field": "materialTypeText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "单位",
+        "field": "materialUnitText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "检验数量",
+        "field": "inspectionQty",
+        "formType": "inputNumber",
+        "min": 1,
+        "precision": 0,
+        "colSpan": 12
+      },
+      {
+        "title": "质检方案",
+        "field": "inspectionPlan_dictText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "质检员",
+        "field": "inspector",
+        "formType": "switchUser",
+        "colSpan": 12
+      },
+      {
+        "title": "备注",
+        "field": "remark",
+        "formType": "input",
+        "colSpan": 12
+      }
+    ],
+    "scene": "msa"
+  },
+  "msa": {
+    "form": {
+      "billNo": "OWNED-QC-NO",
+      "billDate": "2026-10-15",
+      "billType": "MSA",
+      "billStage": "",
+      "type": "MSA",
+      "prodWorkId": "",
+      "srcNo": "",
+      "srcBillId": "",
+      "srcBillType": "",
+      "isAuto": 0,
+      "isRubic": 0,
+      "remark": "",
+      "inspector": "1",
+      "inspectionQty": 5,
+      "inspectionPlan": "",
+      "passQty": 0,
+      "qty": 5,
+      "sysOrgCode": "",
+      "isClosed": 0,
+      "isVoided": 0,
+      "materialId": "owned-material",
+      "materialId_dictText": "Regression material",
+      "materialCode": "OWNED-MAT",
+      "materialModel": "",
+      "materialTypeText": "",
+      "materialUnitText": "件",
+      "inspectionPlan_dictText": "",
+      "customField1": "",
+      "customField2": "",
+      "customField3": "",
+      "customField4": "",
+      "customField5": "",
+      "customField6": "",
+      "customField7": "",
+      "customField8": "",
+      "customField9": "",
+      "customField10": ""
+    },
+    "rows": [
+      {
+        "id": null,
+        "materialId": "owned-material",
+        "materialId_dictText": "Regression material",
+        "materialCode": "OWNED-MAT",
+        "model": "",
+        "type": "",
+        "unitId_dictText": "件",
+        "qty": 5,
+        "inspectionQty": 5,
+        "passQty": 0,
+        "ngQty": 1,
+        "srcBillId": "",
+        "srcBillType": "",
+        "srcNo": "",
+        "_X_ROW_KEY": "row_259"
+      }
+    ],
+    "fields": [
+      {
+        "title": "单据编号",
+        "field": "billNo",
+        "formType": "input",
+        "colSpan": 12
+      },
+      {
+        "title": "质检类型",
+        "field": "type",
+        "formType": "select",
+        "disabled": true,
+        "option": [
+          {
+            "value": "101",
+            "label": "采购入库检"
+          },
+          {
+            "value": "104",
+            "label": "生产入库检"
+          },
+          {
+            "value": "201",
+            "label": "销售出库检"
+          },
+          {
+            "value": "300",
+            "label": "生产过程检"
+          },
+          {
+            "value": "400",
+            "label": "样品化验"
+          },
+          {
+            "value": "MSA",
+            "label": "MSA 检验"
+          }
+        ],
+        "colSpan": 12
+      },
+      {
+        "title": "单据日期",
+        "field": "billDate",
+        "formType": "date",
+        "colSpan": 12
+      },
+      {
+        "title": "MSA存货",
+        "field": "materialId",
+        "formType": "popup",
+        "popupTitle": "选择 MSA 检验存货",
+        "columnsType": "material",
+        "formList": [
+          {
+            "field": "name",
+            "label": "存货名称",
+            "view": "string"
+          },
+          {
+            "field": "model",
+            "label": "规格",
+            "view": "string"
+          },
+          {
+            "field": "type",
+            "label": "型号",
+            "view": "string"
+          }
+        ],
+        "colMb": true,
+        "colSpan": 12
+      },
+      {
+        "title": "存货编码",
+        "field": "materialCode",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "规格",
+        "field": "materialModel",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "型号",
+        "field": "materialTypeText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "单位",
+        "field": "materialUnitText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "检验数量",
+        "field": "inspectionQty",
+        "formType": "inputNumber",
+        "min": 1,
+        "precision": 0,
+        "colSpan": 12
+      },
+      {
+        "title": "质检方案",
+        "field": "inspectionPlan_dictText",
+        "formType": "input",
+        "disabled": true,
+        "colSpan": 12
+      },
+      {
+        "title": "质检员",
+        "field": "inspector",
+        "formType": "switchUser",
+        "colSpan": 12
+      },
+      {
+        "title": "备注",
+        "field": "remark",
+        "formType": "input",
+        "colSpan": 12
+      }
+    ],
+    "scene": "msa"
+  },
+  "requests": [
+    {
+      "path": "/base/material-grade/simple-list",
+      "method": "get"
+    },
+    {
+      "path": "/system/dict-data/simple-list",
+      "method": "get"
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "quality_check_enumeration"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "base_color"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "property_brand"
+      }
+    },
+    {
+      "path": "/mes/fillRule/executeRuleByCode/qc_zjd_bill_no",
+      "method": "put"
+    },
+    {
+      "path": "/system/user/get",
+      "method": "get"
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "quality_check_enumeration"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "base_color"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "property_brand"
+      }
+    },
+    {
+      "path": "/mes/fillRule/executeRuleByCode/qc_zjd_bill_no",
+      "method": "put"
+    },
+    {
+      "path": "/system/user/get",
+      "method": "get"
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "quality_check_enumeration"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "base_color"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "property_brand"
+      }
+    },
+    {
+      "path": "/mes/fillRule/executeRuleByCode/qc_zjd_bill_no",
+      "method": "put"
+    },
+    {
+      "path": "/system/user/get",
+      "method": "get"
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "quality_check_enumeration"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "base_color"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "property_brand"
+      }
+    },
+    {
+      "path": "/mes/fillRule/executeRuleByCode/qc_zjd_bill_no",
+      "method": "put"
+    },
+    {
+      "path": "/system/user/get",
+      "method": "get"
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "quality_check_enumeration"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "base_color"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "property_brand"
+      }
+    },
+    {
+      "path": "/mes/fillRule/executeRuleByCode/qc_zjd_bill_no",
+      "method": "put"
+    },
+    {
+      "path": "/system/user/get",
+      "method": "get"
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "base_color"
+      }
+    },
+    {
+      "path": "/mes/dictCode/getData",
+      "method": "get",
+      "params": {
+        "queryParam": "property_brand"
+      }
+    },
+    {
+      "path": "/mes/basMaterial/list",
+      "method": "get",
+      "params": {
+        "pageNo": 1,
+        "pageSize": 20
+      }
+    },
+    {
+      "path": "/mes/quality/qualityMaterial/querySubByMaterialIdAndType/dictText",
+      "method": "get",
+      "params": {
+        "materialId": "owned-material",
+        "type": "MSA"
+      }
+    }
+  ],
+  "status": "PASS"
+}

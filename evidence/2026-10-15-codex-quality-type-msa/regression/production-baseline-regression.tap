@@ -1,0 +1,188 @@
+TAP version 13
+# Subtest: new 101 inspection displays the saved core scene 采购入库检
+not ok 1 - new 101 inspection displays the saved core scene 采购入库检
+  ---
+  duration_ms: 331.58175
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:105:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'title')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:112:23)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: new 104 inspection displays the saved core scene 生产入库检
+not ok 2 - new 104 inspection displays the saved core scene 生产入库检
+  ---
+  duration_ms: 104.392875
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:105:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'title')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:112:23)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: new 201 inspection displays the saved core scene 销售出库检
+not ok 3 - new 201 inspection displays the saved core scene 销售出库检
+  ---
+  duration_ms: 79.022833
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:105:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'title')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:112:23)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: new 300 inspection displays the saved core scene 生产过程检
+not ok 4 - new 300 inspection displays the saved core scene 生产过程检
+  ---
+  duration_ms: 66.643625
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:105:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'title')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:112:23)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: standard creation without a tab retains the production-process default
+ok 5 - standard creation without a tab retains the production-process default
+  ---
+  duration_ms: 75.647542
+  type: 'test'
+  ...
+# Subtest: MSA creation remains MSA even when a standard default type is supplied
+not ok 6 - MSA creation remains MSA even when a standard default type is supplied
+  ---
+  duration_ms: 58.691458
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:132:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'option')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:139:21)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: rebuilding form controls preserves historical core types and subtype snapshots
+ok 7 - rebuilding form controls preserves historical core types and subtype snapshots
+  ---
+  duration_ms: 82.224958
+  type: 'test'
+  ...
+# Subtest: legacy sample-assay type is displayable without adding a core-scene branch
+not ok 8 - legacy sample-assay type is displayable without adding a core-scene branch
+  ---
+  duration_ms: 66.097958
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:162:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'option')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:166:21)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: standard plan selection uses the saved core type instead of a document master ID
+ok 9 - standard plan selection uses the saved core type instead of a document master ID
+  ---
+  duration_ms: 68.874334
+  type: 'test'
+  ...
+# Subtest: MSA material selection and quantity changes retain the MSA plan query
+ok 10 - MSA material selection and quantity changes retain the MSA plan query
+  ---
+  duration_ms: 48.135667
+  type: 'test'
+  ...
+# Subtest: MSA input blur cannot replace the entered quantity with NaN
+not ok 11 - MSA input blur cannot replace the entered quantity with NaN
+  ---
+  duration_ms: 53.572791
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:194:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    Infinity !== 5
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 5
+  actual: Infinity
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:204:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: MSA clearing a numeric input still clears row and project quantities
+ok 12 - MSA clearing a numeric input still clears row and project quantities
+  ---
+  duration_ms: 45.892917
+  type: 'test'
+  ...
+# Subtest: both form branches no longer issue ZJD document-master queries
+not ok 13 - both form branches no longer issue ZJD document-master queries
+  ---
+  duration_ms: 0.27725
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:223:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/quality-order-type.test.mjs:224:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: quality-order SFC script and template still compile
+ok 14 - quality-order SFC script and template still compile
+  ---
+  duration_ms: 63.3605
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 6
+# fail 8
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1642.927166

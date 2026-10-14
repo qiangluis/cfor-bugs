@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-14T16:06:31.941Z",
+  "observedAt": "2026-10-14T17:39:24.511Z",
   "pageErrors": [],
   "network": [],
   "mockedRequests": [],
@@ -8,8 +8,9 @@
       "id": "",
       "customerId": "owned-customer",
       "customerName": "Regression customer",
-      "companyName": "",
-      "taxNo": "",
+      "billingProfileId": "0",
+      "companyName": "Regression billing company",
+      "taxNo": "REGRESSION-TAX",
       "invoiceType": "0",
       "invoiceMoney": 0.5,
       "fileUrl": [],
@@ -20,6 +21,7 @@
       "taxRate": 13,
       "isAuto": 0,
       "isRubric": 0,
+      "accountNumber": "OWNED-INVOICE",
       "srcNo": "OWNED-ORDER",
       "srcBillId": "2104856930422521858",
       "srcBillVersion": "1",
@@ -55,8 +57,9 @@
       "id": "",
       "customerId": "owned-customer",
       "customerName": "Regression customer",
-      "companyName": "",
-      "taxNo": "",
+      "billingProfileId": "0",
+      "companyName": "Regression billing company",
+      "taxNo": "REGRESSION-TAX",
       "invoiceType": "0",
       "invoiceMoney": 1,
       "fileUrl": [],
@@ -67,6 +70,7 @@
       "taxRate": 13,
       "isAuto": 0,
       "isRubric": 0,
+      "accountNumber": "OWNED-INVOICE",
       "srcNo": "OWNED-ORDER",
       "srcBillId": "2104856930422521859",
       "srcBillVersion": "1",
@@ -97,13 +101,17 @@
     ],
     "type": "create"
   },
+  "requiredErrors": [
+    "请输入开票公司",
+    "请输入纳税人识别号"
+  ],
   "saved": [
     {
       "id": "",
       "customerId": "owned-customer",
       "customerName": "Regression customer",
-      "companyName": "",
-      "taxNo": "",
+      "companyName": "Confirmed billing company",
+      "taxNo": "CONFIRMED-TAX",
       "invoiceType": 0,
       "invoiceMoney": 0.25,
       "fileUrl": "",
@@ -119,11 +127,60 @@
       "taxRate": 13,
       "isAuto": 0,
       "isRubric": 0,
+      "accountNumber": "OWNED-INVOICE",
       "srcNo": "OWNED-ORDER",
       "srcBillId": "2104856930422521859",
       "srcBillVersion": "1",
       "srcBillType": "SALE_ORDER"
     }
   ],
+  "explicitChoice": {
+    "form": {
+      "id": "",
+      "customerId": "owned-customer",
+      "customerName": "Regression customer",
+      "billingProfileId": "1",
+      "companyName": "Second billing company",
+      "taxNo": "SECOND-TAX",
+      "invoiceType": "0",
+      "invoiceMoney": 1,
+      "fileUrl": [],
+      "saleOrderNo": "OWNED-ORDER",
+      "openingBank": "",
+      "remark": "",
+      "items": [],
+      "taxRate": 13,
+      "isAuto": 0,
+      "isRubric": 0,
+      "srcNo": "OWNED-ORDER",
+      "srcBillId": "2104856930422521858",
+      "srcBillVersion": "1",
+      "srcBillType": "SALE_ORDER"
+    },
+    "rows": [
+      {
+        "entryNo": 2,
+        "id": "2104856930422521858",
+        "billNo": "OWNED-ORDER",
+        "version": 1,
+        "customerId": "owned-customer",
+        "customerName": "Regression customer",
+        "totalPrice": "1.00",
+        "invoiceMount": "0.00",
+        "unInvoiceMount": 1,
+        "invoiceType": 0,
+        "items": [],
+        "productNames": "Regression material",
+        "productCode": "OWNED-MATERIAL",
+        "productName": "Regression material",
+        "invoiceNoMount": "1.00",
+        "invoiceMoney": "1.00",
+        "taxRate": 13,
+        "seq": 1,
+        "_X_ROW_KEY": "row_64"
+      }
+    ],
+    "type": "create"
+  },
   "status": "PASS"
 }
