@@ -1,0 +1,27 @@
+{
+  "observedAt": "2026-10-14T18:36:31.613Z",
+  "pageErrors": [],
+  "blockedNetwork": [],
+  "invalid": {
+    "creates": 0,
+    "successes": 0,
+    "visible": true,
+    "loading": false,
+    "error": ""
+  },
+  "rejected": {
+    "creates": 1,
+    "successes": 0,
+    "visible": true,
+    "loading": false,
+    "error": "套餐包含停用菜单，请更换套餐"
+  },
+  "success": {
+    "creates": 2,
+    "successes": 1,
+    "visible": false,
+    "loading": false,
+    "error": ""
+  },
+  "status": "PASS"
+}
