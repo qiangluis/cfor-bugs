@@ -1,0 +1,247 @@
+{
+  "observedAt": "2026-10-14T20:32:02.103Z",
+  "pageErrors": [],
+  "apiErrors": [],
+  "blockedWrites": [],
+  "customerPages": [
+    {
+      "phase": "crm-workbench",
+      "params": {
+        "pageNo": "1",
+        "pageSize": "100",
+        "pool": "true"
+      },
+      "code": 0,
+      "total": 0,
+      "listCount": 0,
+      "dealStatusCounts": {
+        "won": 0,
+        "notWon": 0
+      },
+      "currentUserOwnsAll": true
+    },
+    {
+      "phase": "crm-workbench",
+      "params": {
+        "pageNo": "1",
+        "pageSize": "100",
+        "sceneType": "1"
+      },
+      "code": 0,
+      "total": 8,
+      "listCount": 8,
+      "dealStatusCounts": {
+        "won": 0,
+        "notWon": 8
+      },
+      "currentUserOwnsAll": true
+    },
+    {
+      "phase": "crm-workbench",
+      "params": {
+        "pageNo": "1",
+        "pageSize": "100",
+        "pool": "false",
+        "sceneType": "1"
+      },
+      "code": 0,
+      "total": 8,
+      "listCount": 8,
+      "dealStatusCounts": {
+        "won": 0,
+        "notWon": 8
+      },
+      "currentUserOwnsAll": true
+    },
+    {
+      "phase": "crm-workbench",
+      "params": {
+        "pageNo": "1",
+        "pageSize": "100",
+        "pool": "false",
+        "createTime[0]": "2026-10-01 00:00:00",
+        "createTime[1]": "2026-10-31 23:59:59"
+      },
+      "code": 0,
+      "total": 8,
+      "listCount": 8,
+      "dealStatusCounts": {
+        "won": 0,
+        "notWon": 8
+      },
+      "currentUserOwnsAll": true
+    },
+    {
+      "phase": "crm-private-pool",
+      "params": {
+        "pageNo": "1",
+        "pageSize": "100",
+        "pool": "false",
+        "sceneType": "1"
+      },
+      "code": 0,
+      "total": 8,
+      "listCount": 8,
+      "dealStatusCounts": {
+        "won": 0,
+        "notWon": 8
+      },
+      "currentUserOwnsAll": true
+    }
+  ],
+  "phases": [
+    {
+      "phase": "customer-detail",
+      "pathname": "/admin-api/crm/customer-cultivation/history",
+      "code": 0
+    },
+    {
+      "phase": "customer-detail",
+      "pathname": "/admin-api/oa/announcement/received-page",
+      "code": 0
+    },
+    {
+      "phase": "customer-detail",
+      "pathname": "/admin-api/system/notify-message/get-unread-list",
+      "code": 0
+    }
+  ],
+  "workbenchMetrics": [
+    {
+      "label": "公共池客户总数",
+      "value": "0"
+    },
+    {
+      "label": "私有客户总数",
+      "value": "8"
+    },
+    {
+      "label": "本月新增客户数",
+      "value": "8"
+    },
+    {
+      "label": "线索总数",
+      "value": "0"
+    },
+    {
+      "label": "本月新增线索数",
+      "value": "0"
+    },
+    {
+      "label": "商机总数",
+      "value": "6"
+    },
+    {
+      "label": "本月新增商机数",
+      "value": "6"
+    },
+    {
+      "label": "合同总数",
+      "value": "0"
+    },
+    {
+      "label": "本月新增合同数",
+      "value": "0"
+    },
+    {
+      "label": "本月新增合同金额",
+      "value": "0 元"
+    },
+    {
+      "label": "累计收款金额",
+      "value": "0 元"
+    },
+    {
+      "label": "本月收款金额",
+      "value": "0 元"
+    },
+    {
+      "label": "总应收余额",
+      "value": "0 元"
+    },
+    {
+      "label": "线索转化率",
+      "value": "0.0%"
+    },
+    {
+      "label": "商机转化率",
+      "value": "0.0%"
+    },
+    {
+      "label": "回款比例",
+      "value": "0.0%"
+    }
+  ],
+  "privateTabs": [
+    "待跟进客户0",
+    "意向客户0",
+    "保有客户8",
+    "全部客户8"
+  ],
+  "privateSummary": [
+    {
+      "label": "私海档案总数",
+      "value": "8"
+    },
+    {
+      "label": "意向档案",
+      "value": "0"
+    },
+    {
+      "label": "保有档案",
+      "value": "8"
+    },
+    {
+      "label": "超期待跟进",
+      "value": "0"
+    }
+  ],
+  "privateRowCount": 8,
+  "detailViews": [
+    {
+      "label": "企业基础画像",
+      "rows": 0,
+      "empty": 0
+    },
+    {
+      "label": "企业联系方式",
+      "rows": 0,
+      "empty": 1
+    },
+    {
+      "label": "经营信息",
+      "rows": 0,
+      "empty": 0
+    },
+    {
+      "label": "最新收款计划",
+      "rows": 0,
+      "empty": 1
+    },
+    {
+      "label": "合同信息",
+      "rows": 0,
+      "empty": 0
+    },
+    {
+      "label": "收款信息",
+      "rows": 0,
+      "empty": 0
+    },
+    {
+      "label": "当前经营状态",
+      "rows": 0,
+      "empty": 0
+    },
+    {
+      "label": "AI助手视图",
+      "rows": 0,
+      "empty": 0
+    }
+  ],
+  "authorizedBusinessRead": {
+    "code": 0,
+    "total": 1,
+    "listCount": 1
+  }
+}

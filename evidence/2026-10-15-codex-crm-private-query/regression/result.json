@@ -1,0 +1,59 @@
+{
+  "observedAt": "2026-10-14T20:43:51.235Z",
+  "pageErrors": [],
+  "blockedNetwork": [],
+  "summary": [
+    "201",
+    "0",
+    "201",
+    "0"
+  ],
+  "requests": [
+    {
+      "path": "/crm/customer/page",
+      "params": {
+        "pageNo": 1,
+        "pageSize": 100,
+        "pool": false,
+        "sceneType": "1"
+      }
+    },
+    {
+      "path": "/crm/customer/page",
+      "params": {
+        "pageNo": 2,
+        "pageSize": 100,
+        "pool": false,
+        "sceneType": "1"
+      }
+    },
+    {
+      "path": "/crm/customer/page",
+      "params": {
+        "pageNo": 3,
+        "pageSize": 100,
+        "pool": false,
+        "sceneType": "1"
+      }
+    },
+    {
+      "path": "/crm/customer-cultivation/active-list",
+      "params": {},
+      "batchSize": 100
+    },
+    {
+      "path": "/crm/customer-cultivation/active-list",
+      "params": {},
+      "batchSize": 100
+    },
+    {
+      "path": "/crm/customer-cultivation/active-list",
+      "params": {},
+      "batchSize": 1
+    }
+  ],
+  "beyondFirstPageVisible": true,
+  "failureVisible": true,
+  "recovered": true,
+  "status": "PASS"
+}

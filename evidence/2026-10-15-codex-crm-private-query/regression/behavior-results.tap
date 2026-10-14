@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: the real customer SFC script and template compile
+ok 1 - the real customer SFC script and template compile
+  ---
+  duration_ms: 329.077542
+  type: 'test'
+  ...
+# Subtest: loads every authorized customer page and cultivation batch without exceeding 100
+ok 2 - loads every authorized customer page and cultivation batch without exceeding 100
+  ---
+  duration_ms: 111.438917
+  type: 'test'
+  ...
+# Subtest: pagination preserves customer facts and leaves unconfirmed profile semantics unchanged
+ok 3 - pagination preserves customer facts and leaves unconfirmed profile semantics unchanged
+  ---
+  duration_ms: 32.446583
+  type: 'test'
+  ...
+# Subtest: local form filters include matching customers beyond the first API page
+ok 4 - local form filters include matching customers beyond the first API page
+  ---
+  duration_ms: 27.444333
+  type: 'test'
+  ...
+# Subtest: archive counts use the complete result even when a different tab is selected
+ok 5 - archive counts use the complete result even when a different tab is selected
+  ---
+  duration_ms: 43.410084
+  type: 'test'
+  ...
+# Subtest: older customer queries never replace the latest result or stop its loading state
+ok 6 - older customer queries never replace the latest result or stop its loading state
+  ---
+  duration_ms: 72.559417
+  type: 'test'
+  ...
+# Subtest: late cultivation responses cannot rehydrate an obsolete query
+ok 7 - late cultivation responses cannot rehydrate an obsolete query
+  ---
+  duration_ms: 47.821958
+  type: 'test'
+  ...
+# Subtest: tenant and user changes invalidate in-flight results
+ok 8 - tenant and user changes invalidate in-flight results
+  ---
+  duration_ms: 60.263625
+  type: 'test'
+  ...
+# Subtest: changing the base tenant also invalidates results while a visit tenant stays selected
+ok 9 - changing the base tenant also invalidates results while a visit tenant stays selected
+  ---
+  duration_ms: 22.612708
+  type: 'test'
+  ...
+# Subtest: scope changes stop further cultivation batches and clear previously visible customer data
+ok 10 - scope changes stop further cultivation batches and clear previously visible customer data
+  ---
+  duration_ms: 25.68625
+  type: 'test'
+  ...
+# Subtest: API failures clear stale results and show an unavailable state, not healthy zero counts
+ok 11 - API failures clear stale results and show an unavailable state, not healthy zero counts
+  ---
+  duration_ms: 12.394
+  type: 'test'
+  ...
+# Subtest: a failed later page or cultivation batch never publishes a partial result as complete
+ok 12 - a failed later page or cultivation batch never publishes a partial result as complete
+  ---
+  duration_ms: 30.069916
+  type: 'test'
+  ...
+# Subtest: empty, incomplete, malformed and duplicate pages have distinct outcomes
+ok 13 - empty, incomplete, malformed and duplicate pages have distinct outcomes
+  ---
+  duration_ms: 147.029917
+  type: 'test'
+  ...
+# Subtest: changing totals and truncated pages do not produce incomplete customer counts
+ok 14 - changing totals and truncated pages do not produce incomplete customer counts
+  ---
+  duration_ms: 30.360708
+  type: 'test'
+  ...
+# Subtest: business rejection text remains available in the list error state
+ok 15 - business rejection text remains available in the list error state
+  ---
+  duration_ms: 14.299875
+  type: 'test'
+  ...
+# Subtest: outdated failures do not erase successfully loaded newer results
+ok 16 - outdated failures do not erase successfully loaded newer results
+  ---
+  duration_ms: 16.457708
+  type: 'test'
+  ...
+# Subtest: both real form components compile
+ok 17 - both real form components compile
+  ---
+  duration_ms: 374.075625
+  type: 'test'
+  ...
+# Subtest: project name editing never starts submission; validation and API failures restore state
+ok 18 - project name editing never starts submission; validation and API failures restore state
+  ---
+  duration_ms: 147.311833
+  type: 'test'
+  ...
+# Subtest: customer API rejection keeps draft open and never claims success
+ok 19 - customer API rejection keeps draft open and never claims success
+  ---
+  duration_ms: 201.705666
+  type: 'test'
+  ...
+# Subtest: saved customer clears incompatible filters and does not duplicate after list failure
+ok 20 - saved customer clears incompatible filters and does not duplicate after list failure
+  ---
+  duration_ms: 63.891542
+  type: 'test'
+  ...
+# Subtest: customer creation rejects an empty ID and suppresses repeated clicks
+ok 21 - customer creation rejects an empty ID and suppresses repeated clicks
+  ---
+  duration_ms: 28.702
+  type: 'test'
+  ...
+# Subtest: saved customer retains success when the list explicitly reports refresh failure
+ok 22 - saved customer retains success when the list explicitly reports refresh failure
+  ---
+  duration_ms: 32.96775
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1581.426417

@@ -1,0 +1,99 @@
+TAP version 13
+# Subtest: loads every authorized customer page and cultivation batch without exceeding 100
+not ok 1 - loads every authorized customer page and cultivation batch without exceeding 100
+  ---
+  duration_ms: 102.093667
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:149:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    100 !== 201
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 201
+  actual: 100
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:154:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: pagination preserves customer facts and leaves unconfirmed profile semantics unchanged
+ok 2 - pagination preserves customer facts and leaves unconfirmed profile semantics unchanged
+  ---
+  duration_ms: 64.481833
+  type: 'test'
+  ...
+# Subtest: local form filters include matching customers beyond the first API page
+not ok 3 - local form filters include matching customers beyond the first API page
+  ---
+  duration_ms: 24.970583
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:192:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:204:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: API failures clear stale results and show an unavailable state, not healthy zero counts
+not ok 4 - API failures clear stale results and show an unavailable state, not healthy zero counts
+  ---
+  duration_ms: 43.283083
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:296:1'
+  failureType: 'testCodeFailure'
+  error: 'read denied'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    Object.customerPage (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:300:25)
+    Object.getCustomerPage (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:122:54)
+    Object.loadList (evalmachine.<anonymous>:174:40)
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:308:19)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: empty, incomplete, malformed and duplicate pages have distinct outcomes
+not ok 5 - empty, incomplete, malformed and duplicate pages have distinct outcomes
+  ---
+  duration_ms: 39.537208
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:347:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+
+      assert.ok(app.state.listLoadError.value)
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: ''
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/crm-private-pool-query.test.mjs:367:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 1
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 947.408958
