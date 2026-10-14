@@ -680,15 +680,22 @@
 - **模块**：财务 → 收款单 → 新增
 - **操作**：收款方式选"银行转账"，填客户/金额，点保存
 - **错误原文**："### Error updating database. Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data too long for column 'settle_method' at row 1 ### ... FinReceiptEntryMapper.java ..."
-- **现象**：弹窗不关闭、无成功提示；推测前端把收款方式显示名称"银行转账"直接写入 settle_method 列导致超长；改用"现结"后保存成功
-- **状态**：待修复
+- **现象**：弹窗不关闭、无成功提示；改用"现结"后保存成功。初次“前端提交中文名称”的推测已在 2026-10-15 源码及生产只读核对中纠正。
+- **确认根因**：表单正确提交字典稳定编码 `BANK_TRANSFER`（13 位），生产 `fin_receipt_entry.settle_method` 仅为 `varchar(10)`；同源付款及两类核销明细也只有 10 位。
+- **代码修复**：后端 `3079d81a1` 新增 `V202610152200`，将四表不足 64 位的列扩容，保留原字符集、排序规则、可空、默认值、注释和历史记录，已更宽的列不缩短。不改字典编码或前端提交语义；新旧租户统一生效。
+- **验证**：独立本机 MySQL 8.4 / Flyway 10.20.1 的两项实际 SQL 回归通过，覆盖原错误、两租户旧记录、四表新编码、128 位列及 80 位历史编码、重复运行；没有在生产创建收款或执行迁移。
+- **报告**：[结算编码修复及生产版本复核](reports/2026-10-15-codex-settlement26-27-and-release-recheck.md)。
+- **状态**：代码已修复，待发布；与 Bug 27 同根只计一项，生产仍为 2026-10-14 22:44 包。
 
 ### Bug 27：付款单 - 付款方式选"银行转账"保存报数据库错误
 - **模块**：财务 → 付款单 → 新增/修改
 - **操作**：付款单列表→弃审 CGFK-261010-006→修改→付款方式由"现结"改为"银行转账"→保存
 - **错误原文**："### Error updating database. Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'settle_method' at row 1 ### ... FinPaymentEntryMapper.java ..."
-- **现象**：保存失败，单据保持原值（现结/编制中/否），无历程记录；改回"现结"保存正常。与 Bug 26 同类问题（前端把付款方式显示名称"银行转账"直接写入 settle_method 列导致超长），在付款单复现
-- **状态**：待修复
+- **现象**：保存失败，单据保持原值（现结/编制中/否），无历程记录；改回"现结"保存正常。与 Bug 26 同根；初次“提交中文名称”的推测已纠正。
+- **确认根因与修复**：`BANK_TRANSFER` 为 13 位稳定编码，付款及核销明细只有 10 位。后端 `3079d81a1` 的新增主线迁移同步扩容 `fin_payment_entry`、`fin_receipt_entry`、`fin_payable_check_entry`、`fin_receivable_check_entry`，不更改历史值、金额、租户、审计或审批/核销口径。
+- **验证**：两项真实本机 MySQL / Flyway 回归通过，详情及边界与 Bug 26 相同；未保存、弃审、核销或重审任何生产单据。
+- **报告**：[结算编码修复及生产版本复核](reports/2026-10-15-codex-settlement26-27-and-release-recheck.md)。
+- **状态**：代码已修复，待发布；与 Bug 26 合并计一项，未完成生产保存与审批闭环。
 
 ### Bug 28：付款单 - "审核"按钮始终禁用，弃审后无法重新审核
 - **模块**：财务 → 付款单 → 审核
