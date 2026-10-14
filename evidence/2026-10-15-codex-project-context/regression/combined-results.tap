@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: both real form components compile
+ok 1 - both real form components compile
+  ---
+  duration_ms: 398.778708
+  type: 'test'
+  ...
+# Subtest: project name editing never starts submission; validation and API failures restore state
+ok 2 - project name editing never starts submission; validation and API failures restore state
+  ---
+  duration_ms: 80.297959
+  type: 'test'
+  ...
+# Subtest: customer API rejection keeps draft open and never claims success
+ok 3 - customer API rejection keeps draft open and never claims success
+  ---
+  duration_ms: 103.522542
+  type: 'test'
+  ...
+# Subtest: saved customer clears incompatible filters and does not duplicate after list failure
+ok 4 - saved customer clears incompatible filters and does not duplicate after list failure
+  ---
+  duration_ms: 37.91625
+  type: 'test'
+  ...
+# Subtest: customer creation rejects an empty ID and suppresses repeated clicks
+ok 5 - customer creation rejects an empty ID and suppresses repeated clicks
+  ---
+  duration_ms: 21.421542
+  type: 'test'
+  ...
+# Subtest: project static fallback keeps the documented visible group order
+ok 6 - project static fallback keeps the documented visible group order
+  ---
+  duration_ms: 0.926333
+  type: 'test'
+  ...
+# Subtest: project static fallback hides compatibility groups without removing deep links
+ok 7 - project static fallback hides compatibility groups without removing deep links
+  ---
+  duration_ms: 0.478584
+  type: 'test'
+  ...
+# Subtest: unknown fallback paths sort after the five documented project entries
+ok 8 - unknown fallback paths sort after the five documented project entries
+  ---
+  duration_ms: 0.108
+  type: 'test'
+  ...
+# Subtest: actual overview source and template compile
+ok 9 - actual overview source and template compile
+  ---
+  duration_ms: 19.587416
+  type: 'test'
+  ...
+# Subtest: both canonical and report-alias overview/workspace routes resolve without menu context
+ok 10 - both canonical and report-alias overview/workspace routes resolve without menu context
+  ---
+  duration_ms: 79.848417
+  type: 'test'
+  ...
+# Subtest: explicit menu metadata retains precedence over path fallback and component query metadata
+ok 11 - explicit menu metadata retains precedence over path fallback and component query metadata
+  ---
+  duration_ms: 10.395333
+  type: 'test'
+  ...
+# Subtest: unknown and prototype module context stays invalid, never silently replaced by fallback
+ok 12 - unknown and prototype module context stays invalid, never silently replaced by fallback
+  ---
+  duration_ms: 35.64925
+  type: 'test'
+  ...
+# Subtest: URL query injection and unrelated or partial paths do not select a module
+ok 13 - URL query injection and unrelated or partial paths do not select a module
+  ---
+  duration_ms: 32.912291
+  type: 'test'
+  ...
+# Subtest: the actual formal workspace script and template compile
+ok 14 - the actual formal workspace script and template compile
+  ---
+  duration_ms: 57.329
+  type: 'test'
+  ...
+# Subtest: an explicit initial project keeps its precise Long ID
+ok 15 - an explicit initial project keeps its precise Long ID
+  ---
+  duration_ms: 230.247333
+  type: 'test'
+  ...
+# Subtest: project lookup includes subsequent allowed pages without increasing page size
+ok 16 - project lookup includes subsequent allowed pages without increasing page size
+  ---
+  duration_ms: 124.425709
+  type: 'test'
+  ...
+# Subtest: a same-page projectCode change selects and reads the new project
+ok 17 - a same-page projectCode change selects and reads the new project
+  ---
+  duration_ms: 51.512583
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all milestones
+ok 18 - an unresolved explicit project cannot fall back to another project or all milestones
+  ---
+  duration_ms: 38.310709
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all plans
+ok 19 - an unresolved explicit project cannot fall back to another project or all plans
+  ---
+  duration_ms: 63.333792
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all tasks
+ok 20 - an unresolved explicit project cannot fall back to another project or all tasks
+  ---
+  duration_ms: 35.751041
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all risks
+ok 21 - an unresolved explicit project cannot fall back to another project or all risks
+  ---
+  duration_ms: 52.533458
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all issues
+ok 22 - an unresolved explicit project cannot fall back to another project or all issues
+  ---
+  duration_ms: 39.762375
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all bugs
+ok 23 - an unresolved explicit project cannot fall back to another project or all bugs
+  ---
+  duration_ms: 31.092083
+  type: 'test'
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all changes
+ok 24 - an unresolved explicit project cannot fall back to another project or all changes
+  ---
+  duration_ms: 24.103125
+  type: 'test'
+  ...
+# Subtest: switching to an unresolved project clears old rows and every old action dialog
+ok 25 - switching to an unresolved project clears old rows and every old action dialog
+  ---
+  duration_ms: 23.47425
+  type: 'test'
+  ...
+# Subtest: without an explicit project, milestones retain the existing default project
+ok 26 - without an explicit project, milestones retain the existing default project
+  ---
+  duration_ms: 20.436791
+  type: 'test'
+  ...
+# Subtest: without an explicit project, plans retain the existing all-projects query
+ok 27 - without an explicit project, plans retain the existing all-projects query
+  ---
+  duration_ms: 23.409708
+  type: 'test'
+  ...
+# Subtest: route codes normalize whitespace and use the first repeated query value
+ok 28 - route codes normalize whitespace and use the first repeated query value
+  ---
+  duration_ms: 25.67975
+  type: 'test'
+  ...
+# Subtest: removing an explicit project restores the unfiltered plan view
+ok 29 - removing an explicit project restores the unfiltered plan view
+  ---
+  duration_ms: 21.553625
+  type: 'test'
+  ...
+# Subtest: a user can explicitly select an allowed project after an invalid deep link
+ok 30 - a user can explicitly select an allowed project after an invalid deep link
+  ---
+  duration_ms: 22.772541
+  type: 'test'
+  ...
+# Subtest: a new valid deep link recovers after an unresolved project
+ok 31 - a new valid deep link recovers after an unresolved project
+  ---
+  duration_ms: 21.745417
+  type: 'test'
+  ...
+# Subtest: changing plan type preserves the selected project and the exact backend filter
+ok 32 - changing plan type preserves the selected project and the exact backend filter
+  ---
+  duration_ms: 18.603541
+  type: 'test'
+  ...
+# Subtest: changing a tab does not override a manually selected project
+ok 33 - changing a tab does not override a manually selected project
+  ---
+  duration_ms: 22.038917
+  type: 'test'
+  ...
+# Subtest: route changes during project initialization do not send an unscoped query
+ok 34 - route changes during project initialization do not send an unscoped query
+  ---
+  duration_ms: 18.072459
+  type: 'test'
+  ...
+# Subtest: late results for the previous project cannot populate an unresolved context
+ok 35 - late results for the previous project cannot populate an unresolved context
+  ---
+  duration_ms: 21.786791
+  type: 'test'
+  ...
+# Subtest: late detail and editor requests cannot reopen the previous project
+ok 36 - late detail and editor requests cannot reopen the previous project
+  ---
+  duration_ms: 20.320209
+  type: 'test'
+  ...
+# Subtest: a confirmation from the old route cannot write after switching projects
+ok 37 - a confirmation from the old route cannot write after switching projects
+  ---
+  duration_ms: 17.336375
+  type: 'test'
+  ...
+# Subtest: an explicit code without project lookup permission does not broaden task scope
+ok 38 - an explicit code without project lookup permission does not broaden task scope
+  ---
+  duration_ms: 19.926167
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1451.384333

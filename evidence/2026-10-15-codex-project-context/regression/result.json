@@ -1,0 +1,70 @@
+{
+  "observedAt": "2026-10-14T19:50:03.074Z",
+  "pageErrors": [],
+  "blockedNetwork": [],
+  "selectorBefore": {
+    "x": 75,
+    "y": 92,
+    "width": 240,
+    "height": 32
+  },
+  "requests": [
+    {
+      "path": "/pm/project/page",
+      "params": {
+        "pageNo": 1,
+        "pageSize": 100
+      }
+    },
+    {
+      "path": "/system/user/simple-list",
+      "params": {}
+    },
+    {
+      "path": "/pm/milestone/list",
+      "params": {
+        "projectId": "2104856934444859413"
+      }
+    },
+    {
+      "path": "/pm/milestone/list",
+      "params": {
+        "projectId": "2104856934444859414"
+      }
+    },
+    {
+      "path": "/pm/plan/page",
+      "params": {
+        "pageNo": 1,
+        "pageSize": 100,
+        "projectId": "2104856934444859414",
+        "planType": "IMPLEMENTATION"
+      }
+    },
+    {
+      "path": "/pm/milestone/list",
+      "params": {
+        "projectId": "2104856934444859413"
+      }
+    },
+    {
+      "path": "/pm/milestone/list",
+      "params": {
+        "projectId": "2104856934444859414"
+      }
+    }
+  ],
+  "selectorChecks": [
+    {
+      "viewportWidth": 1440,
+      "width": 240,
+      "right": 315
+    },
+    {
+      "viewportWidth": 390,
+      "width": 240,
+      "right": 315
+    }
+  ],
+  "status": "PASS"
+}

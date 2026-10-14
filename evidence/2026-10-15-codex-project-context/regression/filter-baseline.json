@@ -1,0 +1,13 @@
+{
+  "observedAt": "2026-10-14T19:48:27.192Z",
+  "pageErrors": [],
+  "blockedNetwork": [],
+  "selectorBefore": {
+    "x": 75,
+    "y": 92,
+    "width": 55,
+    "height": 32
+  },
+  "status": "FAIL",
+  "failure": "The project filter must not shrink to one character"
+}

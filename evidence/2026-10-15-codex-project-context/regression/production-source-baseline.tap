@@ -1,0 +1,438 @@
+TAP version 13
+# Subtest: the actual formal workspace script and template compile
+ok 1 - the actual formal workspace script and template compile
+  ---
+  duration_ms: 130.246458
+  type: 'test'
+  ...
+# Subtest: an explicit initial project keeps its precise Long ID
+ok 2 - an explicit initial project keeps its precise Long ID
+  ---
+  duration_ms: 487.406375
+  type: 'test'
+  ...
+# Subtest: project lookup includes subsequent allowed pages without increasing page size
+ok 3 - project lookup includes subsequent allowed pages without increasing page size
+  ---
+  duration_ms: 81.053333
+  type: 'test'
+  ...
+# Subtest: a same-page projectCode change selects and reads the new project
+not ok 4 - a same-page projectCode change selects and reads the new project
+  ---
+  duration_ms: 75.085167
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:191:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '2104856934444859413'
+    - '2104856934444859414'
+                         ^
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '2104856934444859414'
+  actual: '2104856934444859413'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:195:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all milestones
+not ok 5 - an unresolved explicit project cannot fall back to another project or all milestones
+  ---
+  duration_ms: 51.785709
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '2104856934444859413'
+    - undefined
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual: '2104856934444859413'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:204:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all plans
+not ok 6 - an unresolved explicit project cannot fall back to another project or all plans
+  ---
+  duration_ms: 94.043
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:205:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all tasks
+not ok 7 - an unresolved explicit project cannot fall back to another project or all tasks
+  ---
+  duration_ms: 61.113042
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:205:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all risks
+not ok 8 - an unresolved explicit project cannot fall back to another project or all risks
+  ---
+  duration_ms: 62.787875
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:205:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all issues
+not ok 9 - an unresolved explicit project cannot fall back to another project or all issues
+  ---
+  duration_ms: 35.6365
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:205:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all bugs
+not ok 10 - an unresolved explicit project cannot fall back to another project or all bugs
+  ---
+  duration_ms: 28.294541
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:205:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an unresolved explicit project cannot fall back to another project or all changes
+not ok 11 - an unresolved explicit project cannot fall back to another project or all changes
+  ---
+  duration_ms: 57.111166
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:205:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: switching to an unresolved project clears old rows and every old action dialog
+not ok 12 - switching to an unresolved project clears old rows and every old action dialog
+  ---
+  duration_ms: 48.100458
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:211:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '2104856934444859413'
+    - undefined
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual: '2104856934444859413'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:219:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: without an explicit project, milestones retain the existing default project
+ok 13 - without an explicit project, milestones retain the existing default project
+  ---
+  duration_ms: 26.6335
+  type: 'test'
+  ...
+# Subtest: without an explicit project, plans retain the existing all-projects query
+ok 14 - without an explicit project, plans retain the existing all-projects query
+  ---
+  duration_ms: 22.494042
+  type: 'test'
+  ...
+# Subtest: route codes normalize whitespace and use the first repeated query value
+not ok 15 - route codes normalize whitespace and use the first repeated query value
+  ---
+  duration_ms: 37.2145
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:240:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '2104856934444859413'
+    - '2104856934444859414'
+                         ^
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '2104856934444859414'
+  actual: '2104856934444859413'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:243:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: removing an explicit project restores the unfiltered plan view
+not ok 16 - removing an explicit project restores the unfiltered plan view
+  ---
+  duration_ms: 25.321667
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:246:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '2104856934444859414'
+    - undefined
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual: '2104856934444859414'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:250:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a user can explicitly select an allowed project after an invalid deep link
+ok 17 - a user can explicitly select an allowed project after an invalid deep link
+  ---
+  duration_ms: 25.779583
+  type: 'test'
+  ...
+# Subtest: a new valid deep link recovers after an unresolved project
+not ok 18 - a new valid deep link recovers after an unresolved project
+  ---
+  duration_ms: 23.383959
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:262:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '2104856934444859413'
+    - '2104856934444859414'
+                         ^
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '2104856934444859414'
+  actual: '2104856934444859413'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:266:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: changing plan type preserves the selected project and the exact backend filter
+ok 19 - changing plan type preserves the selected project and the exact backend filter
+  ---
+  duration_ms: 21.8775
+  type: 'test'
+  ...
+# Subtest: changing a tab does not override a manually selected project
+ok 20 - changing a tab does not override a manually selected project
+  ---
+  duration_ms: 28.427292
+  type: 'test'
+  ...
+# Subtest: route changes during project initialization do not send an unscoped query
+not ok 21 - route changes during project initialization do not send an unscoped query
+  ---
+  duration_ms: 23.131666
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:290:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:299:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: late results for the previous project cannot populate an unresolved context
+not ok 22 - late results for the previous project cannot populate an unresolved context
+  ---
+  duration_ms: 30.084625
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:306:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:318:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: late detail and editor requests cannot reopen the previous project
+not ok 23 - late detail and editor requests cannot reopen the previous project
+  ---
+  duration_ms: 22.307125
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:322:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:335:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a confirmation from the old route cannot write after switching projects
+not ok 24 - a confirmation from the old route cannot write after switching projects
+  ---
+  duration_ms: 32.412417
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:339:1'
+  failureType: 'testCodeFailure'
+  error: 'Business write is not expected in this regression: PmMilestoneApi.confirm'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    Object.confirm (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:108:21)
+    Object.act (evalmachine.<anonymous>:436:46)
+    async TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:350:3)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: an explicit code without project lookup permission does not broaden task scope
+not ok 25 - an explicit code without project lookup permission does not broaden task scope
+  ---
+  duration_ms: 17.601125
+  type: 'test'
+  location: '/Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:357:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/liuqiang/code/cfor-standard/cfor/cfor-admin-vue3/scripts/tests/project-workspace-context.test.mjs:366:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 8
+# fail 17
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2413.339083

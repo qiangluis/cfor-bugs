@@ -1,0 +1,51 @@
+{
+  "observedAt": "2026-10-14T19:48:27.218Z",
+  "pageErrors": [],
+  "apiErrors": [],
+  "blockedWrites": [],
+  "actions": [
+    {
+      "label": "确认里程碑",
+      "startPath": "/project/workbench",
+      "endPath": "/project/milestones",
+      "query": "?tab=milestones&planType=IMPLEMENTATION",
+      "messages": [],
+      "dialogCount": 0
+    },
+    {
+      "label": "审核实施计划",
+      "startPath": "/project/workbench",
+      "endPath": "/project/implementation-plans",
+      "query": "?tab=plans&planType=IMPLEMENTATION",
+      "messages": [],
+      "dialogCount": 0
+    }
+  ],
+  "contextChecks": [
+    {
+      "status": "INSUFFICIENT_PROJECTS",
+      "projectCount": 0
+    }
+  ],
+  "projectResponses": [
+    {
+      "code": 0,
+      "dataType": "object",
+      "total": 0,
+      "listCount": 0
+    },
+    {
+      "code": 0,
+      "dataType": "object",
+      "total": 0,
+      "listCount": 0
+    }
+  ],
+  "login": true,
+  "projectSelector": {
+    "width": 55,
+    "placeholder": null
+  },
+  "status": "NAVIGATION_CONFIRMED",
+  "projectMenuCount": 213
+}
