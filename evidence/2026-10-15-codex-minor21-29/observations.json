@@ -1,0 +1,51 @@
+{
+  "errors": [],
+  "responses": [
+    {
+      "pathname": "/admin-api/pms/pm/project-group/list",
+      "status": 200,
+      "code": 500,
+      "message": "系统异常"
+    },
+    {
+      "pathname": "/admin-api/pms/pm/project-group/list",
+      "status": 200,
+      "code": 500,
+      "message": "系统异常"
+    }
+  ],
+  "pages": [
+    {
+      "pathname": "/pms/pm/project/list?tabs=all",
+      "url": "https://jixu-ai.com/pms/pm/project/list?tabs=all",
+      "messages": [
+        "系统异常"
+      ],
+      "projectButtons": []
+    },
+    {
+      "pathname": "/pms/pm/project/list?tabs=all",
+      "url": "https://jixu-ai.com/pms/pm/project/list?tabs=all",
+      "messages": [
+        "系统异常"
+      ],
+      "projectButtons": []
+    },
+    {
+      "pathname": "/project/workbench",
+      "url": "https://jixu-ai.com/project/workbench",
+      "messages": [],
+      "projectButtons": [
+        {
+          "x": 1324,
+          "y": 984,
+          "width": 62,
+          "height": 32,
+          "blocked": true
+        }
+      ]
+    }
+  ],
+  "blockedWrites": [],
+  "login": true
+}

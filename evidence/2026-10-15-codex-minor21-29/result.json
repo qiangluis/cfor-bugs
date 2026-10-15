@@ -1,0 +1,70 @@
+{
+  "errors": [],
+  "consoleErrors": [],
+  "actionClicks": 1,
+  "assistantRail": {
+    "width": 48,
+    "height": 64,
+    "zIndex": "1900"
+  },
+  "assistantOpened": true,
+  "editorBefore": {
+    "html": "<div id=\"w-e-textarea-1\" data-slate-editor=\"\" data-slate-node=\"value\" suppresscontenteditablewarning=\"\" role=\"textbox\" spellcheck=\"true\" autocorrect=\"true\" autocapitalize=\"true\" contenteditable=\"true\" aria-label=\"公告正文\" aria-multiline=\"true\" aria-readonly=\"false\"><p id=\"w-e-element-paragraph-0\" data-slate-node=\"element\" data-slate-inline=\"false\"><span id=\"w-e-text-1\" data-slate-node=\"text\"><span data-slate-leaf=\"true\"><span data-slate-zero-width=\"n\" data-slate-length=\"0\">﻿<br></span></span></span></p></div>",
+    "parent": "<div class=\"w-e-scroll\" style=\"overflow-y: auto;\"><div id=\"w-e-textarea-1\" data-slate-editor=\"\" data-slate-node=\"value\" suppresscontenteditablewarning=\"\" role=\"textbox\" spellcheck=\"true\" autocorrect=\"true\" autocapitalize=\"true\" contenteditable=\"true\" aria-label=\"公告正文\" aria-multiline=\"true\" aria-readonly=\"false\"><p id=\"w-e-element-paragraph-0\" data-slate-node=\"element\" data-slate-inline=\"false\"><span id=\"w-e-text-1\" data-slate-node=\"text\"><span data-slate-leaf=\"true\"><span data-slate-zero-width=\"",
+    "hiddenAncestor": false
+  },
+  "editorText": "ABCdef XYZ 123A",
+  "accessibleEditor": 1,
+  "textboxes": 3,
+  "outWhileLoading": 0,
+  "outLabels": [
+    "210",
+    "",
+    "Regression operator",
+    "",
+    "Regression department"
+  ],
+  "outButtonMessages": [
+    "请先添加数据"
+  ],
+  "outMessages": [
+    "请先添加数据",
+    "请至少添加一条存货明细"
+  ],
+  "inButtonMessages": [
+    "请先添加数据",
+    "请至少添加一条存货明细",
+    "请先添加数据"
+  ],
+  "inMessages": [
+    "请先添加数据",
+    "请至少添加一条存货明细",
+    "请先添加数据",
+    "请至少添加一条存货明细"
+  ],
+  "inButtons": [
+    "",
+    "",
+    "",
+    "",
+    "删除",
+    "删除",
+    "删除",
+    "删除",
+    "删除",
+    "删除",
+    "删除",
+    "删除",
+    "删除",
+    "删除",
+    "选 单",
+    " 关 联 ",
+    " 打 印 ",
+    " 删 除 ",
+    " 生 码 ",
+    " 保 存 ",
+    "审核",
+    "取 消"
+  ],
+  "writes": []
+}
