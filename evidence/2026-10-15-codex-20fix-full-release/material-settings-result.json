@@ -1,0 +1,238 @@
+{
+  "observedAt": "2026-10-15T00:48:58.939Z",
+  "assets": [
+    {
+      "path": "/assets/BaseMaterialForm-qbYc6-0t.js",
+      "http": 200,
+      "sha256": "0bb212e59ad16275158742569c8d806f98e93a2a9c157740a3d88c3e4ff4e13c"
+    }
+  ],
+  "requests": [
+    {
+      "path": "/admin-api/system/tenant/get-by-website",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/login-config",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/tenant/get-id-by-name",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/tenant/get-id-by-name",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/sys/sysCustomizColumn/list",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/system/config/getConfigList",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/get-permission-info",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/dict-data/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/infra/config/get-value-by-key",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/infra/config/get-value-by-key",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/auth/get-permission-info",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/notify-message/get-unread-count",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterialCategory/rootList",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterialCategory/rootList",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterialCategory/rootList",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basUnit/getChildListBatch",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterial/listByCategory",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/system/system-init/state",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/system/system-init/readiness",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterialCategory/rootList",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basMaterial/queryById",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/basUnit/list/enabled",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/base/unit-scheme/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/base/material-grade/simple-list",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/system/custom-field/runtime-schema",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/quality/qualityMaterial/list/dictText",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/system/custom-field/values",
+      "http": 200,
+      "code": 0
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    },
+    {
+      "path": "/admin-api/mes/dictCode/getData",
+      "http": 200,
+      "code": 200
+    }
+  ],
+  "errors": [],
+  "blockedWrites": [],
+  "login": true,
+  "materialRoutes": [
+    {
+      "path": "/systemModel/base/stock",
+      "component": "base/material/index"
+    },
+    {
+      "path": "/settings/erp/material",
+      "component": "base/material/index"
+    }
+  ],
+  "finalUrl": "https://jixu-ai.com/settings/erp/material",
+  "form": {
+    "width": 1180,
+    "tabs": [
+      "存货属性",
+      "存货控制",
+      "包装",
+      "质量",
+      "存货描述",
+      "自定义项",
+      "附件信息"
+    ],
+    "namedUnitScheme": 1,
+    "oldFinishedFlag": 0,
+    "oldAssemblyFlag": 0,
+    "oldKittingFlag": 0
+  },
+  "status": "PASS"
+}
