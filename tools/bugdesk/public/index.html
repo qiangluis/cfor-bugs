@@ -71,11 +71,24 @@ async function request(url,payload){
   const res=await fetch(url,payload===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Bugdesk-Token':token},body:JSON.stringify(payload)});
   return await res.json();
 }
+const inviteButton=document.createElement('button');
+inviteButton.id='github-accept';inviteButton.className='button primary';inviteButton.textContent='接受仓库邀请';inviteButton.hidden=true;
+$('check-push').before(inviteButton);
+inviteButton.onclick=async()=>{
+  inviteButton.disabled=true;
+  try{
+    const a=await request('/api/auth/accept-invitation',{});showAuth(a);
+    result(a.message,a.state==='ready');await refresh();
+  }catch(e){result('接受邀请失败，请重试。',false,e.message)}
+  finally{inviteButton.disabled=false}
+};
 function showAuth(a){
   if(!a)return;
   $('auth-status').textContent=a.message;
   $('github-login').hidden=a.state==='ready';
   $('github-login').disabled=a.state==='pending';
+  $('github-login').textContent=['denied','invited'].includes(a.state)?'重新检查权限':'连接 GitHub';
+  inviteButton.hidden=a.state!=='invited';
   $('device-auth').hidden=a.state!=='pending';
   $('device-code').textContent=a.userCode||'';
   clearTimeout(authTimer);

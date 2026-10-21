@@ -166,6 +166,8 @@ async function api(req,res,url) {
   if (req.method!=='POST') return respond(res,404,{ok:false,message:'找不到这个操作'});
   if (req.headers['x-bugdesk-token']!==csrf) return respond(res,403,{ok:false,message:'请刷新页面后再操作'});
   if (url.pathname==='/api/auth/start') return respond(res,200,await auth.start());
+  if (url.pathname==='/api/auth/accept-invitation') return respond(res,200,await auth.acceptInvitation());
+  if (url.pathname==='/api/auth/refresh') return respond(res,200,await auth.verify());
   if (url.pathname==='/api/check-push') {
     const checked = await git(['push','--dry-run','origin','HEAD:refs/heads/main']);
     return respond(res,200,{ok:checked.ok,message:checked.ok?'GitHub 推送权限已验证，可以正常提交报告。':'推送验证未通过，请检查 GitHub 登录或网络。',detail:checked.output});
