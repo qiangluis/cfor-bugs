@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {execFile} = require('node:child_process');
 const {randomUUID, randomBytes} = require('node:crypto');
+const auth = require('./github-auth.cjs')();
 
 const argv = process.argv.slice(2);
 function option(key, fallback) { const i = argv.indexOf(key); return i < 0 ? fallback : argv[i + 1]; }
@@ -13,6 +14,13 @@ const bundledGit = path.resolve(path.dirname(process.execPath), '..', '..', 'nat
 const gitExe = process.env.BUGDESK_GIT || (fs.existsSync(bundledGit) ? bundledGit : 'git');
 const stateDir = path.join(repo, '.git', 'bugdesk');
 const csrf = randomBytes(24).toString('hex');
+const resumeDevice = option('--resume-device', '');
+if (resumeDevice) {
+  try {
+    auth.resume(JSON.parse(fs.readFileSync(resumeDevice, 'utf8')));
+    fs.unlinkSync(resumeDevice);
+  } catch { console.error('Could not resume GitHub device authorization.'); }
+}
 let busy = false;
 let activeChildren = new Set();
 
@@ -20,7 +28,7 @@ function git(args, timeout = 90000) {
   return new Promise(resolve => {
     const child = execFile(gitExe, ['-c', 'http.sslBackend=openssl', '-c', 'http.lowSpeedLimit=1', '-c', 'http.lowSpeedTime=30', '-C', repo, ...args], {
       windowsHide: true, timeout, maxBuffer: 8 * 1024 * 1024,
-      env: {...process.env, GIT_TERMINAL_PROMPT: '0', GCM_INTERACTIVE: 'Never'}
+      env: auth.gitEnv({...process.env, GIT_TERMINAL_PROMPT: '0', GCM_INTERACTIVE: 'Never'})
     }, (error, stdout, stderr) => {
       activeChildren.delete(child);
       resolve({ok: !error, output: [stdout, stderr].filter(Boolean).join('\n').trim(), code: error?.code || 0});
@@ -144,8 +152,9 @@ async function api(req,res,url) {
   if (req.method==='GET' && url.pathname==='/api/status') {
     const [s,b] = await Promise.all([git(['status','--short','--branch']),git(['branch','--show-current'])]);
     const pending = exists(stateDir) ? fs.readdirSync(stateDir).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(fs.readFileSync(path.join(stateDir,f),'utf8'))).filter(s=>!s.pushed).map(s=>({id:s.id,title:s.title,report:s.report,committed:s.committed})) : [];
-    return respond(res,200,{repo,branch:b.output,status:s.output,ok:s.ok,pending});
+    return respond(res,200,{repo,branch:b.output,status:s.output,ok:s.ok,pending,auth:auth.state()});
   }
+  if(req.method==='GET' && url.pathname==='/api/auth') return respond(res,200,auth.state());
   if(req.method==='GET' && url.pathname==='/api/files') {
     return respond(res,200,{files:fs.readdirSync(repo).filter(n=>n.endsWith('.md')).sort()});
   }
@@ -156,6 +165,11 @@ async function api(req,res,url) {
   }
   if (req.method!=='POST') return respond(res,404,{ok:false,message:'找不到这个操作'});
   if (req.headers['x-bugdesk-token']!==csrf) return respond(res,403,{ok:false,message:'请刷新页面后再操作'});
+  if (url.pathname==='/api/auth/start') return respond(res,200,await auth.start());
+  if (url.pathname==='/api/check-push') {
+    const checked = await git(['push','--dry-run','origin','HEAD:refs/heads/main']);
+    return respond(res,200,{ok:checked.ok,message:checked.ok?'GitHub 推送权限已验证，可以正常提交报告。':'推送验证未通过，请检查 GitHub 登录或网络。',detail:checked.output});
+  }
   if (busy) return respond(res,409,{ok:false,message:'正在同步，请等待当前操作完成'});
   busy=true;
   try {
@@ -194,4 +208,4 @@ const server=http.createServer(async(req,res)=>{
 });
 server.listen(port,'127.0.0.1',()=>console.log('BugDesk: http://127.0.0.1:'+port+'\nRepo: '+repo));
 server.on('error',e=>{console.error(e.message);process.exitCode=1});
-process.on('SIGTERM',()=>{for(const c of activeChildren)c.kill();server.close(()=>process.exit(0))});
+process.on('SIGTERM',()=>{auth.close();for(const c of activeChildren)c.kill();server.close(()=>process.exit(0))});

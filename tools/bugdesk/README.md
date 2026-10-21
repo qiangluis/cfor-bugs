@@ -25,4 +25,8 @@
 页面草稿（包括截图）自动保存在当前浏览器。成功推送后，当前报告的草稿会清空。
 “仓库文档”可查看顶层 Markdown 清单、修复日志和历史增量报告。
 
-工具使用当前 GitHub 登录凭据，仓库须有写入权限。首次需要登录时请先在终端完成 GitHub 登录，再回页面重试。提交署名为 CFOR BugDesk <bugdesk@localhost>，不会修改全局 Git 配置。
+工具可以使用本机已有的 Git 凭据。若页面提示尚未连接，请点击“连接 GitHub”，在 GitHub 设备授权页面输入验证码并确认授权，再点“验证推送权限”。
+
+浏览器登录 GitHub 后仍需要授权本地工具。工具通过 Git Credential Manager 的官方设备登录流程获取授权，并检查当前账号对 qiangluis/cfor-bugs 的写入权限。令牌只保存在运行中的工具内存中，重启后需要重新授权；不会写入报告或仓库文件。
+
+提交署名为 CFOR BugDesk <bugdesk@localhost>，不会修改全局 Git 配置。

@@ -50,7 +50,7 @@ dialog{border:1px solid #dce2ec;border-radius:12px;padding:24px;width:min(900px,
 </div>
 </section>
 <aside>
-<div class="card"><h2>仓库状态</h2><span id="branch" class="branch">正在连接…</span><div id="repo" class="path"></div><p id="git-status" class="muted"></p><ul class="steps"><li>填写问题描述、添加截图</li><li>自动生成 Markdown 报告</li><li>登记清单并推送到 GitHub</li></ul></div>
+<div class="card"><h2>仓库状态</h2><span id="branch" class="branch">正在连接…</span><div id="repo" class="path"></div><p id="git-status" class="muted"></p><p id="auth-status" class="muted">正在检查 GitHub 连接…</p><button id="github-login" class="button">连接 GitHub</button><div id="device-auth" hidden><p class="muted">在授权页面输入验证码：</p><strong id="device-code" style="font-size:22px;letter-spacing:2px"></strong><p><a href="https://github.com/login/device" target="_blank" rel="noreferrer">打开 GitHub 授权页面 ↗</a></p></div><button id="check-push" class="button" style="margin-top:10px">验证推送权限</button><ul class="steps"><li>填写问题描述、添加截图</li><li>自动生成 Markdown 报告</li><li>登记清单并推送到 GitHub</li></ul></div>
 <div class="card"><h2>操作结果</h2><p class="hint">报告将写入 Bug 清单，状态为“待修复”。</p><div id="result">准备就绪，开始填写吧。</div><details id="details" hidden><summary class="muted">查看详细信息</summary><pre id="detail"></pre></details></div>
 <div class="card" id="pending-card" hidden><h2>待推送报告</h2><p class="hint">报告已保存在仓库，重试不会重复创建。</p><div id="pending"></div></div>
 </aside>
@@ -61,7 +61,7 @@ dialog{border:1px solid #dce2ec;border-radius:12px;padding:24px;width:min(900px,
 <script>
 const $=id=>document.getElementById(id),keys=['title','module','priority','env','description','steps','actual','expected'];
 const token=document.querySelector('meta[name=bugdesk-token]').content;
-let images=[],reportId=crypto.randomUUID(),busy=false,draftTimer,db;
+let images=[],reportId=crypto.randomUUID(),busy=false,draftTimer,db,authTimer;
 function data(){return {id:reportId,...Object.fromEntries(keys.map(k=>[k,$(k).value])),images}}
 function result(message,ok,detail){
   $('result').textContent=message;$('result').className=ok?'result-ok':'result-error';
@@ -71,10 +71,31 @@ async function request(url,payload){
   const res=await fetch(url,payload===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Bugdesk-Token':token},body:JSON.stringify(payload)});
   return await res.json();
 }
+function showAuth(a){
+  if(!a)return;
+  $('auth-status').textContent=a.message;
+  $('github-login').hidden=a.state==='ready';
+  $('github-login').disabled=a.state==='pending';
+  $('device-auth').hidden=a.state!=='pending';
+  $('device-code').textContent=a.userCode||'';
+  clearTimeout(authTimer);
+  if(a.state==='pending') authTimer=setTimeout(async()=>{try{showAuth(await request('/api/auth'))}catch{authTimer=setTimeout(refresh,5000)}},5000);
+}
+$('github-login').onclick=async()=>{
+  $('github-login').disabled=true;
+  try{showAuth(await request('/api/auth/start',{}))}catch(e){result('连接 GitHub 失败，请稍后重试。',false,e.message)}
+  finally{if($('device-auth').hidden)$('github-login').disabled=false}
+};
+$('check-push').onclick=async()=>{
+  $('check-push').disabled=true;result('正在验证 GitHub 推送权限…',true);
+  try{const r=await request('/api/check-push',{});result(r.message,r.ok,r.detail)}catch(e){result('验证失败，请稍后重试。',false,e.message)}
+  finally{$('check-push').disabled=false}
+};
 function lock(value){busy=value;for(const id of ['pull','submit','preview'])$(id).disabled=value;document.querySelectorAll('.retry').forEach(b=>b.disabled=value)}
 async function refresh(){
   try{
     const s=await request('/api/status');$('repo').textContent=s.repo;$('branch').textContent=s.branch||'仓库不可用';
+    showAuth(s.auth);
     $('git-status').textContent=s.ok?(s.status.split('\n').length===1?'工作区干净，已连接本地仓库':s.status):s.status;
     $('pending-card').hidden=!s.pending?.length;$('pending').replaceChildren();
     for(const p of s.pending||[]){
