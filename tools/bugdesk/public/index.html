@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="bugdesk-token" content="__TOKEN__">
+<title>CFOR · Bug 工作台</title>
+<style>
+:root{font-family:"Microsoft YaHei",system-ui,sans-serif;color:#202c42;background:#f3f5f9;font-size:14px}
+*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:wait}
+.top{background:#15233c;color:#fff;padding:25px max(24px,calc((100vw - 1180px)/2));display:flex;justify-content:space-between;align-items:center;gap:20px}
+h1{font-size:23px;margin:3px 0 7px;letter-spacing:.4px}.eyebrow{font-size:11px;letter-spacing:2px;color:#8cb8ff}.subtitle{color:#b8c6dc;font-size:13px;margin:0}
+.wrap{max-width:1228px;margin:24px auto;padding:0 24px}.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px}.tab{border:0;background:transparent;border-radius:8px;padding:10px 16px;color:#5d6980}.tab.active{background:#fff;color:#2259c6;box-shadow:0 2px 7px #17255410}
+.button{border:1px solid #d8dfeb;background:white;border-radius:8px;padding:10px 15px;color:#33415c;display:inline-block}.primary{background:#285ee8;color:white;border-color:#285ee8}.ghost{background:#ffffff10;border-color:#ffffff30;color:white}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px}.card{background:white;border:1px solid #e1e6ef;border-radius:12px;padding:24px;margin-bottom:16px}
+.card h2{font-size:17px;margin:0 0 6px}.hint,.muted{font-size:12px;color:#778397;line-height:1.7}.hint{margin:0 0 18px}
+label{display:block;color:#45516b;font-size:13px;font-weight:600;margin:18px 0 7px}.required{color:#e06a64}input,select,textarea{width:100%;border:1px solid #d6deeb;border-radius:7px;padding:10px 12px;color:#26354f;background:#fff}input:focus,textarea:focus,select:focus{outline:2px solid #285ee824;border-color:#285ee8}
+textarea{resize:vertical;min-height:100px;line-height:1.65}.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.wide{grid-column:1/-1}#description{min-height:128px}
+.drop{margin-top:12px;padding:22px;border:1px dashed #acbdd9;border-radius:9px;text-align:center;background:#f8faff;color:#667797;cursor:pointer}.drop.over{background:#e8efff;border-color:#285ee8}
+#images{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.shot{position:relative;width:130px}.shot img{width:130px;height:90px;object-fit:cover;border-radius:7px;border:1px solid #dce2ec}.shot button{position:absolute;right:3px;top:3px;background:#15233ccc;color:white;border:0;border-radius:50%;width:22px;height:22px}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap}.actions{display:flex;gap:8px}.status{font-size:12px;color:#70819a}.dot{display:inline-block;background:#5bba8c;width:7px;height:7px;border-radius:100%;margin-right:6px}
+.path{font-size:11px;word-break:break-all;color:#76849a;line-height:1.8}.branch{display:inline-block;background:#eff4ff;color:#2c5bb2;border-radius:5px;padding:4px 8px;margin:12px 0}
+.steps{list-style:none;padding:0;margin:18px 0 0;counter-reset:steps}.steps li{counter-increment:steps;display:flex;align-items:center;gap:10px;margin:13px 0;color:#6a7890;font-size:12px}.steps li:before{content:counter(steps);background:#f0f3f9;color:#466086;padding:3px 7px;border-radius:5px}
+#result{white-space:pre-wrap;line-height:1.8;font-size:13px;overflow-wrap:anywhere}.result-error{color:#a34c38}.result-ok{color:#217951}pre{white-space:pre-wrap;word-break:break-word;background:#f4f6fa;border-radius:8px;padding:16px;max-height:600px;overflow:auto;font-family:Consolas,monospace;font-size:12px;line-height:1.75}
+.pending-item{border-top:1px solid #e5eaf3;padding:12px 0;margin-top:10px}.pending-item p{font-size:12px;margin:0 0 8px}.file{display:block;text-align:left;width:100%;padding:10px 8px;border:0;background:transparent;border-bottom:1px solid #eef0f4;color:#52617c;overflow-wrap:anywhere;font-size:12px}.file:hover{background:#eff4ff}
+dialog{border:1px solid #dce2ec;border-radius:12px;padding:24px;width:min(900px,95vw);max-height:85vh}dialog::backdrop{background:#15233c66}.dialog-head{display:flex;justify-content:space-between;align-items:center}
+[hidden]{display:none!important}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.top{padding:20px}.wrap{padding:0 14px}.card{padding:20px}.subtitle{font-size:11px}.top .button{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div><div class="eyebrow">CFOR / QUALITY WORKSPACE</div><h1>Bug 工作台</h1><p class="subtitle">描述问题、贴上截图，把报告同步到 GitHub。</p></div><a class="button ghost" href="https://github.com/qiangluis/cfor-bugs" target="_blank" rel="noreferrer">查看 GitHub 仓库 ↗</a></header>
+<main class="wrap">
+<div class="bar"><nav class="tabs"><button class="tab active" id="new-tab">填写 Bug</button><button class="tab" id="history-tab">仓库文档</button></nav><button id="pull" class="button">↓ 拉取最新内容</button></div>
+<div class="layout" id="editor">
+<section>
+<div class="card">
+<h2>新建 Bug 报告</h2><p class="hint">草稿自动保存在本机。支持 Markdown 描述，截图可直接 Ctrl + V 粘贴。</p>
+<label for="title">Bug 标题 <span class="required">*</span></label><input id="title" maxlength="180" placeholder="简要说明在哪个页面、发生了什么问题">
+<div class="grid"><div><label for="module">模块 / 页面</label><input id="module" placeholder="如：销售 → 销售订单"></div><div><label for="priority">优先级</label><select id="priority"><option value="P1">P1 · 严重，阻断主要流程</option><option value="P2" selected>P2 · 一般，影响部分功能</option><option value="P3">P3 · 轻微，界面或文案问题</option></select></div></div>
+<label for="env">测试环境</label><input id="env" placeholder="如：生产环境 / Chrome / Windows 11">
+<label for="description">问题描述 <span class="required">*</span></label><textarea id="description" placeholder="描述你遇到的问题，支持 Markdown。也可以在这里粘贴截图。"></textarea>
+<label for="steps">复现步骤</label><textarea id="steps" placeholder="1. 打开…&#10;2. 点击…&#10;3. 观察到…"></textarea>
+<div class="grid"><div><label for="actual">实际结果</label><textarea id="actual" placeholder="实际发生了什么"></textarea></div><div><label for="expected">预期结果</label><textarea id="expected" placeholder="你期望发生什么"></textarea></div></div>
+<label>截图证据 <span class="muted">· 最多 12 张 / 共 20 MB</span></label>
+<div class="drop" id="drop" role="button" tabindex="0">＋ 点击选择、拖入图片，或在页面直接粘贴截图</div>
+<input hidden type="file" id="files" accept="image/png,image/jpeg,image/webp,image/gif" multiple><div id="images"></div>
+<div class="footer"><span id="draft" class="status"><span class="dot"></span>草稿自动保存</span><div class="actions"><button id="preview" class="button">预览 Markdown</button><button id="submit" class="button primary">提交并推送 ↑</button></div></div>
+</div>
+</section>
+<aside>
+<div class="card"><h2>仓库状态</h2><span id="branch" class="branch">正在连接…</span><div id="repo" class="path"></div><p id="git-status" class="muted"></p><ul class="steps"><li>填写问题描述、添加截图</li><li>自动生成 Markdown 报告</li><li>登记清单并推送到 GitHub</li></ul></div>
+<div class="card"><h2>操作结果</h2><p class="hint">报告将写入 Bug 清单，状态为“待修复”。</p><div id="result">准备就绪，开始填写吧。</div><details id="details" hidden><summary class="muted">查看详细信息</summary><pre id="detail"></pre></details></div>
+<div class="card" id="pending-card" hidden><h2>待推送报告</h2><p class="hint">报告已保存在仓库，重试不会重复创建。</p><div id="pending"></div></div>
+</aside>
+</div>
+<div id="history" hidden class="card"><h2>仓库文档</h2><p class="hint">查看当前 Bug 清单、修复日志及历史增量报告。</p><div id="file-list"></div></div>
+</main>
+<dialog id="preview-dialog"><div class="dialog-head"><strong id="preview-title">Markdown 预览</strong><button id="close-preview" class="button">关闭</button></div><pre id="markdown"></pre></dialog>
+<script>
+const $=id=>document.getElementById(id),keys=['title','module','priority','env','description','steps','actual','expected'];
+const token=document.querySelector('meta[name=bugdesk-token]').content;
+let images=[],reportId=crypto.randomUUID(),busy=false,draftTimer,db;
+function data(){return {id:reportId,...Object.fromEntries(keys.map(k=>[k,$(k).value])),images}}
+function result(message,ok,detail){
+  $('result').textContent=message;$('result').className=ok?'result-ok':'result-error';
+  $('details').hidden=!detail;$('detail').textContent=detail||'';
+}
+async function request(url,payload){
+  const res=await fetch(url,payload===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Bugdesk-Token':token},body:JSON.stringify(payload)});
+  return await res.json();
+}
+function lock(value){busy=value;for(const id of ['pull','submit','preview'])$(id).disabled=value;document.querySelectorAll('.retry').forEach(b=>b.disabled=value)}
+async function refresh(){
+  try{
+    const s=await request('/api/status');$('repo').textContent=s.repo;$('branch').textContent=s.branch||'仓库不可用';
+    $('git-status').textContent=s.ok?(s.status.split('\n').length===1?'工作区干净，已连接本地仓库':s.status):s.status;
+    $('pending-card').hidden=!s.pending?.length;$('pending').replaceChildren();
+    for(const p of s.pending||[]){
+      const item=document.createElement('div');item.className='pending-item';const label=document.createElement('p');label.textContent=p.title;
+      const button=document.createElement('button');button.className='button retry';button.textContent='重试待推送报告';button.onclick=()=>operate('/api/retry',{id:p.id});
+      item.append(label,button);$('pending').append(item);
+    }
+  }catch(e){result('连接本地工具失败，请重新启动工具。',false,e.message)}
+}
+async function operate(url,payload){
+  if(busy)return;lock(true);result(url==='/api/pull'?'正在拉取最新内容…':'正在保存并推送，请稍候…',true);
+  try{
+    const r=await request(url,payload);result(r.message||'操作完成',r.ok,r.detail);
+    if(r.ok && url!=='/api/pull' && (payload.id===reportId)){
+      keys.forEach(k=>$(k).value=k==='priority'?'P2':'');images=[];reportId=crypto.randomUUID();draw();await saveDraft();
+    }
+    await refresh();
+  }catch(e){result('连接中断。你的本地草稿已保留，可重启工具后查看待推送报告。',false,e.message)}
+  finally{lock(false)}
+}
+function draw(){
+  $('images').replaceChildren();
+  images.forEach((im,index)=>{
+    const wrap=document.createElement('div');wrap.className='shot';const img=document.createElement('img');img.src=im.data;img.alt='截图 '+(index+1);
+    const remove=document.createElement('button');remove.textContent='×';remove.title='移除截图';remove.onclick=()=>{images.splice(index,1);draw();saveDraft()};
+    wrap.append(img,remove);$('images').append(wrap);
+  });
+}
+async function addImages(files){
+  try{
+    const selected=[...files].filter(f=>['image/png','image/jpeg','image/webp','image/gif'].includes(f.type));
+    if(images.length+selected.length>12)throw Error('每份报告最多添加 12 张截图');
+    const existing=images.reduce((sum,x)=>sum+x.data.length*.75,0);
+    if(existing+selected.reduce((sum,f)=>sum+f.size,0)>20*1024*1024)throw Error('截图总大小不能超过 20 MB');
+    for(const f of selected){
+      const encoded=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(f)});
+      images.push({name:f.name,data:encoded});
+    }
+    draw();await saveDraft();
+  }catch(e){result(e.message,false)}
+}
+function transaction(mode,action){return new Promise((resolve,reject)=>{const tx=db.transaction('draft',mode);action(tx.objectStore('draft'));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
+async function saveDraft(){
+  if(!db)return;
+  try{await transaction('readwrite',store=>store.put(data(),'current'));$('draft').textContent='草稿已自动保存在本机'}catch{$('draft').textContent='草稿保存失败，请保留当前页面'}
+}
+async function initDraft(){
+  try{
+    db=await new Promise((resolve,reject)=>{const req=indexedDB.open('cfor-bugdesk',1);req.onupgradeneeded=()=>req.result.createObjectStore('draft');req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)});
+    const saved=await new Promise((resolve,reject)=>{const req=db.transaction('draft').objectStore('draft').get('current');req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)});
+    if(saved){keys.forEach(k=>$(k).value=saved[k]|| (k==='priority'?'P2':''));images=saved.images||[];reportId=saved.id||reportId;draw();$('draft').textContent='已恢复本地草稿'}
+  }catch{$('draft').textContent='浏览器未允许草稿保存，请保持页面开启'}
+}
+keys.forEach(k=>$(k).addEventListener('input',()=>{clearTimeout(draftTimer);draftTimer=setTimeout(saveDraft,300)}));
+$('files').onchange=async e=>{await addImages(e.target.files);e.target.value=''};
+$('drop').onclick=()=>$('files').click();$('drop').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('files').click()}};
+for(const ev of ['dragenter','dragover'])$('drop').addEventListener(ev,e=>{e.preventDefault();$('drop').classList.add('over')});
+$('drop').ondragleave=()=>$('drop').classList.remove('over');
+$('drop').ondrop=e=>{e.preventDefault();$('drop').classList.remove('over');addImages(e.dataTransfer.files)};
+document.addEventListener('paste',e=>{if(e.clipboardData.files.length){e.preventDefault();addImages(e.clipboardData.files)}});
+$('preview').onclick=()=>{const d=data();$('preview-title').textContent='Markdown 预览';$('markdown').textContent=['# '+(d.title||'未命名 Bug'),'','- 模块：'+d.module,'- 优先级：'+d.priority,'- 环境：'+d.env,'- 状态：待修复','','## 问题描述',d.description,'','## 复现步骤',d.steps,'','## 实际结果',d.actual,'','## 预期结果',d.expected,'','## 截图',...images.map((x,i)=>'![截图 '+(i+1)+'](evidence/报告目录/screenshot-'+(i+1)+')')].join('\n');$('preview-dialog').showModal()};
+$('close-preview').onclick=()=>$('preview-dialog').close();
+$('pull').onclick=()=>operate('/api/pull',{});
+$('submit').onclick=async()=>{const d=data();if(!d.title.trim())return result('请填写 Bug 标题',false);if(!d.description.trim()&&!d.steps.trim())return result('请填写问题描述或复现步骤',false);await saveDraft();operate('/api/submit',d)};
+$('new-tab').onclick=()=>{$('editor').hidden=false;$('history').hidden=true;$('new-tab').classList.add('active');$('history-tab').classList.remove('active')};
+$('history-tab').onclick=async()=>{
+  $('editor').hidden=true;$('history').hidden=false;$('new-tab').classList.remove('active');$('history-tab').classList.add('active');
+  try{
+    const r=await request('/api/files');$('file-list').replaceChildren();
+    for(const file of r.files||[]){const b=document.createElement('button');b.className='file';b.textContent=file;b.onclick=async()=>{const doc=await request('/api/read?file='+encodeURIComponent(file));$('preview-title').textContent=file;$('markdown').textContent=doc.markdown||doc.message;$('preview-dialog').showModal()};$('file-list').append(b)}
+  }catch(e){$('file-list').textContent=e.message}
+};
+initDraft();refresh();
+</script>
+</body></html>
