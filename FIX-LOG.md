@@ -1,5 +1,21 @@
 # 修复日志
 
+## 2026-10-21 17:58 Word 缺陷与协作批次完整发布
+
+- 本轮去重主清单有 126 项待修复/打回，达到 20 项门槛；最早 20 项候选逐项记录，没有把未定位的问题凑作完成。
+- Web `979e6dfa0` 修复动态表格数量/批次编辑器、批量存货来源与采购天数缺字段、税率冷缓存请求错误，以及办公用品类型/编号。HRM 入口仅部分修复，OA 模板加载和金额权限问题保留。
+- Web `5dbc51262` 补销售表单回归测试缺失的状态依赖，不改变断言或产品逻辑。两个提交已 push 修复分支 `bugfix/production-bug-batch-20261021`，合并请求 !694。
+- 产品关键文件为 `src/plugins/elementPlus/index.ts`、`src/mixins/ListMixin.ts`、`src/views/base/material/BatchAddForm.vue`、办公用品入出库表单与列表、两处 HRM 入口；本轮后端无新增修复提交。
+- 后端当前主目录基线 `bbab6a125`，Web `5dbc51262`；与今天 14:26 生产源码摘要核对，其他会话未提交的业务源码已在旧生产包中，本次新增源码全部已提交，未替他人混提交或覆盖工作区。
+- `bash scripts/build-current-production-backend.sh` 完整 58 模块及授权校验通过；三端 `VITE_APP_TARGET=admin/supplier/customer bash scripts/build-prod-alicfor.sh` 构建及 AES 制品校验通过。58 项定向 Web 回归与受影响 ESLint 通过；全量类型检查 8GB 堆 OOM，不记为通过。
+- 生产版本 `standard-20261021-bug-batch-1705`，2026-10-21 17:58:38 +08:00 完成，目标 `root@aliCfor` / `47.115.223.70`，48083、标准库 `cfor_admin_saas_standard`，Web `/www/wwwroot/jixu-ai-prod`。小程序无改动，不重复上传。
+- 标准库和旧库备份、独立恢复与迁移预演通过；按 `scripts/release-alicfor-current.sh` 的 backend/web 阶段正式切换，新增 1 个既有主线迁移，509 条校验通过、失败 0，原 508 条历史未变。
+- 服务 active、软链本次 JAR、48083、health UP、三公网入口 HTML 摘要及真实演示账号加密登录/只读查询均通过，随后已登出。生产业务写链未测，不写“已验证”。
+- AI、文件、第三方、公众号、企微、数字员工等保护表及 env/frontend-config/Nginx 摘要迁移前后与启动后相同，没有覆盖密钥或配置。没有灌入生产测试单据。
+- 首个主清单 Bug 87、89 及新增本地编号 `BUG-local-20261021174853-d13e43a8` 登记“已发布，待验证”；Bug 91 仅部分修复，其余候选与 Word 未定位项继续待处理。
+- 生产磁盘约剩 2.0GB，后续发布需先处理容量；保留本轮及历史备份，不擅删恢复库。自动化继续沿用当前会话每日 22:30，不新增轮询。
+- [逐项根因、Word 11 项、20 项候选、构建与发布证据](reports/2026-10-21-codex-word-bug-batch.md)。
+
 ## 2026-10-16 14:17 当前主目录全量发布
 
 - 用户明确要求发布，完整后端 `daf503a51`、Web `afe919a3d`，
