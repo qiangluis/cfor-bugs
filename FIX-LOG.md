@@ -1,5 +1,20 @@
 # 修复日志
 
+## 2026-10-22 定时修复：项目默认看板缺失主键，部分修复随全量包发布
+
+- **协作基线与计数**：已执行 `git pull --rebase`，主账本基线 `2aac05f1fe192d29d5c0b4a6a4f48b7222d196c0`。只读取首个主账本中明确的“状态”行，排除“原状态备注”、复测原文和远端补录附录；待修复/打回共 **162 项（Bug 127、瑕疵 35）**，达到 20 项发布门槛。历史日志中沿用的 23–29、31–32 不在当前主账本最早候选内，不继续照抄旧编号集合。
+- **本轮最早 20 项候选**：10、11、12、16、17、19、20、21、22、30、82、83、84、85、86、88、90、91、92、93。按标题、路径和实际调用链区分同号附录；本轮确定并修复的是 Bug 17 中“我的项目”创建失败的一处服务端根因，其余未取得充分证据的候选未登记完成。
+- **Bug 17 根因**：生产 2026-10-22 21:26:10、21:26:36（北京时间）创建“我的项目”时，`PmsWorkItemBoardMapper.insert` 报 `Field 'id' doesn't have a default value`。项目、成员和默认状态已有各自的编号策略，默认看板实体仍沿用全局自增策略；实际表不是自增，事务在初始化看板时回滚，页面无法创建项目。
+- **修复**：`PmsWorkItemBoardDO` 显式使用 `@TableId(type = IdType.ASSIGN_ID)`。保留已有显式 ID，不改全局策略、表结构、审批、权限或状态机，不向生产补测试数据。新租户和存量租户创建项目共用此链路，无需租户初始化补丁或 Flyway。
+- **产品提交**：后端 `/Users/liuqiang/code/cfor-standard/cfor/cfor-admin`，`25587848ea83a2ddccbd209b8d2bac6f290a523e`（`fix(pms): generate work item board ids`）。只提交 `PmsWorkItemBoardDO.java` 与 `PmsProjectCreationIdTest.java`，先推送 `bugfix/pms-board-init-20261022`；随后并发发布会话已将该提交推到 `origin/dev/develop_5.0.1`，本地与远端为同一提交。未混入其他会话未提交的审批、集成平台和文档改动。
+- **定向检查**：Java 17 执行 `mvn -o -pl cfor-module-pms/cfor-module-pms-biz -am -Dtest=PmsProjectCreationIdTest,tech.cfor17.module.pms.service.pm.project.PmsProjectServiceImplTest,PmsProjectMemberServiceImplTest -Dsurefire.failIfNoSpecifiedTests=false test`，21 模块成功，10 项测试、0 失败/错误。真实 H2/MyBatis 覆盖非自增表批量插入、默认看板与状态关联、显式 ID 保留、通用/敏捷项目初始化与重复初始化；不等同生产业务创建验收。证据：`/tmp/cfor-heartbeat-20261022-pms-red.log`、`/tmp/cfor-heartbeat-20261022-pms-green.log`。
+- **迁移资源检查**：`mvn -o -pl cfor-server resources:resources` 成功，主迁移与生产迁移复制资源共 521 个唯一版本，无跨目录版本重复。上轮记录的 `202610220070` 同号冲突已由所属会话修正；历史 `202610201600` 排除及替代策略保持原样，不将已解决问题继续报告为阻塞。
+- **完整包与发布归属**：并发发布会话已完成 `standard-20261022-wms-acceptance-225112`，其完整后端制品为本次提交 `25587848ea83a2ddccbd209b8d2bac6f290a523e`，Web 为 `03327448e0a502c138b747ca96d9cd545a950167`。本轮没有抢占生产发布锁、重复备份、上传、切换或重启。独立执行该新制品的 `bash scripts/verify-local-server-artifacts.sh` 成功，42 个本仓模块、13565 个 class 和迁移与构建源码一致；原主目录旧 JAR 的不一致检查失败不代表这份新制品失败。
+- **构建、备份及迁移门禁**：发布方从当前分支固定提交导出的普通目录进行 Java 17 `clean package`，58 模块成功，授权组件检查通过；管理端、供应商与客户门户生产构建及加密配置检查通过。按 `scripts/release-alicfor-current.sh standard-20261022-wms-acceptance-225112` 的 `backup`、`rehearsal`、`backend`、`web` 阶段执行：标准库/旧库/配置/当前包及前端备份完成，恢复副本预演通过，停服最终备份完成；正式新增 5 项迁移、523 项校验通过，原 518 行历史不变。未修改历史 Flyway，未向生产灌测试业务数据。
+- **独立发布确认**：生产完成时间 **2026-10-22 23:16:27 +08:00**，目标 `root@aliCfor` / `47.115.223.70`、标准库 `cfor_admin_saas_standard`、Web `/www/wwwroot/jixu-ai-prod`。`systemctl is-active spring_cfor-server-4.service` 为 `active`，`readlink -f` 指向本版 releases 下的 JAR，48083 监听且 `/actuator/health` 为 `UP`；运行包与本地构建 SHA-256 均为 `14b66f8b134ab1e58fdb018b6a40240d3ae497a30df55637ab5e62a73c0bab37`。管理端、供应商和客户门户公网首页均 HTTP 200，HTML 摘要分别与对应本地新制品一致；企业识别只读 API 返回 HTTP 200、业务码 0，无 502。本轮未变更 Web/小程序源码，小程序未重复上传，未执行生产业务写入验收。
+- **配置保护与证据**：生产备份目录 `/www/server/jixu-ai/backups/standard-20261022-wms-acceptance-225112/` 中 `critical-before.tsv`、`critical-after-migration.tsv`、`critical-after-start.tsv` 的 45 张保护表摘要逐字一致，`runtime-config.sha256` 对环境配置、`frontend-config.json`、Nginx 配置检查均通过；AI、文件、第三方登录、公众号、企微、数字员工等生产配置未被覆盖。`backend-complete`、`release-completed-at.txt`、`health.json`、`production-migrate.log`、`production-validate.log`、`history-final.tsv` 为发布证据。服务器 `/www` 尚余约 2.35 GiB、使用率 99%，下一批仍须核算空间，本轮未擅自删除备份。产品发布详情由发布会话维护于 `docs/06_开发指南/仓储验收修复与当前分支全量生产发布记录-20261022.md`。
+- **保留的独立阻塞**：生产 2026-10-22 21:28:42 旧版“协作项目”通过 `PmsLegacyProjectMapper.insert` 写入 `PLANNING`，而实际 `pms_project.status` 是整数，报 `Incorrect integer value: 'PLANNING' for column 'status'`。旧版字符串状态模型与新版数字状态模型共用事实表；需先明确项目模型与状态归属，不能擅改生产列类型、把两套状态猜测映射或新建平行事实表绕过。因此 **Bug 17 整条保持待修复**；未修改 Muse 复测内容，未把关联新编号一并标成完成。
+
 ## 2026-10-21 22:44 定时修复：调拨主题已提交，完整发布被迁移版本冲突阻断
 
 - **协作基线与计数**：`git pull --rebase` 快进至 `0f72d16`。Muse 已将上一批办公用品类型、编辑器及本地编号批量存货条目标为已验证，原复测内容保持不动。沿用首个主账本条目口径，待修复/打回共 124 项，达到 20 项发布门槛；编号复用通过标题、模块和路径区分，不批量修改同号附录。
