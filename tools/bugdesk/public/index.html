@@ -61,7 +61,14 @@ dialog{border:1px solid #dce2ec;border-radius:12px;padding:24px;width:min(900px,
 <script>
 const $=id=>document.getElementById(id),keys=['title','module','priority','env','description','steps','actual','expected'];
 const token=document.querySelector('meta[name=bugdesk-token]').content;
-let images=[],reportId=crypto.randomUUID(),busy=false,draftTimer,db,authTimer;
+function newReportId(){
+  if(typeof crypto.randomUUID==='function')return crypto.randomUUID();
+  const bytes=crypto.getRandomValues(new Uint8Array(16));
+  bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;
+  const hex=[...bytes].map(b=>b.toString(16).padStart(2,'0')).join('');
+  return [hex.slice(0,8),hex.slice(8,12),hex.slice(12,16),hex.slice(16,20),hex.slice(20)].join('-');
+}
+let images=[],reportId=newReportId(),busy=false,draftTimer,db,authTimer;
 function data(){return {id:reportId,...Object.fromEntries(keys.map(k=>[k,$(k).value])),images}}
 function result(message,ok,detail){
   $('result').textContent=message;$('result').className=ok?'result-ok':'result-error';
@@ -123,7 +130,7 @@ async function operate(url,payload){
   try{
     const r=await request(url,payload);result(r.message||'操作完成',r.ok,r.detail);
     if(r.ok && url!=='/api/pull' && (payload.id===reportId)){
-      keys.forEach(k=>$(k).value=k==='priority'?'P2':'');images=[];reportId=crypto.randomUUID();draw();await saveDraft();
+      keys.forEach(k=>$(k).value=k==='priority'?'P2':'');images=[];reportId=newReportId();draw();await saveDraft();
     }
     await refresh();
   }catch(e){result('连接中断。你的本地草稿已保留，可重启工具后查看待推送报告。',false,e.message)}
