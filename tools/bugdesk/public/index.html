@@ -78,6 +78,23 @@ async function request(url,payload){
   const res=await fetch(url,payload===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Bugdesk-Token':token},body:JSON.stringify(payload)});
   return await res.json();
 }
+function networkFailure(response){
+  const detail=[response.message,response.detail].filter(Boolean).join('\n');
+  if(/non-fast-forward|fetch first|rejected|Authentication|credential|403|401|Permission denied|conflict|远端有更新|未完成的合并|暂存区|未提交的修改/i.test(detail))return false;
+  return /connection.*(?:reset|closed|refused|timed out)|failed to connect|could not (?:connect|resolve)|couldn't connect|recv failure|send failure|timed?\s*out|timeout|TLS connect error|unexpected eof|empty reply|network is unreachable|工作台服务暂时不可用/i.test(detail);
+}
+async function syncRequest(url,payload){
+  const attempts=['/api/submit','/api/retry'].includes(url)?3:1;
+  const savedPayload=JSON.parse(JSON.stringify(payload));
+  for(let attempt=0;attempt<attempts;attempt++){
+    try{
+      const response=await request(url,savedPayload);
+      if(response.ok||!networkFailure(response)||attempt===attempts-1)return response;
+    }catch(error){if(attempt===attempts-1)throw error}
+    result('网络暂时中断，正在自动重试（'+(attempt+1)+'/2）…\n请保持页面开启，报告不会重复创建。',true);
+    await new Promise(resolve=>setTimeout(resolve,1500*(attempt+1)));
+  }
+}
 const inviteButton=document.createElement('button');
 inviteButton.id='github-accept';inviteButton.className='button primary';inviteButton.textContent='接受仓库邀请';inviteButton.hidden=true;
 $('check-push').before(inviteButton);
@@ -128,7 +145,7 @@ async function refresh(){
 async function operate(url,payload){
   if(busy)return;lock(true);result(url==='/api/pull'?'正在拉取最新内容…':'正在保存并推送，请稍候…',true);
   try{
-    const r=await request(url,payload);result(r.message||'操作完成',r.ok,r.detail);
+    const r=await syncRequest(url,payload);result(r.message||'操作完成',r.ok,r.detail);
     if(r.ok && url!=='/api/pull' && (payload.id===reportId)){
       keys.forEach(k=>$(k).value=k==='priority'?'P2':'');images=[];reportId=newReportId();draw();await saveDraft();
     }

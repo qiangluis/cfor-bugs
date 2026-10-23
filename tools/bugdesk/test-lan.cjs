@@ -76,5 +76,38 @@ async function main() {
   await page.locator('#history-tab').click();await page.locator('.file').first().waitFor();
   assert.deepEqual(errors,[]);assert.equal(git(['status','--porcelain']),'');assert.equal(git(['rev-parse','HEAD']),git(['rev-parse','main'],remote));
   console.log('PASS: Real LAN browser in insecure HTTP context, UUID fallback, independent drafts, image, preview, submit, reset and document list.');
+  await page.locator('#new-tab').click();
+  await page.locator('#title').fill('网络中断后自动重试');await page.locator('#description').fill('同一报告不重复创建');
+  let requests=[];
+  await page.route('**/api/submit',async route=>{
+    requests.push(route.request().postDataJSON());
+    if(requests.length===1)return route.fulfill({json:{ok:false,saved:true,message:'报告已保存',detail:'fatal: unable to access GitHub: Recv failure: Connection was reset'}});
+    return route.continue();
+  });
+  let commits=Number(git(['rev-list','--count','HEAD']));
+  await page.locator('#submit').click();await page.waitForFunction(()=>document.getElementById('result').textContent.includes('自动重试'));await page.waitForFunction(()=>document.getElementById('result').textContent.includes('已提交并推送'));
+  assert.equal(requests.length,2);assert.deepEqual(requests[0],requests[1]);assert.equal(Number(git(['rev-list','--count','HEAD'])),commits+1);
+  await page.unroute('**/api/submit');requests=[];
+  await page.locator('#title').fill('推送成功但响应丢失');await page.locator('#description').fill('重试后仅保留一次提交');
+  await page.route('**/api/submit',async route=>{
+    requests.push(route.request().postDataJSON());
+    if(requests.length===1){const response=await route.fetch();assert.equal((await response.json()).ok,true);return route.abort('connectionreset');}
+    return route.continue();
+  });
+  commits=Number(git(['rev-list','--count','HEAD']));
+  await page.locator('#submit').click();await page.waitForFunction(()=>document.getElementById('result').textContent.includes('自动重试'));await page.waitForFunction(()=>document.getElementById('result').textContent.includes('已经推送'));
+  assert.equal(requests.length,2);assert.deepEqual(requests[0],requests[1]);assert.equal(Number(git(['rev-list','--count','HEAD'])),commits+1);
+  await page.unroute('**/api/submit');requests=[];
+  await page.locator('#title').fill('保留失败草稿');await page.locator('#description').fill('重试耗尽时不清空草稿');
+  await page.route('**/api/submit',route=>{requests.push(route.request().postDataJSON());return route.fulfill({json:{ok:false,message:'网络连接失败',detail:'Failed to connect to github.com port 443'}});});
+  await page.locator('#submit').click();await page.waitForFunction(()=>document.getElementById('result').textContent==='网络连接失败');await page.waitForFunction(()=>!document.getElementById('submit').disabled);
+  assert.equal(requests.length,3);assert(requests.every(p=>JSON.stringify(p)===JSON.stringify(requests[0])));assert.equal(await page.locator('#title').inputValue(),'保留失败草稿');
+  await page.unroute('**/api/submit');
+  for(const detail of ['Authentication failed: HTTP 401','rejected (fetch first); RPC failed: Connection was reset','仓库里还有未提交的修改']){
+    requests=[];await page.route('**/api/submit',route=>{requests.push(route.request().postDataJSON());return route.fulfill({json:{ok:false,message:'操作失败',detail}});});
+    await page.locator('#submit').click();await page.waitForFunction(expected=>document.getElementById('detail').textContent===expected,detail);await page.waitForFunction(()=>!document.getElementById('submit').disabled);assert.equal(requests.length,1);await page.unroute('**/api/submit');
+  }
+  assert.deepEqual(errors,[]);assert.equal(git(['status','--porcelain']),'');
+  console.log('PASS: Transient retry, lost response deduplication, bounded attempts, failed draft retention, and no retries for auth, remote updates or dirty repository.');
 }
 main().catch(e=>{console.error(e,stderr);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();if(gateway){gateway.close();gateway.closeAllConnections();}if(backend)backend.kill();});
