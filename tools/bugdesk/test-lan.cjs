@@ -56,6 +56,11 @@ async function main() {
   const {chromium}=require(path.resolve(path.dirname(process.execPath),'../node_modules/.pnpm/playwright-core@1.60.0/node_modules/playwright-core'));
   browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
   const a=await browser.newContext(),b=await browser.newContext();
+  // Keep the real retry paths while avoiding several minutes of deliberate waiting.
+  await a.addInitScript(()=>{
+    const original=window.setTimeout;
+    window.setTimeout=(callback,delay,...args)=>original(callback,[5000,15000,30000,60000].includes(delay)?200:delay,...args);
+  });
   const page=await a.newPage(),other=await b.newPage(),errors=[];
   page.on('pageerror',e=>errors.push(e.message));other.on('pageerror',e=>errors.push(e.message));
   await page.goto(base);await other.goto(base);
@@ -81,12 +86,12 @@ async function main() {
   let requests=[];
   await page.route('**/api/submit',async route=>{
     requests.push(route.request().postDataJSON());
-    if(requests.length===1)return route.fulfill({json:{ok:false,saved:true,message:'报告已保存',detail:'fatal: unable to access GitHub: Recv failure: Connection was reset'}});
+    if(requests.length<=4)return route.fulfill({json:{ok:false,saved:true,message:'报告已保存',detail:'fatal: unable to access GitHub: Recv failure: Connection was reset'}});
     return route.continue();
   });
   let commits=Number(git(['rev-list','--count','HEAD']));
   await page.locator('#submit').click();await page.waitForFunction(()=>document.getElementById('result').textContent.includes('自动重试'));await page.waitForFunction(()=>document.getElementById('result').textContent.includes('已提交并推送'));
-  assert.equal(requests.length,2);assert.deepEqual(requests[0],requests[1]);assert.equal(Number(git(['rev-list','--count','HEAD'])),commits+1);
+  assert.equal(requests.length,5);assert(requests.every(p=>JSON.stringify(p)===JSON.stringify(requests[0])));assert.equal(Number(git(['rev-list','--count','HEAD'])),commits+1);
   await page.unroute('**/api/submit');requests=[];
   await page.locator('#title').fill('推送成功但响应丢失');await page.locator('#description').fill('重试后仅保留一次提交');
   await page.route('**/api/submit',async route=>{
@@ -101,13 +106,47 @@ async function main() {
   await page.locator('#title').fill('保留失败草稿');await page.locator('#description').fill('重试耗尽时不清空草稿');
   await page.route('**/api/submit',route=>{requests.push(route.request().postDataJSON());return route.fulfill({json:{ok:false,message:'网络连接失败',detail:'Failed to connect to github.com port 443'}});});
   await page.locator('#submit').click();await page.waitForFunction(()=>document.getElementById('result').textContent==='网络连接失败');await page.waitForFunction(()=>!document.getElementById('submit').disabled);
-  assert.equal(requests.length,3);assert(requests.every(p=>JSON.stringify(p)===JSON.stringify(requests[0])));assert.equal(await page.locator('#title').inputValue(),'保留失败草稿');
+  assert.equal(requests.length,5);assert(requests.every(p=>JSON.stringify(p)===JSON.stringify(requests[0])));assert.equal(await page.locator('#title').inputValue(),'保留失败草稿');
   await page.unroute('**/api/submit');
-  for(const detail of ['Authentication failed: HTTP 401','rejected (fetch first); RPC failed: Connection was reset','仓库里还有未提交的修改']){
+  for(const detail of ['Authentication failed: HTTP 401','remote rejected: Permission denied','仓库里还有未提交的修改','CONFLICT: 未完成的合并']){
     requests=[];await page.route('**/api/submit',route=>{requests.push(route.request().postDataJSON());return route.fulfill({json:{ok:false,message:'操作失败',detail}});});
     await page.locator('#submit').click();await page.waitForFunction(expected=>document.getElementById('detail').textContent===expected,detail);await page.waitForFunction(()=>!document.getElementById('submit').disabled);assert.equal(requests.length,1);await page.unroute('**/api/submit');
   }
   assert.deepEqual(errors,[]);assert.equal(git(['status','--porcelain']),'');
-  console.log('PASS: Transient retry, lost response deduplication, bounded attempts, failed draft retention, and no retries for auth, remote updates or dirty repository.');
+  console.log('PASS: Recovery after four transient failures, lost response deduplication, bounded attempts, failed draft retention, and no retries for auth, conflict or dirty repository.');
+  const peer=path.join(root,'peer');
+  git(['clone','--branch','main',remote,peer],root);
+  git(['config','user.name','Remote Test'],peer);git(['config','user.email','remote-test@localhost'],peer);
+  fs.writeFileSync(path.join(peer,'remote-update.md'),'Remote collaborator update\n');
+  git(['add','.'],peer);git(['commit','-m','remote independent update'],peer);git(['push','origin','main'],peer);
+  requests=[];let pulls=0;
+  await page.route('**/api/submit',route=>{requests.push(route.request().postDataJSON());return route.continue();});
+  await page.route('**/api/pull',route=>{pulls++;return route.continue();});
+  await page.locator('#title').fill('远端更新后自动同步');await page.locator('#description').fill('无需手动拉取，报告仅登记一次');
+  commits=Number(git(['rev-list','--count','HEAD']));
+  await page.locator('#submit').click();await page.waitForFunction(()=>document.getElementById('result').textContent.includes('已提交并推送'));
+  assert.equal(requests.length,2);assert.equal(pulls,1);assert.deepEqual(requests[0],requests[1]);
+  assert.equal(Number(git(['rev-list','--count','HEAD'])),commits+2);
+  assert.equal(git(['rev-parse','HEAD']),git(['rev-parse','main'],remote));
+  assert.equal(fs.readFileSync(path.join(repo,'remote-update.md'),'utf8').trim(),'Remote collaborator update');
+  assert.equal((await request('/api/status')).pending.length,0);assert.equal(await page.locator('#title').inputValue(),'');
+  console.log('PASS: Real remote divergence is pulled and rebased automatically, followed by one report push with no duplicate.');
+  git(['pull','--rebase','origin','main'],peer);
+  fs.appendFileSync(path.join(peer,'BUG-LIST.md'),'\nRemote append causing a real conflict\n');
+  git(['add','.'],peer);git(['commit','-m','remote list append'],peer);git(['push','origin','main'],peer);
+  requests=[];pulls=0;
+  await page.locator('#title').fill('合并冲突保留报告');await page.locator('#description').fill('停止重试并保留草稿与截图');
+  await page.locator('#files').setInputFiles({name:'conflict.png',mimeType:'image/png',buffer:Buffer.from(image.split(',')[1],'base64')});
+  await page.locator('#submit').click();
+  await page.waitForFunction(()=>document.getElementById('result').textContent.includes('拉取失败'));
+  await page.waitForFunction(()=>!document.getElementById('submit').disabled);
+  assert.equal(requests.length,1);assert.equal(pulls,1);assert.equal(await page.locator('#title').inputValue(),'合并冲突保留报告');
+  const conflictState=JSON.parse(fs.readFileSync(path.join(repo,'.git/bugdesk',requests[0].id+'.json'),'utf8'));
+  assert.equal(conflictState.pushed,false);assert.equal(conflictState.committed,true);
+  assert(fs.existsSync(path.join(repo,conflictState.report)));
+  assert.deepEqual(fs.readFileSync(path.join(repo,conflictState.files[2])),Buffer.from(image.split(',')[1],'base64'));
+  assert.equal((await request('/api/status')).pending.length,1);assert.deepEqual(errors,[]);
+  git(['rebase','--abort']);
+  console.log('PASS: A real shared-list conflict stops retries and preserves the report, screenshot, local commit and browser draft.');
 }
 main().catch(e=>{console.error(e,stderr);process.exitCode=1;}).finally(async()=>{if(browser)await browser.close();if(gateway){gateway.close();gateway.closeAllConnections();}if(backend)backend.kill();});

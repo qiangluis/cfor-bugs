@@ -84,15 +84,31 @@ function networkFailure(response){
   return /connection.*(?:reset|closed|refused|timed out)|failed to connect|could not (?:connect|resolve)|couldn't connect|recv failure|send failure|timed?\s*out|timeout|TLS connect error|unexpected eof|empty reply|network is unreachable|工作台服务暂时不可用/i.test(detail);
 }
 async function syncRequest(url,payload){
-  const attempts=['/api/submit','/api/retry'].includes(url)?3:1;
+  if(!['/api/submit','/api/retry'].includes(url))return request(url,payload);
+  const retryDelays=[5000,15000,30000,60000];
   const savedPayload=JSON.parse(JSON.stringify(payload));
-  for(let attempt=0;attempt<attempts;attempt++){
+  let pulledRemote=false;
+  for(let attempt=0;attempt<=retryDelays.length;attempt++){
     try{
-      const response=await request(url,savedPayload);
-      if(response.ok||!networkFailure(response)||attempt===attempts-1)return response;
-    }catch(error){if(attempt===attempts-1)throw error}
-    result('网络暂时中断，正在自动重试（'+(attempt+1)+'/2）…\n请保持页面开启，报告不会重复创建。',true);
-    await new Promise(resolve=>setTimeout(resolve,1500*(attempt+1)));
+      let response=await request(url,savedPayload);
+      if(response.ok)return response;
+      const detail=[response.message,response.detail].filter(Boolean).join('\n');
+      if(!pulledRemote && /non-fast-forward|fetch first|远端有更新/i.test(detail)){
+        result('仓库有更新，正在拉取后继续推送…\n请保持页面开启，报告不会重复创建。',true);
+        const pulled=await request('/api/pull',{});
+        if(pulled.ok){
+          pulledRemote=true;
+          response=await request(url,savedPayload);
+          if(response.ok)return response;
+        }else{
+          response=pulled;
+        }
+      }
+      if(!networkFailure(response)||attempt===retryDelays.length)return response;
+    }catch(error){if(attempt===retryDelays.length)throw error}
+    const delay=retryDelays[attempt];
+    result('网络暂时中断，'+(delay/1000)+' 秒后自动重试（'+(attempt+1)+'/'+retryDelays.length+'）…\n请保持页面开启，报告不会重复创建。',true);
+    await new Promise(resolve=>setTimeout(resolve,delay));
   }
 }
 const inviteButton=document.createElement('button');
