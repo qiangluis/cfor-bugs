@@ -11719,3 +11719,19 @@
 - **证据**：[screenshot-1.png](evidence/BUG-local-20261029153647-9e6526ee/screenshot-1.png)、[screenshot-2.png](evidence/BUG-local-20261029153647-9e6526ee/screenshot-2.png)
 - **提交时间**：2026-10-29 15:36:47（北京时间）
 - **状态**：待修复
+
+
+---
+
+### 采购入库单保存后无法审核，点击审核报错：采购订单未审核，无法操作
+- **编号**：BUG-local-20261029154702-1ebc1efd
+- **模块**：仓库-入库管理-采购入库
+- **优先级**：P1
+- **描述**：采购入库单保存后无法审核，点击审核报错：采购订单未审核，无法操作 CG-20261029-002
+- **复现步骤**：1，点击仓库；2，点击入库管理；3，点击采购入库；4，点击入库单：CR-20261029-003 右侧操作栏 审核 按钮，报错：采购订单未审核，无法操作（实际采购订单已审核）
+- **实际结果**：
+- **预期结果**：
+- **报告**：[BUG-local-20261029154702-1ebc1efd.md](BUG-local-20261029154702-1ebc1efd.md)
+- **证据**：[screenshot-1.png](evidence/BUG-local-20261029154702-1ebc1efd/screenshot-1.png)、[screenshot-2.png](evidence/BUG-local-20261029154702-1ebc1efd/screenshot-2.png)、[screenshot-3.png](evidence/BUG-local-20261029154702-1ebc1efd/screenshot-3.png)
+- **提交时间**：2026-10-29 15:47:02（北京时间）
+- **状态**：待修复
