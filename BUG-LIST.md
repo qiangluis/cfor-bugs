@@ -12055,3 +12055,19 @@
 - **证据**：[screenshot-1.png](evidence/BUG-local-20261103113049-30a00b34/screenshot-1.png)、[screenshot-2.png](evidence/BUG-local-20261103113049-30a00b34/screenshot-2.png)、[screenshot-3.png](evidence/BUG-local-20261103113049-30a00b34/screenshot-3.png)
 - **提交时间**：2026-11-03 11:30:49（北京时间）
 - **状态**：待修复
+
+
+---
+
+### 赠品入库，样品入库列表，单据阶段未显示
+- **编号**：BUG-local-20261103113443-83d0e77c
+- **模块**：仓库-入库管理
+- **优先级**：P2
+- **描述**：赠品入库，样品入库列表，单据阶段未显示
+- **复现步骤**：1，点击仓库；2，点击入库管理；3，点击赠品入库，列表，单据阶段未显示；4，点击样品入库，列表，单据阶段未显示
+- **实际结果**：
+- **预期结果**：
+- **报告**：[BUG-local-20261103113443-83d0e77c.md](BUG-local-20261103113443-83d0e77c.md)
+- **证据**：[screenshot-1.png](evidence/BUG-local-20261103113443-83d0e77c/screenshot-1.png)、[screenshot-2.png](evidence/BUG-local-20261103113443-83d0e77c/screenshot-2.png)
+- **提交时间**：2026-11-03 11:34:43（北京时间）
+- **状态**：待修复
