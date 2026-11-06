@@ -1,5 +1,29 @@
 # 修复日志
 
+## 2026-11-06 当日新增提交：10组修复、12份报告状态同步
+
+本次同步2026-11-06（Asia/Shanghai）已提交并合入开发分支的10组修复、11个产品提交，对应12份独立Bug报告；其中采购退货联动、盘点整仓选货各有一份同场景历史报告，保留完整编号并共享修复记录。全部登记为“代码已修复，待发布”。此前已同步的10项状态及验证限制保持原文。
+
+- **核实依据**：已刷新产品远端，逐个核对修复提交为最新 dev/develop_5.0.1 的祖先；前端头为 `368a37e93c37e9637eab0fb9d5b6702c55eae074`，后端头为 `7b6b7b1495fec1c2d2ed4faae5aa3f8355ffa8e8`。
+- **验证口径**：下述本地结果来自既有逐项记录，本次未重新运行产品测试。没有生产发布或修复后生产复测证据，不升级为已发布或已验证。
+- **详细记录**：[当日逐项状态同步](reports/2026-11-06-today-bug-status-sync.md)。
+
+| 完整 Bug 标识 | 修复内容 | 产品提交 | 当前状态 |
+| --- | --- | --- | --- |
+| [BUG-local-20261105113240-04c438f9](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261105113240-04c438f9) | 采购退货带入仓库后保存误报未选择仓库 | [前端 85d1459e6](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/85d1459e62b19a62820a5a9f646f73692f889b67) | 代码已修复，待发布 |
+| [BUG-local-20261105113401-675f0d57](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261105113401-675f0d57) | 采购退货库区库位未按仓库联动过滤 | [前端 9d1e52e43](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/9d1e52e431585616f8652ea7f95bef6376076bbc) | 代码已修复，待发布 |
+| [BUG-local-20261030110433-ebc9dc07](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261105113401-675f0d57) | 采购退货库区库位未按仓库联动过滤 | [前端 9d1e52e43](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/9d1e52e431585616f8652ea7f95bef6376076bbc) | 代码已修复，待发布 |
+| [BUG-local-20261103172326-9ea386cd](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261103172326-9ea386cd) | 其他出库列表备注未显示明细出库原因 | [前端 bc09d55cf](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/bc09d55cf3d7f07e36b8f5d4bef4461615583266) | 代码已修复，待发布 |
+| [BUG-local-20261103113443-83d0e77c](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261103113443-83d0e77c) | 赠品入库和样品入库列表单据阶段不显示 | [前端 39353d5a9](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/39353d5a97f87a0830c8923cc4c160afebc5c8ec) | 代码已修复，待发布 |
+| [BUG-local-20261103111915-efee9490](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261103111915-efee9490) | 盘点录入未选库区时无法选择整仓库存 | [前端 d65ca8611](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/d65ca86119c8b7d4bc20d40861a47be182846315) | 代码已修复，待发布 |
+| [BUG-local-20261024170554-f225f75e](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261103111915-efee9490) | 盘点录入未选库区时无法选择整仓库存 | [前端 d65ca8611](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/d65ca86119c8b7d4bc20d40861a47be182846315) | 代码已修复，待发布 |
+| [BUG-local-20261106104130-9aed853e](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261106104130-9aed853e) | 采购退货选单来源由采购入库单改为采购订单 | [前端 1e705bdb0](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/1e705bdb0b2085616513c19225938af416f9537e) | 代码已修复，待发布 |
+| [BUG-local-20261102163910-6046e9b0](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261102163910-6046e9b0) | 赠品出库仅允许选择有效赠品入库来源库存 | [前端 50f67d92f](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/50f67d92f1b9dafe2f841e4ca070759e341a1ff3)、[后端 4a0716a79](http://192.168.110.240:3008/cfor_backend/cfor-admin/-/commit/4a0716a79b04b0f154b1655cdfa5fbb6ce7fff91) | 代码已修复，待发布 |
+| [BUG-local-20261102153945-344984ef](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261102153945-344984ef) | 流程设计工具栏滚动时遮挡保存发布按钮 | [前端 915c40dc0](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/915c40dc0db68dc013f12b646900052724734060) | 代码已修复，待发布 |
+| [BUG-local-20261030163921-53f13553](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261030163921-53f13553) | 采购入库横向滚动后小计合计消失 | [前端 5b01d9e30](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/5b01d9e308e19216dce05ee88ed0f7fc67c668a6) | 代码已修复，待发布 |
+| [BUG-local-20261030161109-b95b3155](reports/2026-11-06-today-bug-status-sync.md#bug-local-20261030161109-b95b3155) | 其他入库表单长标签换行和文字重叠 | [前端 6d87afe57](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/6d87afe5713468d43bc3529e4c8201bcc88d910a) | 代码已修复，待发布 |
+
+
 ## 2026-11-06 补登记已合入开发分支的 10 项修复
 
 - **范围**：本次仅同步用户确认已合入 `dev/develop_5.0.1` 的 10 项、11 个前后端修复提交，不重新提交产品代码、不执行发布或线上业务操作。合并依据为产品 Git 提交及用户确认；只读查询到的开发分支头：前端 `5e339dba28d67ed857d1b3b3ee33b1bb9647d386`、后端 `88672ba8f500671a121d47dc6a648413e66f14b0`。
