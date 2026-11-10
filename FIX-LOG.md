@@ -1,5 +1,29 @@
 # 修复日志
 
+## 2026-11-10 同步 11-07 至 11-09 已合入修复：10组修复、10份报告
+
+本次同步上次同步（`c6cef98`，2026-11-06 17:35）之后已提交并合入开发分支的10组修复、10个产品提交（前端8、后端2），对应10份独立Bug报告，编号与修复1:1，无共用修复提交。其中9份登记为“代码已修复，待发布”；74ebfd6c只修复了报告中的提示语部分、审核失败根因未定因，按“部分修复不得伪报整条完成”保持“待修复”。另登记ae255170的配置类处置结论，状态保持“待修复”。此前已同步条目的状态及验证限制保持原文。
+
+- **核实依据**：已实际fetch产品远端，对10个提交逐个执行`git merge-base --is-ancestor`确认可达；前端开发分支头`630e9fd07cbe9a78afd8db51269a36fdef2e7196`，后端`588ccc3c69f3b1a24f3e878c4b48534303f75ba3`；GitHub基线`299b14653405457bce67bc7507f04a9a1388171a`，先快进接收11-07新增4份报告再增量更新。
+- **归属口径**：只纳入本机Git身份`dy <dengyi@qgimsoft.com>`的修复提交。前端`5ce8a86f8`经核实Author与Committer均为`liuqiang`且无对应本地记录，排除；其他开发者提交不据此改变台账。
+- **验证口径**：下述结果来自既有逐项本地记录，本次未重新运行产品测试。2026-11-06 18:00后无发布/部署类新产物，各记录均写明未发布或未部署线上，**无任何生产发布证据**，不升级为已发布或已验证。记录中的jixu-ai.com访问均为只读复现或只读核对。2efbf79b只有修复后截图无复测文字段落、62d36a4c无修复后复测产物，均按实际证据类型记录，不声称复测通过。
+- **详细记录**：[本批逐项状态同步](reports/2026-11-10-bug-status-sync.md)。
+
+| 完整 Bug 标识 | 修复内容 | 产品提交 | 当前状态 |
+| --- | --- | --- | --- |
+| [BUG-local-20261106154948-e0d6950f](reports/2026-11-10-bug-status-sync.md#bug-local-20261106154948-e0d6950f) | 存货默认库区库位未按仓库筛选（雪花ID隐式浮点比较） | [前端 5a78c8b64](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/5a78c8b64005fa2d11dd9442adb98a08e10ecd67) | 代码已修复，待发布 |
+| [BUG-local-20261106161034-1dfa97b8](reports/2026-11-10-bug-status-sync.md#bug-local-20261106161034-1dfa97b8) | 采购入库详情供应商名称未显示（ID类型不一致） | [前端 e173f9cb1](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/e173f9cb1860106dcf952d2b8963836a403580ed) | 代码已修复，待发布 |
+| [BUG-local-20261029142506-9df7700d](reports/2026-11-10-bug-status-sync.md#bug-local-20261029142506-9df7700d) | 请购单保存后请购时间与预计采购时间不回显 | [前端 eb759f08b](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/eb759f08bd164e6481129720316aa6c9d7fba0d7) | 代码已修复，待发布 |
+| [BUG-local-20261028161741-b72db41e](reports/2026-11-10-bug-status-sync.md#bug-local-20261028161741-b72db41e) | 销售出库选单弹窗订单时间显示为时间戳 | [前端 9aac17897](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/9aac17897836575c92533899edb21f9b2ea0c7d5) | 代码已修复，待发布 |
+| [BUG-local-20261028110139-2efbf79b](reports/2026-11-10-bug-status-sync.md#bug-local-20261028110139-2efbf79b) | 其他出库选库存后品级名称静态不显示 | [前端 f8f5095d7](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/f8f5095d7f8f01f0f80cc7962fbb18054f4b5607) | 代码已修复，待发布 |
+| [BUG-local-20261028104703-62d36a4c](reports/2026-11-10-bug-status-sync.md#bug-local-20261028104703-62d36a4c) | 其他入库选择存货未带入默认品级 | [前端 20a527226](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/20a5272264d874eed20a9e8ff4431a750c33e92d) | 代码已修复，待发布 |
+| [BUG-local-20261107165041-2511daca](reports/2026-11-10-bug-status-sync.md#bug-local-20261107165041-2511daca) | 库位新增所属库区下拉未按所选仓库过滤 | [前端 c86bf6a85](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/c86bf6a85e55ed9d3cbfcaa27b2562dbedcb1e71) | 代码已修复，待发布 |
+| [BUG-local-20261107160739-053bc7aa](reports/2026-11-10-bug-status-sync.md#bug-local-20261107160739-053bc7aa) | 到货通知存货单位显示原始ID（字典白名单缺登记） | [后端 0209e5999](http://192.168.110.240:3008/cfor_backend/cfor-admin/-/commit/0209e59991b8759503bd8743b2b03f1e8fe2ac63) | 代码已修复，待发布 |
+| [BUG-local-20261107155003-fcc176eb](reports/2026-11-10-bug-status-sync.md#bug-local-20261107155003-fcc176eb) | 出入库流水办公用品入库单号点击无详情 | [前端 a643677b5](http://192.168.110.240:3008/cfor_front/cfor-admin-vue3/-/commit/a643677b572a3af0287a7371128b2ffebb72f00b) | 代码已修复，待发布 |
+| [BUG-local-20261106105832-74ebfd6c](reports/2026-11-10-bug-status-sync.md#bug-local-20261106105832-74ebfd6c) | 仅修复出库库存校验提示显示仓库和存货名称；审核失败根因未定因 | [后端 97ef837f7](http://192.168.110.240:3008/cfor_backend/cfor-admin/-/commit/97ef837f7c2d8d7a7df329317bb06e4affb81c84) | 待修复（部分修复，不整条关闭） |
+| [BUG-local-20261027164924-ae255170](reports/2026-11-10-bug-status-sync.md#bug-local-20261027164924-ae255170) | 定因为单据选项配置，非代码缺陷；处置需业务确认，禁改平台共用审批执行代码 | 无产品提交 | 待修复（配置类，本轮未改配置未改代码） |
+
+
 ## 2026-11-06 当日新增提交：10组修复、12份报告状态同步
 
 本次同步2026-11-06（Asia/Shanghai）已提交并合入开发分支的10组修复、11个产品提交，对应12份独立Bug报告；其中采购退货联动、盘点整仓选货各有一份同场景历史报告，保留完整编号并共享修复记录。全部登记为“代码已修复，待发布”。此前已同步的10项状态及验证限制保持原文。
